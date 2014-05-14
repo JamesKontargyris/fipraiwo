@@ -1,0 +1,126 @@
+//	_base.scss: styles that will affect all pages (heading tags, small tags, etc.)
+
+* {
+	@include box-sizing(border-box);
+}
+
+html, body {
+	height:100%;
+}
+html {
+	font-size:16px;
+	background-color: #888;
+}
+body {
+	font-family: $font-family;
+	@include background(linear-gradient(top, #f0f0f0, #888 66%));
+	color:$black;
+	line-height:1.4;
+}
+a {
+	text-decoration:none;
+	color:$blue;
+	&:hover {
+	}
+}
+h1, h2 {
+	font-family: "Times New Roman", Times, serif;
+    margin-bottom:$v-rhythm;
+    font-style: italic;
+    line-height:1;
+    font-weight: normal;
+	
+}
+h1 {
+    @include font-size(32);
+    color:$grey;
+    @include breakpoint($m-max) {
+    	@include font-size(24);
+    }
+    @include breakpoint($l) {
+    	margin-top:30px;
+    }
+}
+h2 {
+    padding:$v-rhythm 0 ($v-rhythm / 2);
+    border-bottom:1px solid $periwinkle;
+    @include font-size(24);
+}
+p {
+	padding-bottom:$v-rhythm;
+}
+strong {
+	font-weight:$font-bold;
+}
+label {
+	display:inline-block;
+	font-weight:$font-bold;
+	color:$grey;
+	padding-bottom:$v-rhythm / 2;
+	&.required {
+		&::before {
+			content:"* ";
+			color:$red;
+			font-weight:$font-bold;
+		}
+	}
+}
+a.back-to-top {
+	display:inline-block;
+	padding:($v-rhythm / 2) 10px;
+	background-color:darken(white, 5%);
+	margin:($v-rhythm / 2) 0;
+	&:hover {
+		opacity:0.8;
+	}
+}
+input[type=text],
+input[type=email],
+input[type=file],
+textarea {
+	width:100%;
+	padding:$v-rhythm / 4 10px;
+	@include font-size(14);
+	font-family:$font-family;
+	@include breakpoint($l) {
+		@include font-size(14);
+	}
+	&.inline {
+		width:auto;
+	}
+}
+input[type=checkbox] {
+	width:30px;
+	height:30px;
+	vertical-align: middle;
+}
+input[type=submit] {
+	cursor:pointer;
+	padding-left:20px;
+	padding-right:20px;
+	font-weight:$font-bold;
+}
+select {
+	display:block;
+	padding:$v-rhythm / 4 10px;
+	@include font-size(14);
+	@include breakpoint($l) {
+		@include font-size(14);
+	}
+	&.inline {
+		display:inline-block;
+	}
+}
+strong {
+	font-weight:$font-bold;
+}
+
+#content {
+	@include font-size(14);
+}
+.red {
+	color:$red;
+}
+.showjs {
+	display:none;
+}

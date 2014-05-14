@@ -1,0 +1,90 @@
+nav {
+	ul {
+		@include clearfix();
+		display:none;
+		padding-top:20px;
+		@include breakpoint($l) {
+			display:block;
+			padding-top:0;
+		}
+		li {
+			border-bottom: 1px solid white;
+			@include breakpoint($l) {
+				float:left;
+				width:20%;
+				margin-bottom:5px;
+				padding-left:0;
+				padding-right:5px;
+			}
+			a {
+				display:block;
+				@include font-size(12);
+				padding:($v-rhythm / 2);
+				@include background(linear-gradient(left, rgb(230, 230, 230), rgb(250, 250, 250)));
+				color:$black;
+				&:hover {
+					@include background(linear-gradient(right, rgb(230, 230, 230), rgb(250, 250, 250)));
+				}
+				&.highlight {
+					background:$blue;
+					color:white;
+					font-weight:$font-bold;
+					&:hover {
+						opacity:0.8;
+					}
+				}
+			}
+		}
+	}
+}
+header {
+	@include clearfix();
+	padding-top:$v-rhythm;
+	margin-bottom:$v-rhythm / 2;
+	@include background(url('../img/stars_bk.gif') top right no-repeat);
+	@include breakpoint($l-max) {
+		#logo img {
+			display:block;
+			margin:0 auto ($v-rhythm / 2);
+		}
+		#page-title {
+			h1 {
+				text-align:center;
+			}
+		}
+	}
+	@include breakpoint($l) {
+		#logo {
+			float:left;
+			margin-right:30px;
+		}
+		#page-title {
+			float:left;
+		}
+	}
+}
+.links-toggle {
+	position:relative;
+	margin:0 auto;
+	padding-bottom:30px;
+	@include breakpoint($l) {
+		display:none;
+	}
+	.but-toggle {
+		position:absolute;
+		top:0;
+		left:50%;
+		margin-left:-50px;
+		width:100px;
+		display:inline-block;
+		padding:$v-rhythm / 2 10px;
+		background-color:$grey;
+		color:white;
+		text-align:center;
+		@include font-size(10);
+		font-weight:$font-bold;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}

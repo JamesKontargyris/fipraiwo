@@ -1,0 +1,47 @@
+// _layout.scss: code relating to general areas of all or certain pages, e.g. nav, header.
+
+// Susy setup
+// @include layout(12 (6.4% 2%) static float after);
+$susy: (
+	columns: 12,
+	gutters: 0.5,
+	math:fluid,
+);
+.container,
+.content-container {
+	@include container();
+	max-width:1000px;
+	padding:0 20px;
+}
+.content-container {
+	@include clearfix();
+	background-color:white;
+	min-height:100%;
+}
+
+@include breakpoint($l) {
+	.col-4 {
+		float:left;
+		width: span(4);
+		margin-right:gutter();
+		&:last-child {
+			margin-right:0;
+		}
+	}
+	.col-6 {
+		float:left;
+		width: span(6);
+		margin-right:gutter();
+	}
+	.col-12 {
+		@include clearfix();
+		width:span(12);
+	}
+	.last {
+		margin-right:0;
+	}
+}
+.col-4, .col-6, .col-12 {
+	margin-bottom:$v-rhythm;
+}
+

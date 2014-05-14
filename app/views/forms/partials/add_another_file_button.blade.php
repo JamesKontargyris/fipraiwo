@@ -1,0 +1,1 @@
+<a class="showjs add-new-file-upload secondary"><i class="fa fa-plus"></i> Add another file</a>

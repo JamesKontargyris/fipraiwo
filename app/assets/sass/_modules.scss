@@ -1,0 +1,178 @@
+// _modules.scss: modular pieces of code used throughout your project. Use modules to avoid repeating code.
+
+.primary {
+	@include primary-but();
+}
+.secondary {
+	@include secondary-but();
+}
+
+.intro {
+    margin-bottom: $v-rhythm;
+    border-bottom:1px solid $light-grey;
+    @include font-size(16);
+    @include breakpoint($l) {
+    	@include font-size(18);
+    }
+}
+.work-order-menu {
+	li {
+		margin-bottom:$v-rhythm;
+		a {
+			@include primary-but();
+			@include container(12);
+			display:block;
+			border-bottom:2px solid darken($blue, 30%);
+			padding:($v-rhythm / 2) 10px;
+			min-height:100px;	
+			@include breakpoint($l) {
+				min-height:250px;
+			}
+			i {
+				display:block;
+				margin-top:20px;
+				@include breakpoint($l-max)
+				{
+					@include span(2 of 12);
+					@include font-size(40);
+					
+				}
+				@include breakpoint($l) {
+					padding:($v-rhythm / 2) 0;
+				}
+				@include breakpoint($s-max) {
+					display:none;
+				}
+			}
+			p {
+				@include breakpoint($m-l) {
+					@include span(8 of 12 at 3);
+					text-align:left;
+					@include font-size(24);
+				}
+				font-weight:$font-bold;
+				line-height: 1.4;
+				margin-top:$v-rhythm / 2;
+				margin-bottom:0;
+				@include font-size(18);
+			}
+		}
+		@include breakpoint($l) {
+			@include gallery(3 of 12);
+		}
+	}
+}
+.errors,
+.error {
+	background-color:lighten($red, 50%);
+	border:1px solid lighten($red, 45%);
+	margin-bottom:$v-rhythm;
+	padding:($v-rhythm / 2) 10px;
+	ul li {
+		padding:($v-rhythm / 2) 0;
+		border-top:1px solid lighten($red, 45%);
+	}
+}
+.formfield {
+	margin-bottom:$v-rhythm;
+	&.highlight {
+		padding:($v-rhythm / 2) 10px;
+		background-color:lighten($blue, 70%);
+		border:1px solid lighten($blue, 60%);
+	}
+	&.hide {
+		display:none;
+	}
+}
+.formgroup {
+	position:relative;
+	padding:$v-rhythm / 2 0;
+	background-color:lighten($periwinkle, 10%);
+	// border:1px solid $light-grey;
+	margin-bottom:$v-rhythm;
+	.file-upload-close {
+		position:absolute;
+		top:50%;
+		margin-top:-10px;
+		right:10px;
+		a {
+			color:darken($periwinkle, 10%);
+			&:hover {
+				color:darken($periwinkle, 20%);
+			}
+		}
+	}
+	.title {
+		margin-top:-($v-rhythm / 2);
+		padding:($v-rhythm / 2) 20px;
+		background-color:$periwinkle;
+		@include font-size(18);
+		font-weight:$font-bold;
+		color:darken($periwinkle, 30%);
+		margin-bottom:$v-rhythm;
+	}
+	.formfield {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+ul.button-menu {
+	@include horizontal-list();
+	li a {
+		display:inline-block;
+		@include secondary-but();
+	}
+}
+.help {
+    display: none;
+    width:16px;
+    height:16px;
+    background:url('../img/help_icon.png') top left no-repeat;
+    &:hover {
+    	background:url('../img/help_icon.png') top right no-repeat;
+    }
+}
+.help-box {
+    background:#efefef;
+    border:#dedede 1px solid;
+    padding:5px;
+    display: block;
+}
+.buttons,
+.loading {
+	@include clearfix();
+	margin-bottom:$v-rhythm;
+}
+.loading {
+	display:none;
+}
+.small-print {
+	@include font-size(12);
+	color:$grey;
+}
+.grey-box {
+	@include clearfix();
+    @include background(linear-gradient(left, $light-grey, white));
+    border-top:2px solid rgb(0, 37, 127);
+    border-bottom:2px solid rgb(0, 37, 127);
+    padding:($v-rhythm / 2) 20px;
+}
+ul.display-details {
+	li {
+		@include clearfix();
+		margin-bottom:$v-rhythm / 2;
+		strong {
+			display:block;
+			padding:($v-rhythm / 4) 10px;
+			background-color:lighten($blue, 70%);
+		}
+		span {
+			display:block;
+			border:1px solid lighten($blue, 70%);
+			padding:($v-rhythm / 4) 10px;
+		}
+		@include breakpoint($l) {
+			width:70%;
+		}
+	}
+}
