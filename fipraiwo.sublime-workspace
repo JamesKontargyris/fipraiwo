@@ -1,0 +1,1104 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"iwo_key",
+				"iwo_key_label"
+			],
+			[
+				"max_uplo",
+				"max_upload_error"
+			],
+			[
+				"uplo",
+				"upload_path  (variable)"
+			],
+			[
+				"file",
+				"file_field_name"
+			],
+			[
+				"send",
+				"send_copy_email_to"
+			],
+			[
+				"v",
+				"va	vertical-align: ${1:top};"
+			],
+			[
+				"requir",
+				"require_cost_estimate"
+			],
+			[
+				"require",
+				"require_consultation"
+			],
+			[
+				"translation",
+				"translation"
+			],
+			[
+				"type",
+				"type_of_product"
+			],
+			[
+				"font-st",
+				"font-style:   (property)"
+			],
+			[
+				"ls",
+				"lis	list-style"
+			],
+			[
+				"list",
+				"list-style:   (property)"
+			],
+			[
+				"ba",
+				"background-color:   (property)"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/views/confirm.blade.php",
+			"settings":
+			{
+				"buffer_size": 880,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/views/forms/partials/submit_button.blade.php",
+			"settings":
+			{
+				"buffer_size": 121,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/UnitWorkOrderController.php",
+			"settings":
+			{
+				"buffer_size": 683,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"lara",
+				"Set Syntax: PHP - Laravel Blade"
+			],
+			[
+				"larav",
+				"Set Syntax: PHP - Laravel Blade"
+			],
+			[
+				"larave",
+				"Set Syntax: PHP - Laravel Blade"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"Snippet: html"
+			],
+			[
+				"fetch",
+				"Fetch: Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Discover Packages"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"reposit",
+				"Package Control: Add Repository"
+			],
+			[
+				"package",
+				"Package Control: Add Repository"
+			]
+		],
+		"width": 536.0
+	},
+	"console":
+	{
+		"height": 153.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/UniServer/www/iwo/public/js/site.js",
+		"/D/UniServer/www/iwo/app/controllers/BaseController.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Workers/DeleteUploads.php",
+		"/D/UniServer/www/iwo/app/controllers/EDTWorkOrderController.php",
+		"/D/UniServer/www/iwo/app/views/forms/edt.blade.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Validation/CustomValidator.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Validation/EDTWorkOrderValidator.php",
+		"/D/UniServer/www/iwo/app/config/iwo_vars.php",
+		"/D/UniServer/www/iwo/app/helpers.php",
+		"/D/UniServer/www/iwo/app/views/forms/fiplex.blade.php",
+		"/D/UniServer/www/iwo/app/config/queue.php",
+		"/D/UniServer/www/iwo/app/config/mail.php",
+		"/D/UniServer/www/iwo/app/controllers/UnitWorkOrderController.php",
+		"/D/UniServer/www/iwo/app/controllers/FiplexWorkOrderController.php",
+		"/D/UniServer/www/iwo/app/controllers/SpadWorkOrderController.php",
+		"/D/UniServer/www/iwo/app/config/database.php",
+		"/D/UniServer/www/iwo/.htaccess",
+		"/D/UniServer/www/iwo/public/.htaccess",
+		"/D/UniServer/www/iwo/app/views/forms/partials/registered_email.blade.php",
+		"/D/UniServer/www/iwo/app/views/confirm.blade.php",
+		"/D/UniServer/www/iwo/app/views/forms/partials/loading.blade.php",
+		"/D/UniServer/www/iwo/app/views/forms/partials/submit_button.blade.php",
+		"/D/UniServer/tmp/redirect.html",
+		"/D/UniServer/www/iwo/app/views/forms/partials/add_another_file_button.blade.php",
+		"/D/UniServer/www/iwo/app/views/forms/partials/file_upload.blade.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/FileUpload/FileUpload.php",
+		"/D/UniServer/www/iwo/app/views/emails/partials/form.blade.php",
+		"/D/UniServer/www/iwo/app/views/emails/default.blade.php",
+		"/D/UniServer/www/iwo/app/routes.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Mailer/Mailer.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Workers/SendEmail.php",
+		"/D/UniServer/www/iwo/app/start/global.php",
+		"/D/UniServer/www/iwo/app/views/emails/edt.blade.php",
+		"/C/Users/James/AppData/Local/Temp/Hi James, get €10 free and a €200 bonus to play on over 400 slots.eml",
+		"/D/UniServer/www/iwo/app/config/remote.php",
+		"/D/UniServer/www/iwo/app/commands/RemoteCommand.php",
+		"/D/UniServer/www/iwo/app/views/emails/test.blade.php",
+		"/D/UniServer/www/iwo/composer.json",
+		"/D/UniServer/www/iwo/app/commands/CleanUploadDirectory.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Validation/FiplexWorkOrderValidator.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Email/Mailer.php",
+		"/D/UniServer/www/iwo/app/config/app.php",
+		"/D/UniServer/www/iwo/app/start/artisan.php",
+		"/D/UniServer/www/iwo/app/config/local/queue.php",
+		"/D/UniServer/www/iwo/bootstrap/start.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Mailers/Mailer.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Mailers/MailerServiceProvider.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Mailers/EDTMailer.php",
+		"/D/UniServer/www/iwo/app/views/forms/spad.blade.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Validation/UnitWorkOrderValidator.php",
+		"/D/UniServer/www/iwo/app/views/forms/unit.blade.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Email/Email.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Validation/FormValidator.php",
+		"/D/UniServer/www/iwo/app/views/forms/partials/messages.blade.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Validation/FormValidationException.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/FileUpload/FileUploadException.php",
+		"/D/UniServer/www/iwo/app/views/complete.blade.php",
+		"/D/UniServer/www/iwo/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php",
+		"/D/UniServer/www/iwo/app/assets/sass/_header.scss",
+		"/D/UniServer/www/iwo/app/views/home.blade.php",
+		"/D/UniServer/www/iwo/app/assets/sass/_modules.scss",
+		"/D/UniServer/www/iwo/vendor/laravel/framework/src/Illuminate/Support/MessageBag.php",
+		"/D/UniServer/www/iwo/app/lib/Iwo/Validation/Validator.php",
+		"/D/UniServer/www/iwo/app/database/migrations/2014_04_28_154428_create_formtypes_table.php",
+		"/D/UniServer/www/iwo/app/models/EDTWorkOrder.php",
+		"/D/UniServer/www/iwo/app/models/BaseModel.php",
+		"/D/UniServer/www/iwo/app/models/Emailrecipient.php",
+		"/D/UniServer/www/iwo/app/models/Formtype.php",
+		"/D/UniServer/www/iwo/app/database/migrations/2014_04_28_164846_create_emailrecipients_table.php",
+		"/D/UniServer/www/iwo/app/models/Form_type.php",
+		"/D/UniServer/www/iwo/public/js/unitWorkOrder.js",
+		"/D/UniServer/www/iwo/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/UploadedFile.php",
+		"/D/UniServer/www/iwo/app/assets/sass/_base.scss",
+		"/D/UniServer/www/iwo/app/lib/Iwo/FileUpload/FileUploadServiceProvider.php",
+		"/D/UniServer/www/iwo/app/assets/sass/_mixins.scss",
+		"/D/UniServer/www/iwo/app/views/forms/partials/registeremail.blade.php",
+		"/D/UniServer/www/iwo/app/assets/sass/_layout.scss",
+		"/D/UniServer/www/iwo/app/views/layouts/master.blade.php",
+		"/D/UniServer/www/iwo/app/views/forms/units.blade.php",
+		"/D/UniServer/www/iwo/app/assets/sass/_footer.scss",
+		"/C/wamp/www/Old Projects/fipra_edt_contact_form/application/views/master_layout.php",
+		"/C/wamp/www/Old Projects/fipra_edt_contact_form/index.php",
+		"/C/wamp/www/Old Projects/fipra_edt_contact_form/application/views/index.html",
+		"/D/UniServer/www/diggingin/app/views/tasks/partials/form.blade.php",
+		"/D/UniServer/www/diggingin/app/views/tasks/index.blade.php",
+		"/D/UniServer/www/diggingin/app/routes.php",
+		"/D/UniServer/www/diggingin/app/controllers/TasksController.php",
+		"/D/UniServer/www/diggingin/app/models/Task.php",
+		"/D/UniServer/www/diggingin/app/controllers/UserTasksController.php",
+		"/D/UniServer/www/diggingin/app/acme/services/TaskCreatorService.php",
+		"/D/UniServer/www/diggingin/app/acme/validators/ValidationException.php",
+		"/D/UniServer/www/diggingin/app/acme/validators/TaskValidator.php",
+		"/D/UniServer/www/diggingin/app/acme/validators/Validator.php",
+		"/D/UniServer/www/diggingin/composer.json",
+		"/D/UniServer/www/diggingin/app/acme/TaskValidator.php",
+		"/D/UniServer/www/diggingin/app/acme/TaskCreatorService.php",
+		"/D/UniServer/www/diggingin/app/views/layouts/master.blade.php",
+		"/D/UniServer/www/diggingin/app/helpers.php",
+		"/D/UniServer/www/diggingin/app/views/tasks/show.blade.php",
+		"/D/UniServer/www/diggingin/app/database/seeds/UsersTableSeeder.php",
+		"/D/UniServer/www/diggingin/app/database/seeds/DatabaseSeeder.php",
+		"/D/UniServer/www/diggingin/app/models/User.php",
+		"/D/UniServer/www/diggingin/app/start/global.php",
+		"/D/UniServer/www/diggingin/app/database/migrations/2014_04_21_145316_create_users_table.php",
+		"/D/UniServer/www/diggingin/app/database/migrations/2014_04_21_142215_create_tasks_table.php",
+		"/D/UniServer/www/diggingin/app/config/database.php",
+		"/D/UniServer/www/automate-design/assets/sass/_mixins.scss",
+		"/D/UniServer/www/automate-design/home.php",
+		"/D/UniServer/www/automate-design/assets/sass/_home.scss",
+		"/D/UniServer/www/automate-design/partials/header.php",
+		"/D/UniServer/www/automate-design/assets/sass/_header.scss",
+		"/D/UniServer/www/automate-design/assets/sass/_layout.scss",
+		"/D/UniServer/www/automate-design/assets/sass/_base.scss",
+		"/D/UniServer/www/automate-design/assets/sass/_footer.scss",
+		"/D/UniServer/www/automate-design/assets/sass/style.scss",
+		"/D/UniServer/www/automate-design/assets/sass/_modules.scss",
+		"/D/Users/James/Documents/^Resources/Accordion Pro jQuery Plugin/documentation/index.html",
+		"/D/UniServer/www/automate-design/assets/sass/_reset.scss",
+		"/D/UniServer/www/automate-design/assets/sass/_variables.scss",
+		"/D/UniServer/www/automate-design/assets/js/site.js",
+		"/D/UniServer/www/automate-design/partials/mobile-menu.php",
+		"/D/UniServer/www/automate-design/partials/footer.php",
+		"/C/Program Files (x86)/Ruby193/lib/ruby/gems/1.9.1/gems/susy-2.1.1/sass/susy/language/susy/_background.scss",
+		"/C/Users/James/AppData/Roaming/Sublime Text 2/Packages/User/siaf.sublime-snippet",
+		"/D/UniServer/www/automate-design/gulpfile.js",
+		"/D/UniServer/www/automate-design/content.php",
+		"/D/UniServer/www/automate/wp-content/themes/automate/assets/sass/_grid.scss",
+		"/D/UniServer/www/automate/wp-content/themes/automate/assets/sass/_typography.scss"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<open folders>",
+			"D:\\UniServer\\www\\automate\\wp-content\\themes\\automate"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"megabytes",
+			"attribute",
+			"attributes",
+			"subject_copy",
+			"$mailer",
+			"name",
+			"email",
+			"Email",
+			"translation",
+			"design",
+			"translation",
+			"design",
+			"EDT",
+			"edt",
+			"EDT",
+			"spad",
+			"sub_contracted_unit_correspondent_affiliate",
+			"lead_unit_account_director",
+			"form",
+			"$files",
+			"subject",
+			"data",
+			"');\n",
+			"lara_validator",
+			"$v",
+			"val",
+			"validator",
+			"static",
+			"get",
+			".error",
+			"uri",
+			"Eloquent",
+			"this",
+			"_",
+			"				\n",
+			"public",
+			"file_field_name",
+			"$file_field",
+			"file_field_names",
+			"$file_field_names",
+			"button",
+			"$upload",
+			"protected",
+			"count",
+			"$new_file_name",
+			"$file",
+			"file",
+			"check",
+			"file_field_name",
+			"true",
+			"string",
+			"remove_spaces",
+			"str_replace",
+			"filename",
+			"public",
+			"Email",
+			"original_file_name",
+			"file_field_name",
+			"Next",
+			"filename",
+			"slideDown",
+			"other_information",
+			"written_contract_exists",
+			"green_sheet_required",
+			"other_information",
+			"agreed_fee_element_details",
+			"green_sheet_required",
+			"flat_fee_basis",
+			"agreed_fee_element",
+			"flat_fee_basis",
+			"flat_fee_agreed",
+			"standard_hourly_rate_applies",
+			"flat_fee_basis",
+			"time_frame",
+			"standard_hourly_rate_applies",
+			"deliverables",
+			"time_frame",
+			"scope_of_service",
+			"deliverables",
+			"project_name",
+			"scope_of_service",
+			"ultimate_client",
+			"project_name",
+			"sub_contracted_unit_correspondent_affiliate_account_director",
+			"ultimate_client",
+			"sub_contracted_unit_correspondent_affiliate_account_director",
+			"lead_unit_account_director",
+			"sub_contracted_unit_correspondent_affiliate",
+			"lead_unit",
+			"lead_unit_account_director",
+			"registered_email",
+			"lead_unit",
+			"standard_hourly_rate_applies",
+			"time_frame",
+			"deliverables",
+			"scope_of_service",
+			"ultimate_client",
+			"sub_contracted_unit_correspondent_affiliate_account_director",
+			"lead_unit_account_director",
+			"		'",
+			"reveal",
+			"lighten",
+			"blue",
+			"10",
+			"green_sheet_required",
+			"agreed_fee_element_details",
+			"agreed_fee_element",
+			"15",
+			"unit",
+			"standard_hourly_rate_applies",
+			"flat_fee_basis",
+			"standard_hourly_rate_applies",
+			"deliverables",
+			"Deliverables",
+			"deliverables",
+			"Deliverables",
+			"deliverables",
+			"scope_of_service",
+			"project_name",
+			"ultimate_client",
+			"sub_contracted_unit_correspondent_affiliate_account_director",
+			"lead_unit",
+			"sub_contracted_unit_correspondent_affiliate",
+			"lead_unit",
+			"edt",
+			"top",
+			"home",
+			"display_input"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"automate"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/views/confirm.blade.php",
+					"settings":
+					{
+						"buffer_size": 880,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								640,
+								656
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/forms/partials/submit_button.blade.php",
+					"settings":
+					{
+						"buffer_size": 121,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90,
+								90
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/controllers/UnitWorkOrderController.php",
+					"settings":
+					{
+						"buffer_size": 683,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 78.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"controller",
+				"app/controllers/UnitWorkOrderController.php"
+			],
+			[
+				"submit",
+				"app/views/forms/partials/submit_button.blade.php"
+			],
+			[
+				"confirm",
+				"app/views/confirm.blade.php"
+			],
+			[
+				"site",
+				"public/js/site.js"
+			],
+			[
+				"helper",
+				"app/helpers.php"
+			],
+			[
+				"edt",
+				"app/views/forms/edt.blade.php"
+			],
+			[
+				"loading",
+				"app/views/forms/partials/loading.blade.php"
+			],
+			[
+				"regist",
+				"app/views/forms/partials/registered_email.blade.php"
+			],
+			[
+				"unit",
+				"app/controllers/UnitWorkOrderController.php"
+			],
+			[
+				"site.",
+				"public/js/site.js"
+			],
+			[
+				"helpe",
+				"app/helpers.php"
+			],
+			[
+				"global",
+				"app/start/global.php"
+			],
+			[
+				"edtv",
+				"app/lib/Iwo/Validation/EDTWorkOrderValidator.php"
+			],
+			[
+				"edtwork",
+				"app/controllers/EDTWorkOrderController.php"
+			],
+			[
+				"remote",
+				"app/config/remote.php"
+			],
+			[
+				"data",
+				"app/config/database.php"
+			],
+			[
+				"mailer",
+				"app/lib/Iwo/Mailer/Mailer.php"
+			],
+			[
+				"register",
+				"app/views/forms/partials/registered_email.blade.php"
+			],
+			[
+				"edt.",
+				"app/views/forms/edt.blade.php"
+			],
+			[
+				"default",
+				"app/views/emails/default.blade.php"
+			],
+			[
+				"email",
+				"app/lib/Iwo/Workers/SendEmail.php"
+			],
+			[
+				"basecont",
+				"app/controllers/BaseController.php"
+			],
+			[
+				"route",
+				"app/routes.php"
+			],
+			[
+				"queue",
+				"app/config/queue.php"
+			],
+			[
+				"edtworkord",
+				"app/lib/Iwo/Validation/EDTWorkOrderValidator.php"
+			],
+			[
+				"edt.blade",
+				"app/views/forms/edt.blade.php"
+			],
+			[
+				"rout",
+				"app/routes.php"
+			],
+			[
+				"unitwork",
+				"app/lib/Iwo/Validation/UnitWorkOrderValidator.php"
+			],
+			[
+				"edt.blad",
+				"app/views/forms/edt.blade.php"
+			],
+			[
+				"complete",
+				"app/views/complete.blade.php"
+			],
+			[
+				"emaildefa",
+				"app/views/emails/default.blade.php"
+			],
+			[
+				"config",
+				"app/config/app.php"
+			],
+			[
+				"mail",
+				"vendor/laravel/framework/src/Illuminate/Mail/Mailer.php"
+			],
+			[
+				"fileup",
+				"app/lib/Iwo/FileUpload/FileUpload.php"
+			],
+			[
+				"formvali",
+				"app/lib/Iwo/Validation/FormValidationException.php"
+			],
+			[
+				"edtva",
+				"app/lib/Iwo/Validation/EDTWorkOrderValidator.php"
+			],
+			[
+				"validator",
+				"app/lib/Iwo/Validation/Validator.php"
+			],
+			[
+				"header",
+				"app/assets/sass/_header.scss"
+			],
+			[
+				"home",
+				"app/views/home.blade.php"
+			],
+			[
+				"module",
+				"app/assets/sass/_modules.scss"
+			],
+			[
+				"basecon",
+				"app/controllers/BaseController.php"
+			],
+			[
+				"messageba",
+				"vendor/laravel/framework/src/Illuminate/Support/MessageBag.php"
+			],
+			[
+				"helpers",
+				"app/helpers.php"
+			],
+			[
+				"unitv",
+				"app/lib/Iwo/Validation/UnitWorkOrderValidator.php"
+			],
+			[
+				"messagebag",
+				"vendor/laravel/framework/src/Illuminate/Support/MessageBag.php"
+			],
+			[
+				"forms/partials/mes",
+				"app/views/forms/partials/messages.blade.php"
+			],
+			[
+				"emailre",
+				"app/database/migrations/2014_04_28_164846_create_emailrecipients_table.php"
+			],
+			[
+				"edtworkorder",
+				"app/controllers/EDTWorkOrderController.php"
+			],
+			[
+				"form_types",
+				"app/database/migrations/2014_04_28_154428_create_form_types_table.php"
+			],
+			[
+				"modules",
+				"app/assets/sass/_modules.scss"
+			],
+			[
+				"messa",
+				"app/views/forms/partials/messages.blade.php"
+			],
+			[
+				"uploadedfile",
+				"vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/UploadedFile.php"
+			],
+			[
+				"base",
+				"app/assets/sass/_base.scss"
+			],
+			[
+				"iwo",
+				"app/config/iwo_vars.php"
+			],
+			[
+				"mixin",
+				"app/assets/sass/_mixins.scss"
+			],
+			[
+				"_base",
+				"app/assets/sass/_base.scss"
+			],
+			[
+				"layout",
+				"app/assets/sass/_layout.scss"
+			],
+			[
+				"site.js",
+				"public/js/site.js"
+			],
+			[
+				"units",
+				"app/views/forms/units.blade.php"
+			],
+			[
+				"task",
+				"app/models/Task.php"
+			],
+			[
+				"usertasks",
+				"app/controllers/UserTasksController.php"
+			],
+			[
+				"tasks",
+				"app/controllers/TasksController.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 234.0,
+	"status_bar_visible": true
+}

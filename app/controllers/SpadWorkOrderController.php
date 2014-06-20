@@ -8,6 +8,8 @@ class SpadWorkOrderController extends BaseController
 	protected $validator;
 	// Keyword for this Work Order form
 	protected $iwo_key = 'spad';
+	// Form type label
+	protected $iwo_key_label = "Special Adviser";
 	// Fields in the form that should be hidden from the confirmation screen
 	protected $hidden_from_user = ['_token'];
 	// The subject line for emails

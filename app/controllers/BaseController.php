@@ -38,10 +38,10 @@ class BaseController extends Controller {
 		
 		// Resolve the FileUpload class out of the IoC container
 		$this->upload = App::make('FileUpload');
-		// upload_files method returns an array or the original file names and
+		// upload_files method returns an array of the original file names and
 		// the new file names after any space removal has taken place
 		$file_names = $this->upload->upload_files(Input::file('file'));
-		// If there is a problem, throw a FormFileUploadException.
+		// If there is a problem, upload_files throws a FormFileUploadException.
 		// Otherwise redirect to the confirm page with the file names
 		return Redirect::to($this->iwo_key . '/confirm')->with('file_names', $file_names['new_file_names'])->withInput(Input::except($this->hidden_from_user));
 	}
@@ -63,12 +63,15 @@ class BaseController extends Controller {
 	{
 		// $data will hold all data to be send to the SendEmail worker used to queue sending of the emails
 		$data = [];
+		$addresses = [];
 		// Get the registered email address entered on the form
 		$data['registered_email'] = Input::old('registered_email');
 		// Get all email recipients for this form type
 		$recipients = Formtype::where('key', $this->iwo_key)->first()->emailrecipients;
 		// Extract email addresses and place in array
-		foreach($recipients as $recipient) { $addresses[] = $recipient->email; }
+		if ($recipients->first()) {
+			foreach($recipients as $recipient) { $addresses[] = $recipient->email; }
+		}
 		$data['addresses'] = $addresses;
 		// If a view was set in the sub class for the user email, use that. Otherwise use the iwo_key variable
 		$data['view_user'] = ($this->email_view) ? $this->email_view : 'emails.' . $this->iwo_key;

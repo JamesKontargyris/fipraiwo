@@ -1,3 +1,3 @@
 <div class="buttons">
-	{{ Form::submit($button_text, ['class' => 'primary', 'id' => 'submit']) }}
+	{{ Form::submit($button_text, ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
 </div>

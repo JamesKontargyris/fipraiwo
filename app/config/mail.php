@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'test@fipra.com', 'name' => 'Fipra'),
+	'from' => array('address' => 'iwo@fipra.com', 'name' => 'Fipra'),
 
 	/*
 	|--------------------------------------------------------------------------

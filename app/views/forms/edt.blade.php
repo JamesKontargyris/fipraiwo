@@ -104,6 +104,7 @@
 		@include('forms.partials.registered_email')
 		
 		{{ display_submit_button('Next') }}
+		@include('forms.partials.loading')
 
 		<p class="small-print">
 			Please note: although every effort is made to accommodate tight deadlines and time constraints, The EDT must ensure the quality of work produced is that expected of Fipra. If a time frame and/or deadline is unrealistic the EDT will discuss with you the best course of action to complete your request as fully as possible. In the unlikely event a project time frame and/or deadline is impossible to meet, the EDT will inform you when you submit your work order request.

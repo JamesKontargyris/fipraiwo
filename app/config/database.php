@@ -52,27 +52,27 @@ return array(
 			'prefix'   => '',
 		),
 		// Production
-		// 'mysql' => array(
-		// 	'driver'    => 'mysql',
-		// 	'host'      => 'db527679291.db.1and1.com',
-		// 	'database'  => 'db527679291',
-		// 	'username'  => 'dbo527679291',
-		// 	'password'  => 'fipraiwo',
-		// 	'charset'   => 'utf8',
-		// 	'collation' => 'utf8_unicode_ci',
-		// 	'prefix'    => '',
-		// ),
-		// Local
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'iwo',
-			'username'  => 'root',
-			'password'  => 'root',
+			'host'      => 'db527679291.db.1and1.com',
+			'database'  => 'db527679291',
+			'username'  => 'dbo527679291',
+			'password'  => 'fipraiwo',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+		// Local
+		// 'mysql' => array(
+		// 	'driver'    => 'mysql',
+		// 	'host'      => 'localhost',
+		// 	'database'  => 'iwo',
+		// 	'username'  => 'root',
+		// 	'password'  => 'root',
+		// 	'charset'   => 'utf8',
+		// 	'collation' => 'utf8_unicode_ci',
+		// 	'prefix'    => '',
+		// ),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
