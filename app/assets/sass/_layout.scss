@@ -39,6 +39,11 @@ $susy: (
       width: span(9);
       margin-right:gutter();
     }
+    .col-10 {
+      float:left;
+      width: span(10);
+      margin-right:gutter();
+    }
 	.col-12 {
 		@include clearfix();
 		width:span(12);

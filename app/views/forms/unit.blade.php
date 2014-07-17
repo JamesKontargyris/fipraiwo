@@ -140,7 +140,7 @@
 
 
             <div class="grey-box">
-                <div class="col-9 last">
+                <div class="col-10 last">
 
                     <h4>The internal billing cycle is long, but you can help make it shorter</h4>
                     <p>As a matter of policy, Fipra generally requests payment from clients on 30-day terms. In practice clients often ignore this deadline or impose their own later payment terms. However, further delays can be avoided by Members sending in provisional bills, timesheets and invoices promptly or as early as possible, as a bill covering several Units cannot be ready until the slowest Member has sent theirs in to the Lead Unit for approval and processing.</p>

@@ -123,8 +123,8 @@ h2 {
 
 /* line 49, ../../app/assets/sass/_base.scss */
 h4 {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
   padding: 20px 0 10px;
   border-bottom: 1px solid #ccd3e5;
@@ -280,15 +280,21 @@ strong {
     margin-right: 2.85714%; }
 
   /* line 42, ../../app/assets/sass/_layout.scss */
+  .col-10 {
+    float: left;
+    width: 82.85714%;
+    margin-right: 2.85714%; }
+
+  /* line 47, ../../app/assets/sass/_layout.scss */
   .col-12 {
     overflow: hidden;
     *zoom: 1;
     width: 100%; }
 
-  /* line 46, ../../app/assets/sass/_layout.scss */
+  /* line 51, ../../app/assets/sass/_layout.scss */
   .last {
     margin-right: 0; } }
-/* line 50, ../../app/assets/sass/_layout.scss */
+/* line 55, ../../app/assets/sass/_layout.scss */
 .col-4, .col-6, .col-12 {
   margin-bottom: 20px; }
 

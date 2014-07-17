@@ -124,7 +124,11 @@
 			{{ display_submit_button('Next') }}
 
             <div class="grey-box">
-                <div class="col-9 last">
+                <div class="col-10 last">
+
+                    <h4>Engaging Special Advisers and other external advisers</h4>
+                    <p>Where a Lead Unit requires the services of a Fipra Network Member who is a Special Adviser, all agreements with that Special Adviser, including invoicing, must be made through Fipra International.</p>
+                    <p>Special Advisers are individuals, as opposed to Units that are typically companies. As most are very senior or retired persons this rule gives them just one point of organisation and billing, making administration of Inter-Unit discounts easier and more streamlined. In practice, Fipra International also guarantees that Special Advisers are paid in this way.</p>
 
                     <h4>The internal billing cycle is long, but you can help make it shorter</h4>
                     <p>As a matter of policy, Fipra generally requests payment from clients on 30-day terms. In practice clients often ignore this deadline or impose their own later payment terms. However, further delays can be avoided by Members sending in provisional bills, timesheets and invoices promptly or as early as possible, as a bill covering several Units cannot be ready until the slowest Member has sent theirs in to the Lead Unit for approval and processing.</p>
