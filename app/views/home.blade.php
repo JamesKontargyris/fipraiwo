@@ -6,8 +6,8 @@
 	<div class="buttons">
 		<ul class="work-order-menu">
 			<li>
-                <a href="edt"><i class="fa fa-picture-o fa-4x"></i><p>EDT</p></a>
-                <span class="hidejs">The Editorial, Design and Translation Team (EDT) is a group of trained and qualified editors, designers and translators who offer a number of professional editorial, graphic design and translation services to the Fipra Network.</span>
+                <a href="edt"><i class="fa fa-picture-o fa-4x"></i><p>EDT<br><b style="font-style: italic;">now including Fiptalk</b></p></a>
+                <span class="hidejs">The Editorial, Design and Translation Team (EDT) is a group of trained and qualified editors, designers and translators who offer a number of professional editorial, graphic design and translation services to the Fipra Network.<br/><br/>Fiptalk is a team of freelance professional coaches who provide expert training in oral presentation skills.</span>
                 <i class="fa fa-info fa-lg info showjs"></i>
             </li>
 			<li>

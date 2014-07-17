@@ -50,6 +50,7 @@ $susy: (
 	}
 	.last {
 		margin-right:0;
+        @include clearfix();
 	}
 }
 .col-4, .col-6, .col-12 {

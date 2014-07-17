@@ -2,10 +2,6 @@
 
 @section('nav_links')
 	<li><a href="/" class="highlight"><i class="fa fa-caret-left fa-lg"></i> Back to IWO Menu</a></li>
-	<li><a href="#">Item 1</a></li>
-	<li><a href="#">Item 2</a></li>
-	<li><a href="#">Item 3</a></li>
-	<li><a href="#">Item 4</a></li>
 @stop
 
 @section('content')
@@ -98,25 +94,23 @@
 		</p>
 
 		<div class="grey-box">
-			<div class="col-6">
-	            <h2><a name="confirmation"></a>Confirmation</h2>
+			<div class="col-10 last">
+	            <h4>Confirmation</h4>
 	            <p>Fiplex will confirm receipt of the request and deadline by return e-mail at its earliest convenience. A lawyer will then be assigned to the project and work will commence.</p>
 	            
-	            <h2><a name="completion"></a>Completion</h2>
+	            <h4>Completion</h4>
 	            <p>When you receive an acceptable final version of your document, please send an e-mail to us to acknowledge receipt of the final document. It would also be extremely useful if you included feedback on the project and your experiences of Fiplex – this feedback is vital to us going forward.</p>
 	            
-	            <h2><a name="confidentiality"></a>Confidentiality</h2>
+	            <h4>Confidentiality</h4>
 	            <p>All members of Fiplex sign a personal non-disclosure agreement with financial penalties for non-observance. The work you commission is treated confidentially by all of us and is not shared with anyone.</p>
-			</div>
-            <div class="col-6 last">
-	            
-	            <h2><a name="costs"></a>Costs</h2>
+
+	            <h4>Costs</h4>
 	            <p>Fiplex charges a preferential rate to the Fipra Network of €125 per hour/pro rata based on time used or €1,000 per day. Cost estimates can be given in advance of agreeing work. Please note that whilst most requests will be handled as quickly as possible, it may be that the Fiplex member with the most relevant experience may not be immediately available and you must indicate if a matter is urgent.</p>
 
-	            <h2><a name="invoicing"></a> Invoicing</h2>
+	            <h4> Invoicing</h4>
 	            <p>Fiplex will invoice monthly to Fipra International who will onward bill to clients, cost centres or Members of the Fipra Network as appropriate. Fiplex operates as a "Special Adviser" would within the Network.</p>
 
-	            <h2><a name="working_hours"></a>Working Hours</h2>
+	            <h4>Working Hours</h4>
 	            <p>Fiplex is currently made up of qualified lawyers and in time will have members of the team all over Europe. Currently we work to the following office hours: Monday-Friday 09.00-18.00 Central European Time (CET).</p>
 				<p>This window allows us to cater for regular and urgent advisory work in most timezones. In some cases we can be flexible on these hours to accommodate your timings and deadlines -please contact us to discuss your time frame if your instructions are time-sensitive.</p>
 				<p>Please submit your request at your earliest opportunity to ensure we can plan accordingly and allocate the most suited team members.</p>

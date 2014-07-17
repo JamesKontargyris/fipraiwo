@@ -49,8 +49,8 @@
                 <div class="formfield">
                     {{ Form::label('fee_agreed', 'The agreed fee is &euro;') }}
                     {{ Form::text('fee_agreed', Input::old('flat_fee_agreed'), ['class' => 'inline', 'size' => '10']) }}
-                    {{ display_form_error('fee_agreed', $errors) }}
                     {{ Form::select('fee_basis', ['' => 'Per...', 'Per Day' => 'Per Day', 'Per Week' => 'Per Week', 'Per Month' => 'Per Month', 'Per Year' => 'Per Year', 'Per Project' => 'Per Project'], Input::old('fee_basis'), ['class' => 'inline']) }}
+                    {{ display_form_error('fee_agreed', $errors) }}
                     {{ display_form_error('fee_basis', $errors) }}
                 </div>
                 <div class="formfield">

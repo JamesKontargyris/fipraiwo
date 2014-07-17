@@ -64,8 +64,8 @@
                 <div class="formfield">
                     {{ Form::label('fee_agreed', 'The agreed fee is &euro;') }}
                     {{ Form::text('fee_agreed', Input::old('flat_fee_agreed'), ['class' => 'inline', 'size' => '10']) }}
-                    {{ display_form_error('fee_agreed', $errors) }}
                     {{ Form::select('fee_basis', ['' => 'Per...', 'Per Day' => 'Per Day', 'Per Week' => 'Per Week', 'Per Month' => 'Per Month', 'Per Year' => 'Per Year', 'Per Project' => 'Per Project'], Input::old('fee_basis'), ['class' => 'inline']) }}
+                    {{ display_form_error('fee_agreed', $errors) }}
                     {{ display_form_error('fee_basis', $errors) }}
                 </div>
                 <div class="formfield">
@@ -91,6 +91,11 @@
                 {{ Form::label('project_name', 'Project name (if any):') }}
                 {{ Form::text('project_name', Input::old('project_name')) }}
                 {{ display_form_error('project_name', $errors) }}
+            </div>
+            <div class="formfield">
+                {{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }}
+                {{ Form::text('replicon_code', Input::old('replicon_code')) }}
+                {{ display_form_error('replicon_code', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('scope_of_service', 'Scope of Service:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
@@ -131,17 +136,13 @@
 			</div>
 		</section>
 
-		<section class="col-12">
-
-            <p class="small-print">Please note: By sending and confirming an IWO the Lead Unit becomes liable, subject to the work being substantially completed, for paying the subcontracting Unit irrespective of whether the client ultimately pays the Lead Unit. Payment is not expected by the Fipra Subcontracting Unit before the client has paid the Lead Unit. Once a client has paid a Lead Unit, payment should be made within 14 calender days.
-            </p>
+        <section class="col-12">
 
 			{{ display_submit_button('Next') }}
 
 
             <div class="grey-box">
                 <div class="col-10 last">
-
                     <h4>The internal billing cycle is long, but you can help make it shorter</h4>
                     <p>As a matter of policy, Fipra generally requests payment from clients on 30-day terms. In practice clients often ignore this deadline or impose their own later payment terms. However, further delays can be avoided by Members sending in provisional bills, timesheets and invoices promptly or as early as possible, as a bill covering several Units cannot be ready until the slowest Member has sent theirs in to the Lead Unit for approval and processing.</p>
 

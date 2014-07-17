@@ -80,13 +80,13 @@ class BaseController extends Controller {
          * SET UP EMAIL VIEWS AND DATA
          */
         // If an email view was set in the sub class for the lead unit email, use that. Otherwise use the default email view
-        $data['view_lead-unit'] = ($this->email_views['lead-unit']) ? 'emails.' . $this->email_views['lead-unit'] : 'emails.default';
+        $data['view_lead-unit'] = (isset($this->email_views['lead-unit'])) ? 'emails.' . $this->email_views['lead-unit'] : 'emails.default';
         // If an email view was set in the sub class for the sub unit email, use that. Otherwise use the default email view
-        $data['view_sub-unit'] = ($this->email_views['sub-unit']) ? 'emails.' . $this->email_views['sub-unit'] : 'emails.default';
+        $data['view_sub-unit'] = (isset($this->email_views['sub-unit'])) ? 'emails.' . $this->email_views['sub-unit'] : 'emails.default';
         // If an email view was set in the sub class for other emails (i.e. default), use that. Otherwise use the default email view
-        $data['view_copies'] = ($this->email_views['copies']) ? 'emails.' . $this->email_views['copies'] : 'emails.default';
+        $data['view_copies'] = (isset($this->email_views['copies'])) ? 'emails.' . $this->email_views['copies'] : 'emails.default';
 		// If an email subject was set in the sub class, use that. Otherwise use the page title
-		$data['subject'] = ($this->email_subject) ? $this->email_subject : $this->page_title;
+		$data['subject'] = (isset($this->email_subject)) ? $this->email_subject : $this->page_title;
 
         /**
          * FORMAT FORM DATA FOR EMAILS
