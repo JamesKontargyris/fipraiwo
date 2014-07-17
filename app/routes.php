@@ -19,4 +19,3 @@ Route::get('complete', ['as' => 'complete', function()
 {
 	return View::make('complete')->with('page_title', 'Work Order Submitted');
 }]);
-

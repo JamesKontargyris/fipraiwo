@@ -16,6 +16,7 @@ $susy: (
 .content-container {
 	@include clearfix();
 	background-color:white;
+    @include background(url('../img/stars_bk.gif') top right no-repeat #ffffff);
 	min-height:100%;
 }
 
@@ -33,6 +34,11 @@ $susy: (
 		width: span(6);
 		margin-right:gutter();
 	}
+    .col-9 {
+      float:left;
+      width: span(9);
+      margin-right:gutter();
+    }
 	.col-12 {
 		@include clearfix();
 		width:span(12);

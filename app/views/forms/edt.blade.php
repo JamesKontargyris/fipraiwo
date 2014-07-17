@@ -2,20 +2,13 @@
 
 @section('nav_links')
 	<li><a href="/" class="highlight"><i class="fa fa-caret-left fa-lg"></i> Back to IWO Menu</a></li>
-	<li><a href="#">Item 1</a></li>
-	<li><a href="#">Item 2</a></li>
-	<li><a href="#">Item 3</a></li>
-	<li><a href="#">Item 4</a></li>
 @stop
 
 @section('content')
 	<div class="intro">
 		<p>If you have any general queries or would like to contact the EDT before submitting a work order request, please e-mail <a href="mailto:edt@fipra.com">edt@fipra.com</a>.</p>
 	</div>
-	<div>
-		<p><span class="red">*</span> = required <span class="showjs">| Click <span class="help">&nbsp;</span> for help</span></p>
-	</div>
-	
+
 	@include('forms.partials.messages')
 
 	{{ Form::open(['files' => true, 'url' => 'edt']) }}
@@ -31,9 +24,9 @@
 			{{ display_form_error('unit_special_adviser_or_correspondent', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('contact_email_address', 'Contact email address:', ['class' => 'required']) }}
-			{{ Form::email('contact_email_address', Input::old('contact_email_address')) }}
-			{{ display_form_error('contact_email_address', $errors) }}
+			{{ Form::label('email_address', 'Contact email address:', ['class' => 'required']) }}
+			{{ Form::email('email_address', Input::old('email_address')) }}
+			{{ display_form_error('email_address', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('account_director', 'Account Director responsible (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
@@ -68,12 +61,28 @@
 	<section class="col-6 last">
 		<div class="formfield">
 			{{ Form::label('services_required', 'Service(s) required:', ['class' => 'required']) }} 
-			<div>{{ Form::checkbox('editing', Input::old('editing')) }} English Language Editing</div>
-			<div>{{ Form::checkbox('design', Input::old('design')) }} Graphic/Web Design</div>
-			<div>{{ Form::checkbox('translation', Input::old('translation')) }} Translation</div>
-			{{ display_form_error('editing', $errors) }}
-			{{ display_form_error('design', $errors) }}
-			{{ display_form_error('translation', $errors) }}
+			<div>{{ Form::checkbox('proofreading', Input::old('proofreading')) }} Proofreading <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Proofreading help box</div>
+            </div>
+			<div>{{ Form::checkbox('copy_editing', Input::old('copy_editing')) }} Copy Editing <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Copy Editing help box</div>
+            </div>
+			<div>{{ Form::checkbox('rewriting', Input::old('rewriting')) }} Re-writing <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Re-writing help box</div>
+            </div>
+			<div>{{ Form::checkbox('quickedit', Input::old('quickedit')) }} Quick-Edit <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Quick-Edit help box</div>
+            </div>
+			<div>{{ Form::checkbox('graphic_or_print_design', Input::old('graphic_or_print_design')) }} Graphic/Print Design <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Graphic/Print Design help box</div>
+            </div>
+			<div>{{ Form::checkbox('web_design', Input::old('web_design')) }} Web Design <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Web Design help box</div>
+            </div>
+			<div>{{ Form::checkbox('translation', Input::old('translation')) }} Translation <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Translation help box</div></div>
+			<div>{{ Form::checkbox('presentation_training', Input::old('presentation_training')) }} Presentation Training <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Presentation Training help box</div></div>
 		</div>
 		<div class="formfield">
 			{{ Form::label('instructions', 'Any other instructions:') }} <a href="#" class="help">&nbsp;</a>
@@ -100,8 +109,6 @@
 	</section>
 
 	<section class="col-12">
-		
-		@include('forms.partials.registered_email')
 		
 		{{ display_submit_button('Next') }}
 		@include('forms.partials.loading')

@@ -12,10 +12,7 @@
 	<div class="intro">
 		<p>If you have any general queries or would like to contact Fiplex before submitting a work order request, please e-mail <a href="mailto:fiplex@fipra.com">fiplex@fipra.com</a>.</p>
 	</div>
-	<div>
-		<p><span class="red">*</span> = required <span class="showjs">| Click <span class="help">&nbsp;</span> for help</span></p>
-	</div>
-	
+
 	@include('forms.partials.messages')
 
 	{{ Form::open(['files' => true, 'url' => 'fiplex']) }}
@@ -31,9 +28,9 @@
 			{{ display_form_error('unit_special_adviser_or_correspondent', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('contact_email_address', 'Contact email address:', ['class' => 'required']) }}
-			{{ Form::email('contact_email_address', Input::old('contact_email_address')) }}
-			{{ display_form_error('contact_email_address', $errors) }}
+			{{ Form::label('email_address', 'Contact email address:', ['class' => 'required']) }}
+			{{ Form::email('email_address', Input::old('email_address')) }}
+			{{ display_form_error('email_address', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('account_director', 'Account Director responsible (only applicable to Fipra International):') }}
@@ -68,19 +65,17 @@
 			<div>{{ Form::checkbox('1', Input::old('1')) }} Service 1</div>
 			<div>{{ Form::checkbox('2', Input::old('2')) }} Service 2</div>
 			<div>{{ Form::checkbox('3', Input::old('3')) }} Service 3</div>
-			{{ display_form_error('1', $errors) }}
-			{{ display_form_error('2', $errors) }}
-			{{ display_form_error('3', $errors) }}
+			<div>{{ Form::checkbox('other_service', Input::old('other')) }} Other</div>
 		</div>
+        <div class="formfield">
+            {{ Form::label('other_service_info', 'If other, please give more details:') }}
+            {{ Form::textarea('other_service_info', Input::old('other_service_info'), ['rows' => '3']) }}
+            {{ display_form_error('other_service_info', $errors) }}
+        </div>
 		<div class="formfield">
 			{{ Form::label('instructions', 'Any other instructions:') }}
 			{{ Form::textarea('instructions', Input::old('instructions'), ['rows' => '10']) }} 
 			{{ display_form_error('instructions', $errors) }}
-		</div>
-		<div class="formfield">
-			{{ Form::label('require_consultation', 'Do you require a consultation with a member of our team?', ['class' => 'required']) }}
-			{{ Form::select('require_consultation', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], Input::old('require_consultation')) }}
-			{{ display_form_error('require_consultation', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('require_cost_estimate', 'Do you require a cost estimate?', ['class' => 'required']) }}
@@ -95,8 +90,6 @@
 	</section>
 
 	<section class="col-12">
-		
-		@include('forms.partials.registered_email')
 		
 		{{ display_submit_button('Next') }}
 

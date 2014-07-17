@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Iwo\Validation\EDTWorkOrderValidator;
 
@@ -14,6 +14,11 @@ class EDTWorkOrderController extends BaseController
 	protected $hidden_from_user = ['_token', 'max_upload_size'];
 	// The subject line for emails
 	protected $email_subject = 'EDT Internal Work Order Submission';
+    // Array of views to be sent to each email recipient
+    protected $email_views = [
+        'lead-unit' => 'edt.edt',
+        'copies' => 'default'
+    ];
 
 	public function __construct(EDTWorkOrderValidator $validator)
 	{

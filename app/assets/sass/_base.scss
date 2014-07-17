@@ -24,18 +24,18 @@ a {
 	}
 }
 h1, h2 {
-	font-family: "Times New Roman", Times, serif;
+	font-family: Arial, Helvetica, sans-serif;
     margin-bottom:$v-rhythm;
-    font-style: italic;
     line-height:1;
-    font-weight: normal;
+    font-weight: bold;
+    letter-spacing: -1px;
 	
 }
 h1 {
-    @include font-size(32);
+    @include font-size(26);
     color:$grey;
     @include breakpoint($m-max) {
-    	@include font-size(24);
+    	@include font-size(20);
     }
     @include breakpoint($l) {
     	margin-top:30px;
@@ -45,6 +45,16 @@ h2 {
     padding:$v-rhythm 0 ($v-rhythm / 2);
     border-bottom:1px solid $periwinkle;
     @include font-size(24);
+}
+h4 {
+  @include font-size(16);
+  font-weight:$font-bold;
+  padding:$v-rhythm 0 ($v-rhythm / 2);
+  border-bottom:1px solid $periwinkle;
+  margin-bottom:$v-rhythm;
+}
+h5 {
+  @include font-size(14);
 }
 p {
 	padding-bottom:$v-rhythm;
@@ -59,9 +69,9 @@ label {
 	padding-bottom:$v-rhythm / 2;
 	&.required {
 		&::before {
-			content:"* ";
-			color:$red;
-			font-weight:$font-bold;
+//			content:"* ";
+//			color:$red;
+//			font-weight:$font-bold;
 		}
 	}
 }
@@ -123,4 +133,7 @@ strong {
 }
 .showjs {
 	display:none;
+}
+.hidejs {
+  display:block;
 }

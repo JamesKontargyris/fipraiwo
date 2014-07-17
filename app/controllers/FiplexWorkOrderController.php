@@ -14,6 +14,11 @@ class FiplexWorkOrderController extends BaseController
 	protected $hidden_from_user = ['_token', 'max_upload_size'];
 	// The subject line for emails
 	protected $email_subject = 'Fiplex Internal Work Order Submission';
+    // Array of views to be sent to each email recipient
+    protected $email_views = [
+        'lead-unit' => 'fiplex.fiplex',
+        'copies' => 'default'
+    ];
 
 	public function __construct(FiplexWorkOrderValidator $validator)
 	{

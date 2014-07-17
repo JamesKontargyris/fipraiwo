@@ -76,3 +76,10 @@ function remove_spaces($string, $replacement = "")
 {
 	return str_replace(' ', $replacement, $string);
 }
+
+function email_addresses_to_array($recipients = array())
+{
+    $addresses = [];
+    foreach($recipients as $recipient) { $addresses[] = $recipient->email; }
+    return $addresses;
+}

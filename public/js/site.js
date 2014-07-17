@@ -3,8 +3,10 @@
 	// Call max_upload_error function
 	max_upload_error();
 
-	// Show all elements with a class of show-js
-	$('.showjs').css('display', 'inline-block');
+	// Show all elements with a class of showjs
+	$('.showjs').css('display', 'block');
+    // Hide all elements with a class of hidejs
+    $('.hidejs').css('display', 'none');
 	// Show all help buttons
 	$('.help').css('display', 'inline-block');
 
@@ -17,6 +19,12 @@
 		$(this).next('.help-box').slideToggle(300);
 		return false;
 	});
+    // Show info on landing page when info button clicked
+    $('i.info').on('click', function(e)
+    {
+        $(this).siblings('span').slideToggle(300);
+        return false;
+    });
 	// Check if nav links exist. If not, hide the links toggle menu button
 	// and reduce the top padding
 	if($.trim($('nav ul').html()) == '')
@@ -64,7 +72,16 @@
 		max_upload_error();
 	});
 
-	
+//  Autocomplete functionality
+    $(".account_director_autocomplete").autocomplete({
+        source: 'js/ajax/account_directors.php',
+        minLength:1,
+        select: function(event, ui) {
+            $(this).val(ui.item.value);
+            $('input[name=' + $(this).data('email-field') + ']').val(ui.item.email);
+        }
+    });
+
 
 	// When a file is selected for upload, compare its size
 	// to the max upload size and display an alert if the file

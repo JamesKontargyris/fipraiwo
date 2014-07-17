@@ -54,10 +54,10 @@ return array(
 		// Production
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'db527679291.db.1and1.com',
-			'database'  => 'db527679291',
-			'username'  => 'dbo527679291',
-			'password'  => 'fipraiwo',
+			'host'      => getenv('DB_HOST'),
+			'database'  => getenv('DB_NAME'),
+			'username'  => getenv('DB_USERNAME'),
+			'password'  => getenv('DB_PASSWORD'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

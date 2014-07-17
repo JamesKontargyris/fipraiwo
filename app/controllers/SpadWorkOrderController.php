@@ -14,8 +14,14 @@ class SpadWorkOrderController extends BaseController
 	protected $hidden_from_user = ['_token'];
 	// The subject line for emails
 	protected $email_subject = 'Special Adviser Internal Work Order Submission';
+    // Array of views to be sent to each email recipient
+    protected $email_views = [
+        'lead-unit' => 'spad.account-director',
+        'sub-unit' => 'spad.spad',
+        'copies' => 'default'
+    ];
 
-	public function __construct(SpadWorkOrderValidator $validator)
+    public function __construct(SpadWorkOrderValidator $validator)
 	{
 		parent::__construct();
 		$this->validator = $validator;

@@ -41,7 +41,6 @@ header {
 	@include clearfix();
 	padding-top:$v-rhythm;
 	margin-bottom:$v-rhythm / 2;
-	@include background(url('../img/stars_bk.gif') top right no-repeat);
 	@include breakpoint($l-max) {
 		#logo img {
 			display:block;

@@ -10,10 +10,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <!--jQuery-->
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     </head>

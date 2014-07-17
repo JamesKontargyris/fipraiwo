@@ -1,18 +1,33 @@
 <?php namespace Iwo\Workers;
 
+use Iwo\Mailer\Mailer;
+
+
 class SendEmail {
 
-    public function sendToUser($job, $data)
+    private $mailer;
+
+    function __construct(Mailer $mailer)
     {
-        $mailer = \App::make('Mailer');
-        $mailer->sendTo([$data['registered_email']], $data['subject_user'], $data['view_user'], $data);
+        $this->mailer = $mailer;
+    }
+
+
+    public function sendToLeadUnit($job, $data)
+    {
+        $this->mailer->sendTo([$data['email']], $data['subject'], $data['view_lead-unit'], $data);
+        $job->delete();
+    }
+
+    public function sendToSubUnit($job, $data)
+    {
+        $this->mailer->sendTo([$data['sub_email']], $data['subject'], $data['view_sub-unit'], $data, $data['file_names']);
         $job->delete();
     }
 
     public function sendCopies($job, $data)
     {
-        $mailer = \App::make('Mailer');
-        $mailer->sendTo($data['addresses'], $data['subject_copy'], $data['view_copy'], $data, $data['file_names']);
+        $this->mailer->sendTo($data['copies_email'], $data['subject'], $data['view_copies'], $data, $data['file_names']);
         $job->delete();
     }
 
