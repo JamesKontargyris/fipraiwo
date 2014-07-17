@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff7bbedb-20db-415d-8413-4130d0ad7c3f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/83d6ff21b66caa556f81206bf7bba347d2f24f7a/_base.scssc" afterPath="$PROJECT_DIR$/.sass-cache/83d6ff21b66caa556f81206bf7bba347d2f24f7a/_base.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/83d6ff21b66caa556f81206bf7bba347d2f24f7a/_layout.scssc" afterPath="$PROJECT_DIR$/.sass-cache/83d6ff21b66caa556f81206bf7bba347d2f24f7a/_layout.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/sass/_base.scss" afterPath="$PROJECT_DIR$/app/assets/sass/_base.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/sass/_layout.scss" afterPath="$PROJECT_DIR$/app/assets/sass/_layout.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forms/edt.blade.php" afterPath="$PROJECT_DIR$/app/views/forms/edt.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forms/spad.blade.php" afterPath="$PROJECT_DIR$/app/views/forms/spad.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forms/unit.blade.php" afterPath="$PROJECT_DIR$/app/views/forms/unit.blade.php" />
+      <change type="DELETED" beforePath="D:\UniServer\www\iwo\.env.production.php" afterPath="" />
     </list>
     <ignored path="iwo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,21 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unit.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="unit.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/forms/unit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2813" max-vertical-offset="4000">
+            <state vertical-scroll-proportion="0.2761117" vertical-offset="2813" max-vertical-offset="4000">
               <caret line="142" column="34" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".env.production.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.env.production.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14477766" vertical-offset="0" max-vertical-offset="967">
-              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -966,14 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/forms/unit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2813" max-vertical-offset="4000">
-          <caret line="142" column="34" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env.local.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
@@ -982,10 +957,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env.production.php">
+    <entry file="file://$PROJECT_DIR$/app/views/forms/unit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14477766" vertical-offset="0" max-vertical-offset="967">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.2761117" vertical-offset="2813" max-vertical-offset="4000">
+          <caret line="142" column="34" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
           <folding />
         </state>
       </provider>
