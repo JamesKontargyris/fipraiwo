@@ -108,7 +108,7 @@
 		</div>
 	</section>
 
-	<section class="col-12">
+	<section class="col-12" style="clear:both">
 		
 		{{ display_submit_button('Next') }}
 		@include('forms.partials.loading')

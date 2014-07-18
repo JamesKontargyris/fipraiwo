@@ -45,6 +45,7 @@ $susy: (
       margin-right:gutter();
     }
 	.col-12 {
+        clear:both;
 		@include clearfix();
 		width:span(12);
 	}
@@ -53,7 +54,7 @@ $susy: (
         @include clearfix();
 	}
 }
-.col-4, .col-6, .col-12 {
+.col-4, .col-6, .col-9, .col-10, .col-12 {
 	margin-bottom:$v-rhythm;
 }
 

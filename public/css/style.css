@@ -287,17 +287,18 @@ strong {
 
   /* line 47, ../../app/assets/sass/_layout.scss */
   .col-12 {
+    clear: both;
     overflow: hidden;
     *zoom: 1;
     width: 100%; }
 
-  /* line 51, ../../app/assets/sass/_layout.scss */
+  /* line 52, ../../app/assets/sass/_layout.scss */
   .last {
     margin-right: 0;
     overflow: hidden;
     *zoom: 1; } }
-/* line 56, ../../app/assets/sass/_layout.scss */
-.col-4, .col-6, .col-12 {
+/* line 57, ../../app/assets/sass/_layout.scss */
+.col-4, .col-6, .col-9, .col-10, .col-12 {
   margin-bottom: 20px; }
 
 /* line 3, ../../app/assets/sass/_modules.scss */
