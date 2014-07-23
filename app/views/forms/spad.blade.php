@@ -17,25 +17,30 @@
 			<div class="formgroup">
                 <div class="title">Contact Details</div>
                 <div class="formfield">
-                    {{ Form::label('account_director', 'Fipra International Account Director:', ['class' => 'required']) }}
+                    {{ Form::label('account_director', 'Account Director responsible:', ['class' => 'required']) }}
                     {{ Form::text('account_director', Input::old('account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'email_address']) }}
                     {{ display_form_error('account_director', $errors) }}
                     <span class="small-print">No Unit other than Fipra International can submit an Internal Work Order for a Special Adviser.</span>
                 </div>
                 <div class="formfield">
-                    {{ Form::label('email_address', 'Account Director Email Address:', ['class' => 'required']) }}
+                    {{ Form::label('email_address', 'Email Address:', ['class' => 'required']) }}
                     {{ Form::text('email_address', Input::old('email_address')) }}
                     {{ display_form_error('email_address', $errors) }}
                 </div>
                 <div class="formfield">
-                    {{ Form::label('special_adviser', 'Special Adviser Name:', ['class' => 'required']) }}
+                    {{ Form::label('special_adviser', 'Special Adviser instructed:', ['class' => 'required']) }}
                     {{ Form::text('special_adviser', Input::old('special_adviser')) }}
                     {{ display_form_error('special_adviser', $errors) }}
                 </div>
                 <div class="formfield">
-                    {{ Form::label('sub_email_address', 'Special Adviser Email Address:', ['class' => 'required']) }}
+                    {{ Form::label('sub_email_address', 'Email Address:', ['class' => 'required']) }}
                     {{ Form::text('sub_email_address', Input::old('sub_email_address')) }}
                     {{ display_form_error('sub_email_address', $errors) }}
+                </div>
+                <div class="formfield">
+                    {{ Form::label('fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
+                    {{ Form::text('fipra_representative', Input::old('fipra_representative')) }}
+                    {{ display_form_error('fipra_representative', $errors) }}
                 </div>
 			</div>
 
@@ -63,10 +68,23 @@
                     {{ Form::textarea('agreed_fee_element_details', Input::old('agreed_fee_element_details'), ['rows' => '10']) }}
                     {{ display_form_error('agreed_fee_element_details', $errors) }}
                 </div>
+                <div class="formfield">
+                    {{ Form::label('work_capped_each_month', 'Is this work capped at a maximum level each month?', ['class' => 'required']) }}
+                    {{ Form::select('work_capped_each_month', ['No' => 'No', 'Yes' => 'Yes'], Input::old('work_capped_each_month'), ['class' => 'work-capped-each-month']) }}
+                    {{ display_form_error('work_capped_each_month', $errors) }}
+                </div>
+                <div class="formfield hide" id="work-capped-each-month-reveal">
+                    {{ Form::label('work_cap', 'What is the cap?') }}
+                    {{ Form::text('work_cap', Input::old('work_cap')) }}
+                    {{ display_form_error('work_cap', $errors) }}
+                </div>
             </div> <!-- /formgroup -->
+		</section>
+		
+		<section class="col-6 last">
             <div class="formfield">
                 {{ Form::label('name_of_client', 'Name of client associated with the account:') }}
-                {{ Form::textarea('name_of_client', Input::old('name_of_client'), ['rows' => '5']) }}
+                {{ Form::text('name_of_client', Input::old('name_of_client')) }}
                 {{ display_form_error('name_of_client', $errors) }}
             </div>
             <div class="formfield">
@@ -75,13 +93,11 @@
                 {{ display_form_error('project_name', $errors) }}
             </div>
             <div class="formfield">
-                {{ Form::label('replicon_code', 'Replicon Code:') }}
+                {{ Form::label('replicon_code', 'Replicon Code:') }} <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Replicon codes are Fipra's internal timesheet codes.</div>
                 {{ Form::text('replicon_code', Input::old('replicon_code')) }}
                 {{ display_form_error('replicon_code', $errors) }}
             </div>
-		</section>
-		
-		<section class="col-6 last">
             <div class="formfield">
                 {{ Form::label('scope_of_service', 'Scope of Service:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Set out a description of the services to be performed in reasonable detail.</div>
@@ -103,7 +119,7 @@
 
 			<div class="formfield">
 				{{ Form::label('green_sheet_required', 'Is a Fipra Green Sheet required at the end of each month?', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-				<div class="help-box">Green Sheets to be submitted within one week of the end of the month in which the work has been performed. (Download link here?)</div>
+				<div class="help-box">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked, irrespective of the type of fee structure chosen above. Please Click here to download a Greensheet template.</div>
 				{{ Form::select('green_sheet_required', ['No' => 'No', 'Yes' => 'Yes'], Input::old('green_sheet_required')) }}
 				{{ display_form_error('green_sheet_required', $errors) }}
 			</div>
@@ -111,11 +127,6 @@
 				{{ Form::label('other_information', 'Other information:') }}
 				{{ Form::textarea('other_information', Input::old('other_information'), ['rows' => '10']) }}
 				{{ display_form_error('other_information', $errors) }}
-			</div>
-			<div class="formfield">
-				{{ Form::label('written_contract_exists', 'Does a written contract exist at the time of commissioning this sheet between the Lead Unit and the Client?', ['class' => 'required']) }}
-				{{ Form::select('written_contract_exists', ['No' => 'No', 'Yes' => 'Yes'], Input::old('written_contract_exists')) }}
-				{{ display_form_error('written_contract_exists', $errors) }}
 			</div>
 		</section>
 
@@ -126,23 +137,24 @@
             <div class="grey-box">
                 <div class="col-10 last">
 
-                    <h4>Engaging Special Advisers and other external advisers</h4>
-                    <p>Where a Lead Unit requires the services of a Fipra Network Member who is a Special Adviser, all agreements with that Special Adviser, including invoicing, must be made through Fipra International.</p>
-                    <p>Special Advisers are individuals, as opposed to Units that are typically companies. As most are very senior or retired persons this rule gives them just one point of organisation and billing, making administration of Inter-Unit discounts easier and more streamlined. In practice, Fipra International also guarantees that Special Advisers are paid in this way.</p>
+                    <h4>Engaging Special Advisers / other external advisers</h4>
+                    <p>Where a Lead Unit that has contracted a client requires the services of a Special Adviser, all agreements with that Special Adviser, including Internal Work Orders and invoicing, must be made through Fipra International. Special Advisers are individuals (as opposed to Units that are typically companies with staff). As most are very senior or retired persons this rule gives each Special Adviser just one billing and instruction point, making administration easier and more streamlined.</p>
 
                     <h4>The internal billing cycle is long, but you can help make it shorter</h4>
-                    <p>As a matter of policy, Fipra generally requests payment from clients on 30-day terms. In practice clients often ignore this deadline or impose their own later payment terms. However, further delays can be avoided by Members sending in provisional bills, timesheets and invoices promptly or as early as possible, as a bill covering several Units cannot be ready until the slowest Member has sent theirs in to the Lead Unit for approval and processing.</p>
+                    <p>As a matter of policy, Fipra generally requests payment from clients on 30-day terms. In practice clients often ignore this deadline or impose their own later payment terms. However, further delays can be avoided - by all Members sending in Internal Work Orders, provisional bills, timesheets and invoices as promptly as possible. A bill covering several Units cannot be ready until the slowest Member has sent theirs in to the Lead Unit for approval and processing.</p>
 
-                    <h4>When should a Lead Unit pay out to subcontracting Members?</h4>
-                    <p>All payments due to subcontracting Members of the Fipra Network are paid out by the Lead Unit as soon as practicable upon receipt, and not later than within 10 working days of relevant payments having been received by the Lead Unit from the final client. If a Member makes enquiries, the Lead Unit’s Account Director has an obligation to inform the other Member of when clients made payments or, if known, when they are expected to do so.</p>
+                    <h4>When will Fipra International pay you?</h4>
+                    <p>All payments are made no later than within 10 working days of the relevant payment having been received by Fipra International from the final client or instructing Fipra Unit. If a Member asks, the Account Director has an obligation to inform the other Member of when clients made payments or, if known, when they are expected to do so. However Fipra International will not automatically inform members when each payment is received by us.</p>
 
                     <h4>Non-payment or reduced-payments by clients</h4>
-                    <p>The Lead Unit is responsible for paying each Member of the Fipra Network in respect of services provided to a client that have been agreed and approved. Once the timesheets of a subcontracting Unit have been accepted by the relevant Account Director, and relevant amounts billed by the Lead Unit, <span class="italic">the Lead Unit will bear the risk of reduced payment, default or non-payment by the end client concerned.</span> It will thus ensure that the subcontracting Member is paid in full, if necessary at the Lead Unit's own expense. This is in order to protect subcontracting Units from large-scale defaults and from the wrongdoing of another Unit that may cause a client not to pay. It also introduces a degree of financial discipline into the work passed between Units. That a client has refused to pay at all cannot be an excuse for internal non-payment.</p>
+                    <p>Fipra International is responsible for paying each Special Adviser in respect of services provided to a client that have been agreed and approved. Once the timesheets of a subcontracting Special Adviser have been accepted by the relevant Account Director, and relevant amounts billed to the client by Fipra, Fipra will bear the risk of reduced payment, default or non-payment by the end client concerned. It will thus ensure that the subcontracting Member is paid in full, if necessary at Fipra International’s own expense. That a client has refused to pay at all cannot be an excuse for internal non-payment.</p>
 
-                    <p>However, in the rare event that a client does not pay invoices, or pays less than the amount invoiced, the Lead Unit may of course seek to negotiate a reduction with the fellow Member collegially, though the subcontracting Member will not be required to enter into such negotiation.</p>
+                    <p>However, in the rare event that a client does not pay invoices, or pays less than the amount invoiced, Fipra International may of course seek to negotiate a reduction with the fellow Member collegially, though the Special Adviser will not be required to enter into such negotiation.</p>
 
                     <h4>Internal Work Orders</h4>
-                    <p>Once agreed, copies of all completed online Internal Work Orders are sent promptly to Fipra’s finance department to enable the monitoring of Inter-Unit activities and to facilitate the Membership Review. Internal Work Orders are treated as confidential and are not disclosed to any person outside the Fipra finance department. The Internal Work Orders serve to calculate the general turnover or the services performed between the Units of the Fipra Network. No Inter-Unit payment of any sort or for any work can take place without an Internal Work Order.</p>
+                    <p>Once agreed, copies of all completed online Internal Work Orders are sent promptly to Fipra’s finance department to enable the monitoring of Inter-Unit activities and to facilitate the Membership Review. Internal Work Orders are treated as confidential and are not disclosed to any person outside the Fipra finance department with exception of the Fipra Representative, the person at Fipra who has the key relationship with the Special Adviser concerned. Internal Work Orders also serve to calculate the general turnover or the services performed between the Units of the Fipra Network.</p>
+
+                    <p>Remember, no payment of any sort or for any work can take place without an Internal Work Order.</p>
 
                 </div>
             </div>
@@ -154,4 +166,5 @@
 
 	{{ Form::close() }}
 
+    <script type="text/javascript" src="{{ asset('js/spadWorkOrder.js') }}"></script>
 @stop

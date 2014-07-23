@@ -4,6 +4,7 @@ Route::controller('edt', 'EDTWorkOrderController');
 Route::controller('unit', 'UnitWorkOrderController');
 Route::controller('spad', 'SpadWorkOrderController');
 Route::controller('fiplex', 'FiplexWorkOrderController');
+Route::controller('fiptalk', 'FiptalkWorkOrderController');
 
 Route::post('queue/push', function()
 {

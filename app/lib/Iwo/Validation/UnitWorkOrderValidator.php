@@ -16,6 +16,8 @@ class UnitWorkOrderValidator extends FormValidator
 		'fee_basis' => 'required_with:fee_agreed',
 		'agreed_fee_element' => 'required',
 		'agreed_fee_element_details' => 'required_if:agreed_fee_element,Yes',
+        'work_capped_each_month' => 'required',
+        'work_cap' => 'required_if:work_capped_each_month,Yes',
 		'green_sheet_required' => 'required',
 		'written_contract_exists' => 'required',
 	];
