@@ -112,9 +112,15 @@
             </div>
             <div class="formfield">
                 {{ Form::label('time_frame', 'Time frame:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Set out any agreed time frame for completion of the work or deliverable.</div>
+                <div class="help-box">Please enter the start date of the IWO. The Start date is from when payments can be made under this IWO.</div>
                 {{ Form::textarea('time_frame', Input::old('time_frame'), ['rows' => '5']) }}
                 {{ display_form_error('time_frame', $errors) }}
+            </div>
+            <div class="formfield">
+                {{ Form::label('internal_work_order_expires', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">This is the date payment will stop under this IWO.</div>
+                {{ Form::text('internal_work_order_expires', Input::old('internal_work_order_expires')) }}
+                {{ display_form_error('internal_work_order_expires', $errors) }}
             </div>
 
 			<div class="formfield">

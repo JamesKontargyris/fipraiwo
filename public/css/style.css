@@ -636,28 +636,34 @@ ul.button-menu {
   margin-bottom: 10px; }
 
 /* line 162, ../../app/assets/sass/_modules.scss */
+.sub-box {
+  background: white;
+  padding: 10px 20px;
+  border: 1px solid #ccd3e5; }
+
+/* line 167, ../../app/assets/sass/_modules.scss */
 .buttons,
 .loading {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 20px; }
 
-/* line 167, ../../app/assets/sass/_modules.scss */
+/* line 172, ../../app/assets/sass/_modules.scss */
 .loading {
   display: none; }
 
-/* line 170, ../../app/assets/sass/_modules.scss */
+/* line 175, ../../app/assets/sass/_modules.scss */
 .small-print {
   font-size: 12px;
   font-size: 0.75rem;
   color: #5f697f;
   font-style: italic; }
 
-/* line 175, ../../app/assets/sass/_modules.scss */
+/* line 180, ../../app/assets/sass/_modules.scss */
 .italic {
   font-style: italic; }
 
-/* line 178, ../../app/assets/sass/_modules.scss */
+/* line 183, ../../app/assets/sass/_modules.scss */
 .grey-box {
   overflow: hidden;
   *zoom: 1;
@@ -668,25 +674,33 @@ ul.button-menu {
   border-bottom: 2px solid #00257f;
   padding: 10px 20px; }
 
-/* line 186, ../../app/assets/sass/_modules.scss */
+/* line 191, ../../app/assets/sass/_modules.scss */
 ul.display-details li {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 10px; }
-  /* line 189, ../../app/assets/sass/_modules.scss */
+  /* line 194, ../../app/assets/sass/_modules.scss */
   ul.display-details li strong {
     display: block;
     padding: 5px 10px;
     background-color: #e5edff; }
-  /* line 194, ../../app/assets/sass/_modules.scss */
+  /* line 199, ../../app/assets/sass/_modules.scss */
   ul.display-details li span {
     display: block;
     border: 1px solid #e5edff;
     padding: 5px 10px; }
   @media (min-width: 900px) {
-    /* line 186, ../../app/assets/sass/_modules.scss */
+    /* line 191, ../../app/assets/sass/_modules.scss */
     ul.display-details li {
       width: 70%; } }
+
+/* line 210, ../../app/assets/sass/_modules.scss */
+.fees-people .fees-person-clone {
+  display: none; }
+/* line 213, ../../app/assets/sass/_modules.scss */
+.fees-people .table-option {
+  float: right;
+  font-weight: bold; }
 
 /* line 2, ../../app/assets/sass/_header.scss */
 nav ul {

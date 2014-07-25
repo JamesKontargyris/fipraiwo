@@ -159,6 +159,11 @@ ul.button-menu {
     display: block;
     margin-bottom: $v-rhythm / 2;
 }
+.sub-box {
+  background:white;
+  padding:10px 20px;
+  border:1px solid $periwinkle;
+}
 .buttons,
 .loading {
 	@include clearfix();
@@ -200,4 +205,13 @@ ul.display-details {
 			width:70%;
 		}
 	}
+}
+.fees-people {
+  .fees-person-clone {
+    display:none;
+  }
+  .table-option {
+    float:right;
+    font-weight: $font-bold;
+  }
 }

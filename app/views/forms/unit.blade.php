@@ -53,13 +53,62 @@
                     {{ Form::text('sub_email_address', Input::old('sub_email_address')) }}
                     {{ display_form_error('sub_email_address', $errors) }}
                 </div>
+                <div class="formfield">
+                    {{ Form::label('fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
+                    {{ Form::text('fipra_representative', Input::old('fipra_representative')) }}
+                    {{ display_form_error('fipra_representative', $errors) }}
+                </div>
             </div>
             <div class="formgroup">
                 <div class="title">Fees</div>
                 <div class="formfield">
                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
-                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'for a Standard Hourly Rate' => 'for a Standard Hourly Rate', 'for a Day Rate' => 'for a Day Rate', 'for a Flat/Project Fee' => 'for a Flat/Project Fee'], Input::old('the_work_will_be_done'), ['class' => 'inline']) }}
+                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a day rate' => 'at a day rate', 'at a flat or project rate' => 'at a flat or project rate'], Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+                    <div class="help-box">
+                        <table width="100%">
+                            <tr>
+                                <td>Account Directors and Senior Consultants</td>
+                                <td>€425 per hour</td>
+                            </tr>
+                            <tr>
+                                <td>Account Managers</td>
+                                <td>€325 per hour</td>
+                            </tr>
+                            <tr>
+                                <td>Account Executives</td>
+                                <td>€225 per hour</td>
+                            </tr>
+                            <tr>
+                                <td>Researchers</td>
+                                <td>€125 per hour</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="fees-people sub-box hidejs">
+                        {{ Form::label('', 'The following person(s) will work at these rates:') }}
+                        <table width="100%">
+                            <thead>
+                                <td width="70%">Name</td>
+                                <td width="20%" class="rate-label">Rate</td>
+                                <td width="10%"></td>
+                            </thead>
+                            <tr class="fees-person">
+                                <td>{{ Form::text('person[]', Input::old('person'), ['style' => 'width:90%']) }}</td>
+                                <td><span class="inline">&euro;</span> {{ Form::text('rate[]', Input::old('rate'), ['style' => 'width:80%']) }}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="fees-person-clone">
+                                <td>{{ Form::text('person[]', Input::old('person'), ['style' => 'width:90%']) }}</td>
+                                <td><span class="inline">&euro;</span> {{ Form::text('rate[]', Input::old('rate'), ['style' => 'width:80%']) }}</td>
+                                <td><a class="secondary remove-row"><i class="fa fa-times fa-lg"></i></a></td>
+                            </tr>
+                            <tr colspan="3">
+                                <td><a class="secondary add-new-person">Add new person</a></td>
+                            </tr>
+                        </table>
+                    </div>
                     {{ display_form_error('the_work_will_be_done', $errors) }}
+
                 </div>
                 <div class="formfield">
                     {{ Form::label('fee_agreed', 'The agreed fee is &euro;') }}
@@ -127,13 +176,13 @@
             </div>
             <div class="formfield">
                 {{ Form::label('internal_work_order_expires', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">This is the date payment will stop under this IWO. We could ask them to select a date from a box calender?</div>
+                <div class="help-box">This is the date payment will stop under this IWO.</div>
                 {{ Form::text('internal_work_order_expires', Input::old('internal_work_order_expires')) }}
                 {{ display_form_error('internal_work_order_expires', $errors) }}
             </div>
 			<div class="formfield">
 				{{ Form::label('green_sheet_required', 'Is a Fipra Green Sheet required at the end of each month?', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-				<div class="help-box">Green Sheets are to be submitted within three days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked and are irrespective of the type of fee structure chosen above.</div>
+				<div class="help-box">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked and are irrespective of the type of fee structure chosen above.</div>
 				{{ Form::select('green_sheet_required', ['No' => 'No', 'Yes' => 'Yes'], Input::old('green_sheet_required'), ['class' => 'green-sheet-required']) }}
 				{{ display_form_error('green_sheet_required', $errors) }}
 			</div>
