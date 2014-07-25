@@ -207,11 +207,28 @@ ul.display-details {
 	}
 }
 .fees-people {
+  display:none;
   .fees-person-clone {
     display:none;
   }
   .table-option {
     float:right;
     font-weight: $font-bold;
+  }
+}
+
+ul.square {
+  list-style: none;
+  padding:0;
+  margin:0;
+  margin-bottom:$v-rhythm;
+
+  li {
+    padding-left: 1em;
+    text-indent: -.7em;
+  }
+  li:before {
+    content: "▪ ";
+    color: $blue; /* or whatever color you prefer */
   }
 }

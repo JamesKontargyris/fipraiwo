@@ -32,28 +32,32 @@ function pretty_input($input)
 {
 	// Words that should be lowercase in field names
 	$field_lc = ['or', 'as', 'and', 'the', 'for', 'of'];
-	// Upperclass versions to be replaced
+	// Uppercase versions to be replaced
 	$field_uc = ['Or', 'As', 'And', 'The', 'For', 'Of'];
-	
+
 	foreach($input as $key => $value)
 	{
-		// VALUE CONVERSION
+        // VALUE CONVERSION
+        // Is the key 'person' or 'rates'? If so, use the
+        // pretty_rates() function to create a string containing
+        // all names and rates entered
 		// value not entered?
 		if($input[$key] == '')
-		{
-			// set to a dash 
-			$input[$key] = "-";
-		} else {
+        {
+            // set to a dash
+            $input[$key] = "-";
+        }
+        else {
 			// Convert checkbox "on" values to "Yes"
 			// (regular expression is used to avoid changing the word "on" in text)
 			$input[$key] = preg_replace('/^on$/', "Yes", $input[$key]);
 		}
 		
 		// KEY (field name) CONVERSION
-		// Remove underscores, convert to title case, replace words that should be lowercase
-		// and make first letter of string uppercase (in case it is marked as a word that should
-		// be lowercase)
-		$new_key = ucfirst(str_replace($field_uc, $field_lc, ucwords(str_replace('_', ' ', $key)))); 
+        // Remove underscores, convert to title case, replace words that should be lowercase
+        // and make first letter of string uppercase (in case it is marked as a word that should
+        // be lowercase)
+        $new_key = ucfirst(str_replace($field_uc, $field_lc, ucwords(str_replace('_', ' ', $key))));
 		// Set a new key with the new tidy field name
 		$input[$new_key] = $input[$key];
 		// Delete the old duplicate key and value

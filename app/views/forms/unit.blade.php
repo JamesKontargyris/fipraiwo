@@ -84,7 +84,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="fees-people sub-box hidejs">
+                    <div class="fees-people sub-box">
                         {{ Form::label('', 'The following person(s) will work at these rates:') }}
                         <table width="100%">
                             <thead>
@@ -93,29 +93,22 @@
                                 <td width="10%"></td>
                             </thead>
                             <tr class="fees-person">
-                                <td>{{ Form::text('person[]', Input::old('person'), ['style' => 'width:90%']) }}</td>
-                                <td><span class="inline">&euro;</span> {{ Form::text('rate[]', Input::old('rate'), ['style' => 'width:80%']) }}</td>
+                                <td>{{ Form::text('person', Input::old('person'), ['style' => 'width:90%']) }}</td>
+                                <td><span class="inline">&euro;</span> {{ Form::text('rate', Input::old('rate'), ['style' => 'width:80%']) }}</td>
                                 <td></td>
                             </tr>
-                            <tr class="fees-person-clone">
-                                <td>{{ Form::text('person[]', Input::old('person'), ['style' => 'width:90%']) }}</td>
-                                <td><span class="inline">&euro;</span> {{ Form::text('rate[]', Input::old('rate'), ['style' => 'width:80%']) }}</td>
-                                <td><a class="secondary remove-row"><i class="fa fa-times fa-lg"></i></a></td>
-                            </tr>
+                            <!--<tr class="fees-person-clone">-->
+                            <!--    <td>{{ Form::text('person', Input::old('person'), ['style' => 'width:90%']) }}</td>-->
+                            <!--    <td><span class="inline">&euro;</span> {{ Form::text('rate', Input::old('rate'), ['style' => 'width:80%']) }}</td>-->
+                            <!--    <td><a class="secondary remove-row"><i class="fa fa-times fa-lg"></i></a></td>-->
+                            <!--</tr>-->
                             <tr colspan="3">
-                                <td><a class="secondary add-new-person">Add new person</a></td>
+                                <!--<td><a class="secondary add-new-person">Add new person</a></td>-->
                             </tr>
                         </table>
                     </div>
                     {{ display_form_error('the_work_will_be_done', $errors) }}
 
-                </div>
-                <div class="formfield">
-                    {{ Form::label('fee_agreed', 'The agreed fee is &euro;') }}
-                    {{ Form::text('fee_agreed', Input::old('flat_fee_agreed'), ['class' => 'inline', 'size' => '10']) }}
-                    {{ Form::select('fee_basis', ['' => 'Per...', 'Per Day' => 'Per Day', 'Per Week' => 'Per Week', 'Per Month' => 'Per Month', 'Per Year' => 'Per Year', 'Per Project' => 'Per Project'], Input::old('fee_basis'), ['class' => 'inline']) }}
-                    {{ display_form_error('fee_agreed', $errors) }}
-                    {{ display_form_error('fee_basis', $errors) }}
                 </div>
                 <div class="formfield">
                     {{ Form::label('agreed_fee_element', 'Is there any other fee element such as a success or finders fee?', ['class' => 'required']) }}
@@ -152,7 +145,8 @@
                 {{ display_form_error('project_name', $errors) }}
             </div>
             <div class="formfield">
-                {{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }}
+                {{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Replicon codes are Fipra's internal timesheet codes.</div>
                 {{ Form::text('replicon_code', Input::old('replicon_code')) }}
                 {{ display_form_error('replicon_code', $errors) }}
             </div>

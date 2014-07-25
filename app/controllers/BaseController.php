@@ -15,10 +15,16 @@ class BaseController extends Controller {
     // Instance of FileUpload
     public function __construct()
     {
-        // Get the default page title from the DB
-        $this->page_title = $this->iwo_key_label . " Internal Work Order";
-        // Get the list of email recipients for this particular form from the DB
-        $this->email_recipients = Formtype::where('key', $this->iwo_key)->first()->emailrecipients;
+        if(isset($this->iwo_key_label))
+        {
+            // Get the default page title from the DB
+            $this->page_title = $this->iwo_key_label . " Internal Work Order";
+        }
+        if(isset($this->iwo_key))
+        {
+            // Get the list of email recipients for this particular form from the DB
+            $this->email_recipients = Formtype::where('key', $this->iwo_key)->first()->emailrecipients;
+        }
     }
 
     protected $upload;
@@ -30,6 +36,8 @@ class BaseController extends Controller {
 
 	public function postIndex()
 	{
+        //dd(Input::all());
+
 		// Use $this->validator set in the sub class to use the validation rules
 		// specific to this form
 		$this->validator->validate(Input::all());

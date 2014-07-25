@@ -2,6 +2,7 @@
 
 @section('nav_links')
 	<li><a href="/" class="highlight"><i class="fa fa-caret-left fa-lg"></i> Back to IWO Menu</a></li>
+	<li><a href="about/fiplex">About Fiplex</a></li>
 @stop
 
 @section('content')

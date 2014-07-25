@@ -66,11 +66,13 @@
         $('#work-capped-each-month-reveal').show();
     }
 
-    var rate_labels = new Array();
-    rate_labels['at the standard Fipra hourly rates'] = 'Hourly Rate';
-    rate_labels['at a different Fipra hourly rate'] = 'Hourly Rate';
-    rate_labels['at a day rate'] = 'Day Rate';
-    rate_labels['at a flat or project rate'] = 'Flat/Project Rate';
+    if($('select#the-work-will-be-done').val() != '')
+    {
+        show_fees_people_form($('select#the-work-will-be-done').val());
+        if($('select#the-work-will-be-done').val() == 'at the standard Fipra hourly rates') {
+            $('#the-work-will-be-done').next('.help-box').slideDown();
+        }
+    }
 
     // When "The work will be done" box is changed...
     $('select#the-work-will-be-done').on('change', function()
@@ -85,12 +87,7 @@
             $(this).next('.help-box').slideUp();
         }
 
-        if($(this).val() != '') {
-            $('.fees-people').slideDown();
-            $('.rate-label').text(rate_labels[$(this).val()]);
-        } else {
-            $('.fees-people').slideUp();
-        }
+        show_fees_people_form($(this).val());
     });
 
     $('.add-new-person').on('click', function()
@@ -102,10 +99,26 @@
         return false;
     });
 
-    $(".remove-row").on('click', function()
+    $('.remove-row').on('click', function()
     {
         console.log('click');
-//        $(this).parent('tr').css('background-color', 'green');
         return false;
     });
+
+    function show_fees_people_form(selection)
+    {
+        var rate_labels = new Array();
+        rate_labels['at the standard Fipra hourly rates'] = 'Hourly Rate';
+        rate_labels['at a different Fipra hourly rate'] = 'Hourly Rate';
+        rate_labels['at a day rate'] = 'Day Rate';
+        rate_labels['at a flat or project rate'] = 'Flat/Project Rate';
+
+        if(selection != '') {
+            $('.fees-people').slideDown();
+            $('.rate-label').text(rate_labels[selection]);
+        } else {
+            $('.fees-people').slideUp();
+        }
+        return true;
+    }
 })();

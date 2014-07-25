@@ -2,6 +2,7 @@
 
 @section('nav_links')
 	<li><a href="/" class="highlight"><i class="fa fa-caret-left fa-lg"></i> Back to IWO Menu</a></li>
+    <li><a href="about/edt">About the EDT</a></li>
 @stop
 
 @section('content')
@@ -24,7 +25,7 @@
 			{{ display_form_error('unit_special_adviser_or_correspondent', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('email_address', 'Contact email address:', ['class' => 'required']) }}
+			{{ Form::label('email_address', 'Email address:', ['class' => 'required']) }}
 			{{ Form::email('email_address', Input::old('email_address')) }}
 			{{ display_form_error('email_address', $errors) }}
 		</div>
@@ -41,7 +42,8 @@
 			{{ display_form_error('project_and_client_name', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }}
+			{{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
+            <div class="help-box">Replicon codes are Fipra's internal timesheet codes.</div>
 			{{ Form::text('replicon_code', Input::old('replicon_code')) }}
 			{{ display_form_error('replicon_code', $errors) }}
 		</div>
@@ -81,8 +83,6 @@
             </div>
 			<div>{{ Form::checkbox('translation', Input::old('translation')) }} Translation <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Translation help box</div></div>
-			<div>{{ Form::checkbox('presentation_training', Input::old('presentation_training')) }} Presentation Training <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Presentation Training help box</div></div>
 		</div>
 		<div class="formfield">
 			{{ Form::label('instructions', 'Any other instructions:') }} <a href="#" class="help">&nbsp;</a>
@@ -91,13 +91,7 @@
 			{{ display_form_error('instructions', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('require_consultation', 'Do you require a consultation with a member of our team?', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-			<div class="help-box">We'll be happy to talk through any part of your project with you, whether you want to discuss printing options, explore how best to achieve your aims, relay ideas or if you're just looking for some inspiration. Some projects, such as web design and brand/logo design, would benefit from an initial consulation to ensure your practical/visual requirements, and those of your audience, will be met successfully.</div>
-			{{ Form::select('require_consultation', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], Input::old('require_consultation')) }}
-			{{ display_form_error('require_consultation', $errors) }}
-		</div>
-		<div class="formfield">
-			{{ Form::label('require_cost_estimate', 'Do you require a cost estimate?', ['class' => 'required']) }}
+			{{ Form::label('require_cost_estimate', 'Do you require a cost estimate before work commences?', ['class' => 'required']) }}
 			{{ Form::select('require_cost_estimate', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], Input::old('require_cost_estimate')) }}
 			{{ display_form_error('require_cost_estimate', $errors) }}
 		</div>

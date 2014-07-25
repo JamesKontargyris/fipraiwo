@@ -46,6 +46,11 @@ h2 {
     border-bottom:1px solid $periwinkle;
     @include font-size(24);
 }
+h3 {
+  padding:0 0 ($v-rhythm / 2);
+  @include font-size(20);
+  color:$blue;
+}
 h4 {
   @include font-size(18);
   font-weight:$font-bold;

@@ -1,3 +1,4 @@
+@charset "CP850";
 /*!   
 Theme Name: Fipra Online Internal Work Order
 Theme URI: http://fipra.com
@@ -122,6 +123,13 @@ h2 {
   font-size: 1.5rem; }
 
 /* line 49, ../../app/assets/sass/_base.scss */
+h3 {
+  padding: 0 0 10px;
+  font-size: 20px;
+  font-size: 1.25rem;
+  color: #00257f; }
+
+/* line 54, ../../app/assets/sass/_base.scss */
 h4 {
   font-size: 18px;
   font-size: 1.125rem;
@@ -130,37 +138,37 @@ h4 {
   border-bottom: 1px solid #ccd3e5;
   margin-bottom: 20px; }
 
-/* line 56, ../../app/assets/sass/_base.scss */
+/* line 61, ../../app/assets/sass/_base.scss */
 h5 {
   font-size: 14px;
   font-size: 0.875rem; }
 
-/* line 59, ../../app/assets/sass/_base.scss */
+/* line 64, ../../app/assets/sass/_base.scss */
 p {
   padding-bottom: 20px; }
 
-/* line 62, ../../app/assets/sass/_base.scss */
+/* line 67, ../../app/assets/sass/_base.scss */
 strong {
   font-weight: bold; }
 
-/* line 65, ../../app/assets/sass/_base.scss */
+/* line 70, ../../app/assets/sass/_base.scss */
 label {
   display: inline-block;
   font-weight: bold;
   color: #5f697f;
   padding-bottom: 10px; }
 
-/* line 78, ../../app/assets/sass/_base.scss */
+/* line 83, ../../app/assets/sass/_base.scss */
 a.back-to-top {
   display: inline-block;
   padding: 10px 10px;
   background-color: #f2f2f2;
   margin: 10px 0; }
-  /* line 83, ../../app/assets/sass/_base.scss */
+  /* line 88, ../../app/assets/sass/_base.scss */
   a.back-to-top:hover {
     opacity: 0.8; }
 
-/* line 87, ../../app/assets/sass/_base.scss */
+/* line 92, ../../app/assets/sass/_base.scss */
 input[type=text],
 input[type=email],
 input[type=file],
@@ -171,66 +179,66 @@ textarea {
   font-size: 0.875rem;
   font-family: Arial, Helvetica, sans-serif; }
   @media (min-width: 900px) {
-    /* line 87, ../../app/assets/sass/_base.scss */
+    /* line 92, ../../app/assets/sass/_base.scss */
     input[type=text],
     input[type=email],
     input[type=file],
     textarea {
       font-size: 14px;
       font-size: 0.875rem; } }
-  /* line 98, ../../app/assets/sass/_base.scss */
+  /* line 103, ../../app/assets/sass/_base.scss */
   input[type=text].inline,
   input[type=email].inline,
   input[type=file].inline,
   textarea.inline {
     width: auto; }
 
-/* line 102, ../../app/assets/sass/_base.scss */
+/* line 107, ../../app/assets/sass/_base.scss */
 input[type=checkbox] {
   width: 30px;
   height: 30px;
   vertical-align: middle; }
 
-/* line 107, ../../app/assets/sass/_base.scss */
+/* line 112, ../../app/assets/sass/_base.scss */
 input[type=submit] {
   cursor: pointer;
   padding-left: 20px;
   padding-right: 20px;
   font-weight: bold; }
 
-/* line 113, ../../app/assets/sass/_base.scss */
+/* line 118, ../../app/assets/sass/_base.scss */
 select {
   display: block;
   padding: 5px 10px;
   font-size: 14px;
   font-size: 0.875rem; }
   @media (min-width: 900px) {
-    /* line 113, ../../app/assets/sass/_base.scss */
+    /* line 118, ../../app/assets/sass/_base.scss */
     select {
       font-size: 14px;
       font-size: 0.875rem; } }
-  /* line 120, ../../app/assets/sass/_base.scss */
+  /* line 125, ../../app/assets/sass/_base.scss */
   select.inline {
     display: inline-block; }
 
-/* line 124, ../../app/assets/sass/_base.scss */
+/* line 129, ../../app/assets/sass/_base.scss */
 strong {
   font-weight: bold; }
 
-/* line 128, ../../app/assets/sass/_base.scss */
+/* line 133, ../../app/assets/sass/_base.scss */
 #content {
   font-size: 14px;
   font-size: 0.875rem; }
 
-/* line 131, ../../app/assets/sass/_base.scss */
+/* line 136, ../../app/assets/sass/_base.scss */
 .red {
   color: #cc0a12; }
 
-/* line 134, ../../app/assets/sass/_base.scss */
+/* line 139, ../../app/assets/sass/_base.scss */
 .showjs {
   display: none; }
 
-/* line 137, ../../app/assets/sass/_base.scss */
+/* line 142, ../../app/assets/sass/_base.scss */
 .hidejs {
   display: block; }
 
@@ -694,13 +702,32 @@ ul.display-details li {
     ul.display-details li {
       width: 70%; } }
 
-/* line 210, ../../app/assets/sass/_modules.scss */
-.fees-people .fees-person-clone {
+/* line 209, ../../app/assets/sass/_modules.scss */
+.fees-people {
   display: none; }
-/* line 213, ../../app/assets/sass/_modules.scss */
-.fees-people .table-option {
-  float: right;
-  font-weight: bold; }
+  /* line 211, ../../app/assets/sass/_modules.scss */
+  .fees-people .fees-person-clone {
+    display: none; }
+  /* line 214, ../../app/assets/sass/_modules.scss */
+  .fees-people .table-option {
+    float: right;
+    font-weight: bold; }
+
+/* line 220, ../../app/assets/sass/_modules.scss */
+ul.square {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px; }
+  /* line 226, ../../app/assets/sass/_modules.scss */
+  ul.square li {
+    padding-left: 1em;
+    text-indent: -.7em; }
+  /* line 230, ../../app/assets/sass/_modules.scss */
+  ul.square li:before {
+    content: "▪ ";
+    color: #00257f;
+    /* or whatever color you prefer */ }
 
 /* line 2, ../../app/assets/sass/_header.scss */
 nav ul {

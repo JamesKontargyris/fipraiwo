@@ -6,6 +6,11 @@ Route::controller('spad', 'SpadWorkOrderController');
 Route::controller('fiplex', 'FiplexWorkOrderController');
 Route::controller('fiptalk', 'FiptalkWorkOrderController');
 
+//Route::get('edt/about', 'PagesController@about_EDT');
+
+Route::get('about/edt', 'PagesController@about_edt');
+Route::get('about/fiplex', 'PagesController@about_fiplex');
+
 Route::post('queue/push', function()
 {
 	return Queue::marshal();
