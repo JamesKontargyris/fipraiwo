@@ -35,19 +35,38 @@ function pretty_input($input)
 	// Uppercase versions to be replaced
 	$field_uc = ['Or', 'As', 'And', 'The', 'For', 'Of'];
 
-	foreach($input as $key => $value)
-	{
+    foreach($input as $key => $value)
+    {
+        //If the key is 'team', this is the multidimensional array
+        //of people and rates. Use the pretty_team function to
+        //make it look nice
+        if($key == 'team')
+        {
+            $input['Team Members and Rates'] = pretty_team($input['team']);
+            //Remove the old team form data
+            unset($input['team']);
+            //Continue with the foreach loop
+            continue;
+        }
+        //If the value is an array of values (and it isn't the team array),
+        //convert to a string of comma separated values
+        elseif(is_array($value) && $key != 'team')
+        {
+            $input[$key] = substr(implode(", ", $value), 0, -2);
+        }
+
         // VALUE CONVERSION
         // Is the key 'person' or 'rates'? If so, use the
         // pretty_rates() function to create a string containing
         // all names and rates entered
 		// value not entered?
-		if($input[$key] == '')
+		elseif($input[$key] == '')
         {
             // set to a dash
             $input[$key] = "-";
         }
-        else {
+        else
+        {
 			// Convert checkbox "on" values to "Yes"
 			// (regular expression is used to avoid changing the word "on" in text)
 			$input[$key] = preg_replace('/^on$/', "Yes", $input[$key]);
@@ -63,7 +82,33 @@ function pretty_input($input)
 		// Delete the old duplicate key and value
 		unset($input[$key]);
 	}
-	return $input;
+
+    return $input;
+}
+
+function pretty_team($team = [])
+{
+    $pretty_team  = "<table cellspacing='10' cellpadding='10' border='1'>";
+
+    foreach($team as $member)
+    {
+        if($member['person'] != "" or $member['rate'] != "")
+        {
+            $pretty_team .= "<tr>";
+            $pretty_team .= "<td style='padding-right:20px'>" . $member['person'] . "</td><td>&euro;" . remove_currency_symbol($member['rate']) . "</td>";
+            $pretty_team .= "</tr>";
+        }
+    }
+
+    $pretty_team .= "</table>";
+
+    return $pretty_team;
+}
+
+function remove_currency_symbol($string)
+{
+    $symbols = ['€', '$', '£'];
+    return str_replace($symbols, '', $string);
 }
 
 function display_form_error($field_name, $errors)

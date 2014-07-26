@@ -90,20 +90,43 @@
         show_fees_people_form($(this).val());
     });
 
-    $('.add-new-person').on('click', function()
-    {
-        var clone_row = $('.fees-person-clone'),
-            tr_clone = $('.fees-person-clone').clone();
-        tr_clone.removeClass('fees-person-clone').addClass('fees-person');
-        clone_row.before(tr_clone);
-        return false;
-    });
-
+//    Set up remove-row functionality
     $('.remove-row').on('click', function()
     {
-        console.log('click');
+        $(this).closest('.fees-person').remove();
         return false;
     });
+//    Hide the first remove-row button on the form,
+//    so the first name/rate entry row can't be removed
+    $('.remove-row').first().hide();
+
+//    When the add new person button is clicked...
+    $('.add-new-person').on('click', function()
+    {
+//        Set up variables for the clone row, the last person row,
+//        the current person count and the new person count
+        var tr_clone = $('.fees-person').first().clone(),
+            last_row = $('.fees-people .fees-person').last(),
+            count_field = $('.person-count'),
+            person_count = parseInt($('.person-count').val()) + 1;
+
+//        Remove input values in the cloned row
+        tr_clone.find('input').val('');
+//        Update the person and rate ids in the name attributes
+        tr_clone.find('.person-field input').attr('name', 'team[' + person_count + '][person]');
+        tr_clone.find('.rate-field input').attr('name', 'team[' + person_count + '][rate]');
+//        Display the remove-row button
+        tr_clone.find('.remove-row').show();
+//        Add the cloned row after the final existing row
+        last_row.after(tr_clone);
+//        Update the person-count hidden field
+        count_field.val(person_count);
+
+        return false;
+
+    });
+
+
 
     function show_fees_people_form(selection)
     {

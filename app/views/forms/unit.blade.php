@@ -84,26 +84,39 @@
                             </tr>
                         </table>
                     </div>
+
                     <div class="fees-people sub-box">
                         {{ Form::label('', 'The following person(s) will work at these rates:') }}
                         <table width="100%">
                             <thead>
-                                <td width="70%">Name</td>
-                                <td width="20%" class="rate-label">Rate</td>
-                                <td width="10%"></td>
+                            <td width="70%">Name</td>
+                            <td width="20%" class="rate-label">Rate</td>
+                            <td width="10%"></td>
                             </thead>
-                            <tr class="fees-person">
-                                <td>{{ Form::text('person', Input::old('person'), ['style' => 'width:90%']) }}</td>
-                                <td><span class="inline">&euro;</span> {{ Form::text('rate', Input::old('rate'), ['style' => 'width:80%']) }}</td>
-                                <td></td>
-                            </tr>
-                            <!--<tr class="fees-person-clone">-->
-                            <!--    <td>{{ Form::text('person', Input::old('person'), ['style' => 'width:90%']) }}</td>-->
-                            <!--    <td><span class="inline">&euro;</span> {{ Form::text('rate', Input::old('rate'), ['style' => 'width:80%']) }}</td>-->
-                            <!--    <td><a class="secondary remove-row"><i class="fa fa-times fa-lg"></i></a></td>-->
-                            <!--</tr>-->
+
+                            <!--If this request is a failed validation or the user clicked 'go back' on the confirm page, load the old team member names and rate-->
+                            @if(Input::old('team'))
+                                @foreach(Input::old('team') as $id => $values)
+                                    <tr class="fees-person">
+                                        <td class="person-field">{{ Form::text("team[$id][person]", $values['person'], ['style' => 'width:90%']) }}</td>
+                                        <td class="rate-field"><span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", $values['rate'], ['style' => 'width:80%']) }}</td>
+                                        <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
+                                    </tr>
+                                @endforeach
+                                {{ form::hidden('person-count', Input::old('person-count'), ['class' => 'person-count']) }}
+                            <!--Otherwise display the default entry form-->
+                            @else
+                                <tr class="fees-person">
+                                    <td class="person-field">{{ Form::text('team[1][person]', null, ['style' => 'width:90%']) }}</td>
+                                    <td class="rate-field"><span class="inline">&euro;</span> {{ Form::text('team[1][rate]', null, ['style' => 'width:80%']) }}</td>
+                                    <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
+                                </tr>
+                                {{ form::hidden('person-count', '1', ['class' => 'person-count']) }}
+                            @endif
+
+
                             <tr colspan="3">
-                                <!--<td><a class="secondary add-new-person">Add new person</a></td>-->
+                                <td><a class="secondary add-new-person">Add new person</a></td>
                             </tr>
                         </table>
                     </div>
@@ -111,7 +124,7 @@
 
                 </div>
                 <div class="formfield">
-                    {{ Form::label('agreed_fee_element', 'Is there any other fee element such as a success or finders fee?', ['class' => 'required']) }}
+                    {{ Form::label('agreed_fee_element', 'Is there any other fee element, such as a success or finders fee?', ['class' => 'required']) }}
                     {{ Form::select('agreed_fee_element', ['No' => 'No', 'Yes' => 'Yes'], Input::old('agreed_fee_element'), ['class' => 'agreed-fee-element']) }}
                     {{ display_form_error('agreed_fee_element', $errors) }}
                 </div>
@@ -119,6 +132,10 @@
                     {{ Form::label('agreed_fee_element_details', 'Please set out fee element details:', ['class' => 'required']) }}
                     {{ Form::textarea('agreed_fee_element_details', Input::old('agreed_fee_element_details'), ['rows' => '10']) }}
                     {{ display_form_error('agreed_fee_element_details', $errors) }}
+                </div>
+                <div class="formfield">
+                    <div class="small-print">All the fees above, except success/finders fee, will be invoiced with the applicable Fipra Inter-Unit discount. <a href="#" class="help">&nbsp;</a>
+                    <p class="help-box">When a Unit subcontracts to another Unit for work, a percentage known as the Inter-Unit discount is paid to the Unit that introduced the client work. Thus the Lead Unit receives an Inter-Unit discount on the net invoice amount billed to the client.</p></div>
                 </div>
                 <div class="formfield">
                     {{ Form::label('work_capped_each_month', 'Is this work capped at a maximum level each month?', ['class' => 'required']) }}

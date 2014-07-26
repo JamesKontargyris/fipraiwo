@@ -37,7 +37,6 @@ class BaseController extends Controller {
 	public function postIndex()
 	{
         //dd(Input::all());
-
 		// Use $this->validator set in the sub class to use the validation rules
 		// specific to this form
 		$this->validator->validate(Input::all());
@@ -59,7 +58,7 @@ class BaseController extends Controller {
 	{
 		// Use the pretty_input() function to make form input data user friendly and pretty for display
 		$input = pretty_input(Input::old());
-		
+
 		// Reflash the input data for another request so it can be used in the next stage,
 		// whether that be submitting the form or going back to the form to make changes
 		Session::reflash();
