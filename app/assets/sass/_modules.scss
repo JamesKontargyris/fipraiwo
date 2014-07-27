@@ -160,6 +160,7 @@ ul.button-menu {
     margin-bottom: $v-rhythm / 2;
 }
 .sub-box {
+  display:none;
   background:white;
   padding:10px 20px;
   border:1px solid $periwinkle;
@@ -231,4 +232,8 @@ ul.square {
     content: "▪ ";
     color: $blue; /* or whatever color you prefer */
   }
+}
+.datepicker {
+  background:url(images/iconCalendar.gif) no-repeat 10px center;
+  padding-left:40px !important;
 }

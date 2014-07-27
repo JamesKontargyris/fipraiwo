@@ -13,6 +13,8 @@
 	// Hide all help boxes
 	$('.help-box').css('display', 'none');
 
+    $( ".datepicker" ).datepicker({ dateFormat: "dd-mm-yy" });
+
 	// Show help box when help button is clicked
 	$('a.help').on('click', function(e)
 	{

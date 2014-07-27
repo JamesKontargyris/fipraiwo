@@ -48,15 +48,16 @@
                 <div class="title">Fees</div>
                 <div class="formfield">
                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
-                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'for a Standard Hourly Rate' => 'for a Standard Hourly Rate', 'for a Day Rate' => 'for a Day Rate', 'for a Flat/Project Fee' => 'for a Flat/Project Fee'], Input::old('the_work_will_be_done'), ['class' => 'inline']) }}
+                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a day rate' => 'at a day rate', 'at a flat or project rate' => 'at a flat or project rate'], Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+
+                    <div class="sub-box rate-field">
+                        {{ Form::label('rate_is', ' Rate is (&euro;):', ['class' => 'required rate-label']) }}
+                        {{ Form::text('rate_is', Input::old('rate_is'), ['class' => 'euro-field']) }}
+                        {{ display_form_error('rate_is', $errors) }}
+
+                    </div>
                     {{ display_form_error('the_work_will_be_done', $errors) }}
-                </div>
-                <div class="formfield">
-                    {{ Form::label('fee_agreed', 'The agreed fee is &euro;') }}
-                    {{ Form::text('fee_agreed', Input::old('flat_fee_agreed'), ['class' => 'inline', 'size' => '10']) }}
-                    {{ Form::select('fee_basis', ['' => 'Per...', 'Per Day' => 'Per Day', 'Per Week' => 'Per Week', 'Per Month' => 'Per Month', 'Per Year' => 'Per Year', 'Per Project' => 'Per Project'], Input::old('fee_basis'), ['class' => 'inline']) }}
-                    {{ display_form_error('fee_agreed', $errors) }}
-                    {{ display_form_error('fee_basis', $errors) }}
+
                 </div>
                 <div class="formfield">
                     {{ Form::label('agreed_fee_element', 'Is there any other fee element such as a success or finders fee?', ['class' => 'required']) }}
@@ -119,7 +120,7 @@
             <div class="formfield">
                 {{ Form::label('internal_work_order_expires', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">This is the date payment will stop under this IWO.</div>
-                {{ Form::text('internal_work_order_expires', Input::old('internal_work_order_expires')) }}
+                {{ Form::text('internal_work_order_expires', Input::old('internal_work_order_expires'), ['class' => 'datepicker']) }}
                 {{ display_form_error('internal_work_order_expires', $errors) }}
             </div>
 

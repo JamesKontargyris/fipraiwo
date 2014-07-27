@@ -188,7 +188,7 @@
             <div class="formfield">
                 {{ Form::label('internal_work_order_expires', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">This is the date payment will stop under this IWO.</div>
-                {{ Form::text('internal_work_order_expires', Input::old('internal_work_order_expires')) }}
+                {{ Form::text('internal_work_order_expires', Input::old('internal_work_order_expires'), ['class' => 'datepicker']) }}
                 {{ display_form_error('internal_work_order_expires', $errors) }}
             </div>
 			<div class="formfield">

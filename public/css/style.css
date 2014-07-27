@@ -645,33 +645,34 @@ ul.button-menu {
 
 /* line 162, ../../app/assets/sass/_modules.scss */
 .sub-box {
+  display: none;
   background: white;
   padding: 10px 20px;
   border: 1px solid #ccd3e5; }
 
-/* line 167, ../../app/assets/sass/_modules.scss */
+/* line 168, ../../app/assets/sass/_modules.scss */
 .buttons,
 .loading {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 20px; }
 
-/* line 172, ../../app/assets/sass/_modules.scss */
+/* line 173, ../../app/assets/sass/_modules.scss */
 .loading {
   display: none; }
 
-/* line 175, ../../app/assets/sass/_modules.scss */
+/* line 176, ../../app/assets/sass/_modules.scss */
 .small-print {
   font-size: 12px;
   font-size: 0.75rem;
   color: #5f697f;
   font-style: italic; }
 
-/* line 180, ../../app/assets/sass/_modules.scss */
+/* line 181, ../../app/assets/sass/_modules.scss */
 .italic {
   font-style: italic; }
 
-/* line 183, ../../app/assets/sass/_modules.scss */
+/* line 184, ../../app/assets/sass/_modules.scss */
 .grey-box {
   overflow: hidden;
   *zoom: 1;
@@ -682,52 +683,57 @@ ul.button-menu {
   border-bottom: 2px solid #00257f;
   padding: 10px 20px; }
 
-/* line 191, ../../app/assets/sass/_modules.scss */
+/* line 192, ../../app/assets/sass/_modules.scss */
 ul.display-details li {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 10px; }
-  /* line 194, ../../app/assets/sass/_modules.scss */
+  /* line 195, ../../app/assets/sass/_modules.scss */
   ul.display-details li strong {
     display: block;
     padding: 5px 10px;
     background-color: #e5edff; }
-  /* line 199, ../../app/assets/sass/_modules.scss */
+  /* line 200, ../../app/assets/sass/_modules.scss */
   ul.display-details li span {
     display: block;
     border: 1px solid #e5edff;
     padding: 5px 10px; }
   @media (min-width: 900px) {
-    /* line 191, ../../app/assets/sass/_modules.scss */
+    /* line 192, ../../app/assets/sass/_modules.scss */
     ul.display-details li {
       width: 70%; } }
 
-/* line 209, ../../app/assets/sass/_modules.scss */
+/* line 210, ../../app/assets/sass/_modules.scss */
 .fees-people {
   display: none; }
-  /* line 211, ../../app/assets/sass/_modules.scss */
+  /* line 212, ../../app/assets/sass/_modules.scss */
   .fees-people .fees-person-clone {
     display: none; }
-  /* line 214, ../../app/assets/sass/_modules.scss */
+  /* line 215, ../../app/assets/sass/_modules.scss */
   .fees-people .table-option {
     float: right;
     font-weight: bold; }
 
-/* line 220, ../../app/assets/sass/_modules.scss */
+/* line 221, ../../app/assets/sass/_modules.scss */
 ul.square {
   list-style: none;
   padding: 0;
   margin: 0;
   margin-bottom: 20px; }
-  /* line 226, ../../app/assets/sass/_modules.scss */
+  /* line 227, ../../app/assets/sass/_modules.scss */
   ul.square li {
     padding-left: 1em;
     text-indent: -.7em; }
-  /* line 230, ../../app/assets/sass/_modules.scss */
+  /* line 231, ../../app/assets/sass/_modules.scss */
   ul.square li:before {
     content: "▪ ";
     color: #00257f;
     /* or whatever color you prefer */ }
+
+/* line 236, ../../app/assets/sass/_modules.scss */
+.datepicker {
+  background: url(images/iconCalendar.gif) no-repeat 10px center;
+  padding-left: 40px !important; }
 
 /* line 2, ../../app/assets/sass/_header.scss */
 nav ul {
