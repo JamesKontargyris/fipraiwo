@@ -13,15 +13,15 @@ class SendEmail {
     }
 
 
-    public function sendToLeadUnit($job, $data)
+    public function sendToLead($job, $data)
     {
-        $this->mailer->sendTo([$data['email']], $data['subject'], $data['view_lead-unit'], $data);
+        $this->mailer->sendTo([$data['lead_email']], $data['subject'], $data['view_lead'], $data);
         $job->delete();
     }
 
-    public function sendToSubUnit($job, $data)
+    public function sendToSub($job, $data)
     {
-        $this->mailer->sendTo([$data['sub_email']], $data['subject'], $data['view_sub-unit'], $data, $data['file_names']);
+        $this->mailer->sendTo([$data['sub_email']], $data['subject'], $data['view_sub'], $data, $data['file_names']);
         $job->delete();
     }
 

@@ -16,10 +16,12 @@ class UnitWorkOrderController extends BaseController
 	protected $email_subject = 'Fipra Unit Internal Work Order Submission';
     // Array of views to be sent to each email recipient
     protected $email_views = [
-        'lead-unit' => 'unit.lead-unit',
-        'sub-unit' => 'unit.sub-unit',
+        'lead' => 'unit.lead-unit',
+        'sub' => 'unit.sub-unit',
         'copies' => 'default'
     ];
+    //Default confirmed state for this IWO type
+    protected $confirmed = 0;
 
 	public function __construct(UnitWorkOrderValidator $validator)
 	{

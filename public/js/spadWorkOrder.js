@@ -19,7 +19,7 @@
             $('#agreed-fee-element-reveal').slideUp();
         }
     });
-    
+
 
     if($('select#the-work-will-be-done').val() != '')
     {

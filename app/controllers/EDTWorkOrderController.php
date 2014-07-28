@@ -19,6 +19,8 @@ class EDTWorkOrderController extends BaseController
         'lead-unit' => 'edt.edt',
         'copies' => 'default'
     ];
+    //Default confirmed state for this IWO type
+    protected $confirmed = 1;
 
 	public function __construct(EDTWorkOrderValidator $validator)
 	{

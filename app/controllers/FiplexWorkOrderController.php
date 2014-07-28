@@ -16,9 +16,11 @@ class FiplexWorkOrderController extends BaseController
 	protected $email_subject = 'Fiplex Internal Work Order Submission';
     // Array of views to be sent to each email recipient
     protected $email_views = [
-        'lead-unit' => 'fiplex.fiplex',
+        'lead' => 'fiplex.fiplex',
         'copies' => 'default'
     ];
+    //Default confirmed state for this IWO type
+    protected $confirmed = 1;
 
 	public function __construct(FiplexWorkOrderValidator $validator)
 	{

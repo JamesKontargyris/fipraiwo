@@ -25,9 +25,9 @@
 			{{ display_form_error('unit_special_adviser_or_correspondent', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('email_address', 'Email address:', ['class' => 'required']) }}
-			{{ Form::email('email_address', Input::old('email_address')) }}
-			{{ display_form_error('email_address', $errors) }}
+			{{ Form::label('lead_email_address', 'Email address:', ['class' => 'required']) }}
+			{{ Form::email('lead_email_address', Input::old('lead_email_address')) }}
+			{{ display_form_error('lead_email_address', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('account_director', 'Account Director responsible (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
@@ -48,10 +48,10 @@
 			{{ display_form_error('replicon_code', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('required_completion_date_and_time', 'Required completion date and time:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+			{{ Form::label('required_completion_date', 'Required completion date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
 			<div class="help-box">If you would like the EDT to factor in a second modification round after the initial draft, we'll be pleased to include this as part of our project planning. Subject to time, we can plan further modification rounds as the project progresses. Please indicate time constraints as early as possible so we can effectively plan to meet your deadlines.</div>
-			{{ Form::text('required_completion_date_and_time', Input::old('required_completion_date_and_time')) }}
-			{{ display_form_error('required_completion_date_and_time', $errors) }}
+			{{ Form::text('required_completion_date', Input::old('required_completion_date'), ['class' => 'datepicker']) }}
+			{{ display_form_error('required_completion_date', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('type_of_product', 'Type of document / product:', ['class' => 'required']) }} 

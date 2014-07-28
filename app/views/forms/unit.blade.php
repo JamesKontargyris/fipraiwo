@@ -26,14 +26,14 @@
                 </div>
                 <div class="formfield">
                     {{ Form::label('lead_unit_account_director', 'Account Director responsible at the Lead Unit:', ['class' => 'required']) }}
-                    {{ Form::text('lead_unit_account_director', Input::old('lead_unit_account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'email_address']) }}
+                    {{ Form::text('lead_unit_account_director', Input::old('lead_unit_account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'lead_email_address']) }}
                     <span class="small-print">Only Account Directors/senior staff can confirm Internal Work Orders.</span>
                     {{ display_form_error('lead_unit_account_director', $errors) }}
                 </div>
                 <div class="formfield">
-                    {{ Form::label('email_address', 'Email Address:', ['class' => 'required']) }}
-                    {{ Form::text('email_address', Input::old('email_address'), ['id' => 'email_address']) }}
-                    {{ display_form_error('email_address', $errors) }}
+                    {{ Form::label('lead_email_address', 'Email Address:', ['class' => 'required']) }}
+                    {{ Form::text('lead_email_address', Input::old('lead_email_address'), ['id' => 'lead_email_address']) }}
+                    {{ display_form_error('lead_email_address', $errors) }}
                 </div>
             </div>
             <div class="formgroup">

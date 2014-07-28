@@ -2,8 +2,8 @@
 
 class Formtype extends Eloquent
 {
-	public function emailrecipients()
+	public function copy_contacts()
 	{
-		return $this->hasMany('Emailrecipient');
+		return $this->hasMany('copy_contact');
 	}
 }

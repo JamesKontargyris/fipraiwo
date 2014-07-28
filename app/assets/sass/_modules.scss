@@ -181,6 +181,9 @@ ul.button-menu {
 .italic {
   font-style: italic;
 }
+.bold {
+  font-style: bold;
+}
 .grey-box {
 	@include clearfix();
     @include background(linear-gradient(left, $light-grey, white));
@@ -236,4 +239,5 @@ ul.square {
 .datepicker {
   background:url(images/iconCalendar.gif) no-repeat 10px center;
   padding-left:40px !important;
+  padding:$v-rhythm / 4 10px;
 }

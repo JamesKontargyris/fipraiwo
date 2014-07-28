@@ -25,9 +25,9 @@
 			{{ display_form_error('unit_special_adviser_or_correspondent', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('email_address', 'Contact email address:', ['class' => 'required']) }}
-			{{ Form::email('email_address', Input::old('email_address')) }}
-			{{ display_form_error('email_address', $errors) }}
+			{{ Form::label('lead_email_address', 'Contact email address:', ['class' => 'required']) }}
+			{{ Form::email('lead_email_address', Input::old('lead_email_address')) }}
+			{{ display_form_error('lead_email_address', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('account_director', 'Account Director responsible (only applicable to Fipra International):') }}

@@ -23,9 +23,9 @@
                     <span class="small-print">No Unit other than Fipra International can submit an Internal Work Order for a Special Adviser.</span>
                 </div>
                 <div class="formfield">
-                    {{ Form::label('email_address', 'Email Address:', ['class' => 'required']) }}
-                    {{ Form::text('email_address', Input::old('email_address')) }}
-                    {{ display_form_error('email_address', $errors) }}
+                    {{ Form::label('lead_email_address', 'Email Address:', ['class' => 'required']) }}
+                    {{ Form::text('lead_email_address', Input::old('lead_email_address')) }}
+                    {{ display_form_error('lead_email_address', $errors) }}
                 </div>
                 <div class="formfield">
                     {{ Form::label('special_adviser', 'Special Adviser instructed:', ['class' => 'required']) }}

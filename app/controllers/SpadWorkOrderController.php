@@ -16,10 +16,12 @@ class SpadWorkOrderController extends BaseController
 	protected $email_subject = 'Special Adviser Internal Work Order Submission';
     // Array of views to be sent to each email recipient
     protected $email_views = [
-        'lead-unit' => 'spad.account-director',
-        'sub-unit' => 'spad.spad',
+        'lead' => 'spad.account-director',
+        'sub' => 'spad.spad',
         'copies' => 'default'
     ];
+    //Default confirmed state for this IWO type
+    protected $confirmed = 0;
 
     public function __construct(SpadWorkOrderValidator $validator)
 	{
