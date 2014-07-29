@@ -127,15 +127,25 @@ class BaseController extends Controller {
         $iwo_ref->save();
 
         //Insert contact email addresses in the DB
-        $lead_contact = new Lead_contact;
+        $lead_contact = new User;
         $lead_contact->iwo_id = $workorder->id;
         $lead_contact->email = $data['lead_email'];
         $lead_contact->save();
 
-        $sub_contact = new Sub_contact;
-        $sub_contact->iwo_id = $workorder->id;
-        $sub_contact->email = $data['sub_email'];
-        $sub_contact->save();
+        if($data['sub_email'])
+        {
+            $sub_contact = new User;
+            $sub_contact->iwo_id = $workorder->id;
+            $sub_contact->email = $data['sub_email'];
+            $sub_contact->save();
+        }
+
+        //Assign roles to users
+        $user_lead = User::find($lead_contact->id);
+        $user_sub = User::find($sub_contact->id);
+
+        $user_lead->attachRole(Role::where('name', 'Lead')->pluck('id'));
+        $user_sub->attachRole(Role::where('name', 'Sub')->pluck('id'));
 
         //Add the reference code to the $data array for use in emails
         $data['iwo_ref'] = $ref_code;

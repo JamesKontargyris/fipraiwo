@@ -2,10 +2,13 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Zizaco\Entrust\HasRole;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	/**
+    use HasRole;
+
+    /**
 	 * The database table used by the model.
 	 *
 	 * @var string

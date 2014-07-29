@@ -6,7 +6,7 @@ Route::controller('spad', 'SpadWorkOrderController');
 Route::controller('fiplex', 'FiplexWorkOrderController');
 Route::controller('fiptalk', 'FiptalkWorkOrderController');
 
-//Route::get('edt/about', 'PagesController@about_EDT');
+Route::controller('manage', 'ManagementController');
 
 Route::get('about/edt', 'PagesController@about_edt');
 Route::get('about/fiplex', 'PagesController@about_fiplex');

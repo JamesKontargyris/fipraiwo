@@ -1,0 +1,77 @@
+[33mcommit a42b1baf430445326ff78515d39e294641b58dbc[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Sun Jul 27 13:40:15 2014 +0100
+
+    Updates to Spad fees box; added datepicker functionality
+
+[33mcommit 0802047dfc448489cd0413af3e12afed676a8022[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Sat Jul 26 16:17:17 2014 +0100
+
+    Added team member names and rates functionality on Unit form
+
+[33mcommit 141e5975df7523117f77d94c9a1c29499e66c13c[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Fri Jul 25 13:42:46 2014 +0100
+
+    Static information pages added; begun implementation of people/rates in fees section
+
+[33mcommit 77053f9eabee7b6fde553f078108639ba6ad72e2[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Fri Jul 25 10:40:51 2014 +0100
+
+    Added hourly fees help box and person(s) entry form
+
+[33mcommit 7a53168d2c078f73258702ca8c73505ef3807f7e[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Wed Jul 23 16:59:53 2014 +0100
+
+    Text updates and new fee fields added
+
+[33mcommit 31e27faa215804615d07bd1a7e1c68bdae27ae1f[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Fri Jul 18 09:38:52 2014 +0100
+
+    Rectified clearing issue with info box on form pages
+
+[33mcommit dd9bf3e6d25be2957c26c420996228bf825db443[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Thu Jul 17 17:08:23 2014 +0100
+
+    Small text changes
+
+[33mcommit 074ff3cbc8465e4bb8c280637014d820db375901[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Thu Jul 17 14:49:17 2014 +0100
+
+    Renamed .env.php to correct file name
+
+[33mcommit 9c2a8c60fb0ea9946cda97801ed02621efcc12ca[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Thu Jul 17 14:29:15 2014 +0100
+
+    General information added to form pages
+
+[33mcommit d43301f26967d5ac1bf80932ea1fa82b67c14872[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Thu Jul 17 10:44:45 2014 +0100
+
+    Added autocomplete functionality, PC changes incorporated, new email views added, saveandsend method in basecontroller refactored
+
+[33mcommit 4148752dd877b37e063e01a3369ef27a17345d86[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Fri Jun 20 14:47:46 2014 +0100
+
+    Removed files in upload folder
+
+[33mcommit b615770d97cb844e18b6a014b341eb9c4c373dc6[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Fri Jun 20 14:39:00 2014 +0100
+
+    Email prototype site completed
+
+[33mcommit 6bca0e8f5a1a4d888a15c40ce519b1e141c965ec[m
+Author: James Kontargyris <james@jameskontargyris.co.uk>
+Date:   Wed May 14 12:48:15 2014 +0100
+
+    Added queues for emails and uploaded file deletion
