@@ -90,8 +90,17 @@
 	padding:($v-rhythm / 2) 10px;
 	ul li {
 		padding:($v-rhythm / 2) 0;
-		border-top:1px solid lighten($red, 45%);
 	}
+}
+.messages,
+.message {
+  background-color:lighten(lightgreen, 10%);
+  border:1px solid lightgreen;
+  margin-bottom:$v-rhythm;
+  padding:($v-rhythm / 2) 10px;
+  ul li {
+    padding:($v-rhythm / 2) 0;
+  }
 }
 .formfield {
 	margin-bottom:$v-rhythm;

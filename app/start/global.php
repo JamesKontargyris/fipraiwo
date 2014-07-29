@@ -62,6 +62,12 @@ App::error(function(Iwo\FileUpload\FileUploadException $exception, $code)
 	return Redirect::back()->withErrors($exception->getErrors())->withInput();
 });
 
+App::error(function(Iwo\Exceptions\ManagementLoginException $exception, $code)
+{
+    // Login fails - go back to the form with errors
+    return Redirect::back()->withErrors($exception->getErrors());
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler
