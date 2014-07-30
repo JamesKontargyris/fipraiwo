@@ -14,7 +14,7 @@ Route::get('/addperms', function()
 Route::when('*/save', 'input_exists');
 
 Route::controller('manage', 'ManagementController');
-Route::when('manage/*', 'loggedin');
+Route::when('manage/*', 'auth');
 
 Route::get('about/edt', 'PagesController@about_edt');
 Route::get('about/fiplex', 'PagesController@about_fiplex');

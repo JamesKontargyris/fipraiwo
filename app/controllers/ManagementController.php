@@ -8,6 +8,7 @@ class ManagementController extends BaseController
 {
     protected $page_title;
     protected $workorder;
+    protected $user;
 
     public function __construct()
     {
@@ -23,12 +24,19 @@ class ManagementController extends BaseController
             $this->workorder->workorder = pretty_input(unserialize($this->workorder->workorder));
         }
 
+        $this->user = Auth::user();
+
         //Set default page title
         $this->page_title = "IWO Management";
     }
 
     public function getIndex()
     {
+        if(Session::get('iwo_id'))
+        {
+            return Redirect::to('manage/view');
+        }
+        
         return View::make('manage.login')->with('page_title', $this->page_title);
     }
 
@@ -59,12 +67,15 @@ class ManagementController extends BaseController
 
     public function getView()
     {
-        return View::make('manage.view_iwo')->with(['page_title' => $this->page_title, 'workorder' => $this->workorder, 'user' => Auth::user()]);
+        $this->check_permission('read');
+
+        return View::make('manage.view_iwo')->with(['page_title' => $this->page_title, 'workorder' => $this->workorder, 'user' => $this->user]);
     }
 
     //Add a note to the current IWO
     public function getNote()
     {
+        $this->check_permission('comment');
         return View::make('manage.add_note')->with(['page_title' => $this->page_title, 'workorder' => $this->workorder, 'user' => Auth::user()]);
     }
 
@@ -81,12 +92,8 @@ class ManagementController extends BaseController
 
     public function getEdit()
     {
+        $this->check_permission('edit');
         return "Edit form";
-    }
-
-    public function getError()
-    {
-        return "ERROR: no entry. Your session may have timed out or you may not have sufficient rights to access this section.";
     }
 
     public function getLogout()
@@ -97,6 +104,8 @@ class ManagementController extends BaseController
 
     public function getConfirm()
     {
+        $this->check_permission('confirm');
+
         $workorder = Workorder::find(Session::get('iwo_id'));
         $workorder->confirmed = 1;
         $workorder->updated_at = date_time_now();
@@ -109,6 +118,8 @@ class ManagementController extends BaseController
 
     public function getUnconfirm()
     {
+        $this->check_permission('confirm');
+
         $workorder = Workorder::find(Session::get('iwo_id'));
         $workorder->confirmed = 0;
         $workorder->updated_at = date_time_now();
@@ -121,6 +132,8 @@ class ManagementController extends BaseController
 
     public function getCancel()
     {
+        $this->check_permission('cancel');
+
         $workorder = Workorder::find(Session::get('iwo_id'));
         $workorder->cancelled = 1;
         $workorder->updated_at = date_time_now();
@@ -129,5 +142,17 @@ class ManagementController extends BaseController
         Logger::add_log('Work order cancelled.');
 
         return Redirect::to('manage/view')->with('message', 'Work order cancelled.');
+    }
+
+    private function check_permission($permission)
+    {
+        if( ! $this->user->can($permission))
+        {
+            return Redirect::to('manage')->with('message', 'Sorry, you do not have the necessary permissions to do that.');
+        }
+        else
+        {
+            return true;
+        }
     }
 }
