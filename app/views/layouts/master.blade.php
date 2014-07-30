@@ -28,15 +28,15 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div class="content-container">
-            
-                <nav>
-                    <div class="links-toggle">
-                      <a href="#" class="but-toggle"><i class="fa fa-caret-down"></i> SHOW MENU</a>
-                    </div>
-                    <ul>
-                        @yield('nav_links')
-                    </ul>
-                </nav>
+            <nav>
+                <div class="links-toggle">
+                  <a href="#" class="but-toggle"><i class="fa fa-caret-down"></i> SHOW MENU</a>
+                </div>
+
+                <ul>
+                    @yield('nav_links')
+                </ul>
+            </nav>
             <header>
                 <div id="logo">
                     <img src="{{ asset('img/fipra_logo.gif') }}" alt="Fipra - Professional Public Affairs in More Than 50 Countries">

@@ -7,10 +7,21 @@ use Iwo\Exceptions\ManagementLoginException;
 class ManagementController extends BaseController
 {
     protected $page_title;
+    protected $workorder;
 
     public function __construct()
     {
         parent::__construct();
+
+        if(Session::get('iwo_id'))
+        {
+            $this->workorder = Workorder::find(Session::get('iwo_id'));
+            //Get logs ordered latest to oldest
+            $this->workorder->logs = Workorder::find(Session::get('iwo_id'))->logs()->orderBy('created_at', 'DESC')->get();
+            $this->workorder->notes = Workorder::find(Session::get('iwo_id'))->notes()->orderBy('created_at', 'DESC')->get();
+            $this->workorder->iwo_ref = Session::get('iwo_ref');
+            $this->workorder->workorder = pretty_input(unserialize($this->workorder->workorder));
+        }
 
         //Set default page title
         $this->page_title = "IWO Management";
@@ -33,6 +44,10 @@ class ManagementController extends BaseController
         {
             //    If user found, log the user in and redirect to view IWO
             Auth::loginUsingId($user->id);
+            Session::set('user_id', $user->id);
+            Session::set('iwo_id', $iwo_id);
+            Session::set('iwo_ref', $iwo_ref);
+
             return Redirect::to('manage/view');
         }
         else
@@ -44,16 +59,24 @@ class ManagementController extends BaseController
 
     public function getView()
     {
-        $workorder = Workorder::where('id', '=', Auth::user()->iwo_id)->first();
-        $workorder->iwo_ref = Iwo_ref::where('iwo_id', '=', $workorder->id)->pluck('iwo_ref');
-        $workorder->workorder = pretty_input(unserialize($workorder->workorder));
-        $workorder->notes = [
-            ['author' => 'Mark McGann', 'datetime' => '2014-07-30 12:35:54', 'note' => 'This is note 3'],
-            ['author' => 'Laura Batchelor', 'datetime' => '2014-07-30 10:23:54', 'note' => 'This is note 2'],
-            ['author' => 'James Kontargyris', 'datetime' => '2014-07-29 14:46:54', 'note' => 'This is note 1'],
-        ];
+        return View::make('manage.view_iwo')->with(['page_title' => $this->page_title, 'workorder' => $this->workorder, 'user' => Auth::user()]);
+    }
 
-        return View::make('manage.view_iwo')->with(['page_title' => $this->page_title, 'workorder' => $workorder, 'user' => Auth::user()]);
+    //Add a note to the current IWO
+    public function getNote()
+    {
+        return View::make('manage.add_note')->with(['page_title' => $this->page_title, 'workorder' => $this->workorder, 'user' => Auth::user()]);
+    }
+
+    public function postNote()
+    {
+        if(Input::get('note') != "")
+        {
+            Note::add_note(Input::get('note'));
+        }
+
+        Logger::add_log('New note added.');
+        return Redirect::to('manage/view')->with('message', 'Note added.');
     }
 
     public function getEdit()
@@ -70,5 +93,41 @@ class ManagementController extends BaseController
     {
         Auth::logout();
         return Redirect::to('manage')->with('message', 'You have been logged out.');
+    }
+
+    public function getConfirm()
+    {
+        $workorder = Workorder::find(Session::get('iwo_id'));
+        $workorder->confirmed = 1;
+        $workorder->updated_at = date_time_now();
+        $workorder->save();
+
+        Logger::add_log('Work order confirmed.');
+
+        return Redirect::to('manage/view')->with('message', 'Work order confirmed.');
+    }
+
+    public function getUnconfirm()
+    {
+        $workorder = Workorder::find(Session::get('iwo_id'));
+        $workorder->confirmed = 0;
+        $workorder->updated_at = date_time_now();
+        $workorder->save();
+
+        Logger::add_log('Work order un-confirmed.');
+
+        return Redirect::to('manage/view')->with('message', 'Work order un-confirmed.');
+    }
+
+    public function getCancel()
+    {
+        $workorder = Workorder::find(Session::get('iwo_id'));
+        $workorder->cancelled = 1;
+        $workorder->updated_at = date_time_now();
+        $workorder->save();
+
+        Logger::add_log('Work order cancelled.');
+
+        return Redirect::to('manage/view')->with('message', 'Work order cancelled.');
     }
 }

@@ -22,8 +22,8 @@
   }
 }
 
-.notes {
-  .note {
+.log-list {
+  .entry {
     margin-bottom:$v-rhythm / 2;
     background-color:$light-grey;
     padding:($v-rhythm / 2) 10px;
@@ -42,5 +42,17 @@ ul.display-iwo {
     span {
 
     }
+  }
+}
+
+ul.actions {
+  li a {
+    margin-bottom:$v-rhythm / 2;
+    @include breakpoint($m-max) {
+      display:block;
+    }
+  }
+  @include breakpoint($m) {
+    @include horizontal-list();
   }
 }

@@ -149,39 +149,40 @@ h5 {
   margin-bottom: 5px; }
   /* line 68, ../../app/assets/sass/_base.scss */
   h5.no-underline {
+    padding-bottom: 0;
     border-bottom: 0; }
 
-/* line 73, ../../app/assets/sass/_base.scss */
+/* line 74, ../../app/assets/sass/_base.scss */
 h1 small, h2 small, h3 small, h4 small, h5 small {
   font-size: 0.7em;
   color: #5f697f; }
 
-/* line 78, ../../app/assets/sass/_base.scss */
+/* line 79, ../../app/assets/sass/_base.scss */
 p {
   padding-bottom: 20px; }
 
-/* line 81, ../../app/assets/sass/_base.scss */
+/* line 82, ../../app/assets/sass/_base.scss */
 strong {
   font-weight: bold; }
 
-/* line 84, ../../app/assets/sass/_base.scss */
+/* line 85, ../../app/assets/sass/_base.scss */
 label {
   display: inline-block;
   font-weight: bold;
   color: #5f697f;
   padding-bottom: 10px; }
 
-/* line 97, ../../app/assets/sass/_base.scss */
+/* line 98, ../../app/assets/sass/_base.scss */
 a.back-to-top {
   display: inline-block;
   padding: 10px 10px;
   background-color: #f2f2f2;
   margin: 10px 0; }
-  /* line 102, ../../app/assets/sass/_base.scss */
+  /* line 103, ../../app/assets/sass/_base.scss */
   a.back-to-top:hover {
     opacity: 0.8; }
 
-/* line 106, ../../app/assets/sass/_base.scss */
+/* line 107, ../../app/assets/sass/_base.scss */
 input[type=text],
 input[type=email],
 input[type=file],
@@ -192,66 +193,66 @@ textarea {
   font-size: 0.875rem;
   font-family: Arial, Helvetica, sans-serif; }
   @media (min-width: 900px) {
-    /* line 106, ../../app/assets/sass/_base.scss */
+    /* line 107, ../../app/assets/sass/_base.scss */
     input[type=text],
     input[type=email],
     input[type=file],
     textarea {
       font-size: 14px;
       font-size: 0.875rem; } }
-  /* line 117, ../../app/assets/sass/_base.scss */
+  /* line 118, ../../app/assets/sass/_base.scss */
   input[type=text].inline,
   input[type=email].inline,
   input[type=file].inline,
   textarea.inline {
     width: auto; }
 
-/* line 121, ../../app/assets/sass/_base.scss */
+/* line 122, ../../app/assets/sass/_base.scss */
 input[type=checkbox] {
   width: 30px;
   height: 30px;
   vertical-align: middle; }
 
-/* line 126, ../../app/assets/sass/_base.scss */
+/* line 127, ../../app/assets/sass/_base.scss */
 input[type=submit] {
   cursor: pointer;
   padding-left: 20px;
   padding-right: 20px;
   font-weight: bold; }
 
-/* line 132, ../../app/assets/sass/_base.scss */
+/* line 133, ../../app/assets/sass/_base.scss */
 select {
   display: block;
   padding: 5px 10px;
   font-size: 14px;
   font-size: 0.875rem; }
   @media (min-width: 900px) {
-    /* line 132, ../../app/assets/sass/_base.scss */
+    /* line 133, ../../app/assets/sass/_base.scss */
     select {
       font-size: 14px;
       font-size: 0.875rem; } }
-  /* line 139, ../../app/assets/sass/_base.scss */
+  /* line 140, ../../app/assets/sass/_base.scss */
   select.inline {
     display: inline-block; }
 
-/* line 143, ../../app/assets/sass/_base.scss */
+/* line 144, ../../app/assets/sass/_base.scss */
 strong {
   font-weight: bold; }
 
-/* line 147, ../../app/assets/sass/_base.scss */
+/* line 148, ../../app/assets/sass/_base.scss */
 #content {
   font-size: 14px;
   font-size: 0.875rem; }
 
-/* line 150, ../../app/assets/sass/_base.scss */
+/* line 151, ../../app/assets/sass/_base.scss */
 .red {
   color: #cc0a12; }
 
-/* line 153, ../../app/assets/sass/_base.scss */
+/* line 154, ../../app/assets/sass/_base.scss */
 .showjs {
   display: none; }
 
-/* line 156, ../../app/assets/sass/_base.scss */
+/* line 157, ../../app/assets/sass/_base.scss */
 .hidejs {
   display: block; }
 
@@ -852,29 +853,38 @@ ul.square {
   padding-left: 40px !important;
   padding: 5px 10px; }
 
-/* line 2, ../../app/assets/sass/_header.scss */
+/* line 1, ../../app/assets/sass/_header.scss */
+.user-details {
+  font-size: 12px;
+  font-size: 0.75rem;
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #ccd3e5; }
+
+/* line 10, ../../app/assets/sass/_header.scss */
 nav ul {
   overflow: hidden;
   *zoom: 1;
   display: none;
   padding-top: 20px; }
   @media (min-width: 900px) {
-    /* line 2, ../../app/assets/sass/_header.scss */
+    /* line 10, ../../app/assets/sass/_header.scss */
     nav ul {
       display: block;
       padding-top: 0; } }
-  /* line 10, ../../app/assets/sass/_header.scss */
+  /* line 18, ../../app/assets/sass/_header.scss */
   nav ul li {
     border-bottom: 1px solid white; }
     @media (min-width: 900px) {
-      /* line 10, ../../app/assets/sass/_header.scss */
+      /* line 18, ../../app/assets/sass/_header.scss */
       nav ul li {
         float: left;
         width: 20%;
         margin-bottom: 5px;
         padding-left: 0;
         padding-right: 5px; } }
-    /* line 19, ../../app/assets/sass/_header.scss */
+    /* line 27, ../../app/assets/sass/_header.scss */
     nav ul li a {
       display: block;
       font-size: 12px;
@@ -884,53 +894,53 @@ nav ul {
       background: -webkit-linear-gradient(left, #e6e6e6, #fafafa);
       background: linear-gradient(to right, #e6e6e6, #fafafa);
       color: #333333; }
-      /* line 25, ../../app/assets/sass/_header.scss */
+      /* line 33, ../../app/assets/sass/_header.scss */
       nav ul li a:hover {
         background: -moz-linear-gradient(right, #e6e6e6, #fafafa);
         background: -webkit-linear-gradient(right, #e6e6e6, #fafafa);
         background: linear-gradient(to left, #e6e6e6, #fafafa); }
-      /* line 28, ../../app/assets/sass/_header.scss */
+      /* line 36, ../../app/assets/sass/_header.scss */
       nav ul li a.highlight {
         background: #00257f;
         color: white;
         font-weight: bold; }
-        /* line 32, ../../app/assets/sass/_header.scss */
+        /* line 40, ../../app/assets/sass/_header.scss */
         nav ul li a.highlight:hover {
           opacity: 0.8; }
 
-/* line 40, ../../app/assets/sass/_header.scss */
+/* line 48, ../../app/assets/sass/_header.scss */
 header {
   overflow: hidden;
   *zoom: 1;
   padding-top: 20px;
   margin-bottom: 10px; }
   @media (max-width: 900px) {
-    /* line 45, ../../app/assets/sass/_header.scss */
+    /* line 53, ../../app/assets/sass/_header.scss */
     header #logo img {
       display: block;
       margin: 0 auto 10px; }
-    /* line 50, ../../app/assets/sass/_header.scss */
+    /* line 58, ../../app/assets/sass/_header.scss */
     header #page-title h1 {
       text-align: center; } }
   @media (min-width: 900px) {
-    /* line 56, ../../app/assets/sass/_header.scss */
+    /* line 64, ../../app/assets/sass/_header.scss */
     header #logo {
       float: left;
       margin-right: 30px; }
-    /* line 60, ../../app/assets/sass/_header.scss */
+    /* line 68, ../../app/assets/sass/_header.scss */
     header #page-title {
       float: left; } }
 
-/* line 65, ../../app/assets/sass/_header.scss */
+/* line 73, ../../app/assets/sass/_header.scss */
 .links-toggle {
   position: relative;
   margin: 0 auto;
   padding-bottom: 30px; }
   @media (min-width: 900px) {
-    /* line 65, ../../app/assets/sass/_header.scss */
+    /* line 73, ../../app/assets/sass/_header.scss */
     .links-toggle {
       display: none; } }
-  /* line 72, ../../app/assets/sass/_header.scss */
+  /* line 80, ../../app/assets/sass/_header.scss */
   .links-toggle .but-toggle {
     position: absolute;
     top: 0;
@@ -945,7 +955,7 @@ header {
     font-size: 10px;
     font-size: 0.625rem;
     font-weight: bold; }
-    /* line 85, ../../app/assets/sass/_header.scss */
+    /* line 93, ../../app/assets/sass/_header.scss */
     .links-toggle .but-toggle:hover {
       opacity: 0.8; }
 
@@ -987,12 +997,12 @@ footer {
     padding: 10px 10px; }
 
 /* line 26, ../../app/assets/sass/_manage.scss */
-.notes .note {
+.log-list .entry {
   margin-bottom: 10px;
   background-color: #dee0e6;
   padding: 10px 10px; }
   /* line 30, ../../app/assets/sass/_manage.scss */
-  .notes .note:last-child {
+  .log-list .entry:last-child {
     margin-bottom: 0; }
 
 /* line 37, ../../app/assets/sass/_manage.scss */
@@ -1001,3 +1011,37 @@ ul.display-iwo li {
   /* line 39, ../../app/assets/sass/_manage.scss */
   ul.display-iwo li strong {
     display: block; }
+
+/* line 49, ../../app/assets/sass/_manage.scss */
+ul.actions li a {
+  margin-bottom: 10px; }
+  @media (max-width: 480px) {
+    /* line 49, ../../app/assets/sass/_manage.scss */
+    ul.actions li a {
+      display: block; } }
+@media (min-width: 480px) {
+  /* line 48, ../../app/assets/sass/_manage.scss */
+  ul.actions {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    *zoom: 1; }
+    /* line 62, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.0.0.alpha.19\stylesheets\compass\typography\lists\_horizontal-list.scss */
+    ul.actions li {
+      list-style-image: none;
+      list-style-type: none;
+      margin-left: 0;
+      white-space: nowrap;
+      float: left;
+      padding-left: 4px;
+      padding-right: 4px; }
+      /* line 49, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.0.0.alpha.19\stylesheets\compass\typography\lists\_horizontal-list.scss */
+      ul.actions li:first-child {
+        padding-left: 0; }
+      /* line 50, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.0.0.alpha.19\stylesheets\compass\typography\lists\_horizontal-list.scss */
+      ul.actions li:last-child {
+        padding-right: 0; }
+      /* line 52, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.0.0.alpha.19\stylesheets\compass\typography\lists\_horizontal-list.scss */
+      ul.actions li.last {
+        padding-right: 0; } }

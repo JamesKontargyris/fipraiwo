@@ -1,0 +1,16 @@
+<h5>NOTES</h5>
+@if(count($workorder->notes) > 0)
+<ul class="log-list">
+    @foreach($workorder->notes as $note)
+    <li class="entry">
+        <p>{{ $note->note }}</p>
+        <div class="small-print">
+            {{ $note->user->name }}<br/>
+            {{ date("d M Y", strtotime($note->created_at)) }} at {{ date("H.i", strtotime($note->created_at)) }}</div>
+
+    </li>
+    @endforeach
+</ul>
+@else
+No notes.
+@endif

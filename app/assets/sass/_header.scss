@@ -1,3 +1,11 @@
+.user-details {
+  @include font-size(12);
+  color:black;
+  font-weight: $font-bold;
+  padding:$v-rhythm / 2;
+  background-color:$periwinkle;
+}
+
 nav {
 	ul {
 		@include clearfix();

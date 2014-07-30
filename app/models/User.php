@@ -8,6 +8,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     use HasRole;
 
+    public function notes()
+    {
+        return $this->hasMany('Note');
+    }
+
     /**
 	 * The database table used by the model.
 	 *

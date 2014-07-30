@@ -5,36 +5,17 @@
 @stop
 
 @section('content')
-<h2>{{ $workorder->title }} <small>(Ref: {{ $workorder->iwo_ref }})</small></h2>
+<h2>{{ $workorder->title }}<br/><small>Ref: {{ $workorder->iwo_ref }}</small></h2>
+
+@include('manage.partials.messages')
 
 <div class="col-12">
     <section class="outline-box col-4">
-        <h5 class="no-underline">STATUS</h5>
-        @if($workorder->confirmed && ! $workorder->cancelled)
-        <div class="green-highlight"><i class="fa fa-lg fa-lock"></i> CONFIRMED</div>
-        @elseif($workorder->cancelled && ! $workorder->confirmed)
-        <div class="red-highlight"><i class="fa fa-lg fa-times"></i> CANCELLED</div>
-        @else
-        <div class="orange-highlight"><i class="fa fa-lg fa-unlock"></i> UNCONFIRMED</div>
-        @endif
+        @include('manage.partials.status')
     </section>
 
     <section class="outline-box col-8 last">
-        <h5>ACTIONS</h5>
-        <ul class="actions">
-            @if($user->can('edit'))
-            <li>EDIT</li>
-            @endif
-            @if($user->can('confirm'))
-            <li>CONFIRM</li>
-            @endif
-            @if($user->can('comment'))
-            <li>ADD A NOTE</li>
-            @endif
-            @if($user->can('cancel'))
-            <li>CANCEL</li>
-            @endif
-        </ul>
+        @include('manage.partials.actions')
     </section>
 </div>
 
@@ -62,20 +43,11 @@
 
 <div class="col-4 last">
     <section class="outline-box">
-        <h5>NOTES</h5>
-        @if($workorder->notes)
-            <ul class="notes">
-                @foreach($workorder->notes as $note)
-                    <li class="note">
-                        <p>{{ $note['note'] }}</p>
-                        <div class="small-print">{{ $note['author'] }} on {{ date("d M Y", strtotime($note['datetime'])) }} at {{ date("h.ia", strtotime($note['datetime'])) }}</div>
+        @include('manage.partials.notes')
+    </section>
 
-                    </li>
-                @endforeach
-            </ul>
-        @else
-            <p>No notes.</p>
-        @endif
+    <section class="outline-box">
+        @include('manage.partials.eventlog')
     </section>
 </div>
 @stop

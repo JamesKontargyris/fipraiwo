@@ -129,3 +129,8 @@ function email_addresses_to_array($recipients = array())
     foreach($recipients as $recipient) { $addresses[] = $recipient->email; }
     return $addresses;
 }
+
+function date_time_now()
+{
+    return date("Y-m-d h:i:s");
+}

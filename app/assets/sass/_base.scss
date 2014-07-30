@@ -66,6 +66,7 @@ h5 {
   border-bottom: 1px solid $light-grey;
   margin-bottom:$v-rhythm / 4;
   &.no-underline {
+    padding-bottom:0;
     border-bottom:0;
   }
 }

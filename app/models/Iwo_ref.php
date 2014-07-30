@@ -4,12 +4,11 @@ use Iwo\Workers\Generate;
 
 class Iwo_ref extends Eloquent
 {
-
     protected $guarded = array('id');
 
-    public function workorders()
+    public function workorder()
     {
-        return $this->belongsTo('workorder');
+        return $this->belongsTo('Workorder');
     }
 
     public function generate_ref()

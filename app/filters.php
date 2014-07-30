@@ -46,7 +46,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('loggedin', function()
 {
-    if( ! Auth::check() && Request::path() != "manage")
+    if( ! Session::get('user_id') && Request::path() != "manage")
     {
         return Redirect::to('manage');
     }
