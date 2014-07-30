@@ -6,7 +6,7 @@
     <li><a href="/manage/confirm" onClick="return confirm('Are you sure you want to confirm this IWO?');" class="primary">CONFIRM</a></li>
     @endif
     @if($user->can('confirm') && $workorder->confirmed)
-    <li><a href="/manage/unconfirm" onClick="return confirm('Are you sure you want to un-confirm this IWO?');" class="secondary">UN-CONFIRM</a></li>
+    <!--<li><a href="/manage/unconfirm" onClick="return confirm('Are you sure you want to un-confirm this IWO?');" class="secondary">UN-CONFIRM</a></li>-->
     @endif
     @if($user->can('edit') && ! $workorder->confirmed)
     <li><a href="/manage/edit" class="secondary">EDIT</a></li>

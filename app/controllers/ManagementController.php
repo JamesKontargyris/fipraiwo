@@ -111,6 +111,8 @@ class ManagementController extends BaseController
         $workorder->updated_at = date_time_now();
         $workorder->save();
 
+        //TODO: queue sendmailer to send emails to copy recipients
+
         Logger::add_log('Work order confirmed.');
 
         return Redirect::to('manage/view')->with('message', 'Work order confirmed.');
@@ -118,6 +120,7 @@ class ManagementController extends BaseController
 
     public function getUnconfirm()
     {
+        return false;
         $this->check_permission('confirm');
 
         $workorder = Workorder::find(Session::get('iwo_id'));
