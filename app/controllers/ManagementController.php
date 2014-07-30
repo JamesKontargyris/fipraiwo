@@ -36,7 +36,7 @@ class ManagementController extends BaseController
         {
             return Redirect::to('manage/view');
         }
-        
+
         return View::make('manage.login')->with('page_title', $this->page_title);
     }
 
