@@ -8,21 +8,17 @@ class ManagementController extends BaseController
 {
     protected $page_title;
 
-    public function __construct(){
+    public function __construct()
+    {
+        parent::__construct();
+
         //Set default page title
         $this->page_title = "IWO Management";
     }
 
     public function getIndex()
     {
-        if(Auth::check())
-        {
-            return View::make('manage.dashboard')->with('page_title', $this->page_title);
-        }
-        else
-        {
-            return View::make('manage.login')->with('page_title', $this->page_title);
-        }
+        return View::make('manage.login')->with('page_title', $this->page_title);
     }
 
     public function postIndex()
@@ -32,11 +28,12 @@ class ManagementController extends BaseController
         $iwo_ref = Input::get('iwo_ref');
         //Get IWO id
         $iwo_id = Iwo_ref::where('iwo_ref', $iwo_ref)->pluck('iwo_id');
+        //Check to see if user exists
         if($user = User::where('email', '=', $email)->where('iwo_id', '=', $iwo_id)->first())
         {
             //    If user found, log the user in and redirect to view IWO
             Auth::loginUsingId($user->id);
-            return View::make('manage.dashboard')->with('page_title', $this->page_title);
+            return Redirect::to('manage/view');
         }
         else
         {
@@ -47,7 +44,16 @@ class ManagementController extends BaseController
 
     public function getView()
     {
-        return "Congratulations - you are logged in.";
+        $workorder = Workorder::where('id', '=', Auth::user()->iwo_id)->first();
+        $workorder->iwo_ref = Iwo_ref::where('iwo_id', '=', $workorder->id)->pluck('iwo_ref');
+        $workorder->workorder = pretty_input(unserialize($workorder->workorder));
+        $workorder->notes = [
+            ['author' => 'Mark McGann', 'datetime' => '2014-07-30 12:35:54', 'note' => 'This is note 3'],
+            ['author' => 'Laura Batchelor', 'datetime' => '2014-07-30 10:23:54', 'note' => 'This is note 2'],
+            ['author' => 'James Kontargyris', 'datetime' => '2014-07-29 14:46:54', 'note' => 'This is note 1'],
+        ];
+
+        return View::make('manage.view_iwo')->with(['page_title' => $this->page_title, 'workorder' => $workorder, 'user' => Auth::user()]);
     }
 
     public function getEdit()
@@ -60,14 +66,9 @@ class ManagementController extends BaseController
         return "ERROR: no entry. Your session may have timed out or you may not have sufficient rights to access this section.";
     }
 
-    private function logged_in()
-    {
-        return Auth::check();
-    }
-
     public function getLogout()
     {
         Auth::logout();
         return Redirect::to('manage')->with('message', 'You have been logged out.');
     }
-} 
+}

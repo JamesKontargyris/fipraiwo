@@ -6,7 +6,15 @@ Route::controller('spad', 'SpadWorkOrderController');
 Route::controller('fiplex', 'FiplexWorkOrderController');
 Route::controller('fiptalk', 'FiptalkWorkOrderController');
 
+Route::get('/addperms', function()
+{
+
+});
+
+Route::when('*/save', 'input_exists');
+
 Route::controller('manage', 'ManagementController');
+Route::when('manage/*', 'loggedin');
 
 Route::get('about/edt', 'PagesController@about_edt');
 Route::get('about/fiplex', 'PagesController@about_fiplex');

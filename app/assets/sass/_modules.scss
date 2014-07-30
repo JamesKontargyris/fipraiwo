@@ -89,7 +89,7 @@
 	margin-bottom:$v-rhythm;
 	padding:($v-rhythm / 2) 10px;
 	ul li {
-		padding:($v-rhythm / 2) 0;
+		padding:($v-rhythm / 4) 0;
 	}
 }
 .messages,
@@ -99,7 +99,7 @@
   margin-bottom:$v-rhythm;
   padding:($v-rhythm / 2) 10px;
   ul li {
-    padding:($v-rhythm / 2) 0;
+    padding:($v-rhythm / 4) 0;
   }
 }
 .formfield {
@@ -114,11 +114,17 @@
 	}
 }
 .formgroup {
+  @include clearfix();
 	position:relative;
 	padding:$v-rhythm / 2 0;
 	background-color:lighten($periwinkle, 10%);
-	// border:1px solid $light-grey;
 	margin-bottom:$v-rhythm;
+    &.highlight {
+      background-color:$blue;
+      label {
+        color:white;
+      }
+    }
 	.file-upload-close {
 		position:absolute;
 		top:50%;

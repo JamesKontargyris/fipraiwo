@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"iron-io/iron_mq": "1.4.8",
-		"zizaco/entrust": "dev-master"
+		"zizaco/entrust": "dev-master",
+        "doctrine/dbal": "~2.3"
 	},
 	"autoload": {
 		"classmap": [

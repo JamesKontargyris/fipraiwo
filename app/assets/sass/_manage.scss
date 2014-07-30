@@ -1,0 +1,46 @@
+// Styles for the management section
+
+.outline-box {
+  margin-bottom:$v-rhythm;
+  padding:($v-rhythm / 2) 10px;
+  border:1px solid $light-grey;
+  @include border-radius();
+  .red-highlight {
+    background-color:lighten($red, 50%);
+    border:1px solid lighten($red, 45%);
+    padding:($v-rhythm / 2) 10px;
+  }
+  .orange-highlight {
+    background-color:lighten(orange, 20%);
+    border:1px solid lighten(orange, 15%);
+    padding:($v-rhythm / 2) 10px;
+  }
+  .green-highlight {
+    background-color:lighten(greenyellow, 20%);
+    border:1px solid lighten(greenyellow, 15%);
+    padding:($v-rhythm / 2) 10px;
+  }
+}
+
+.notes {
+  .note {
+    margin-bottom:$v-rhythm / 2;
+    background-color:$light-grey;
+    padding:($v-rhythm / 2) 10px;
+    &:last-child {
+      margin-bottom:0;
+    }
+  }
+}
+
+ul.display-iwo {
+  li {
+    margin-bottom:$v-rhythm;
+    strong {
+      display:block;
+    }
+    span {
+
+    }
+  }
+}

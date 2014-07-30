@@ -1,7 +1,9 @@
 <!--If single message sent through...-->
 @if(Session::get('message'))
     <div class="message">
-        <i class="fa fa-info-circle fa-lg"></i> {{ Session::get('message') }}
+        <ul>
+            <li><i class="fa fa-info-circle fa-lg"></i> {{ Session::get('message') }}</li>
+        </ul>
     </div>
 @endif
 <!--If array of messages sent through...-->

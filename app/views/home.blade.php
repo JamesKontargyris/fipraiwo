@@ -30,6 +30,11 @@
                 <span class="hidejs">Fiptalk is a team of freelance professional coaches who provide expert training in oral presentation skills.</span>
                 <i class="fa fa-info fa-lg info showjs"></i>
             </li>
+            <li>
+                <a href="manage" class="secondary"><i class="fa fa-edit fa-4x"></i><p>Manage an existing IWO</p></a>
+                <span class="hidejs">Edit, confirm or cancel an existing IWO. Ensure you have your IWO's reference to hand.</span>
+                <i class="fa fa-info fa-lg info showjs"></i>
+            </li>
 		</ul>
 	</div>
 @stop

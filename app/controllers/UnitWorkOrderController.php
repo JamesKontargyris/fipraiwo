@@ -20,6 +20,11 @@ class UnitWorkOrderController extends BaseController
         'sub' => 'unit.sub-unit',
         'copies' => 'default'
     ];
+    //Array of form field names to use as user names in the DB
+    protected $user_names = [
+        'lead' => 'lead_unit_account_director',
+        'sub' => 'sub_contracted_unit_correspondent_affiliate_account_director'
+    ];
     //Default confirmed state for this IWO type
     protected $confirmed = 0;
 

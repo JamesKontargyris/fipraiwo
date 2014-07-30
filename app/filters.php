@@ -44,6 +44,14 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('loggedin', function()
+{
+    if( ! Auth::check() && Request::path() != "manage")
+    {
+        return Redirect::to('manage');
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter
@@ -77,4 +85,13 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+});
+
+
+Route::filter('input_exists', function()
+{
+    if( ! Input::old('workorder_title'))
+    {
+        return Redirect::to('/');
+    }
 });

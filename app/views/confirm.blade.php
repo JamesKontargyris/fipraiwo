@@ -19,7 +19,7 @@
 
 	<div class="buttons">
 		{{ link_to("$iwo_key", 'Go back', ['class' => 'secondary']) }}
-		{{ link_to("$iwo_key/saveandsend", 'Confirm and Send', ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
+		{{ link_to("$iwo_key/save", 'Confirm', ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
 	</div>
 	<p class="small-print">Please note: if you uploaded files on the previous page and choose to go back, you will need to select those files again.</p>
 	@include('forms.partials.loading')

@@ -20,7 +20,14 @@ abstract class FormValidator
 
 	protected function getValidationRules()
 	{
-		return $this->rules;
+        //Get global rules
+        $global_rules = new GlobalValidator;
+        //Get this IWO's specific rules
+        $iwo_rules = $this->rules;
+        //Merge all rules
+        $all_rules = array_merge($global_rules->get_rules(), $iwo_rules);
+
+        return $all_rules;
 	}
 
 	protected function getValidationMessages()

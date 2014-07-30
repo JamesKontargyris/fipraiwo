@@ -21,40 +21,18 @@ $susy: (
 }
 
 @include breakpoint($l) {
-	.col-4 {
-		float:left;
-		width: span(4);
-		margin-right:gutter();
-		&:last-child {
-			margin-right:0;
-		}
-	}
-	.col-6 {
-		float:left;
-		width: span(6);
-		margin-right:gutter();
-	}
-    .col-9 {
+  @for $i from 1 through 12 {
+    .col-#{$i} {
       float:left;
-      width: span(9);
+      width: span($i);
       margin-right:gutter();
+      margin-bottom:$v-rhythm;
+      &:last-child {
+        margin-right:0;
+      }
     }
-    .col-10 {
-      float:left;
-      width: span(10);
-      margin-right:gutter();
-    }
-	.col-12 {
-        clear:both;
-		@include clearfix();
-		width:span(12);
-	}
-	.last {
-		margin-right:0;
-        @include clearfix();
-	}
+  }
+  .last {
+    margin-right:0;
+  }
 }
-.col-4, .col-6, .col-9, .col-10, .col-12 {
-	margin-bottom:$v-rhythm;
-}
-

@@ -60,6 +60,20 @@ h4 {
 }
 h5 {
   @include font-size(14);
+  text-transform: uppercase;
+  font-weight: $font-bold;
+  padding-bottom:$v-rhythm / 4;
+  border-bottom: 1px solid $light-grey;
+  margin-bottom:$v-rhythm / 4;
+  &.no-underline {
+    border-bottom:0;
+  }
+}
+h1, h2, h3, h4, h5 {
+  small {
+    font-size:0.7em;
+    color:$grey;
+  }
 }
 p {
 	padding-bottom:$v-rhythm;

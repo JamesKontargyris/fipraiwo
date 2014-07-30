@@ -66,7 +66,7 @@ class BaseController extends Controller {
 		return View::make('confirm', compact('input'))->with(['page_title' => $this->page_title . ": Confirmation", 'iwo_key' => $this->iwo_key]);
 	}
 
-	public function getSaveandsend()
+	public function getSave()
 	{
         /**
          * SET UP EMAIL ADDRESSES
@@ -105,12 +105,19 @@ class BaseController extends Controller {
 		// Extra content for use in the email views
 		$data['formtype'] = $this->iwo_key_label;
 
+        //Get input array
+        $input_data = Input::old();
+        //Remove the workorder title and reference
+        //(these will be saved separately)
+        unset($input_data['workorder_title']);
+        unset($input_data['workorder_reference']);
         //Convert the work order to a serialised array
-        $input_data = serialize(Input::old());
+        $input_data = serialize($input_data);
 
         //Insert work order in the DB
         $workorder = new Workorder;
         $workorder->workorder = $input_data;
+        $workorder->title = trim(Input::old('workorder_title'));
         $workorder->confirmed = ($this->confirmed) ? $this->confirmed : 0;
         $workorder->formtype_id = Formtype::where('key', $this->iwo_key)->pluck('id');
         $workorder->created_at = date("Y-m-d H:i:s");
@@ -119,7 +126,7 @@ class BaseController extends Controller {
 
         //Insert work order reference in the DB
         $iwo_ref = new Iwo_ref;
-        $ref_code = $iwo_ref->generate_ref();
+        $ref_code = (trim(Input::old('workorder_reference'))) ? trim(Input::old('workorder_reference')) : $iwo_ref->generate_ref();
         $iwo_ref->iwo_id = $workorder->id;
         $iwo_ref->iwo_ref = $ref_code;
         $iwo_ref->created_at = date("Y-m-d H:i:s");
@@ -128,6 +135,7 @@ class BaseController extends Controller {
 
         //Insert contact email addresses in the DB
         $lead_contact = new User;
+        $lead_contact->name = ($this->user_names['lead']) ? Input::old($this->user_names['lead']) : 'Lead User';
         $lead_contact->iwo_id = $workorder->id;
         $lead_contact->email = $data['lead_email'];
         $lead_contact->save();
@@ -135,6 +143,7 @@ class BaseController extends Controller {
         if($data['sub_email'])
         {
             $sub_contact = new User;
+            $sub_contact->name = ($this->user_names['sub']) ? Input::old($this->user_names['sub']) : 'Sub User';
             $sub_contact->iwo_id = $workorder->id;
             $sub_contact->email = $data['sub_email'];
             $sub_contact->save();
@@ -142,10 +151,13 @@ class BaseController extends Controller {
 
         //Assign roles to users
         $user_lead = User::find($lead_contact->id);
-        $user_sub = User::find($sub_contact->id);
-
         $user_lead->attachRole(Role::where('name', 'Lead')->pluck('id'));
-        $user_sub->attachRole(Role::where('name', 'Sub')->pluck('id'));
+
+        if($data['sub_email'])
+        {
+            $user_sub = User::find($sub_contact->id);
+            $user_sub->attachRole(Role::where('name', 'Sub')->pluck('id'));
+        }
 
         //Add the reference code to the $data array for use in emails
         $data['iwo_ref'] = $ref_code;

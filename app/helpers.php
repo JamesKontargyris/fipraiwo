@@ -56,9 +56,6 @@ function pretty_input($input)
         }
 
         // VALUE CONVERSION
-        // Is the key 'person' or 'rates'? If so, use the
-        // pretty_rates() function to create a string containing
-        // all names and rates entered
 		// value not entered?
 		elseif($input[$key] == '')
         {
@@ -76,9 +73,9 @@ function pretty_input($input)
         // Remove underscores, convert to title case, replace words that should be lowercase
         // and make first letter of string uppercase (in case it is marked as a word that should
         // be lowercase)
-        $new_key = ucfirst(str_replace($field_uc, $field_lc, ucwords(str_replace('_', ' ', $key))));
+        $new_key = trim(ucfirst(str_replace($field_uc, $field_lc, ucwords(str_replace('_', ' ', $key)))));
 		// Set a new key with the new tidy field name
-		$input[$new_key] = $input[$key];
+		$input[$new_key] = trim($input[$key]);
 		// Delete the old duplicate key and value
 		unset($input[$key]);
 	}
