@@ -11,14 +11,13 @@ class SpadWorkOrderController extends BaseController
 	// Form type label
 	protected $iwo_key_label = "Special Adviser";
 	// Fields in the form that should be hidden from the confirmation screen
-	protected $hidden_from_user = ['_token'];
+	public static $hidden_from_user = ['_token'];
 	// The subject line for emails
 	protected $email_subject = 'Special Adviser Internal Work Order Submission';
-    // Array of views to be sent to each email recipient
-    protected $email_views = [
-        'lead' => 'spad.account-director',
-        'sub' => 'spad.spad',
-        'copies' => 'default'
+    //Array of form field names to use as user names in the DB
+    protected $user_names = [
+        'lead' => 'account_director',
+        'sub' => 'special_adviser',
     ];
     //Default confirmed state for this IWO type
     protected $confirmed = 0;

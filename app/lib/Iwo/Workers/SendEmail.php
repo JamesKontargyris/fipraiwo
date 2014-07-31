@@ -17,15 +17,14 @@ class SendEmail {
     private function send($email, $subject, $view, $data = [], $file_names = [])
     {
         $this->mailer->sendTo($email, $subject, $view, $data, $file_names);
-        $job->delete();
     }
 
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_created_lead($job, $data)
     {
-        $subject = "Your " . $data['form_type'] . " Internal Work Order was submitted (ref " . $data['iwo_ref'] . ")";
+        $data['subject'] = "Your " . $data['form_type'] . " Internal Work Order was submitted";
 
-        $this->send($data['recipient'], $subject, "emails.$iwo_key.lead", $data);
+        $this->send($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".lead", $data);
 
         $job->delete();
     }
@@ -33,9 +32,9 @@ class SendEmail {
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_created_sub($job, $data)
     {
-        $subject = $data['form_type'] . " Internal Work Order was submitted (ref " . $data['iwo_ref'] . ")";
+        $data['subject'] = $data['form_type'] . " Internal Work Order was submitted";
 
-        $this->send($data['recipient'], $subject, "emails.$iwo_key.sub", $data);
+        $this->send($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".sub", $data);
 
         $job->delete();
     }
@@ -43,55 +42,76 @@ class SendEmail {
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_auto_confirmed($job, $data)
     {
-        $subject = $data['form_type'] . " Internal Work Order was submitted and confirmed (ref " . $data['iwo_ref'] . ")";
+        $data['subject'] = $data['form_type'] . " Internal Work Order was submitted and confirmed (ref: " . $data['iwo_ref'] . ")";
 
         foreach($data['recipient'] as $recipient)
         {
-            $this->send($recipient, $subject, "emails.manage.auto_confirm", $data);
+            $this->send($recipient, $data['subject'], "emails.manage.auto_confirm", $data);
         }
 
         $job->delete();
     }
 
     //Send an email when an IWO is updated
-    public function iwo_updated($job, $recipients = [], $iwo_key, $iwo_ref, $data = [])
+    public function iwo_updated($job, $data)
     {
-        foreach($recipients as $recipient)
+        $data['subject'] = "Internal Work Order " . $data['iwo_ref'] . " has been updated";
+
+        foreach($data['recipient'] as $recipient)
         {
-            $this->send($recipient, "Internal Work Order $iwo_ref has been updated", "emails.manage.update", $data);
+            $this->send($recipient, $data['subject'], "emails.manage.update", $data);
         }
 
         $job->delete();
     }
 
     //Send an email when an IWO is cancelled
-    public function iwo_cancelled($job, $recipients = [], $iwo_key, $iwo_ref, $data = [])
+    public function iwo_cancelled($job, $data)
     {
-        foreach($recipients as $recipient)
+        $data['subject'] = "Internal Work Order " . $data['iwo_ref'] . " has been cancelled";
+
+        foreach($data['recipient'] as $recipient)
         {
-            $this->send($recipient, "Internal Work Order $iwo_ref has been cancelled", "emails.manage.cancel", $data);
+            $this->send($recipient, $data['subject'], "emails.manage.cancel", $data);
         }
 
         $job->delete();
     }
 
     //Send an email when an IWO is confirmed
-    public function iwo_confirmed($job, $recipients = [], $iwo_key, $iwo_ref, $data = [])
+    public function iwo_confirmed($job, $data)
     {
-        foreach($recipients as $recipient)
+        $data['subject'] = "Internal Work Order " . $data['iwo_ref'] . " has been confirmed";
+
+        foreach($data['recipient'] as $recipient)
         {
-            $this->send($recipient, "Internal Work Order $iwo_ref has been confirmed", "emails.manage.confirm", $data);
+            $this->send($recipient, $data['subject'], "emails.manage.confirm", $data);
         }
 
         $job->delete();
     }
 
     //Send an email when an IWO is un-confirmed
-    public function iwo_unconfirmed($job, $recipients = [], $iwo_key, $iwo_ref, $data = [])
+    public function iwo_unconfirmed($job, $data)
     {
-        foreach($recipients as $recipient)
+        $data['subject'] = "Internal Work Order " . $data['iwo_ref'] . " has been un-confirmed";
+
+        foreach($data['recipient'] as $recipient)
         {
-            $this->send($recipient, "Internal Work Order $iwo_ref has been un-confirmed", "emails.manage.unconfirm", $data);
+            $this->send($recipient, $data['subject'], "emails.manage.unconfirm", $data);
+        }
+
+        $job->delete();
+    }
+
+    //Send an email when an IWO is un-confirmed
+    public function iwo_note_added($job, $data)
+    {
+        $data['subject'] = "A note was added to Internal Work Order " . $data['iwo_ref'];
+
+        foreach($data['recipient'] as $recipient)
+        {
+            $this->send($recipient, $data['subject'], "emails.manage.note_added", $data);
         }
 
         $job->delete();

@@ -119,6 +119,6 @@ return array(
 	|
 	*/
 
-	'pretend' => false,
+	'pretend' => getenv('PRETEND_MAIL'),
 
 );

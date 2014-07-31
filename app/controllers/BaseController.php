@@ -71,98 +71,109 @@ class BaseController extends Controller {
 
 	public function getSave()
 	{
-            //Get input array
-            $input_data = $this->get_input_for_db();
+        //Get input array
+        $input_data = $this->get_input_for_db();
 
-            //Insert work order in the DB
-            $workorder = new Workorder;
-            $workorder->workorder = $input_data;
-            $workorder->title = trim(Input::old('workorder_title'));
-            $workorder->confirmed = ($this->confirmed) ? $this->confirmed : 0;
-            $workorder->formtype_id = Formtype::where('key', $this->iwo_key)->pluck('id');
-            $workorder->created_at = date("Y-m-d H:i:s");
-            $workorder->updated_at = date("Y-m-d H:i:s");
-            $workorder->save();
+        //Insert work order in the DB
+        $workorder = new Workorder;
+        $workorder->workorder = $input_data;
+        $workorder->title = trim(Input::old('workorder_title'));
+        $workorder->confirmed = ($this->confirmed) ? $this->confirmed : 0;
+        $workorder->formtype_id = Formtype::where('key', $this->iwo_key)->pluck('id');
+        $workorder->created_at = date("Y-m-d H:i:s");
+        $workorder->updated_at = date("Y-m-d H:i:s");
+        $workorder->save();
 
-            //Insert work order reference in the DB
-            $iwo_ref = new Iwo_ref;
-            $ref_code = (trim(Input::old('workorder_reference'))) ? trim(Input::old('workorder_reference')) : $iwo_ref->generate_ref();
-            $iwo_ref->iwo_id = $workorder->id;
-            $iwo_ref->iwo_ref = $ref_code;
-            $iwo_ref->created_at = date("Y-m-d H:i:s");
-            $iwo_ref->updated_at = date("Y-m-d H:i:s");
-            $iwo_ref->save();
+        //Insert work order reference in the DB
+        $iwo_ref = new Iwo_ref;
+        $ref_code = (trim(Input::old('workorder_reference'))) ? trim(Input::old('workorder_reference')) : $iwo_ref->generate_ref();
+        $iwo_ref->iwo_id = $workorder->id;
+        $iwo_ref->iwo_ref = $ref_code;
+        $iwo_ref->created_at = date("Y-m-d H:i:s");
+        $iwo_ref->updated_at = date("Y-m-d H:i:s");
+        $iwo_ref->save();
 
-            //Add lead contact as a new user
-            $lead_contact = new User;
-            $lead_contact->name = ($this->user_names['lead']) ? Input::old($this->user_names['lead']) : 'Lead User';
-            $lead_contact->iwo_id = $workorder->id;
-            $lead_contact->email = Input::old('lead_email_address');
-            $lead_contact->save();
+        //Add lead contact as a new user
+        $lead_contact = new User;
+        $lead_contact->name = ($this->user_names['lead']) ? Input::old($this->user_names['lead']) : 'Lead User';
+        $lead_contact->iwo_id = $workorder->id;
+        $lead_contact->email = Input::old('lead_email_address');
+        $lead_contact->save();
 
-            //Assign Lead role to user
-            $user_lead = User::find($lead_contact->id);
-            $user_lead->attachRole(Role::where('name', 'Lead')->pluck('id'));
+        //Assign Lead role to user
+        $user_lead = User::find($lead_contact->id);
+        $user_lead->attachRole(Role::where('name', 'Lead')->pluck('id'));
 
-            //If the form came through with a sub unit contact, add them as an additional user
-            if(Input::old('sub_email_address'))
-            {
-                $sub_contact = new User;
-                $sub_contact->name = ($this->user_names['sub']) ? Input::old($this->user_names['sub']) : 'Sub User';
-                $sub_contact->iwo_id = $workorder->id;
-                $sub_contact->email = Input::old('sub_email_address');
-                $sub_contact->save();
+        //If the form came through with a sub unit contact, add them as an additional user
+        if(Input::old('sub_email_address'))
+        {
+            $sub_contact = new User;
+            $sub_contact->name = ($this->user_names['sub']) ? Input::old($this->user_names['sub']) : 'Sub User';
+            $sub_contact->iwo_id = $workorder->id;
+            $sub_contact->email = Input::old('sub_email_address');
+            $sub_contact->save();
 
-                //Assign Sub role to user
-                $user_sub = User::find($sub_contact->id);
-                $user_sub->attachRole(Role::where('name', 'Sub')->pluck('id'));
-            }
+            //Assign Sub role to user
+            $user_sub = User::find($sub_contact->id);
+            $user_sub->attachRole(Role::where('name', 'Sub')->pluck('id'));
+        }
 
-            /**
-             * FORMAT FORM DATA FOR EMAILS
-             */
-            $data = [
-                // Use the pretty_input() helper to make form input data user friendly and pretty for display in emails
-                'form_data' => pretty_input(Input::old()),
-                // Get the list of file names if they exist, for attaching
-                'file_names' => Session::get('file_names'),
-                //Get the "pretty" version of the IWO key
-                'form_type' => $this->iwo_key_label,
-                //The confirmed/unconfirmed status of the IWO
-                'status' => ($workorder->confirmed == 0) ? 'unconfirmed' : 'confirmed',
-                //IWO reference
-                'iwo_ref' => $iwo_ref->iwo_ref,
-            ];
+        /**
+         * FORMAT FORM DATA FOR EMAILS
+         */
+        $data = [
+            // Use the pretty_input() helper to make form input data user friendly and pretty for display in emails
+            'form_data' => pretty_input(Input::old()),
+            // Get the list of file names if they exist, for attaching
+            'file_names' => Session::get('file_names'),
+            //Get the "pretty" version of the IWO key
+            'form_type' => $this->iwo_key_label,
+            //The confirmed/unconfirmed status of the IWO
+            'status' => ($workorder->confirmed == 0) ? 'unconfirmed' : 'confirmed',
+            //IWO reference
+            'iwo_ref' => $iwo_ref->iwo_ref,
+            //IWO key
+            'iwo_key' => $this->iwo_key,
+        ];
 
-            /**
-             * QUEUE SENDING OF EMAILS USING SendEmail WORKER
-             * AND QUEUE DELETION OF UPLOADED ATTACHMENTS
-             */
+        /**
+         * QUEUE SENDING OF EMAILS USING SendEmail WORKER
+         * AND QUEUE DELETION OF UPLOADED ATTACHMENTS
+         */
 
-            //Send Lead Unit an email
-            $data['recipient'] = $lead_contact->email;
-            Queue::push('\Iwo\Workers\SendEmail@iwo_created_lead', $data);
+        $emailer = App::make('Mailer');
 
-            //Send Sub Unit an email if they exist
-            if(isset($sub_contact->email))
-            {
-                $data['recipient'] = $sub_contact->email;
-                Queue::push('\Iwo\Workers\SendEmail@iwo_created_sub', $data);
-            }
+        //Send Lead Unit an email
+        $data['recipient'] = $lead_contact->email;
+        //$emailer->sendTo($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".lead", $data);
+        Queue::push('\Iwo\Workers\SendEmail@iwo_created_lead', $data);
 
-            //If this type of IWO is set to 'confirmed' by default, send an
-            //email to the copy contacts for this form type
-            if($workorder->confirmed == 0)
-            {
-                $data['recipient'] = $this->get_copy_emails($workorder->formtype_id);
-                Queue::push('\Iwo\Workers\SendEmail@iwo_auto_confirmed', $data);
-            }
 
-            // Once emails are sent, delete files uploaded for security.
-            Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
 
-            // Redirect to the complete/success page
-            return Redirect::route('complete')->with('iwo_ref', $iwo_ref->iwo_ref);
+        //Send Sub Unit an email if they exist
+        if(isset($sub_contact->email))
+        {
+            $data['recipient'] = $sub_contact->email;
+            //$emailer->sendTo($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".sub", $data, $data['file_names']);
+            Queue::push('\Iwo\Workers\SendEmail@iwo_created_sub', $data);
+        }
+
+
+        //If this type of IWO is set to 'confirmed' by default, send an
+        //email to the copy contacts for this form type
+        if($workorder->confirmed > 0)
+        {
+            $data['recipient'] = $this->get_copy_emails($workorder->formtype_id);
+            //$emailer->sendTo($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".auto_confirm", $data, $data['file_names']);
+            Queue::push('\Iwo\Workers\SendEmail@iwo_auto_confirmed', $data);
+        }
+
+        // Redirect to the complete/success page
+        return Redirect::route('complete')->with('iwo_ref', $iwo_ref->iwo_ref);
+
+        // Once emails are sent, delete files uploaded for security.
+        //Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
+
     }
 
 	public function missingMethod($parameters = [])
@@ -188,6 +199,10 @@ class BaseController extends Controller {
         return $input_data;
     }
 
+    protected function get_user_emails($iwo_id = 0)
+    {
+        return User::where('iwo_id', '=', $iwo_id)->lists('email');
+    }
     protected function get_copy_emails($formtype = 0)
     {
         return Copy_contact::where('formtype_id', '=', $formtype)->lists('email');

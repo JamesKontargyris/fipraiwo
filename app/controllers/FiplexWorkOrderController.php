@@ -11,13 +11,12 @@ class FiplexWorkOrderController extends BaseController
 	// Form type label
 	protected $iwo_key_label = "Fiplex";
 	// Fields in the form that should be hidden from the confirmation screen
-	protected $hidden_from_user = ['_token', 'max_upload_size'];
+	public static $hidden_from_user = ['_token', 'max_upload_size'];
 	// The subject line for emails
 	protected $email_subject = 'Fiplex Internal Work Order Submission';
-    // Array of views to be sent to each email recipient
-    protected $email_views = [
-        'lead' => 'fiplex.fiplex',
-        'copies' => 'default'
+    //Array of form field names to use as user names in the DB
+    protected $user_names = [
+        'lead' => 'commissioned_by',
     ];
     //Default confirmed state for this IWO type
     protected $confirmed = 1;
