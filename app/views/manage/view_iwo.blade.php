@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('nav_links')
+<li><a class="highlight" href="/"><i class="fa fa-caret-left"></i> Back to IWO Menu</a></li>
 <li><a class="highlight" href="/manage/logout">Logout</a></li>
 @stop
 
@@ -27,12 +28,16 @@
         </section>
         <section class="outline-box col-6 last">
             <h5>Last updated</h5>
-            {{ date("d M Y, g.ia", strtotime($workorder->updated_at)) }}
+            @if(strtotime($workorder->updated_at) == strtotime($workorder->created_at))
+                No updates.
+            @else
+                {{ date("d M Y, g.ia", strtotime($workorder->updated_at)) }}
+            @endif
         </section>
     </div>
     <div class="col-12">
         <ul class="display-iwo outline-box">
-            @foreach($workorder->workorder as $field => $value)
+            @foreach($workorder->pretty_workorder as $field => $value)
             <li>
                 <strong>{{ $field }}:</strong> <span>{{ $value }}</span>
             </li>

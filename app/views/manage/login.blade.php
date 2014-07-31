@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
-@section('nav-links')
+@section('nav_links')
+<li><a class="highlight" href="/"><i class="fa fa-caret-left"></i> Back to IWO Menu</a></li>
 @stop
 
 @section('content')

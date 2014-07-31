@@ -104,6 +104,9 @@ a.back-to-top {
 		opacity:0.8;
 	}
 }
+a.button {
+  display:inline-block;
+}
 input[type=text],
 input[type=email],
 input[type=file],
@@ -118,6 +121,11 @@ textarea {
 	&.inline {
 		width:auto;
 	}
+}
+input[readonly=readonly],
+input[disabled=disabled] {
+  background-color:lighten($red, 50%);
+  border:1px solid $red;
 }
 input[type=checkbox] {
 	width:30px;

@@ -3,8 +3,14 @@
 @section('content')
 	<p class="intro">Before payments can be made between members of the Fipra Network, Internal Work Orders (IWO's) are required.</p>
 
+    @include('manage.partials.messages')
+
 	<div class="buttons">
-		<ul class="work-order-menu">
+        @if(Session::get('iwo_id'))
+            <p><a class="secondary button" href="/manage/view"><i class="fa fa-edit"></i> Continue managing &quot;{{ Workorder::where('id', Session::get('iwo_id'))->pluck('title') }}&quot;</a></p>
+        @endif
+
+        <ul class="work-order-menu">
 			<li>
                 <a href="edt"><i class="fa fa-picture-o fa-4x"></i><p>EDT</p></a>
                 <span class="hidejs">The Editorial, Design and Translation Team (EDT) provides professional editorial, graphic design and translation services to the Fipra Network.</span>
@@ -30,11 +36,13 @@
                 <span class="hidejs">Fiptalk is a team of freelance professional coaches who provide expert training in oral presentation skills.</span>
                 <i class="fa fa-info fa-lg info showjs"></i>
             </li>
-            <li>
-                <a href="manage" class="secondary"><i class="fa fa-edit fa-4x"></i><p>Manage an existing IWO</p></a>
-                <span class="hidejs">Edit, confirm or cancel an existing IWO. Ensure you have your IWO's reference to hand.</span>
-                <i class="fa fa-info fa-lg info showjs"></i>
-            </li>
+            @if( ! Session::get('iwo_id'))
+                <li>
+                    <a href="manage" class="secondary"><i class="fa fa-edit fa-4x"></i><p>Manage an existing IWO</p></a>
+                    <span class="hidejs">Edit, confirm or cancel an existing IWO. Ensure you have your IWO's reference to hand.</span>
+                    <i class="fa fa-info fa-lg info showjs"></i>
+                </li>
+            @endif
 		</ul>
 	</div>
 @stop

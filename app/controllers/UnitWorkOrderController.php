@@ -11,7 +11,7 @@ class UnitWorkOrderController extends BaseController
 	// Form type label
 	protected $iwo_key_label = "Fipra Unit";
 	// Fields in the form that should be hidden from the confirmation screen
-	protected $hidden_from_user = ['_token', 'person-count'];
+	public static $hidden_from_user = ['_token', 'person_count'];
 	// The subject line for emails
 	protected $email_subject = 'Fipra Unit Internal Work Order Submission';
     // Array of views to be sent to each email recipient

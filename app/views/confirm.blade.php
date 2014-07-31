@@ -1,8 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
-	<p>Please confirm the details you have entered:</p>
-	<ul class="display-details">
+
+    @if(editing())
+        <p>Please confirm your updates:</p>
+    @else
+        <p>Please confirm the details you have entered:</p>
+    @endif
+
+    <ul class="display-details">
 		@foreach($input as $field => $value)
 			<li>
 				<strong>{{ $field }}:</strong> <span>{{ $value }}</span>
@@ -17,10 +23,21 @@
 		@endif
 	</ul>
 
-	<div class="buttons">
-		{{ link_to("$iwo_key", 'Go back', ['class' => 'secondary']) }}
-		{{ link_to("$iwo_key/save", 'Confirm', ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
-	</div>
-	<p class="small-print">Please note: if you uploaded files on the previous page and choose to go back, you will need to select those files again.</p>
-	@include('forms.partials.loading')
+
+    <div class="buttons">
+        @if(editing())
+            {{ link_to('manage/view', 'Cancel Update', ['class' => 'secondary']) }}
+        @else
+            {{ link_to("$iwo_key", 'Go Back', ['class' => 'secondary']) }}
+        @endif
+
+        @if(editing())
+                {{ link_to("manage/update", 'Update', ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
+        @else
+                {{ link_to("$iwo_key/save", 'Confirm', ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
+            <p class="small-print">Please note: if you uploaded files on the previous page and choose to go back, you will need to select those files again.</p>
+        @endif
+    </div>
+
+    @include('forms.partials.loading')
 @stop

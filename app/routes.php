@@ -6,12 +6,13 @@ Route::controller('spad', 'SpadWorkOrderController');
 Route::controller('fiplex', 'FiplexWorkOrderController');
 Route::controller('fiptalk', 'FiptalkWorkOrderController');
 
-Route::get('/addperms', function()
+Route::get('/iwoid', function()
 {
-
+  return Workorder::where('id', 51)->get(['title']);
 });
 
 Route::when('*/save', 'input_exists');
+Route::when('manage/update', 'input_exists');
 
 Route::controller('manage', 'ManagementController');
 Route::when('manage/*', 'auth');

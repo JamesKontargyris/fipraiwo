@@ -1,0 +1,1 @@
+<li><a href="/manage/view" class="highlight"><i class="fa fa-caret-left"></i> Cancel Editing</a></li>

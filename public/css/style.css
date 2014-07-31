@@ -1,4 +1,4 @@
-@charset "CP850";
+@charset "Windows-1252";
 /*!   
 Theme Name: Fipra Online Internal Work Order
 Theme URI: http://fipra.com
@@ -183,6 +183,10 @@ a.back-to-top {
     opacity: 0.8; }
 
 /* line 107, ../../app/assets/sass/_base.scss */
+a.button {
+  display: inline-block; }
+
+/* line 110, ../../app/assets/sass/_base.scss */
 input[type=text],
 input[type=email],
 input[type=file],
@@ -193,66 +197,72 @@ textarea {
   font-size: 0.875rem;
   font-family: Arial, Helvetica, sans-serif; }
   @media (min-width: 900px) {
-    /* line 107, ../../app/assets/sass/_base.scss */
+    /* line 110, ../../app/assets/sass/_base.scss */
     input[type=text],
     input[type=email],
     input[type=file],
     textarea {
       font-size: 14px;
       font-size: 0.875rem; } }
-  /* line 118, ../../app/assets/sass/_base.scss */
+  /* line 121, ../../app/assets/sass/_base.scss */
   input[type=text].inline,
   input[type=email].inline,
   input[type=file].inline,
   textarea.inline {
     width: auto; }
 
-/* line 122, ../../app/assets/sass/_base.scss */
+/* line 125, ../../app/assets/sass/_base.scss */
+input[readonly=readonly],
+input[disabled=disabled] {
+  background-color: #fdd8d9;
+  border: 1px solid #cc0a12; }
+
+/* line 130, ../../app/assets/sass/_base.scss */
 input[type=checkbox] {
   width: 30px;
   height: 30px;
   vertical-align: middle; }
 
-/* line 127, ../../app/assets/sass/_base.scss */
+/* line 135, ../../app/assets/sass/_base.scss */
 input[type=submit] {
   cursor: pointer;
   padding-left: 20px;
   padding-right: 20px;
   font-weight: bold; }
 
-/* line 133, ../../app/assets/sass/_base.scss */
+/* line 141, ../../app/assets/sass/_base.scss */
 select {
   display: block;
   padding: 5px 10px;
   font-size: 14px;
   font-size: 0.875rem; }
   @media (min-width: 900px) {
-    /* line 133, ../../app/assets/sass/_base.scss */
+    /* line 141, ../../app/assets/sass/_base.scss */
     select {
       font-size: 14px;
       font-size: 0.875rem; } }
-  /* line 140, ../../app/assets/sass/_base.scss */
+  /* line 148, ../../app/assets/sass/_base.scss */
   select.inline {
     display: inline-block; }
 
-/* line 144, ../../app/assets/sass/_base.scss */
+/* line 152, ../../app/assets/sass/_base.scss */
 strong {
   font-weight: bold; }
 
-/* line 148, ../../app/assets/sass/_base.scss */
+/* line 156, ../../app/assets/sass/_base.scss */
 #content {
   font-size: 14px;
   font-size: 0.875rem; }
 
-/* line 151, ../../app/assets/sass/_base.scss */
+/* line 159, ../../app/assets/sass/_base.scss */
 .red {
   color: #cc0a12; }
 
-/* line 154, ../../app/assets/sass/_base.scss */
+/* line 162, ../../app/assets/sass/_base.scss */
 .showjs {
   display: none; }
 
-/* line 157, ../../app/assets/sass/_base.scss */
+/* line 165, ../../app/assets/sass/_base.scss */
 .hidejs {
   display: block; }
 
@@ -997,30 +1007,49 @@ footer {
     padding: 10px 10px; }
 
 /* line 26, ../../app/assets/sass/_manage.scss */
+.log-list .note,
 .log-list .entry {
   margin-bottom: 10px;
-  background-color: #dee0e6;
   padding: 10px 10px; }
   /* line 30, ../../app/assets/sass/_manage.scss */
+  .log-list .note:last-child,
   .log-list .entry:last-child {
     margin-bottom: 0; }
-
+/* line 34, ../../app/assets/sass/_manage.scss */
+.log-list .note {
+  border: 1px solid #dee0e6; }
 /* line 37, ../../app/assets/sass/_manage.scss */
+.log-list .entry {
+  background-color: #dee0e6; }
+  /* line 39, ../../app/assets/sass/_manage.scss */
+  .log-list .entry.alert {
+    background-color: #fba7ab; }
+  /* line 42, ../../app/assets/sass/_manage.scss */
+  .log-list .entry.success {
+    background-color: #d5ff95; }
+  /* line 45, ../../app/assets/sass/_manage.scss */
+  .log-list .entry.update {
+    background-color: #b2c8ff; }
+  /* line 48, ../../app/assets/sass/_manage.scss */
+  .log-list .entry.warning {
+    background-color: #ffdb99; }
+
+/* line 55, ../../app/assets/sass/_manage.scss */
 ul.display-iwo li {
   margin-bottom: 20px; }
-  /* line 39, ../../app/assets/sass/_manage.scss */
+  /* line 57, ../../app/assets/sass/_manage.scss */
   ul.display-iwo li strong {
     display: block; }
 
-/* line 49, ../../app/assets/sass/_manage.scss */
+/* line 67, ../../app/assets/sass/_manage.scss */
 ul.actions li a {
   margin-bottom: 10px; }
   @media (max-width: 480px) {
-    /* line 49, ../../app/assets/sass/_manage.scss */
+    /* line 67, ../../app/assets/sass/_manage.scss */
     ul.actions li a {
       display: block; } }
 @media (min-width: 480px) {
-  /* line 48, ../../app/assets/sass/_manage.scss */
+  /* line 66, ../../app/assets/sass/_manage.scss */
   ul.actions {
     margin: 0;
     padding: 0;

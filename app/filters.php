@@ -85,6 +85,6 @@ Route::filter('input_exists', function()
 {
     if( ! Input::old('workorder_title'))
     {
-        return Redirect::to('/');
+        return Redirect::route('home')->withErrors('No form input available to process.');
     }
 });

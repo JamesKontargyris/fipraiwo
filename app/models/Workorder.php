@@ -30,4 +30,13 @@ class Workorder extends Eloquent
         return $this->hasMany('Logger', 'iwo_id');
     }
 
+    public static function update_date_time()
+    {
+        $workorder = Workorder::find(Session::get('iwo_id'));
+        $workorder->updated_at = date_time_now();
+        $workorder->save();
+
+        return true;
+    }
+
 } 

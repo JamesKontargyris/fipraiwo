@@ -48,6 +48,10 @@ function pretty_input($input)
             //Continue with the foreach loop
             continue;
         }
+        elseif($key == 'workorder_reference' && trim($input['workorder_reference']) == "")
+        {
+            $input['workorder_reference'] = "Will be auto-assigned";
+        }
         //If the value is an array of values (and it isn't the team array),
         //convert to a string of comma separated values
         elseif(is_array($value) && $key != 'team')
@@ -57,7 +61,7 @@ function pretty_input($input)
 
         // VALUE CONVERSION
 		// value not entered?
-		elseif($input[$key] == '')
+		elseif(trim($input[$key]) == '')
         {
             // set to a dash
             $input[$key] = "-";
@@ -133,4 +137,16 @@ function email_addresses_to_array($recipients = array())
 function date_time_now()
 {
     return date("Y-m-d h:i:s");
+}
+
+function editing()
+{
+    //If we are on the edit page or the confirm updates page of the manage section,
+    //and this is not a post request on the edit page (i.e. validation errors), return true
+    if(Request::path() == "manage/edit" && ! Request::isMethod('post') || Request::path() == "manage/confirmupdates")
+    {
+        return true;
+    }
+    //Otherwise, this is not an edit page
+    return false;
 }

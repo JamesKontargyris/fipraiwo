@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('nav_links')
-	<li><a href="/" class="highlight"><i class="fa fa-caret-left"></i> Back to IWO Menu</a></li>
+    @if(editing())
+        @include('manage.partials.editing_nav_links')
+    @else
+        <li><a href="/" class="highlight"><i class="fa fa-caret-left"></i> Back to IWO Menu</a></li>
+    @endif
 @stop
 
 @section('content')
@@ -9,68 +13,104 @@
 	<div class="intro">
         <p>This form confirms financial instructions between Members of the Fipra Network. Please fill one form out each time you subcontract a Unit.</p>
         <p class="italic small-print">Please see full explanatory notes at the end of the page.</p>
+        @if(editing())
+            <p class="red">Fields in red cannot be edited.</p>
+        @endif
 	</div>
 
 	@include('forms.partials.messages')
 
-	{{ Form::open(['files' => true]) }}
+    @if(editing())
+        {{ Form::open(['files' => true, 'url' => 'manage/confirmupdates']) }}
+    @else
+        {{ Form::open(['files' => true, 'url' => 'unit']) }}
+    @endif
 
-        <section class="formgroup highlight">
-            <div class="formfield col-8">
-                {{ Form::label('workorder_title', 'Workorder title:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">This is a user-friendly title that can be used to refer to this work order, e.g. &quot;Monthly Uber Monitoring&quot;. There is no need to include dates as these will be automatically stored alongside your work order submission. Please note that once submitted, the name cannot be changed.</div>
-                {{ Form::text('workorder_title', Input::old('workorder_title')) }}
-                {{ display_form_error('workorder_title', $errors) }}
-            </div>
-            <div class="formfield col-4 last">
-                {{ Form::label('workorder_reference', 'Workorder reference:') }} <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">If you wish, you may enter a workorder reference number / code of at least 10 characters in length. This is optional; if you choose not to enter a reference, we will generate one automatically for you. This reference will be used to view and manage this work order via our online system in the future.</div>
-                {{ Form::text('workorder_reference', Input::old('workorder_reference')) }}
-                {{ display_form_error('workorder_reference', $errors) }}
-            </div>
-        </section>
+        @include('forms.partials.workorder_title_ref')
 
 		<section class="col-6">
-			<div class="formgroup">
+
+            <div class="formgroup">
                 <div class="title">Lead Unit</div>
+
                 <div class="formfield">
                     {{ Form::label('lead_unit', 'Lead Unit:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                     <div class="help-box">The Unit responsible for managing a particular client relationship or instruction, including with regard to financial arrangements with that client, where that client requires advice in more than one territory. It is the Lead Unit, and not the subcontracting Unit, that bears ultimate responsibility to the client for quality control.</div>
-                    {{ Form::text('lead_unit', Input::old('lead_unit')) }}
+
+                    @if(editing())
+                        {{ Form::text('lead_unit', $workorder->workorder->lead_unit, ['readonly' => 'readonly']) }}
+                    @else
+                        {{ Form::text('lead_unit', Input::old('lead_unit')) }}
+                    @endif
                     {{ display_form_error('lead_unit', $errors) }}
                 </div>
+
                 <div class="formfield">
                     {{ Form::label('lead_unit_account_director', 'Account Director responsible at the Lead Unit:', ['class' => 'required']) }}
-                    {{ Form::text('lead_unit_account_director', Input::old('lead_unit_account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'lead_email_address']) }}
+
+                    @if(editing())
+                        {{ Form::text('lead_unit_account_director', $workorder->workorder->lead_unit_account_director, ['readonly' => 'readonly']) }}
+                    @else
+                        {{ Form::text('lead_unit_account_director', Input::old('lead_unit_account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'lead_email_address']) }}
+                    @endif
+
                     <span class="small-print">Only Account Directors/senior staff can confirm Internal Work Orders.</span>
                     {{ display_form_error('lead_unit_account_director', $errors) }}
                 </div>
+
                 <div class="formfield">
                     {{ Form::label('lead_email_address', 'Email Address:', ['class' => 'required']) }}
-                    {{ Form::text('lead_email_address', Input::old('lead_email_address'), ['id' => 'lead_email_address']) }}
+
+                    @if(editing())
+                        {{ Form::text('lead_email_address', $workorder->workorder->lead_email_address, ['readonly' => 'readonly']) }}
+                    @else
+                        {{ Form::text('lead_email_address', Input::old('lead_email_address'), ['id' => 'lead_email_address']) }}
+                    @endif
+
                     {{ display_form_error('lead_email_address', $errors) }}
                 </div>
+
             </div>
+
             <div class="formgroup">
                 <div class="title">Sub-contracted Unit</div>
+
                 <div class="formfield">
                     {{ Form::label('sub_contracted_unit_correspondent_affiliate', 'Sub-contracted Unit:', ['class' => 'required']) }}
-                    {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate')) }}
+
+                    @if(editing())
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', $workorder->workorder->sub_contracted_unit_correspondent_affiliate, ['readonly' => 'readonly']) }}
+                    @else
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate')) }}
+                    @endif
+
                     {{ display_form_error('sub_contracted_unit_correspondent_affiliate', $errors) }}
                 </div>
+
                 <div class="formfield">
                     {{ Form::label('sub_contracted_unit_correspondent_affiliate_account_director', 'Account Director responsible at the Sub-contracted Unit:', ['class' => 'required']) }}
-                    {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', Input::old('sub_contracted_unit_correspondent_affiliate_account_director'), ['data-email-field' => 'sub_email_address', 'class' => 'account_director_autocomplete']) }}
+                    @if(editing())
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', $workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director, ['readonly' => 'readonly']) }}
+                    @else
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', Input::old('sub_contracted_unit_correspondent_affiliate_account_director'), ['data-email-field' => 'sub_email_address', 'class' => 'account_director_autocomplete']) }}
+                    @endif
+
                     {{ display_form_error('sub_contracted_unit_correspondent_affiliate_account_director', $errors) }}
                 </div>
+
                 <div class="formfield">
                     {{ Form::label('sub_email_address', 'Email Address:', ['class' => 'required']) }}
-                    {{ Form::text('sub_email_address', Input::old('sub_email_address')) }}
+                    @if(editing())
+                        {{ Form::text('sub_email_address', $workorder->workorder->sub_email_address, ['readonly' => 'readonly']) }}
+                    @else
+                        {{ Form::text('sub_email_address', Input::old('sub_email_address')) }}
+                    @endif
                     {{ display_form_error('sub_email_address', $errors) }}
                 </div>
+
                 <div class="formfield">
                     {{ Form::label('fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
-                    {{ Form::text('fipra_representative', Input::old('fipra_representative')) }}
+                    {{ Form::text('fipra_representative', (editing()) ? $workorder->workorder->fipra_representative : Input::old('fipra_representative')) }}
                     {{ display_form_error('fipra_representative', $errors) }}
                 </div>
             </div>
@@ -78,7 +118,8 @@
                 <div class="title">Fees</div>
                 <div class="formfield">
                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
-                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a day rate' => 'at a day rate', 'at a flat or project rate' => 'at a flat or project rate'], Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+
+                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a day rate' => 'at a day rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? $workorder->workorder->the_work_will_be_done : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
                     <div class="help-box">
                         <table width="100%">
                             <tr>
@@ -111,6 +152,7 @@
 
                             <!--If this request is a failed validation or the user clicked 'go back' on the confirm page, load the old team member names and rate-->
                             @if(Input::old('team'))
+
                                 @foreach(Input::old('team') as $id => $values)
                                     <tr class="fees-person">
                                         <td class="person-field">{{ Form::text("team[$id][person]", $values['person'], ['style' => 'width:90%']) }}</td>
@@ -118,7 +160,19 @@
                                         <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                     </tr>
                                 @endforeach
-                                {{ form::hidden('person-count', Input::old('person-count'), ['class' => 'person-count']) }}
+                                {{ form::hidden('person_count', Input::old('person_count'), ['class' => 'person-count']) }}
+
+                            <!--Otherwise, if this is an edit, use that data-->
+                            @elseif(isset($workorder->workorder->team))
+                                @foreach($workorder->workorder->team as $id => $values)
+                                <tr class="fees-person">
+                                    <td class="person-field">{{ Form::text("team[$id][person]", $values['person'], ['style' => 'width:90%']) }}</td>
+                                    <td class="rate-field"><span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", $values['rate'], ['style' => 'width:80%']) }}</td>
+                                    <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
+                                </tr>
+                                @endforeach
+                                {{ form::hidden('person_count', Input::old('person_count'), ['class' => 'person-count']) }}
+
                             <!--Otherwise display the default entry form-->
                             @else
                                 <tr class="fees-person">
@@ -126,7 +180,7 @@
                                     <td class="rate-field"><span class="inline">&euro;</span> {{ Form::text('team[1][rate]', null, ['style' => 'width:80%']) }}</td>
                                     <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                 </tr>
-                                {{ form::hidden('person-count', '1', ['class' => 'person-count']) }}
+                                {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
                             @endif
 
 
@@ -140,12 +194,12 @@
                 </div>
                 <div class="formfield">
                     {{ Form::label('agreed_fee_element', 'Is there any other fee element, such as a success or finders fee?', ['class' => 'required']) }}
-                    {{ Form::select('agreed_fee_element', ['No' => 'No', 'Yes' => 'Yes'], Input::old('agreed_fee_element'), ['class' => 'agreed-fee-element']) }}
+                    {{ Form::select('agreed_fee_element', ['No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->agreed_fee_element : Input::old('agreed_fee_element'), ['class' => 'agreed-fee-element']) }}
                     {{ display_form_error('agreed_fee_element', $errors) }}
                 </div>
                 <div class="formfield hide" id="agreed-fee-element-reveal">
                     {{ Form::label('agreed_fee_element_details', 'Please set out fee element details:', ['class' => 'required']) }}
-                    {{ Form::textarea('agreed_fee_element_details', Input::old('agreed_fee_element_details'), ['rows' => '10']) }}
+                    {{ Form::textarea('agreed_fee_element_details', (editing()) ? $workorder->workorder->agreed_fee_element_details : Input::old('agreed_fee_element_details'), ['rows' => '10']) }}
                     {{ display_form_error('agreed_fee_element_details', $errors) }}
                 </div>
                 <div class="formfield">
@@ -154,12 +208,12 @@
                 </div>
                 <div class="formfield">
                     {{ Form::label('work_capped_each_month', 'Is this work capped at a maximum level each month?', ['class' => 'required']) }}
-                    {{ Form::select('work_capped_each_month', ['No' => 'No', 'Yes' => 'Yes'], Input::old('work_capped_each_month'), ['class' => 'work-capped-each-month']) }}
+                    {{ Form::select('work_capped_each_month', ['No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->work_capped_each_month : Input::old('work_capped_each_month'), ['class' => 'work-capped-each-month']) }}
                     {{ display_form_error('work_capped_each_month', $errors) }}
                 </div>
                 <div class="formfield hide" id="work-capped-each-month-reveal">
                     {{ Form::label('work_cap', 'What is the cap?') }}
-                    {{ Form::text('work_cap', Input::old('work_cap')) }}
+                    {{ Form::text('work_cap', (editing()) ? $workorder->workorder->work_cap : Input::old('work_cap')) }}
                     {{ display_form_error('work_cap', $errors) }}
                 </div>
             </div> <!-- /formgroup -->
@@ -168,48 +222,48 @@
 		<section class="col-6 last">
             <div class="formfield">
                 {{ Form::label('name_of_client', 'Name of client associated with the account:') }}
-                {{ Form::text('name_of_client', Input::old('name_of_client')) }}
+                {{ Form::text('name_of_client', (editing()) ? $workorder->workorder->name_of_client : Input::old('name_of_client')) }}
                 {{ display_form_error('name_of_client', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('project_name', 'Project name (if any):') }}
-                {{ Form::text('project_name', Input::old('project_name')) }}
+                {{ Form::text('project_name', (editing()) ? $workorder->workorder->project_name : Input::old('project_name')) }}
                 {{ display_form_error('project_name', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Replicon codes are Fipra's internal timesheet codes.</div>
-                {{ Form::text('replicon_code', Input::old('replicon_code')) }}
+                {{ Form::text('replicon_code', (editing()) ? $workorder->workorder->replicon_code : Input::old('replicon_code')) }}
                 {{ display_form_error('replicon_code', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('scope_of_service', 'Scope of Service:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Set out a description of the services to be performed in reasonable detail.</div>
-                {{ Form::textarea('scope_of_service', Input::old('scope_of_service'), ['rows' => '5']) }}
+                {{ Form::textarea('scope_of_service', (editing()) ? $workorder->workorder->scope_of_service : Input::old('scope_of_service'), ['rows' => '5']) }}
                 {{ display_form_error('scope_of_service', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('deliverables', 'Deliverables:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Set out the nature of any deliverables in reasonable detail.</div>
-                {{ Form::textarea('deliverables', Input::old('deliverables'), ['rows' => '5']) }}
+                {{ Form::textarea('deliverables', (editing()) ? $workorder->workorder->deliverables : Input::old('deliverables'), ['rows' => '5']) }}
                 {{ display_form_error('deliverables', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('time_frame', 'Time frame:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Please enter the start date of the IWO. The Start date is from when payments can be made under this IWO.</div>
-                {{ Form::text('time_frame', Input::old('time_frame')) }}
+                {{ Form::text('time_frame', (editing()) ? $workorder->workorder->time_frame : Input::old('time_frame')) }}
                 {{ display_form_error('time_frame', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('internal_work_order_expires', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">This is the date payment will stop under this IWO.</div>
-                {{ Form::text('internal_work_order_expires', Input::old('internal_work_order_expires'), ['class' => 'datepicker']) }}
+                {{ Form::text('internal_work_order_expires', (editing()) ? $workorder->workorder->internal_work_order_expires : Input::old('internal_work_order_expires'), ['class' => 'datepicker']) }}
                 {{ display_form_error('internal_work_order_expires', $errors) }}
             </div>
 			<div class="formfield">
 				{{ Form::label('green_sheet_required', 'Is a Fipra Green Sheet required at the end of each month?', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
 				<div class="help-box">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked and are irrespective of the type of fee structure chosen above.</div>
-				{{ Form::select('green_sheet_required', ['No' => 'No', 'Yes' => 'Yes'], Input::old('green_sheet_required'), ['class' => 'green-sheet-required']) }}
+				{{ Form::select('green_sheet_required', ['No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->green_sheet_required : Input::old('green_sheet_required'), ['class' => 'green-sheet-required']) }}
 				{{ display_form_error('green_sheet_required', $errors) }}
 			</div>
             <div class="formfield hide" id="green-sheet-required-reveal">
@@ -217,7 +271,7 @@
             </div>
 			<div class="formfield">
 				{{ Form::label('other_information', 'Other information:') }}
-				{{ Form::textarea('other_information', Input::old('other_information'), ['rows' => '10']) }}
+				{{ Form::textarea('other_information', (editing()) ? $workorder->workorder->other_information : Input::old('other_information'), ['rows' => '10']) }}
 				{{ display_form_error('other_information', $errors) }}
 			</div>
 		</section>

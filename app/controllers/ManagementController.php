@@ -9,6 +9,9 @@ class ManagementController extends BaseController
     protected $page_title;
     protected $workorder;
     protected $user;
+    protected $iwo_key;
+    protected $validator;
+    protected $upload;
 
     public function __construct()
     {
@@ -21,7 +24,11 @@ class ManagementController extends BaseController
             $this->workorder->logs = Workorder::find(Session::get('iwo_id'))->logs()->orderBy('created_at', 'DESC')->get();
             $this->workorder->notes = Workorder::find(Session::get('iwo_id'))->notes()->orderBy('created_at', 'DESC')->get();
             $this->workorder->iwo_ref = Session::get('iwo_ref');
-            $this->workorder->workorder = pretty_input(unserialize($this->workorder->workorder));
+            $this->workorder->pretty_workorder = pretty_input(unserialize($this->workorder->workorder));
+            $this->workorder->workorder = (object) unserialize($this->workorder->workorder);
+            //Get the iwo key (edt, unit, etc.)
+            $this->iwo_key = Formtype::where('id', '=', $this->workorder->formtype_id)->pluck('key');
+
         }
 
         $this->user = Auth::user();
@@ -50,7 +57,8 @@ class ManagementController extends BaseController
         //Check to see if user exists
         if($user = User::where('email', '=', $email)->where('iwo_id', '=', $iwo_id)->first())
         {
-            //    If user found, log the user in and redirect to view IWO
+            //    If user found, log the user in, add some useful session variables
+            //and redirect to view IWO
             Auth::loginUsingId($user->id);
             Session::set('user_id', $user->id);
             Session::set('iwo_id', $iwo_id);
@@ -76,29 +84,109 @@ class ManagementController extends BaseController
     public function getNote()
     {
         $this->check_permission('comment');
+
         return View::make('manage.add_note')->with(['page_title' => $this->page_title, 'workorder' => $this->workorder, 'user' => Auth::user()]);
     }
 
     public function postNote()
     {
-        if(Input::get('note') != "")
+        $this->check_permission('comment');
+
+        if(trim(Input::get('note')) != "")
         {
-            Note::add_note(Input::get('note'));
+            Note::add_note(trim(Input::get('note')));
+            Logger::add_log('New note added.');
+
+            return Redirect::to('manage/view')->with('message', 'Note added.');
+        }
+        else
+        {
+            return Redirect::to('manage/view')->with('message', 'Blank note not added.');
         }
 
-        Logger::add_log('New note added.');
-        return Redirect::to('manage/view')->with('message', 'Note added.');
     }
 
     public function getEdit()
     {
         $this->check_permission('edit');
-        return "Edit form";
+
+        return View::make('forms.' . $this->iwo_key)->with(['page_title' => 'Editing "' . $this->workorder->title . '"', 'workorder' => $this->workorder, 'iwo_key' => $this->iwo_key]);
+    }
+
+    public function postConfirmupdates()
+    {
+        $this->check_permission('edit');
+
+        $validator_name = ucfirst($this->iwo_key) . "WorkOrderValidator";
+        $controller_name = ucfirst($this->iwo_key) . "WorkOrderController";
+        $this->validator = App::make('\\Iwo\\Validation\\' . $validator_name);
+
+        // Use $this->validator set in the sub class to use the validation rules
+        // specific to this form
+        $this->validator->validate(Input::all());
+        // If fails, throws a FormValidationException and redirects back to the form
+        // If passes, move on to dealing with any files uploaded
+
+        // Resolve the FileUpload class out of the IoC container
+        $this->upload = App::make('FileUpload');
+        // upload_files method returns an array of the original file names and
+        // the new file names after any space removal has taken place
+        $file_names = $this->upload->upload_files(Input::file('file'));
+        Session::set('file_names', $file_names['new_file_names']);
+
+        // If there is a problem, upload_files throws a FormFileUploadException.
+        // Otherwise redirect to the confirm page with the file names
+
+        // Use the pretty_input() function to make form input data user friendly and pretty for display
+        //But first, for display purposes, remove the 'editing' flag if it exists
+        //(It will still stay in the input array for use in getSave)
+        $input = Input::except($controller_name::$hidden_from_user);
+        $input = pretty_input($input);
+
+        // Reflash the input data for another request so it can be used in the next stage,
+        // whether that be submitting the form or going back to the form to make changes
+        Input::flash();
+        // Display the confirmation page
+        return View::make('confirm', compact('input'))->with(['page_title' => '"' . $this->workorder->title . '": Confirm Updates', 'iwo_key' => $this->iwo_key]);
+
+    }
+
+    public function getUpdate()
+    {
+        $this->check_permission('edit');
+
+        //If a token exists, input has been passed through and it is safe to process the update
+        if(Input::old('_token'))
+        {
+            //Update the workorder in the DB
+            $workorder = Workorder::find(Session::get('iwo_id'));
+            $workorder->workorder = $this->get_input_for_db();
+            $workorder->updated_at = date_time_now();
+            $workorder->save();
+
+            //Add an event log entry for this update
+            Logger::add_log('Work order updated.', 'update');
+            //Get all users linked to this work order so we can email them about the update
+            $users = User::where('iwo_id', '=', Session::get('iwo_id'))->get(['email', 'name']);
+            foreach($users as $user)
+            {
+                //Queue transactional email send here
+            }
+
+            return Redirect::to('manage/view')->with('message', 'Work order updated.');
+        }
+    else
+        {
+            //If token doesn't exist, no input received. Redirect to the view page with an error message
+            return Redirect::to('manage/view')->with('message', 'Error: you cannot access that page.');
+        }
     }
 
     public function getLogout()
     {
         Auth::logout();
+        Session::flush();
+
         return Redirect::to('manage')->with('message', 'You have been logged out.');
     }
 
@@ -113,13 +201,14 @@ class ManagementController extends BaseController
 
         //TODO: queue sendmailer to send emails to copy recipients
 
-        Logger::add_log('Work order confirmed.');
+        Logger::add_log('Work order confirmed.', 'success');
 
         return Redirect::to('manage/view')->with('message', 'Work order confirmed.');
     }
 
     public function getUnconfirm()
     {
+        //Return false temporarily until this feature is available
         return false;
         $this->check_permission('confirm');
 
@@ -128,7 +217,7 @@ class ManagementController extends BaseController
         $workorder->updated_at = date_time_now();
         $workorder->save();
 
-        Logger::add_log('Work order un-confirmed.');
+        Logger::add_log('Work order un-confirmed.', 'warning');
 
         return Redirect::to('manage/view')->with('message', 'Work order un-confirmed.');
     }
@@ -142,7 +231,7 @@ class ManagementController extends BaseController
         $workorder->updated_at = date_time_now();
         $workorder->save();
 
-        Logger::add_log('Work order cancelled.');
+        Logger::add_log('Work order cancelled.', 'alert');
 
         return Redirect::to('manage/view')->with('message', 'Work order cancelled.');
     }

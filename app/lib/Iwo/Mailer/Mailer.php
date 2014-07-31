@@ -23,12 +23,20 @@ class Mailer
 	return true;
 	}
 
-	public function sendTo($addresses = [], $subject, $view = 'emails.default', $data = [], $file_names = [])
+	public function sendTo($address, $subject, $view = 'emails.default', $data = [], $file_names = [])
 	{
-		foreach($addresses as $address)
-		{
-			$this->sendEmail($address, $subject, $view, $data, $file_names);
-		}
-		return true;
-	}
+        if(is_array($address))
+        {
+            foreach($address as $email)
+            {
+                $this->sendEmail($email, $subject, $view, $data, $file_names);
+            }
+        }
+        else
+        {
+            $this->sendEmail($address, $subject, $view, $data, $file_names);
+        }
+
+        return true;
+    }
 }

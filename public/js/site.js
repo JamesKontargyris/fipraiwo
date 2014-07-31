@@ -74,6 +74,9 @@
 		max_upload_error();
 	});
 
+//    Add "This field cannot be edited." message to all "readonly" input fields
+    $('input[readonly=readonly], input[disabled=disabled]').attr('title', 'This field cannot be edited.');
+
 //  Autocomplete functionality
     $(".account_director_autocomplete").autocomplete({
         source: 'js/ajax/account_directors.php',

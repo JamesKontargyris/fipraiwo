@@ -4,7 +4,7 @@
 class GlobalValidator
 {
 	protected $rules = [
-		'workorder_title' => 'required|max:255',
+        'workorder_title' => 'required|max:255',
         'workorder_reference' => 'min:10|alpha_num|unique:iwo_refs,iwo_ref'
 	];
 

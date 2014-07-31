@@ -15,12 +15,13 @@ class Logger extends Eloquent
         return $this->belongsTo('Workorder');
     }
 
-    public static function add_log($message)
+    public static function add_log($message, $type = 'standard')
     {
         $log = new Logger;
         $log->iwo_id = Session::get('iwo_id');
         $log->user_id = Session::get('user_id');
         $log->log = $message;
+        $log->type = $type;
         $log->created_at = date_time_now();
         $log->updated_at = date_time_now();
         $log->save();

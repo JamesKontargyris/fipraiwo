@@ -23,12 +23,30 @@
 }
 
 .log-list {
+  .note,
   .entry {
     margin-bottom:$v-rhythm / 2;
-    background-color:$light-grey;
     padding:($v-rhythm / 2) 10px;
     &:last-child {
       margin-bottom:0;
+    }
+  }
+  .note {
+    border:1px solid $light-grey;
+  }
+  .entry {
+    background-color:$light-grey;
+    &.alert {
+      background-color:lighten($red, 40%);
+    }
+    &.success {
+      background-color:lighten(greenyellow, 20%);
+    }
+    &.update {
+      background-color:lighten($blue, 60%);
+    }
+    &.warning {
+      background-color:lighten(orange, 30%);
     }
   }
 }
