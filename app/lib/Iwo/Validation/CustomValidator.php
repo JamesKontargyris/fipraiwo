@@ -15,4 +15,14 @@ class CustomValidator extends \Illuminate\Validation\Validator
 		}
 		return true;
 	}
+
+    public function validateFutureDate($attribute, $value, $parameters)
+    {
+        if(isset($value))
+        {
+            $today = date_time_now();
+
+            return date("Y-m-d h:i:s", strtotime($value)) > $today;
+        }
+    }
 }

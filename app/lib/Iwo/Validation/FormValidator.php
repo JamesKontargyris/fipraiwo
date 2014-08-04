@@ -32,7 +32,14 @@ abstract class FormValidator
 
 	protected function getValidationMessages()
 	{
-		return $this->messages;
+        //Get global rules
+        $global_messages = new GlobalValidator;
+        //Get this IWO's specific rules
+        $iwo_messages = $this->messages;
+        //Merge all rules
+        $all_messages = array_merge($global_messages->get_messages(), $iwo_messages);
+
+        return $all_messages;
 	}
 
 	protected function getValidationErrors()

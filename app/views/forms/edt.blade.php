@@ -23,46 +23,58 @@
 	<section class="col-6">
 		<div class="formfield">
 			{{ Form::label('commissioned_by', 'Work commissioned by:', ['class' => 'required']) }}
-			{{ Form::text('commissioned_by', Input::old('commissioned_by')) }}
+			@if(editing())
+                {{ Form::text('commissioned_by', $workorder->workorder->commissioned_by, ['readonly' => 'readonly']) }}
+            @else
+                {{ Form::text('commissioned_by', Input::old('commissioned_by')) }}
+            @endif
 			{{ display_form_error('commissioned_by', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('unit_special_adviser_or_correspondent', 'Name of Unit / Special Adviser / Correspondent:', ['class' => 'required']) }}
-			{{ Form::text('unit_special_adviser_or_correspondent', Input::old('unit_special_adviser_or_correspondent')) }}
-			{{ display_form_error('unit_special_adviser_or_correspondent', $errors) }}
-		</div>
+			@if(editing())
+                {{ Form::text('unit_special_adviser_or_correspondent', $workorder->workorder->unit_special_adviser_or_correspondent, ['readonly' => 'readonly']) }}
+            @else
+                {{ Form::text('unit_special_adviser_or_correspondent', Input::old('unit_special_adviser_or_correspondent')) }}
+            @endif
+            {{ display_form_error('unit_special_adviser_or_correspondent', $errors) }}
+        </div>
 		<div class="formfield">
 			{{ Form::label('lead_email_address', 'Email address:', ['class' => 'required']) }}
-			{{ Form::email('lead_email_address', Input::old('lead_email_address')) }}
+            @if(editing())
+                {{ Form::email('lead_email_address', $workorder->workorder->lead_email_address, ['readonly' => 'readonly']) }}
+            @else
+                {{ Form::email('lead_email_address', Input::old('lead_email_address')) }}
+            @endif
 			{{ display_form_error('lead_email_address', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('account_director', 'Account Director responsible (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
 			<div class="help-box">This should indicate the person in your Unit who is in charge of quality control and ultimately will approve the cost of the work.</div>
-			{{ Form::text('account_director', Input::old('account_director')) }}
+			{{ Form::text('account_director', (editing()) ? $workorder->workorder->account_director : Input::old('account_director')) }}
 			{{ display_form_error('account_director', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('project_and_client_name', 'Project and client name:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
 			<div class="help-box">Please also denote if work is for internal or external use.</div>
-			{{ Form::text('project_and_client_name', Input::old('project_and_client_name')) }}
+			{{ Form::text('project_and_client_name', (editing()) ? $workorder->workorder->project_and_client_name : Input::old('project_and_client_name')) }}
 			{{ display_form_error('project_and_client_name', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
             <div class="help-box">Replicon codes are Fipra's internal timesheet codes.</div>
-			{{ Form::text('replicon_code', Input::old('replicon_code')) }}
+			{{ Form::text('replicon_code', (editing()) ? $workorder->workorder->replicon_code : Input::old('replicon_code')) }}
 			{{ display_form_error('replicon_code', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('required_completion_date', 'Required completion date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
 			<div class="help-box">If you would like the EDT to factor in a second modification round after the initial draft, we'll be pleased to include this as part of our project planning. Subject to time, we can plan further modification rounds as the project progresses. Please indicate time constraints as early as possible so we can effectively plan to meet your deadlines.</div>
-			{{ Form::text('required_completion_date', Input::old('required_completion_date'), ['class' => 'datepicker']) }}
+			{{ Form::text('required_completion_date', (editing()) ? $workorder->workorder->required_completion_date : Input::old('required_completion_date'), ['class' => 'datepicker']) }}
 			{{ display_form_error('required_completion_date', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('type_of_product', 'Type of document / product:', ['class' => 'required']) }} 
-			{{ Form::text('type_of_product', Input::old('type_of_product')) }}
+			{{ Form::text('type_of_product', (editing()) ? $workorder->workorder->type_of_product : Input::old('type_of_product')) }}
 			{{ display_form_error('type_of_product', $errors) }}
 		</div>
 	</section>
@@ -70,43 +82,45 @@
 	<section class="col-6 last">
 		<div class="formfield">
 			{{ Form::label('services_required', 'Service(s) required:', ['class' => 'required']) }} 
-			<div>{{ Form::checkbox('proofreading', Input::old('proofreading')) }} Proofreading <a href="#" class="help">&nbsp;</a>
+			<div>{{ Form::checkbox('proofreading', (editing()) ? $workorder->workorder->proofreading : Input::old('proofreading')) }} Proofreading <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Proofreading help box</div>
             </div>
-			<div>{{ Form::checkbox('copy_editing', Input::old('copy_editing')) }} Copy Editing <a href="#" class="help">&nbsp;</a>
+			<div>{{ Form::checkbox('copy_editing', (editing()) ? $workorder->workorder->copy_editing : Input::old('copy_editing')) }} Copy Editing <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Copy Editing help box</div>
             </div>
-			<div>{{ Form::checkbox('rewriting', Input::old('rewriting')) }} Re-writing <a href="#" class="help">&nbsp;</a>
+			<div>{{ Form::checkbox('rewriting', (editing()) ? $workorder->workorder->rewriting : Input::old('rewriting')) }} Re-writing <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Re-writing help box</div>
             </div>
-			<div>{{ Form::checkbox('quickedit', Input::old('quickedit')) }} Quick-Edit <a href="#" class="help">&nbsp;</a>
+			<div>{{ Form::checkbox('quickedit', (editing()) ? $workorder->workorder->quickedit : Input::old('quickedit')) }} Quick-Edit <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Quick-Edit help box</div>
             </div>
-			<div>{{ Form::checkbox('graphic_or_print_design', Input::old('graphic_or_print_design')) }} Graphic/Print Design <a href="#" class="help">&nbsp;</a>
+			<div>{{ Form::checkbox('graphic_or_print_design', (editing()) ? $workorder->workorder->graphic_or_print_design : Input::old('graphic_or_print_design')) }} Graphic/Print Design <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Graphic/Print Design help box</div>
             </div>
-			<div>{{ Form::checkbox('web_design', Input::old('web_design')) }} Web Design <a href="#" class="help">&nbsp;</a>
+			<div>{{ Form::checkbox('web_design', (editing()) ? $workorder->workorder->web_design : Input::old('web_design')) }} Web Design <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Web Design help box</div>
             </div>
-			<div>{{ Form::checkbox('translation', Input::old('translation')) }} Translation <a href="#" class="help">&nbsp;</a>
+			<div>{{ Form::checkbox('translation', (editing()) ? $workorder->workorder->translation : Input::old('translation')) }} Translation <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Translation help box</div></div>
 		</div>
 		<div class="formfield">
 			{{ Form::label('instructions', 'Any other instructions:') }} <a href="#" class="help">&nbsp;</a>
 			<div class="help-box">Please indicate special instructions, explanatory information, guidance on tone, target audience, objectives etc.</div>
-			{{ Form::textarea('instructions', Input::old('instructions'), ['rows' => '10']) }} 
+			{{ Form::textarea('instructions', (editing()) ? $workorder->workorder->instructions : Input::old('instructions'), ['rows' => '10']) }}
 			{{ display_form_error('instructions', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('require_cost_estimate', 'Do you require a cost estimate before work commences?', ['class' => 'required']) }}
-			{{ Form::select('require_cost_estimate', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], Input::old('require_cost_estimate')) }}
+			{{ Form::select('require_cost_estimate', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->require_cost_estimate : Input::old('require_cost_estimate')) }}
 			{{ display_form_error('require_cost_estimate', $errors) }}
 		</div>
-		<div class="file-field">
-			<div class="formfield">
-				@include('forms.partials.file_upload')
-			</div>
-		</div>
+        @if( ! editing())
+            <div class="file-field">
+                <div class="formfield">
+                    @include('forms.partials.file_upload')
+                </div>
+            </div>
+        @endif
 	</section>
 
 	<section class="col-12" style="clear:both">

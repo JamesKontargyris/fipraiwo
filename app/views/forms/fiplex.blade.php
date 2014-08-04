@@ -23,47 +23,59 @@
     <section class="col-6">
 		<div class="formfield">
 			{{ Form::label('commissioned_by', 'Name of person commissioning the work:', ['class' => 'required']) }}
-			{{ Form::text('commissioned_by', Input::old('commissioned_by')) }}
+            @if(editing())
+                {{ Form::text('commissioned_by', $workorder->workorder->commissioned_by, ['readonly' => 'readonly']) }}
+            @else
+                {{ Form::text('commissioned_by', Input::old('commissioned_by')) }}
+            @endif
 			{{ display_form_error('commissioned_by', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('unit_or_correspondent', 'Name of Unit / Correspondent:', ['class' => 'required']) }}
-			{{ Form::text('unit_or_correspondent', Input::old('unit_or_correspondent')) }}
+			@if(editing())
+                {{ Form::text('unit_or_correspondent', $workorder->workorder->unit_or_correspondent, ['readonly' => 'readonly']) }}
+            @else
+                {{ Form::text('unit_or_correspondent', Input::old('unit_or_correspondent')) }}
+            @endif
 			{{ display_form_error('unit_or_correspondent', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('lead_email_address', 'Email address:', ['class' => 'required']) }}
-			{{ Form::email('lead_email_address', Input::old('lead_email_address')) }}
+			@if(editing())
+                {{ Form::email('lead_email_address', $workorder->workorder->lead_email_address, ['readonly' => 'readonly']) }}
+            @else
+                {{ Form::email('lead_email_address', Input::old('lead_email_address')) }}
+            @endif
 			{{ display_form_error('lead_email_address', $errors) }}
 		</div>
         <div class="formfield">
             {{ Form::label('person_commissioning_work_is_account_director_responsible', 'Is the person commissioning the work the Account Director responsible?', ['class' => 'required']) }}
-            {{ Form::select('person_commissioning_work_is_account_director_responsible', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], Input::old('person_commissioning_work_is_account_director_responsible'), ['id' => 'person-commissioning-work-is-account-director-responsible']) }}
+            {{ Form::select('person_commissioning_work_is_account_director_responsible', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->person_commissioning_work_is_account_director_responsible : Input::old('person_commissioning_work_is_account_director_responsible'), ['id' => 'person-commissioning-work-is-account-director-responsible']) }}
             {{ display_form_error('person_commissioning_work_is_account_director_responsible', $errors) }}
         </div>
 		<div class="formfield sub-box" id="person-commissioning-work-is-account-director-responsible-reveal">
 			{{ Form::label('account_director', 'Name the Account Director Responsible for this work:') }}
-			{{ Form::text('account_director', Input::old('account_director')) }}
+			{{ Form::text('account_director', (editing()) ? $workorder->workorder->account_director : Input::old('account_director')) }}
 			{{ display_form_error('account_director', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('project_and_client_name', 'Project and client name (if any) the work relates to:') }}
-			{{ Form::text('project_and_client_name', Input::old('project_and_client_name')) }}
+			{{ Form::text('project_and_client_name', (editing()) ? $workorder->workorder->project_and_client_name : Input::old('project_and_client_name')) }}
 			{{ display_form_error('project_and_client_name', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }}
-			{{ Form::text('replicon_code', Input::old('replicon_code')) }}
+			{{ Form::text('replicon_code', (editing()) ? $workorder->workorder->replicon_code : Input::old('replicon_code')) }}
 			{{ display_form_error('replicon_code', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('required_completion_date_and_time', 'Required completion date and time:', ['class' => 'required']) }}
-			{{ Form::text('required_completion_date_and_time', Input::old('required_completion_date_and_time')) }}
+			{{ Form::text('required_completion_date_and_time', (editing()) ? $workorder->workorder->required_completion_date_and_time : Input::old('required_completion_date_and_time')) }}
 			{{ display_form_error('required_completion_date_and_time', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('type_of_document_or_product', 'Type of document / product:', ['class' => 'required']) }}
-			{{ Form::text('type_of_product', Input::old('type_of_product')) }}
+			{{ Form::text('type_of_product', (editing()) ? $workorder->workorder->type_of_products : Input::old('type_of_product')) }}
 			{{ display_form_error('type_of_product', $errors) }}
 		</div>
 	</section>
@@ -73,50 +85,52 @@
 
 			{{ Form::label('services_required', 'Service(s) required:', ['class' => 'required']) }}
 			<div>
-                {{ Form::checkbox('new_business_development_service_required', Input::old('new_business_development_service_required')) }} New Business Development <a href="#" class="help">&nbsp;</a>
+                {{ Form::checkbox('new_business_development_service_required', (editing()) ? $workorder->workorder->new_business_development_service_required : Input::old('new_business_development_service_required')) }} New Business Development <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Issuing NDAs; engagement/services contracts with new clients.</div>
             </div>
 			<div>
-                {{ Form::checkbox('contract_terms_service_required', Input::old('contract_terms_service_required')) }} Contract Terms <a href="#" class="help">&nbsp;</a>
+                {{ Form::checkbox('contract_terms_service_required', (editing()) ? $workorder->workorder->contract_terms_service_required : Input::old('contract_terms_service_required')) }} Contract Terms <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Review and/or negotiation of third party (client or supplier) documentation.</div>
             </div>
             <div>
-                {{ Form::checkbox('ad-hoc_advice_service_required', Input::old('ad-hoc_advice_service_required')) }} Ad-hoc Advice
+                {{ Form::checkbox('ad-hoc_advice_service_required', (editing()) ? $workorder->workorder->ad-hoc_advice_service_required : Input::old('ad-hoc_advice_service_required')) }} Ad-hoc Advice
             </div>
 			<div>
-                {{ Form::checkbox('compliance_service_required', Input::old('compliance_service_required')) }} Compliance <a href="#" class="help">&nbsp;</a>
+                {{ Form::checkbox('compliance_service_required', (editing()) ? $workorder->workorder->compliance_service_required : Input::old('compliance_service_required')) }} Compliance <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Review of any regulations, legislation or codes of practice.</div>
             </div>
             <div>
-                {{ Form::checkbox('employment_service_required', Input::old('employment_service_required')) }} Employment <a href="#" class="help">&nbsp;</a>
+                {{ Form::checkbox('employment_service_required', (editing()) ? $workorder->workorder->employment_service_required : Input::old('employment_service_required')) }} Employment <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Staff issues.</div>
             </div>
 			<div>
-                {{ Form::checkbox('intellectual_property_service_required', Input::old('intellectual_property_service_required')) }} Intellectual Property <a href="#" class="help">&nbsp;</a>
+                {{ Form::checkbox('intellectual_property_service_required', (editing()) ? $workorder->workorder->intellectual_property_service_required : Input::old('intellectual_property_service_required')) }} Intellectual Property <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">Protection of Fipra trademarks or documentation.</div>
             </div>
-			<div>{{ Form::checkbox('other_service_required', Input::old('other')) }} Other</div>
+			<div>{{ Form::checkbox('other_service_required', (editing()) ? $workorder->workorder->other : Input::old('other')) }} Other</div>
 		</div>
         <div class="formfield">
             {{ Form::label('other_service_info', 'If other, please give details:') }}
-            {{ Form::textarea('other_service_info', Input::old('other_service_info'), ['rows' => '3']) }}
+            {{ Form::textarea('other_service_info', (editing()) ? $workorder->workorder->other_service_info : Input::old('other_service_info'), ['rows' => '3']) }}
             {{ display_form_error('other_service_info', $errors) }}
         </div>
 		<div class="formfield">
 			{{ Form::label('instructions', 'Any other instructions:') }}
-			{{ Form::textarea('instructions', Input::old('instructions'), ['rows' => '5']) }}
+			{{ Form::textarea('instructions', (editing()) ? $workorder->workorder->instructions : Input::old('instructions'), ['rows' => '5']) }}
 			{{ display_form_error('instructions', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('require_cost_estimate', 'Do you require a cost estimate?', ['class' => 'required']) }}
-			{{ Form::select('require_cost_estimate', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], Input::old('require_cost_estimate')) }}
+			{{ Form::select('require_cost_estimate', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->require_cost_estimate : Input::old('require_cost_estimate')) }}
 			{{ display_form_error('require_cost_estimate', $errors) }}
 		</div>
-		<div class="file-field">
-			<div class="formfield">
-				@include('forms.partials.file_upload')
-			</div>
-		</div>
+        @if( ! editing())
+            <div class="file-field">
+                <div class="formfield">
+                    @include('forms.partials.file_upload')
+                </div>
+            </div>
+        @endif
 	</section>
 
 	<section class="col-12" style="clear:both">

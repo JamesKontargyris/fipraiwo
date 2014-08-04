@@ -1,4 +1,4 @@
-@charset "Windows-1252";
+@charset "CP850";
 /*!   
 Theme Name: Fipra Online Internal Work Order
 Theme URI: http://fipra.com
@@ -876,6 +876,10 @@ ul.square {
   /* line 269, ../../app/assets/sass/_modules.scss */
   .workorder-table tr td {
     padding: 10px 10px; }
+
+/* line 275, ../../app/assets/sass/_modules.scss */
+.euro-field:before {
+  content: "€"; }
 
 /* line 1, ../../app/assets/sass/_header.scss */
 .user-details {

@@ -271,3 +271,8 @@ ul.square {
     }
   }
 }
+.euro-field {
+  &:before {
+    content: "€";
+  }
+}

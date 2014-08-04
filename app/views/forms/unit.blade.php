@@ -212,7 +212,7 @@
                     {{ display_form_error('work_capped_each_month', $errors) }}
                 </div>
                 <div class="formfield hide" id="work-capped-each-month-reveal">
-                    {{ Form::label('work_cap', 'What is the cap?') }}
+                    {{ Form::label('work_cap', 'What is the cap (€)?') }}
                     {{ Form::text('work_cap', (editing()) ? $workorder->workorder->work_cap : Input::old('work_cap')) }}
                     {{ display_form_error('work_cap', $errors) }}
                 </div>
