@@ -13,9 +13,9 @@
 	@include('forms.partials.messages')
 
     @if(editing())
-    {{ Form::open(['files' => true, 'url' => 'manage/confirmupdates']) }}
+        {{ Form::open(['files' => true, 'url' => 'manage/confirmupdates']) }}
     @else
-    {{ Form::open(['files' => true, 'url' => 'edt']) }}
+        {{ Form::open(['files' => true, 'url' => 'edt']) }}
     @endif
 
     @include('forms.partials.workorder_title_ref')

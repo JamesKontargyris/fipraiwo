@@ -259,6 +259,7 @@
                 <div class="help-box">This is the date payment will stop under this IWO.</div>
                 {{ Form::text('internal_work_order_expires', (editing()) ? $workorder->workorder->internal_work_order_expires : Input::old('internal_work_order_expires'), ['class' => 'datepicker']) }}
                 {{ display_form_error('internal_work_order_expires', $errors) }}
+                <p class="small-print">An email will be sent to you 10 days before this work order expires.</p>
             </div>
 			<div class="formfield">
 				{{ Form::label('green_sheet_required', 'Is a Fipra Green Sheet required at the end of each month?', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
@@ -269,6 +270,9 @@
             <div class="formfield hide" id="green-sheet-required-reveal">
                 <span class="small-print">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked, irrespective of the type of fee structure chosen above. Please Click here to download a Greensheet template.</span>
             </div>
+
+            @include('forms.partials.green_sheet_links')
+
 			<div class="formfield">
 				{{ Form::label('other_information', 'Other information:') }}
 				{{ Form::textarea('other_information', (editing()) ? $workorder->workorder->other_information : Input::old('other_information'), ['rows' => '10']) }}

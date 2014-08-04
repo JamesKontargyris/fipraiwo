@@ -39,7 +39,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Europe/Brussels',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -108,7 +108,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Iwo\Mailer\MailerServiceProvider',
 		'Iwo\FileUpload\FileUploadServiceProvider',
-        'Zizaco\Entrust\EntrustServiceProvider'
+        'Zizaco\Entrust\EntrustServiceProvider',
+        'Nwidart\DbExporter\DbExportHandlerServiceProvider'
 
 	),
 

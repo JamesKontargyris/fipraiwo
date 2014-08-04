@@ -46,7 +46,7 @@ class SendEmail {
 
         foreach($data['recipient'] as $recipient)
         {
-            $this->send($recipient, $data['subject'], "emails.manage.auto_confirm", $data);
+            $this->send($recipient, $data['subject'], "emails.manage.auto_confirm", $data, $data['file_names']);
         }
 
         $job->delete();

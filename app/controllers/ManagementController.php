@@ -160,7 +160,7 @@ class ManagementController extends BaseController
         // whether that be submitting the form or going back to the form to make changes
         Input::flash();
         // Display the confirmation page
-        return View::make('confirm', compact('input'))->with(['page_title' => '"' . $this->workorder->title . '": Confirm Updates', 'iwo_key' => $this->iwo_key]);
+        return View::make('confirm', compact('input'))->with(['page_title' => '"' . $this->workorder->title . '": Update and Re-submit', 'iwo_key' => $this->iwo_key]);
 
     }
 
@@ -171,11 +171,16 @@ class ManagementController extends BaseController
         //If a token exists, input has been passed through and it is safe to process the update
         if(Input::old('_token'))
         {
-            //TODO: check if updated work order matches existing workorder
-            //TODO: if so, do not update or send notification
-
-            //Update the workorder in the DB
+            //Find the workorder to be updated in the DB
             $workorder = Workorder::find(Session::get('iwo_id'));
+            $updated_workorder = $this->get_input_for_db();
+            //If the workorder is exactly the same as the entry in the DB, redirect to the view page
+            //with a message, as no updates have been made
+            if($updated_workorder == $workorder->workorder)
+            {
+                return Redirect::to('manage/view')->with('message', 'No updates made.');
+            }
+            //Otherwise, carry on wih the update
             $workorder->workorder = $this->get_input_for_db();
             $workorder->updated_at = date_time_now();
             $workorder->save();
@@ -192,13 +197,20 @@ class ManagementController extends BaseController
                 Queue::push('\Iwo\Workers\SendEmail@iwo_updated', $data);
             }
 
-            return Redirect::to('manage/view')->with('message', 'Work order updated.');
+            return Redirect::to('manage/updatecomplete');
         }
     else
         {
             //If token doesn't exist, no input received. Redirect to the view page with an error message
             return Redirect::to('manage/view')->with('message', 'Error: you cannot access that page.');
         }
+    }
+
+    public function getUpdatecomplete()
+    {
+        $this->check_permission('edit');
+
+        return View::make('manage.update_complete')->with('page_title', 'Work Order Re-submitted');
     }
 
     public function getLogout()
