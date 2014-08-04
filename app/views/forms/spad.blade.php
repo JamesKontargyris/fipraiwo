@@ -11,14 +11,20 @@
 
 	@include('forms.partials.messages')
 
-	{{ Form::open(['files' => true]) }}
+    @if(editing())
+    {{ Form::open(['files' => true, 'url' => 'manage/confirmupdates']) }}
+    @else
+    {{ Form::open(['files' => true, 'url' => 'spad']) }}
+    @endif
+
+    @include('forms.partials.workorder_title_ref')
 
 		<section class="col-6">
 			<div class="formgroup">
                 <div class="title">Contact Details</div>
                 <div class="formfield">
                     {{ Form::label('account_director', 'Account Director responsible:', ['class' => 'required']) }}
-                    {{ Form::text('account_director', Input::old('account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'email_address']) }}
+                    {{ Form::text('account_director', Input::old('account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'lead_email_address']) }}
                     {{ display_form_error('account_director', $errors) }}
                     <span class="small-print">No Unit other than Fipra International can submit an Internal Work Order for a Special Adviser.</span>
                 </div>
@@ -29,7 +35,7 @@
                 </div>
                 <div class="formfield">
                     {{ Form::label('special_adviser', 'Special Adviser instructed:', ['class' => 'required']) }}
-                    {{ Form::text('special_adviser', Input::old('special_adviser')) }}
+                    {{ Form::text('special_adviser', Input::old('special_adviser'), ['class' => 'spad_reps_autocomplete', 'data-rep-field' => 'fipra_representative']) }}
                     {{ display_form_error('special_adviser', $errors) }}
                 </div>
                 <div class="formfield">

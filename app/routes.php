@@ -6,16 +6,14 @@ Route::controller('spad', 'SpadWorkOrderController');
 Route::controller('fiplex', 'FiplexWorkOrderController');
 Route::controller('fiptalk', 'FiptalkWorkOrderController');
 
-Route::get('/iwoid', function()
-{
-  return Workorder::where('id', 51)->get(['title']);
-});
-
 Route::when('*/save', 'input_exists');
 Route::when('manage/update', 'input_exists');
 
 Route::controller('manage', 'ManagementController');
 Route::when('manage/*', 'auth');
+
+Route::controller('admin', 'AdminController');
+//Route::when('admin/*', 'auth_superuser');
 
 Route::get('about/edt', 'PagesController@about_edt');
 Route::get('about/fiplex', 'PagesController@about_fiplex');
@@ -34,3 +32,11 @@ Route::get('complete', ['as' => 'complete', function()
 {
 	return View::make('complete')->with('page_title', 'Work Order Submitted');
 }]);
+
+
+//Account Director autocomplete
+Route::get('ac/account_directors', 'AutocompleteController@account_directors');
+//Unit reps autocomplete
+Route::get('ac/unit_reps', 'AutocompleteController@unit_reps');
+//Spad reps autocomplete
+Route::get('ac/spad_reps', 'AutocompleteController@spad_reps');

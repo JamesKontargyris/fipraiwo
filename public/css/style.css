@@ -863,6 +863,20 @@ ul.square {
   padding-left: 40px !important;
   padding: 5px 10px; }
 
+/* line 260, ../../app/assets/sass/_modules.scss */
+.workorder-table thead {
+  background-color: #00257f;
+  color: white; }
+/* line 264, ../../app/assets/sass/_modules.scss */
+.workorder-table tr {
+  border-bottom: 1px solid #ccd3e5; }
+  /* line 266, ../../app/assets/sass/_modules.scss */
+  .workorder-table tr:last-child {
+    border-bottom: 0; }
+  /* line 269, ../../app/assets/sass/_modules.scss */
+  .workorder-table tr td {
+    padding: 10px 10px; }
+
 /* line 1, ../../app/assets/sass/_header.scss */
 .user-details {
   font-size: 12px;

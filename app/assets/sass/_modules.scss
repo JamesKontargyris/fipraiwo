@@ -256,3 +256,18 @@ ul.square {
   padding-left:40px !important;
   padding:$v-rhythm / 4 10px;
 }
+.workorder-table {
+  thead {
+    background-color:$blue;
+    color:white;
+  }
+  tr {
+    border-bottom:1px solid $periwinkle;
+    &:last-child {
+      border-bottom:0;
+    }
+    td {
+      padding:($v-rhythm / 2) 10px;
+    }
+  }
+}

@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('nav_links')
+    <li><a class="highlight" href="/admin">SuperUser Login</a></li>
+@stop
+
 @section('content')
 	<p class="intro">Before payments can be made between members of the Fipra Network, Internal Work Orders (IWO's) are required.</p>
 

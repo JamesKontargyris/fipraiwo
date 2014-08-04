@@ -11,7 +11,14 @@
 
 	@include('forms.partials.messages')
 
-	{{ Form::open(['files' => true, 'url' => 'edt']) }}
+    @if(editing())
+        {{ Form::open(['files' => true, 'url' => 'manage/confirmupdates']) }}
+    @else
+        {{ Form::open(['files' => true, 'url' => 'fiptalk']) }}
+    @endif
+
+    @include('forms.partials.workorder_title_ref')
+
 	<section class="col-6">
 		<div class="formfield">
 			{{ Form::label('commissioned_by', 'Work commissioned by:', ['class' => 'required']) }}

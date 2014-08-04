@@ -171,6 +171,9 @@ class ManagementController extends BaseController
         //If a token exists, input has been passed through and it is safe to process the update
         if(Input::old('_token'))
         {
+            //TODO: check if updated work order matches existing workorder
+            //TODO: if so, do not update or send notification
+
             //Update the workorder in the DB
             $workorder = Workorder::find(Session::get('iwo_id'));
             $workorder->workorder = $this->get_input_for_db();
@@ -183,7 +186,10 @@ class ManagementController extends BaseController
             $users = User::where('iwo_id', '=', Session::get('iwo_id'))->get(['email', 'name']);
             foreach($users as $user)
             {
-                //Queue transactional email send here
+                //Send an email to lead and sub units plus copy contacts now the work order is confirmed
+                $data['iwo_ref'] = Session::get('iwo_ref');
+                $data['recipient'] = $this->get_user_emails($workorder->id);
+                Queue::push('\Iwo\Workers\SendEmail@iwo_updated', $data);
             }
 
             return Redirect::to('manage/view')->with('message', 'Work order updated.');

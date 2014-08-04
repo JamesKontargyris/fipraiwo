@@ -12,7 +12,11 @@
 
 	@include('forms.partials.messages')
 
-	{{ Form::open(['files' => true, 'url' => 'fiplex']) }}
+    @if(editing())
+        {{ Form::open(['files' => true, 'url' => 'manage/confirmupdates']) }}
+    @else
+        {{ Form::open(['files' => true, 'url' => 'fiplex']) }}
+    @endif
 
     @include('forms.partials.workorder_title_ref')
 

@@ -81,7 +81,7 @@
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate', $workorder->workorder->sub_contracted_unit_correspondent_affiliate, ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate')) }}
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate'), ['class' => 'unit_reps_autocomplete', 'data-rep-field' => 'fipra_representative']) }}
                     @endif
 
                     {{ display_form_error('sub_contracted_unit_correspondent_affiliate', $errors) }}

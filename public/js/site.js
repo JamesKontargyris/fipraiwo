@@ -79,11 +79,29 @@
 
 //  Autocomplete functionality
     $(".account_director_autocomplete").autocomplete({
-        source: 'js/ajax/account_directors.php',
+        source: '/ac/account_directors',
         minLength:1,
         select: function(event, ui) {
             $(this).val(ui.item.value);
             $('input[name=' + $(this).data('email-field') + ']').val(ui.item.email);
+        }
+    });
+
+    $(".unit_reps_autocomplete").autocomplete({
+        source: '/ac/unit_reps',
+        minLength:1,
+        select: function(event, ui) {
+            $(this).val(ui.item.value);
+            $('input[name=' + $(this).data('rep-field') + ']').val(ui.item.rep);
+        }
+    });
+
+    $(".spad_reps_autocomplete").autocomplete({
+        source: '/ac/spad_reps',
+        minLength:1,
+        select: function(event, ui) {
+            $(this).val(ui.item.value);
+            $('input[name=' + $(this).data('rep-field') + ']').val(ui.item.rep);
         }
     });
 
