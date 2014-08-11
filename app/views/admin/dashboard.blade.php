@@ -29,12 +29,12 @@
                 @foreach($formtype->workorders as $workorder)
                 <tr>
                     <td><a href="/admin/view/{{ $workorder->id }}">{{ $workorder->title }}</a></td>
-                    <td>{{ date('d M y - h.ia', strtotime($workorder->created_at)) }}</td>
+                    <td>{{ date('d M y - h.i', strtotime($workorder->created_at)) }}</td>
                     <td>
                         @if(strtotime($workorder->created_at) == strtotime($workorder->updated_at))
                             -
                         @else
-                            {{ date('d M y - h.ia', strtotime($workorder->updated_at)) }}
+                            {{ date('d M y - h.i', strtotime($workorder->updated_at)) }}
                         @endif
                     </td>
                     <td>

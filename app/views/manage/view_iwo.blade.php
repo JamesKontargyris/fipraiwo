@@ -24,14 +24,14 @@
     <div>
         <section class="outline-box col-6">
             <h5>Created</h5>
-            {{ date("d M Y, g.ia", strtotime($workorder->created_at)) }}
+            {{ date("d M Y, g.i", strtotime($workorder->created_at)) }}
         </section>
         <section class="outline-box col-6 last">
             <h5>Last updated</h5>
             @if(strtotime($workorder->updated_at) == strtotime($workorder->created_at))
                 No updates.
             @else
-                {{ date("d M Y, g.ia", strtotime($workorder->updated_at)) }}
+                {{ date("d M Y, g.i", strtotime($workorder->updated_at)) }}
             @endif
         </section>
     </div>

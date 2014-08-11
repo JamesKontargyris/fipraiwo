@@ -6,7 +6,7 @@
         <p>{{ $log->log }}</p>
         <div class="small-print">
             By {{ $log->user->name }}<br/>
-            {{ date("d M Y", strtotime($log->created_at)) }} at {{ date("g.ia", strtotime($log->created_at)) }}
+            {{ date("d M Y", strtotime($log->created_at)) }} at {{ date("g.i", strtotime($log->created_at)) }}
         </div>
 
     </li>

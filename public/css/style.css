@@ -512,6 +512,12 @@ strong {
     /* line 19, ../../app/assets/sass/_mixins.scss */
     .work-order-menu li a:hover {
       opacity: 0.8; }
+    /* line 23, ../../app/assets/sass/_modules.scss */
+    .work-order-menu li a.highlight {
+      background-color: #cc0a12;
+      background: -moz-linear-gradient(top, #cc0a12, #9b080e);
+      background: -webkit-linear-gradient(top, #cc0a12, #9b080e);
+      background: linear-gradient(to bottom, #cc0a12, #9b080e); }
     /* line 12, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\susy-2.1.2\sass\susy\output\support\_clearfix.scss */
     .work-order-menu li a:after {
       content: " ";
@@ -521,84 +527,35 @@ strong {
       /* line 21, ../../app/assets/sass/_modules.scss */
       .work-order-menu li a {
         min-height: 210px; } }
-    /* line 32, ../../app/assets/sass/_modules.scss */
+    /* line 35, ../../app/assets/sass/_modules.scss */
     .work-order-menu li a i {
       display: block;
       margin-top: 20px; }
       @media (max-width: 900px) {
-        /* line 32, ../../app/assets/sass/_modules.scss */
+        /* line 35, ../../app/assets/sass/_modules.scss */
         .work-order-menu li a i {
-          width: 31.42857%;
-          float: left;
-          margin-right: 2.85714%;
-          font-size: 40px;
-          font-size: 2.5rem; } }
+          display: none; } }
       @media (min-width: 900px) {
-        /* line 32, ../../app/assets/sass/_modules.scss */
+        /* line 35, ../../app/assets/sass/_modules.scss */
         .work-order-menu li a i {
           padding: 10px 0; } }
       @media (max-width: 320px) {
-        /* line 32, ../../app/assets/sass/_modules.scss */
+        /* line 35, ../../app/assets/sass/_modules.scss */
         .work-order-menu li a i {
           display: none; } }
-    /* line 46, ../../app/assets/sass/_modules.scss */
+    /* line 48, ../../app/assets/sass/_modules.scss */
     .work-order-menu li a p {
-      font-size: 18px;
-      font-size: 1.125rem;
+      font-size: 22px;
+      font-size: 1.375rem;
       font-weight: bold;
       line-height: 1.4;
       margin-top: 10px;
       margin-bottom: 0; }
       @media (min-width: 480px) and (max-width: 900px) {
-        /* line 46, ../../app/assets/sass/_modules.scss */
+        /* line 48, ../../app/assets/sass/_modules.scss */
         .work-order-menu li a p {
-          width: 65.71429%;
-          float: right;
-          margin-right: 0;
-          text-align: left; } }
-  @media (min-width: 900px) {
-    /* line 19, ../../app/assets/sass/_modules.scss */
-    .work-order-menu li {
-      width: 22.85714%;
-      float: left; }
-      /* line 63, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\susy-2.1.2\sass\susy\language\susy\_gallery.scss */
-      .work-order-menu li:nth-child(4n + 1) {
-        margin-left: 0;
-        margin-right: -100%;
-        clear: both;
-        margin-left: 0; }
-      /* line 63, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\susy-2.1.2\sass\susy\language\susy\_gallery.scss */
-      .work-order-menu li:nth-child(4n + 2) {
-        margin-left: 25.71429%;
-        margin-right: -100%;
-        clear: none; }
-      /* line 63, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\susy-2.1.2\sass\susy\language\susy\_gallery.scss */
-      .work-order-menu li:nth-child(4n + 3) {
-        margin-left: 51.42857%;
-        margin-right: -100%;
-        clear: none; }
-      /* line 63, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\susy-2.1.2\sass\susy\language\susy\_gallery.scss */
-      .work-order-menu li:nth-child(4n + 4) {
-        margin-left: 77.14286%;
-        margin-right: -100%;
-        clear: none; } }
-  @media (min-width: 480px) and (max-width: 900px) {
-    /* line 19, ../../app/assets/sass/_modules.scss */
-    .work-order-menu li {
-      width: 48.57143%;
-      float: left; }
-      /* line 63, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\susy-2.1.2\sass\susy\language\susy\_gallery.scss */
-      .work-order-menu li:nth-child(2n + 1) {
-        margin-left: 0;
-        margin-right: -100%;
-        clear: both;
-        margin-left: 0; }
-      /* line 63, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\susy-2.1.2\sass\susy\language\susy\_gallery.scss */
-      .work-order-menu li:nth-child(2n + 2) {
-        margin-left: 51.42857%;
-        margin-right: -100%;
-        clear: none; } }
-  /* line 64, ../../app/assets/sass/_modules.scss */
+          text-align: center; } }
+  /* line 66, ../../app/assets/sass/_modules.scss */
   .work-order-menu li span {
     display: block;
     padding: 10px;
@@ -606,7 +563,7 @@ strong {
     -moz-border-radius: 0 0 5px 5px;
     -webkit-border-radius: 0;
     border-radius: 0 0 5px 5px; }
-  /* line 70, ../../app/assets/sass/_modules.scss */
+  /* line 72, ../../app/assets/sass/_modules.scss */
   .work-order-menu li .info {
     cursor: pointer;
     background-color: #dee0e6;
@@ -618,47 +575,47 @@ strong {
     margin: 0 auto;
     text-align: center;
     padding: 10px 0; }
-    /* line 79, ../../app/assets/sass/_modules.scss */
+    /* line 81, ../../app/assets/sass/_modules.scss */
     .work-order-menu li .info:hover {
       opacity: 0.7; }
 
-/* line 85, ../../app/assets/sass/_modules.scss */
+/* line 87, ../../app/assets/sass/_modules.scss */
 .errors,
 .error {
   background-color: #fdd8d9;
   border: 1px solid #fcc0c2;
   margin-bottom: 20px;
   padding: 10px 10px; }
-  /* line 91, ../../app/assets/sass/_modules.scss */
+  /* line 93, ../../app/assets/sass/_modules.scss */
   .errors ul li,
   .error ul li {
     padding: 5px 0; }
 
-/* line 95, ../../app/assets/sass/_modules.scss */
+/* line 97, ../../app/assets/sass/_modules.scss */
 .messages,
 .message {
   background-color: #bcf5bc;
   border: 1px solid lightgreen;
   margin-bottom: 20px;
   padding: 10px 10px; }
-  /* line 101, ../../app/assets/sass/_modules.scss */
+  /* line 103, ../../app/assets/sass/_modules.scss */
   .messages ul li,
   .message ul li {
     padding: 5px 0; }
 
-/* line 105, ../../app/assets/sass/_modules.scss */
+/* line 107, ../../app/assets/sass/_modules.scss */
 .formfield {
   margin-bottom: 20px; }
-  /* line 107, ../../app/assets/sass/_modules.scss */
+  /* line 109, ../../app/assets/sass/_modules.scss */
   .formfield.highlight {
     padding: 10px 10px;
     background-color: #e5edff;
     border: 1px solid #b2c8ff; }
-  /* line 112, ../../app/assets/sass/_modules.scss */
+  /* line 114, ../../app/assets/sass/_modules.scss */
   .formfield.hide {
     display: none; }
 
-/* line 116, ../../app/assets/sass/_modules.scss */
+/* line 118, ../../app/assets/sass/_modules.scss */
 .formgroup {
   overflow: hidden;
   *zoom: 1;
@@ -666,25 +623,25 @@ strong {
   padding: 10px 0;
   background-color: #eef0f6;
   margin-bottom: 20px; }
-  /* line 122, ../../app/assets/sass/_modules.scss */
+  /* line 124, ../../app/assets/sass/_modules.scss */
   .formgroup.highlight {
     background-color: #00257f; }
-    /* line 124, ../../app/assets/sass/_modules.scss */
+    /* line 126, ../../app/assets/sass/_modules.scss */
     .formgroup.highlight label {
       color: white; }
-  /* line 128, ../../app/assets/sass/_modules.scss */
+  /* line 130, ../../app/assets/sass/_modules.scss */
   .formgroup .file-upload-close {
     position: absolute;
     top: 50%;
     margin-top: -10px;
     right: 10px; }
-    /* line 133, ../../app/assets/sass/_modules.scss */
+    /* line 135, ../../app/assets/sass/_modules.scss */
     .formgroup .file-upload-close a {
       color: #aab6d4; }
-      /* line 135, ../../app/assets/sass/_modules.scss */
+      /* line 137, ../../app/assets/sass/_modules.scss */
       .formgroup .file-upload-close a:hover {
         color: #8899c3; }
-  /* line 140, ../../app/assets/sass/_modules.scss */
+  /* line 142, ../../app/assets/sass/_modules.scss */
   .formgroup .title {
     margin-top: -10px;
     padding: 10px 20px;
@@ -694,12 +651,12 @@ strong {
     font-weight: bold;
     color: #677cb1;
     margin-bottom: 20px; }
-  /* line 149, ../../app/assets/sass/_modules.scss */
+  /* line 151, ../../app/assets/sass/_modules.scss */
   .formgroup .formfield {
     padding-left: 20px;
     padding-right: 20px; }
 
-/* line 154, ../../app/assets/sass/_modules.scss */
+/* line 156, ../../app/assets/sass/_modules.scss */
 ul.button-menu {
   margin: 0;
   padding: 0;
@@ -724,7 +681,7 @@ ul.button-menu {
     /* line 52, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.0.0.alpha.19\stylesheets\compass\typography\lists\_horizontal-list.scss */
     ul.button-menu li.last {
       padding-right: 0; }
-  /* line 156, ../../app/assets/sass/_modules.scss */
+  /* line 158, ../../app/assets/sass/_modules.scss */
   ul.button-menu li a {
     display: inline-block;
     cursor: pointer;
@@ -748,17 +705,17 @@ ul.button-menu {
     ul.button-menu li a:hover {
       opacity: 0.8; }
 
-/* line 161, ../../app/assets/sass/_modules.scss */
+/* line 163, ../../app/assets/sass/_modules.scss */
 .help {
   display: none;
   width: 16px;
   height: 16px;
   background: url("../img/help_icon.png") top left no-repeat; }
-  /* line 166, ../../app/assets/sass/_modules.scss */
+  /* line 168, ../../app/assets/sass/_modules.scss */
   .help:hover {
     background: url("../img/help_icon.png") top right no-repeat; }
 
-/* line 170, ../../app/assets/sass/_modules.scss */
+/* line 172, ../../app/assets/sass/_modules.scss */
 .help-box {
   background: #dee0e6;
   border: #dedede 1px solid;
@@ -766,40 +723,40 @@ ul.button-menu {
   display: block;
   margin-bottom: 10px; }
 
-/* line 177, ../../app/assets/sass/_modules.scss */
+/* line 179, ../../app/assets/sass/_modules.scss */
 .sub-box {
   display: none;
   background: white;
   padding: 10px 20px;
   border: 1px solid #ccd3e5; }
 
-/* line 183, ../../app/assets/sass/_modules.scss */
+/* line 185, ../../app/assets/sass/_modules.scss */
 .buttons,
 .loading {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 20px; }
 
-/* line 188, ../../app/assets/sass/_modules.scss */
+/* line 190, ../../app/assets/sass/_modules.scss */
 .loading {
   display: none; }
 
-/* line 191, ../../app/assets/sass/_modules.scss */
+/* line 193, ../../app/assets/sass/_modules.scss */
 .small-print {
   font-size: 12px;
   font-size: 0.75rem;
   color: #5f697f;
   font-style: italic; }
 
-/* line 196, ../../app/assets/sass/_modules.scss */
+/* line 198, ../../app/assets/sass/_modules.scss */
 .italic {
   font-style: italic; }
 
-/* line 199, ../../app/assets/sass/_modules.scss */
+/* line 201, ../../app/assets/sass/_modules.scss */
 .bold {
   font-style: bold; }
 
-/* line 202, ../../app/assets/sass/_modules.scss */
+/* line 204, ../../app/assets/sass/_modules.scss */
 .grey-box {
   overflow: hidden;
   *zoom: 1;
@@ -810,76 +767,94 @@ ul.button-menu {
   border-bottom: 2px solid #00257f;
   padding: 10px 20px; }
 
-/* line 210, ../../app/assets/sass/_modules.scss */
+/* line 212, ../../app/assets/sass/_modules.scss */
 ul.display-details li {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 10px; }
-  /* line 213, ../../app/assets/sass/_modules.scss */
+  /* line 215, ../../app/assets/sass/_modules.scss */
   ul.display-details li strong {
     display: block;
     padding: 5px 10px;
     background-color: #e5edff; }
-  /* line 218, ../../app/assets/sass/_modules.scss */
+  /* line 220, ../../app/assets/sass/_modules.scss */
   ul.display-details li span {
     display: block;
     border: 1px solid #e5edff;
     padding: 5px 10px; }
   @media (min-width: 900px) {
-    /* line 210, ../../app/assets/sass/_modules.scss */
+    /* line 212, ../../app/assets/sass/_modules.scss */
     ul.display-details li {
       width: 70%; } }
 
-/* line 228, ../../app/assets/sass/_modules.scss */
+/* line 230, ../../app/assets/sass/_modules.scss */
 .fees-people {
-  display: none; }
-  /* line 230, ../../app/assets/sass/_modules.scss */
+  display: none;
+  font-size: 12px;
+  font-size: 0.75rem; }
+  /* line 233, ../../app/assets/sass/_modules.scss */
   .fees-people .fees-person-clone {
     display: none; }
-  /* line 233, ../../app/assets/sass/_modules.scss */
+  /* line 236, ../../app/assets/sass/_modules.scss */
   .fees-people .table-option {
     float: right;
     font-weight: bold; }
 
-/* line 239, ../../app/assets/sass/_modules.scss */
+/* line 242, ../../app/assets/sass/_modules.scss */
 ul.square {
   list-style: none;
   padding: 0;
   margin: 0;
   margin-bottom: 20px; }
-  /* line 245, ../../app/assets/sass/_modules.scss */
+  /* line 248, ../../app/assets/sass/_modules.scss */
   ul.square li {
     padding-left: 1em;
     text-indent: -.7em; }
-  /* line 249, ../../app/assets/sass/_modules.scss */
+  /* line 252, ../../app/assets/sass/_modules.scss */
   ul.square li:before {
     content: "▪ ";
     color: #00257f;
     /* or whatever color you prefer */ }
 
-/* line 254, ../../app/assets/sass/_modules.scss */
+/* line 257, ../../app/assets/sass/_modules.scss */
 .datepicker {
   background: url(images/iconCalendar.gif) no-repeat 10px center;
   padding-left: 40px !important;
   padding: 5px 10px; }
 
-/* line 260, ../../app/assets/sass/_modules.scss */
+/* line 263, ../../app/assets/sass/_modules.scss */
 .workorder-table thead {
   background-color: #00257f;
   color: white; }
-/* line 264, ../../app/assets/sass/_modules.scss */
+/* line 267, ../../app/assets/sass/_modules.scss */
 .workorder-table tr {
   border-bottom: 1px solid #ccd3e5; }
-  /* line 266, ../../app/assets/sass/_modules.scss */
+  /* line 269, ../../app/assets/sass/_modules.scss */
   .workorder-table tr:last-child {
     border-bottom: 0; }
-  /* line 269, ../../app/assets/sass/_modules.scss */
+  /* line 272, ../../app/assets/sass/_modules.scss */
   .workorder-table tr td {
     padding: 10px 10px; }
 
-/* line 275, ../../app/assets/sass/_modules.scss */
+/* line 279, ../../app/assets/sass/_modules.scss */
 .euro-field:before {
   content: "€"; }
+
+/* line 284, ../../app/assets/sass/_modules.scss */
+.rate-table {
+  border: 1px solid white; }
+  /* line 287, ../../app/assets/sass/_modules.scss */
+  .rate-table thead td {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white; }
+  /* line 293, ../../app/assets/sass/_modules.scss */
+  .rate-table tr td {
+    border-bottom: 1px solid white;
+    padding: 5px;
+    text-align: right; }
+    /* line 297, ../../app/assets/sass/_modules.scss */
+    .rate-table tr td:first-child {
+      text-align: left; }
 
 /* line 1, ../../app/assets/sass/_header.scss */
 .user-details {

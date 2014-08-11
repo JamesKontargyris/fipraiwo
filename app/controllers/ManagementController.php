@@ -188,14 +188,20 @@ class ManagementController extends BaseController
             //Add an event log entry for this update
             Logger::add_log('Work order updated.', 'update');
             //Get all users linked to this work order so we can email them about the update
-            $users = User::where('iwo_id', '=', Session::get('iwo_id'))->get(['email', 'name']);
-            foreach($users as $user)
+            //If workorder is confirmed, include the copy contacts;
+            if($workorder->confirmed > 0)
             {
-                //Send an email to lead and sub units plus copy contacts now the work order is confirmed
-                $data['iwo_ref'] = Session::get('iwo_ref');
-                $data['recipient'] = $this->get_user_emails($workorder->id);
-                Queue::push('\Iwo\Workers\SendEmail@iwo_updated', $data);
+                $users = array_merge($this->get_user_emails($workorder->id), $this->get_copy_emails($workorder->formtype_id));
             }
+            else
+            {
+                $users = $this->get_user_emails($workorder->id);
+            }
+            //dd($users);
+            //Send an email to everyone that should receive one
+            $data['iwo_ref'] = Session::get('iwo_ref');
+            $data['recipient'] = $users;
+            Queue::push('\Iwo\Workers\SendEmail@iwo_updated', $data);
 
             return Redirect::to('manage/updatecomplete');
         }

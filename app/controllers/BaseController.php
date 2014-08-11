@@ -37,7 +37,6 @@ class BaseController extends Controller {
 
 	public function postIndex()
 	{
-        //dd(Input::all());
 		// Use $this->validator set in the sub class to use the validation rules
 		// specific to this form
 		$this->validator->validate(Input::all());
@@ -86,7 +85,7 @@ class BaseController extends Controller {
 
         //Insert work order reference in the DB
         $iwo_ref = new Iwo_ref;
-        $ref_code = (trim(Input::old('workorder_reference'))) ? trim(Input::old('workorder_reference')) : $iwo_ref->generate_ref();
+        $ref_code = $iwo_ref->generate_ref();
         $iwo_ref->iwo_id = $workorder->id;
         $iwo_ref->iwo_ref = $ref_code;
         $iwo_ref->created_at = date("Y-m-d H:i:s");

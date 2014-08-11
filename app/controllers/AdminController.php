@@ -63,7 +63,7 @@ class AdminController extends BaseController {
 
     public function getLogout()
     {
-        Session::forget('admin_logged_in');
+        Session::flush();
 
         return Redirect::route('home')->with('message', 'You have been logged out.');
     }

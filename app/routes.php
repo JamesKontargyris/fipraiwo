@@ -33,6 +33,24 @@ Route::get('complete', ['as' => 'complete', function()
 	return View::make('complete')->with('page_title', 'Work Order Submitted');
 }]);
 
+Route::get('add_roles_and_perms', function()
+{
+    $lead = Role::find(1);
+
+    $sub = Role::find(2);
+
+    $read = new Permission();
+    $read->name = 'read';
+    $read->display_name = "Can Read IWOs";
+    $read->save();
+
+    $lead->attachPermission($read);
+
+    $sub->attachPermission($read);
+
+    return "Done.";
+});
+
 
 //Account Director autocomplete
 Route::get('ac/account_directors', 'AutocompleteController@account_directors');

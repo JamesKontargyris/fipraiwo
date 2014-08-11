@@ -134,16 +134,16 @@
                 {{ display_form_error('deliverables', $errors) }}
             </div>
             <div class="formfield">
-                {{ Form::label('time_frame', 'Time frame:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Please enter the start date of the IWO. The Start date is from when payments can be made under this IWO.</div>
-                {{ Form::textarea('time_frame', (editing()) ? $workorder->workorder->time_frame : Input::old('time_frame'), ['rows' => '5']) }}
-                {{ display_form_error('time_frame', $errors) }}
+                {{ Form::label('internal_work_order_start_date', 'IWO start date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">The Start date is from when payments can be made under this IWO.</div>
+                {{ Form::text('internal_work_order_start_date', (editing()) ? $workorder->workorder->internal_work_order_start_date : Input::old('internal_work_order_start_date'), ['class' => 'datepicker']) }}
+                {{ display_form_error('internal_work_order_start_date', $errors) }}
             </div>
             <div class="formfield">
-                {{ Form::label('internal_work_order_expires', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+                {{ Form::label('internal_work_order_expiry_date', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">This is the date payment will stop under this IWO.</div>
-                {{ Form::text('internal_work_order_expires', (editing()) ? $workorder->workorder->internal_work_order_expires : Input::old('internal_work_order_expires'), ['class' => 'datepicker']) }}
-                {{ display_form_error('internal_work_order_expires', $errors) }}
+                {{ Form::text('internal_work_order_expiry_date', (editing()) ? $workorder->workorder->internal_work_order_expiry_date : Input::old('internal_work_order_expiry_date'), ['class' => 'datepicker']) }}
+                {{ display_form_error('internal_work_order_expiry_date', $errors) }}
             </div>
 
 			<div class="formfield">
@@ -153,7 +153,7 @@
 				{{ display_form_error('green_sheet_required', $errors) }}
 			</div>
 			<div class="formfield">
-				{{ Form::label('other_information', 'Other information:') }}
+				{{ Form::label('other_information', 'Any other relevant information including variants on terms:') }}
 				{{ Form::textarea('other_information', (editing()) ? $workorder->workorder->other_information : Input::old('other_information'), ['rows' => '10']) }}
 				{{ display_form_error('other_information', $errors) }}
 			</div>

@@ -11,7 +11,7 @@
 @section('content')
 
 	<div class="intro">
-        <p>This form confirms financial instructions between Members of the Fipra Network. Please fill one form out each time you subcontract a Unit.</p>
+        <p>This form confirms financial instructions between Members of the Fipra Network. Please fill one form out each time a Unit is subcontracted.</p>
         <p class="italic small-print">Please see full explanatory notes at the end of the page.</p>
         @if(editing())
             <p class="red">Fields in red cannot be edited.</p>
@@ -40,7 +40,7 @@
                     @if(editing())
                         {{ Form::text('lead_unit', $workorder->workorder->lead_unit, ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('lead_unit', Input::old('lead_unit')) }}
+                        {{ Form::text('lead_unit', Input::old('lead_unit'), ['class' => 'unit_reps_autocomplete', 'data-rep-field' => 'lead_fipra_representative']) }}
                     @endif
                     {{ display_form_error('lead_unit', $errors) }}
                 </div>
@@ -70,6 +70,12 @@
                     {{ display_form_error('lead_email_address', $errors) }}
                 </div>
 
+                <div class="formfield">
+					{{ Form::label('lead_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
+					{{ Form::text('lead_fipra_representative', (editing()) ? $workorder->workorder->lead_fipra_representative : Input::old('lead_fipra_representative')) }}
+					{{ display_form_error('lead_fipra_representative', $errors) }}
+				</div>
+
             </div>
 
             <div class="formgroup">
@@ -81,7 +87,7 @@
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate', $workorder->workorder->sub_contracted_unit_correspondent_affiliate, ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate'), ['class' => 'unit_reps_autocomplete', 'data-rep-field' => 'fipra_representative']) }}
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate'), ['class' => 'unit_reps_autocomplete', 'data-rep-field' => 'sub_fipra_representative']) }}
                     @endif
 
                     {{ display_form_error('sub_contracted_unit_correspondent_affiliate', $errors) }}
@@ -109,9 +115,9 @@
                 </div>
 
                 <div class="formfield">
-                    {{ Form::label('fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
-                    {{ Form::text('fipra_representative', (editing()) ? $workorder->workorder->fipra_representative : Input::old('fipra_representative')) }}
-                    {{ display_form_error('fipra_representative', $errors) }}
+                    {{ Form::label('sub_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
+                    {{ Form::text('sub_fipra_representative', (editing()) ? $workorder->workorder->sub_fipra_representative : Input::old('sub_fipra_representative')) }}
+                    {{ display_form_error('sub_fipra_representative', $errors) }}
                 </div>
             </div>
             <div class="formgroup">
@@ -121,22 +127,33 @@
 
                     {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a day rate' => 'at a day rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? $workorder->workorder->the_work_will_be_done : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
                     <div class="help-box">
-                        <table width="100%">
+                        <table width="100%" class="rate-table">
+                        	<thead>
+								<tr>
+									<td></td>
+									<td>Hourly Rate</td>
+									<td>20% Discount</td>
+								</tr>
+                        	</thead>
                             <tr>
                                 <td>Account Directors and Senior Consultants</td>
-                                <td>€425 per hour</td>
+                                <td>€425</td>
+                                <td>€340</td>
                             </tr>
                             <tr>
                                 <td>Account Managers</td>
-                                <td>€325 per hour</td>
+                                <td>€325</td>
+                                <td>€260</td>
                             </tr>
                             <tr>
                                 <td>Account Executives</td>
-                                <td>€225 per hour</td>
+                                <td>€225</td>
+                                <td>€180</td>
                             </tr>
                             <tr>
                                 <td>Researchers</td>
-                                <td>€125 per hour</td>
+                                <td>€125</td>
+                                <td>€100</td>
                             </tr>
                         </table>
                     </div>
@@ -145,8 +162,8 @@
                         {{ Form::label('', 'The following person(s) will work at these rates:') }}
                         <table width="100%">
                             <thead>
-                            <td width="70%">Name</td>
-                            <td width="20%" class="rate-label">Rate</td>
+                            <td width="60%">Name</td>
+                            <td width="30%" class="rate-label">Rate</td>
                             <td width="10%"></td>
                             </thead>
 
@@ -203,7 +220,7 @@
                     {{ display_form_error('agreed_fee_element_details', $errors) }}
                 </div>
                 <div class="formfield">
-                    <div class="small-print">All the fees above, except success/finders fee, will be invoiced with the applicable Fipra Inter-Unit discount. <a href="#" class="help">&nbsp;</a>
+                    <div>All the fees above, except success/finders fee, will be invoiced with the 20% Fipra Inter-Unit discount, unless otherwise stated in the notes at the end of this form. <a href="#" class="help">&nbsp;</a>
                     <p class="help-box">When a Unit subcontracts to another Unit for work, a percentage known as the Inter-Unit discount is paid to the Unit that introduced the client work. Thus the Lead Unit receives an Inter-Unit discount on the net invoice amount billed to the client.</p></div>
                 </div>
                 <div class="formfield">
@@ -249,16 +266,16 @@
                 {{ display_form_error('deliverables', $errors) }}
             </div>
             <div class="formfield">
-                {{ Form::label('time_frame', 'Time frame:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Please enter the start date of the IWO. The Start date is from when payments can be made under this IWO.</div>
-                {{ Form::text('time_frame', (editing()) ? $workorder->workorder->time_frame : Input::old('time_frame')) }}
-                {{ display_form_error('time_frame', $errors) }}
+                {{ Form::label('internal_work_order_start_date', 'IWO start date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">The Start date is from when payments can be made under this IWO.</div>
+                {{ Form::text('internal_work_order_start_date', (editing()) ? $workorder->workorder->internal_work_order_start_date : Input::old('internal_work_order_start_date'), ['class' => 'datepicker']) }}
+                {{ display_form_error('internal_work_order_start_date', $errors) }}
             </div>
             <div class="formfield">
-                {{ Form::label('internal_work_order_expires', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+                {{ Form::label('internal_work_order_expiry_date', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">This is the date payment will stop under this IWO.</div>
-                {{ Form::text('internal_work_order_expires', (editing()) ? $workorder->workorder->internal_work_order_expires : Input::old('internal_work_order_expires'), ['class' => 'datepicker']) }}
-                {{ display_form_error('internal_work_order_expires', $errors) }}
+                {{ Form::text('internal_work_order_expiry_date', (editing()) ? $workorder->workorder->internal_work_order_expiry_date : Input::old('internal_work_order_expiry_date'), ['class' => 'datepicker']) }}
+                {{ display_form_error('internal_work_order_expiry_date', $errors) }}
                 <p class="small-print">An email will be sent to you 10 days before this work order expires.</p>
             </div>
 			<div class="formfield">
@@ -268,13 +285,13 @@
 				{{ display_form_error('green_sheet_required', $errors) }}
 			</div>
             <div class="formfield hide" id="green-sheet-required-reveal">
+				@include('forms.partials.green_sheet_links')
                 <span class="small-print">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked, irrespective of the type of fee structure chosen above. Please Click here to download a Greensheet template.</span>
             </div>
 
-            @include('forms.partials.green_sheet_links')
 
 			<div class="formfield">
-				{{ Form::label('other_information', 'Other information:') }}
+				{{ Form::label('other_information', 'Any other relevant information including variants on terms:') }}
 				{{ Form::textarea('other_information', (editing()) ? $workorder->workorder->other_information : Input::old('other_information'), ['rows' => '10']) }}
 				{{ display_form_error('other_information', $errors) }}
 			</div>
@@ -288,8 +305,8 @@
             <div class="grey-box">
                 <div class="col-10 last">
                     <h4>Invoices</h4>
-                    <p>Please note that the Lead Unit will not accept an invoice for more than the amount agreed in the Internal Work Order - without prior approval which may simply come in the form of an additional IWO.</p>
-                    <p>We are aware that clients will sometimes contact you directly with requests for additional work that is not pre-authorised. Where this happens, please immediately contact the Account Director who will make changes to the budget where possible. Make the client aware you will need to do this as a matter of course.</p>
+                    <p>Please note that the Lead Unit will not accept an invoice for more than the amount agreed in the Internal Work Order, without prior approval by both sides.</p>
+                    <p>We are aware that clients may sometimes contact you directly with requests for additional work that is not pre-authorised. Where this happens, please immediately contact the Account Director who will make changes to the budget where possible. Please make the client aware you will need to do this as a matter of course.</p>
 
                     <h4>Caps</h4>
                     <p>Some fees have an agreed monthly maximum you may bill or “cap.” This is not the same as a fixed fee for the month. Generally invoices are expected to come in below the cap and any work above the cap cannot be invoiced without an IWO that raises the cap.</p>

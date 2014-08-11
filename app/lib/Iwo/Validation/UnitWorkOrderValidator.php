@@ -17,7 +17,7 @@ class UnitWorkOrderValidator extends FormValidator
         'agreed_fee_element_details'                                   => 'required_if:agreed_fee_element,Yes',
         'work_capped_each_month'                                       => 'required',
         'work_cap'                                                     => 'required_if:work_capped_each_month,Yes|numeric',
-        'internal_work_order_expires'                                  => 'futuredate',
+        'internal_work_order_expiry_date'                              => 'futuredate',
         'green_sheet_required'                                         => 'required',
     ];
 

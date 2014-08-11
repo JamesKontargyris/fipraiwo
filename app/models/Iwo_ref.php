@@ -16,12 +16,12 @@ class Iwo_ref extends Eloquent
         //Generate a unique reference for the work order and save to DB
         $unique = "no";
         $ref_code = "";
-        while($unique == "no")
+        for($i = 1; $unique == "no"; $i++)
         {
-            $ref_code = Generate::iwo_ref(10);
+            $ref_code = Generate::iwo_ref($i);
             //If the code isn't found in the DB, the code is unique
             //so break the while loop
-            if( ! $this->test_ref($ref_code, 'iwo_ref'))
+            if( ! $this->test_unique($ref_code, 'iwo_ref'))
             {
                 $unique = "yes";
             }
@@ -30,7 +30,7 @@ class Iwo_ref extends Eloquent
         return $ref_code;
     }
 
-    private function test_ref($code, $column)
+    private function test_unique($code, $column)
     {
         return $this->where($column, $code)->first();
     }

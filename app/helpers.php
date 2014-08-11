@@ -48,14 +48,6 @@ function pretty_input($input)
             //Continue with the foreach loop
             continue;
         }
-        elseif($key == 'workorder_reference')
-        {
-            //If workorder_reference is blank, remove this field from the array
-            //(an automated code generator will create one)
-            unset($input['workorder_reference']);
-            //Continue with the foreach loop
-            continue;
-        }
         //If the value is an array of values (and it isn't the team array),
         //convert to a string of comma separated values
         elseif(is_array($value) && $key != 'team')
