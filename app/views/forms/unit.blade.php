@@ -125,7 +125,7 @@
                 <div class="formfield">
                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
 
-                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a day rate' => 'at a day rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? $workorder->workorder->the_work_will_be_done : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? $workorder->workorder->the_work_will_be_done : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
                     <div class="help-box">
                         <table width="100%" class="rate-table">
                         	<thead>

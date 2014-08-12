@@ -157,7 +157,10 @@ strong {
 	@include font-size(14);
 }
 .red {
-	color:$red;
+	color:$red !important;
+}
+.white {
+  color:white !important;
 }
 .showjs {
 	display:none;

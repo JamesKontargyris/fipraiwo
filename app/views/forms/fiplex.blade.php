@@ -7,7 +7,7 @@
 
 @section('content')
 	<div class="intro">
-		<p>If you have any general queries or would like to contact Fiplex before submitting a work order request, please e-mail <a href="mailto:fiplex@fipra.com">fiplex@fipra.com</a>.</p>
+		<p>If you have any general queries or would like to contact Fiplex before submitting a work order request, please e-mail <a href="mailto:fiplex@fipra.com">fiplex@fipra.com</a>. Please note: only Fipra International and Units can commission Fiplex.</p>
 	</div>
 
 	@include('forms.partials.messages')
@@ -74,9 +74,9 @@
 			{{ display_form_error('required_completion_date_and_time', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('type_of_document_or_product', 'Type of document / product:', ['class' => 'required']) }}
-			{{ Form::text('type_of_product', (editing()) ? $workorder->workorder->type_of_products : Input::old('type_of_product')) }}
-			{{ display_form_error('type_of_product', $errors) }}
+			{{ Form::label('require_cost_estimate', 'Do you require a cost estimate?', ['class' => 'required']) }}
+			{{ Form::select('require_cost_estimate', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->require_cost_estimate : Input::old('require_cost_estimate')) }}
+			{{ display_form_error('require_cost_estimate', $errors) }}
 		</div>
 	</section>
 
@@ -118,11 +118,6 @@
 			{{ Form::label('instructions', 'Any other instructions:') }}
 			{{ Form::textarea('instructions', (editing()) ? $workorder->workorder->instructions : Input::old('instructions'), ['rows' => '5']) }}
 			{{ display_form_error('instructions', $errors) }}
-		</div>
-		<div class="formfield">
-			{{ Form::label('require_cost_estimate', 'Do you require a cost estimate?', ['class' => 'required']) }}
-			{{ Form::select('require_cost_estimate', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->require_cost_estimate : Input::old('require_cost_estimate')) }}
-			{{ display_form_error('require_cost_estimate', $errors) }}
 		</div>
         @if( ! editing())
             <div class="file-field">

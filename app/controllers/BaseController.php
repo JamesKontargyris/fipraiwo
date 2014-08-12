@@ -77,6 +77,7 @@ class BaseController extends Controller {
         $workorder = new Workorder;
         $workorder->workorder = $input_data;
         $workorder->title = trim(Input::old('workorder_title'));
+        $workorder->expiry_date = Input::old('expiry_date') ? strtotime(Input::old('expiry_date')) : '2999-01-01';
         $workorder->confirmed = ($this->confirmed) ? $this->confirmed : 0;
         $workorder->formtype_id = Formtype::where('key', $this->iwo_key)->pluck('id');
         $workorder->created_at = date("Y-m-d H:i:s");

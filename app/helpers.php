@@ -146,3 +146,25 @@ function editing()
     //Otherwise, this is not an edit page
     return false;
 }
+
+function update_iwo_ref($ref)
+{
+    if( ! ctype_digit($ref))
+    {
+        $last_letter = substr($ref, -1);
+        $new_ref = substr($ref, 0, -1);
+        ++$last_letter;
+        $new_ref .= $last_letter;
+    }
+    else
+    {
+        $new_ref = $ref . 'a';
+    }
+
+    return $new_ref;
+}
+
+function get_original_ref($ref)
+{
+    return preg_replace("/[^0-9,.]/", "", $ref);
+}

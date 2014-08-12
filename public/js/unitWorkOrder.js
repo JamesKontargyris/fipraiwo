@@ -26,8 +26,8 @@
     {
         $('#green-sheet-required-reveal').show();
     }
-    // Show/hide the agreed fee element details field depending
-    // on the value in the agree fee element dropdown
+    // Show/hide the green sheet details field depending
+    // on the value in the green sheet required element dropdown
     $('select.green-sheet-required').on('change', function()
     {
         if($(this).val() == 'Yes') {
@@ -121,6 +121,7 @@
         last_row.after(tr_clone);
 //        Update the person-count hidden field
         count_field.val(person_count);
+
         $('.remove-row').on('click', function()
         {
             $(this).closest('.fees-person').remove();

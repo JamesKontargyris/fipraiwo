@@ -27,4 +27,9 @@ class SpadWorkOrderController extends BaseController
 		parent::__construct();
 		$this->validator = $validator;
 	}
+
+    public function getCheck()
+    {
+        return View::make('spadcheck')->with('page_title', 'Special Adviser Internal Work Order');
+    }
 }

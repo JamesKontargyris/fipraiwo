@@ -259,10 +259,14 @@ strong {
   color: #cc0a12; }
 
 /* line 162, ../../app/assets/sass/_base.scss */
+.white {
+  color: white !important; }
+
+/* line 165, ../../app/assets/sass/_base.scss */
 .showjs {
   display: none; }
 
-/* line 165, ../../app/assets/sass/_base.scss */
+/* line 168, ../../app/assets/sass/_base.scss */
 .hidejs {
   display: block; }
 
@@ -802,57 +806,47 @@ ul.display-details li {
 
 /* line 242, ../../app/assets/sass/_modules.scss */
 ul.square {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 20px; }
-  /* line 248, ../../app/assets/sass/_modules.scss */
-  ul.square li {
-    padding-left: 1em;
-    text-indent: -.7em; }
-  /* line 252, ../../app/assets/sass/_modules.scss */
-  ul.square li:before {
-    content: "▪ ";
-    color: #00257f;
-    /* or whatever color you prefer */ }
+  list-style: square;
+  margin-bottom: 20px;
+  padding-left: 20px; }
 
-/* line 257, ../../app/assets/sass/_modules.scss */
+/* line 247, ../../app/assets/sass/_modules.scss */
 .datepicker {
   background: url(images/iconCalendar.gif) no-repeat 10px center;
   padding-left: 40px !important;
   padding: 5px 10px; }
 
-/* line 263, ../../app/assets/sass/_modules.scss */
+/* line 253, ../../app/assets/sass/_modules.scss */
 .workorder-table thead {
   background-color: #00257f;
   color: white; }
-/* line 267, ../../app/assets/sass/_modules.scss */
+/* line 257, ../../app/assets/sass/_modules.scss */
 .workorder-table tr {
   border-bottom: 1px solid #ccd3e5; }
-  /* line 269, ../../app/assets/sass/_modules.scss */
+  /* line 259, ../../app/assets/sass/_modules.scss */
   .workorder-table tr:last-child {
     border-bottom: 0; }
-  /* line 272, ../../app/assets/sass/_modules.scss */
+  /* line 262, ../../app/assets/sass/_modules.scss */
   .workorder-table tr td {
     padding: 10px 10px; }
 
-/* line 279, ../../app/assets/sass/_modules.scss */
+/* line 269, ../../app/assets/sass/_modules.scss */
 .euro-field:before {
   content: "€"; }
 
-/* line 284, ../../app/assets/sass/_modules.scss */
+/* line 274, ../../app/assets/sass/_modules.scss */
 .rate-table {
   border: 1px solid white; }
-  /* line 287, ../../app/assets/sass/_modules.scss */
+  /* line 277, ../../app/assets/sass/_modules.scss */
   .rate-table thead td {
     border-top: 1px solid white;
     border-bottom: 1px solid white; }
-  /* line 293, ../../app/assets/sass/_modules.scss */
+  /* line 283, ../../app/assets/sass/_modules.scss */
   .rate-table tr td {
     border-bottom: 1px solid white;
     padding: 5px;
     text-align: right; }
-    /* line 297, ../../app/assets/sass/_modules.scss */
+    /* line 287, ../../app/assets/sass/_modules.scss */
     .rate-table tr td:first-child {
       text-align: left; }
 

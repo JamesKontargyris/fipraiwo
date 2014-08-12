@@ -31,14 +31,15 @@
 			{{ display_form_error('commissioned_by', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('unit_special_adviser_or_correspondent', 'Name of Unit / Special Adviser / Correspondent:', ['class' => 'required']) }}
-			@if(editing())
-                {{ Form::text('unit_special_adviser_or_correspondent', $workorder->workorder->unit_special_adviser_or_correspondent, ['readonly' => 'readonly']) }}
-            @else
-                {{ Form::text('unit_special_adviser_or_correspondent', Input::old('unit_special_adviser_or_correspondent')) }}
-            @endif
-            {{ display_form_error('unit_special_adviser_or_correspondent', $errors) }}
-        </div>
+			{{ Form::label('person_commissioning_work_is_account_director_responsible', 'Is the person commissioning the work the Account Director responsible?', ['class' => 'required']) }}
+			{{ Form::select('person_commissioning_work_is_account_director_responsible', ['' => 'Please select...', 'No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->person_commissioning_work_is_account_director_responsible : Input::old('person_commissioning_work_is_account_director_responsible'), ['id' => 'person-commissioning-work-is-account-director-responsible']) }}
+			{{ display_form_error('person_commissioning_work_is_account_director_responsible', $errors) }}
+		</div>
+		<div class="formfield sub-box" id="person-commissioning-work-is-account-director-responsible-reveal">
+			{{ Form::label('account_director', 'Name the Account Director Responsible for this work:') }}
+			{{ Form::text('account_director', (editing()) ? $workorder->workorder->account_director : Input::old('account_director')) }}
+			{{ display_form_error('account_director', $errors) }}
+		</div>
 		<div class="formfield">
 			{{ Form::label('lead_email_address', 'Email address:', ['class' => 'required']) }}
             @if(editing())
@@ -49,8 +50,8 @@
 			{{ display_form_error('lead_email_address', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('account_director', 'Account Director responsible (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
-			<div class="help-box">This should indicate the person in your Unit who is in charge of quality control and ultimately will approve the cost of the work.</div>
+			{{ Form::label('account_director', 'Account Director responsible:') }} <a href="#" class="help">&nbsp;</a>
+			<div class="help-box">This should indicate the person in your Unit who is in charge of quality control and ultimately will approve the payment for the work.</div>
 			{{ Form::text('account_director', (editing()) ? $workorder->workorder->account_director : Input::old('account_director')) }}
 			{{ display_form_error('account_director', $errors) }}
 		</div>
@@ -73,7 +74,7 @@
 			{{ display_form_error('required_completion_date', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('type_of_product', 'Type of document / product:', ['class' => 'required']) }} 
+			{{ Form::label('type_of_product', 'Type of document / product to be edited, design and/or translated:', ['class' => 'required']) }}
 			{{ Form::text('type_of_product', (editing()) ? $workorder->workorder->type_of_product : Input::old('type_of_product')) }}
 			{{ display_form_error('type_of_product', $errors) }}
 		</div>
@@ -158,4 +159,6 @@
 	</section>
 
 	{{ Form::close() }}
+
+	<script type="text/javascript" src="{{ asset('js/edtWorkOrder.js') }}"></script>
 @stop

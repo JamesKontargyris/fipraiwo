@@ -55,7 +55,7 @@ class SendEmail {
     //Send an email when an IWO is updated
     public function iwo_updated($job, $data)
     {
-        $data['subject'] = "Internal Work Order " . $data['iwo_ref'] . " has been updated";
+        $data['subject'] = "Internal Work Order " . $data['old_ref'] . " has been updated";
 
         foreach($data['recipient'] as $recipient)
         {

@@ -56,6 +56,26 @@
         }
     });
 
+    // Make sure the green sheet required confirmation checkbox is displayed
+    // when the page reloads after a failed validation and the
+    // green sheet required dropdown is set to "Yes"
+    if($('select.green-sheet-required').val() == "Yes")
+    {
+        $('#green-sheet-required-reveal').show();
+    }
+    // Show/hide the green sheet details field depending
+    // on the value in the green sheet required element dropdown
+    $('select.green-sheet-required').on('change', function()
+    {
+        if($(this).val() == 'Yes') {
+            $('#green-sheet-required-reveal').slideDown();
+        }
+        else
+        {
+            $('#green-sheet-required-reveal').slideUp();
+        }
+    });
+
 
     function show_rate_form(selection)
     {
@@ -67,7 +87,7 @@
 
         if(selection != '') {
             $('.rate-field').slideDown();
-            $('.rate-label').text(rate_labels[selection]);
+            //$('.rate-label').text(rate_labels[selection]);
         } else {
             $('.rate-field').slideUp();
         }

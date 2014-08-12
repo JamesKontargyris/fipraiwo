@@ -8,6 +8,8 @@
 
 <h2>Login</h2>
 
+<p>This section allows you to manage IWOs. Depending on your status, you may be able to edit, confirm and/or cancel work orders. All users can add notes to IWOs.</p>
+
 @include('manage.partials.messages')
 
 {{ Form::open() }}
@@ -27,7 +29,8 @@
     </div>
     <div class="col-6 last">
         <h3><i class="fa fa-info-circle"></i> Information</h3>
-        <p>Once logged in, you will be able to view the work order, edit it if you are the lead contact and confirm it. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolor eveniet fugit inventore ipsum iure magnam molestiae mollitia nam natus, officia quam, ratione veritatis. Atque dolore doloremque officia repellendus vitae.</p>
+        <p>In most cases, a new IWO will need to be submitted where a new programme of work follows on from a previous one.</p>
+        <p>If you amend an IWO, a new reference code will be created and sent to other parties for confirmation. You will be notified of this updated code by email.</p>
     </div>
 {{ Form::close() }}
 

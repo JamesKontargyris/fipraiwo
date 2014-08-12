@@ -183,7 +183,15 @@ class ManagementController extends BaseController
             //Otherwise, carry on wih the update
             $workorder->workorder = $this->get_input_for_db();
             $workorder->updated_at = date_time_now();
+            $workorder->expiry_date = Input::old('expiry_date') ? strtotime(Input::old('expiry_date')) : '2999-01-01';
             $workorder->save();
+
+            $iwo_ref = Iwo_ref::where('iwo_id', '=', Session::get('iwo_id'))->first();
+            $iwo_ref->iwo_ref = update_iwo_ref(Session::get('iwo_ref'));
+            $iwo_ref->save();
+
+            //Update the iwo_ref in the session, as it has changed above
+            Session::set('iwo_ref', $iwo_ref->iwo_ref);
 
             //Add an event log entry for this update
             Logger::add_log('Work order updated.', 'update');
@@ -200,6 +208,7 @@ class ManagementController extends BaseController
             //dd($users);
             //Send an email to everyone that should receive one
             $data['iwo_ref'] = Session::get('iwo_ref');
+            $data['old_ref'] = get_original_ref(Session::get('iwo_ref'));
             $data['recipient'] = $users;
             Queue::push('\Iwo\Workers\SendEmail@iwo_updated', $data);
 

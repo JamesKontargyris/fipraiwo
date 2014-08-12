@@ -58,3 +58,11 @@ Route::get('ac/account_directors', 'AutocompleteController@account_directors');
 Route::get('ac/unit_reps', 'AutocompleteController@unit_reps');
 //Spad reps autocomplete
 Route::get('ac/spad_reps', 'AutocompleteController@spad_reps');
+
+
+Route::get('/reftest', function()
+{
+    $ref = '1408120001';
+
+
+});

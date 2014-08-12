@@ -14,7 +14,7 @@ class SpadWorkOrderValidator extends FormValidator
         'agreed_fee_element_details'      => 'required_if:agreed_fee_element,Yes',
         'work_capped_each_month'          => 'required',
         'work_cap'                        => 'required_if:work_capped_each_month,Yes',
-        'internal_work_order_expiry_date' => 'futuredate',
+        'internal_work_order_expiry_date' => 'required|futuredate',
         'green_sheet_required'            => 'required',
         'written_contract_exists'         => 'required',
     ];
