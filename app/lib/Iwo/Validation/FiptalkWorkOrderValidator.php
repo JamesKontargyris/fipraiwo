@@ -5,14 +5,13 @@ use Iwo\Validation\FormValidator;
 class FiptalkWorkOrderValidator extends FormValidator
 {
     protected $rules = [
-        'commissioned_by'                       => 'required',
+        'person_requiring_assistance'           => 'required',
         'unit_special_adviser_or_correspondent' => 'required',
-        'email_address'                 => 'required|email',
-        'project_and_client_name'               => 'required',
-        'required_completion_date_and_time'     => 'required',
-        'type_of_product'                       => 'required',
-        'require_consultation'                  => 'required',
+        'lead_email_address'                    => 'required|email',
+        'time_frame'                            => 'required',
         'require_cost_estimate'                 => 'required',
+        'individual_or_group_coaching'          => 'required',
+        'group_numbers'                         => 'required_if:individual_or_group_coaching,Group',
     ];
     protected $messages = [
         'required' => 'This field is required.',

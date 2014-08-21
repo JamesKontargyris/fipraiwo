@@ -6,8 +6,8 @@ class SpadWorkOrderValidator extends FormValidator
 {
     protected $rules = [
         'account_director'                => 'required',
-        'special_adviser'                 => 'required',
-        'email_address'                   => 'required|email',
+        'special_adviser_instructed'      => 'required',
+        'lead_email_address'              => 'required|email',
         'the_work_will_be_done'           => 'required',
         'rate_is'                         => 'required|numeric',
         'agreed_fee_element'              => 'required',
@@ -16,7 +16,6 @@ class SpadWorkOrderValidator extends FormValidator
         'work_cap'                        => 'required_if:work_capped_each_month,Yes',
         'internal_work_order_expiry_date' => 'required|futuredate',
         'green_sheet_required'            => 'required',
-        'written_contract_exists'         => 'required',
     ];
     protected $messages = [
         'required' => 'This field is required.',

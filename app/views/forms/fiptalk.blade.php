@@ -49,7 +49,7 @@
 			{{ display_form_error('email_address', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('project_and_client_name', 'Project and client name (where relevant):', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+			{{ Form::label('project_and_client_name', 'Project and client name (where relevant):') }} <a href="#" class="help">&nbsp;</a>
 			<div class="help-box">Please also denote if work is for internal or external use.</div>
 			{{ Form::text('project_and_client_name', (editing()) ? $workorder->workorder->project_and_client_name : Input::old('project_and_client_name')) }}
 			{{ display_form_error('project_and_client_name', $errors) }}
@@ -74,43 +74,30 @@
 
 	<section class="col-6 last">
 		<div class="formfield">
-			{{ Form::label('services_required', 'Service(s) required:', ['class' => 'required']) }} 
-			<div>{{ Form::checkbox('proofreading', (editing()) ? $workorder->workorder->proofreading : Input::old('proofreading')) }} Proofreading <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Proofreading help box</div>
-            </div>
-			<div>{{ Form::checkbox('copy_editing', (editing()) ? $workorder->workorder->copy_editing : Input::old('copy_editing')) }} Copy Editing <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Copy Editing help box</div>
-            </div>
-			<div>{{ Form::checkbox('rewriting', (editing()) ? $workorder->workorder->rewriting : Input::old('rewriting')) }} Re-writing <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Re-writing help box</div>
-            </div>
-			<div>{{ Form::checkbox('quickedit', (editing()) ? $workorder->workorder->quickedit : Input::old('quickedit')) }} Quick-Edit <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Quick-Edit help box</div>
-            </div>
-			<div>{{ Form::checkbox('graphic_or_print_design', (editing()) ? $workorder->workorder->graphic_or_print_design : Input::old('graphic_or_print_design')) }} Graphic/Print Design <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Graphic/Print Design help box</div>
-            </div>
-			<div>{{ Form::checkbox('web_design', (editing()) ? $workorder->workorder->web_design : Input::old('web_design')) }} Web Design <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Web Design help box</div>
-            </div>
-			<div>{{ Form::checkbox('translation', (editing()) ? $workorder->workorder->translation : Input::old('translation')) }} Translation <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Translation help box</div></div>
-			<div>{{ Form::checkbox('presentation_training', (editing()) ? $workorder->workorder->presentation_training : Input::old('presentation_training')) }} Presentation Training <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Presentation Training help box</div></div>
+			{{ Form::label('service_coaching_or_training_required', 'Service, coaching or training required:', ['class' => 'required']) }}
+			<div>{{ Form::checkbox('speech_making', (editing()) ? $workorder->workorder->speech_making : Input::old('speech_making')) }} Speech Making: preparation and delivery</div>
+			<div>{{ Form::checkbox('presenting', (editing()) ? $workorder->workorder->presenting : Input::old('presenting')) }} Presenting: preparation and delivery</div>
+			<div>{{ Form::checkbox('pitching', (editing()) ? $workorder->workorder->pitching : Input::old('pitching')) }} Pitching: how to do it effectively</div>
+			<div>{{ Form::checkbox('committee_and_meeting_skills', (editing()) ? $workorder->workorder->committee_and_meeting_skills : Input::old('committee_and_meeting_skills')) }} Committee and Meeting Skills</div>
+			<div>{{ Form::checkbox('strategic_communication_skills', (editing()) ? $workorder->workorder->strategic_communication_skills : Input::old('strategic_communication_skills')) }} Strategic Communication Skills</div>
+			<div>{{ Form::checkbox('media_handling', (editing()) ? $workorder->workorder->media_handling : Input::old('media_handling')) }} Media Handling: including statement writing and giving interviews</div>
 		</div>
 		<div class="formfield">
-			{{ Form::label('instructions', 'Any other instructions:') }} <a href="#" class="help">&nbsp;</a>
+			{{ Form::label('individual_or_group_coaching', 'Is this individual or group coaching?', ['class' => 'required']) }}
+			{{ Form::select('individual_or_group_coaching', ['' => 'Please select...', 'Individual' => 'Individual', 'Group' => 'Group'], (editing()) ? $workorder->workorder->individual_or_group_coaching : Input::old('individual_or_group_coaching')) }}
+			{{ display_form_error('individual_or_group_coaching', $errors) }}
+		</div>
+		<div class="formfield">
+			{{ Form::label('group_numbers', 'If group coaching, please indicate how many people in each category:') }}
+			{{ Form::textarea('group_numbers', (editing()) ? $workorder->workorder->group_numbers : Input::old('group_numbers'), ['rows' => '4']) }}
+			{{ display_form_error('group_numbers', $errors) }}
+		</div>
+		<div class="formfield">
+			{{ Form::label('instructions', 'Any other specific instructions:') }} <a href="#" class="help">&nbsp;</a>
 			<div class="help-box">Please indicate special instructions, explanatory information, guidance on tone, target audience, objectives etc.</div>
 			{{ Form::textarea('instructions', (editing()) ? $workorder->workorder->instructions : Input::old('instructions'), ['rows' => '4']) }}
 			{{ display_form_error('instructions', $errors) }}
 		</div>
-        @if( ! editing())
-            <div class="file-field">
-                <div class="formfield">
-                    @include('forms.partials.file_upload')
-                </div>
-            </div>
-        @endif
 	</section>
 
 	<section class="col-12" style="clear:both">
@@ -118,7 +105,7 @@
 		<p class="small-print">
 			Once your IWO is submitted, you will be contacted by Fiptalk for a consultation.
 		</p>
-		
+
 		{{ display_submit_button('Next') }}
 		@include('forms.partials.loading')
 
@@ -140,7 +127,7 @@
 	            <h4>Membership of the Fiptalk team</h4>
 	            <p>The founding members of the Fiptalk team are all based in Europe but the team is looking to expand membership geographically and welcomes all suggestions for new members made by colleagues in the Fipra Network. With sufficient notice, it can be arranged for the team to travel to work with individuals or with groups.</p>
 
-	            <h4>Meet the Fiptalk Team: Which Coach suits your needs best?</h4>
+	            <h4>Meet the Fiptalk Team</h4>
 	            <p><strong>Alp Mehmet – Coach  (Fiptalk Team Co-ordinator)</strong></p>
 	            <p>Alp is the Fiptalk team leader and worked for the UK government for over 38 years, mostly for the Foreign and Commonwealth Office. Alp has been a Special Adviser and member of the Fipra network since 2009. Alp trains and coaches people in public speaking, presenting and media handling at all levels in the public and private sectors.  Alp is a perceptive and inspirational motivator with a sensitive touch, who writes regularly for publications and websites and speaks on immigration, social issues, domestic politics and foreign affairs.</p>
 	            <p>Alp can show you how to put a presentation together and guide you on preparing and delivering it in the most attractive and credible way possible. Often it is simply a matter of coaxing the best out of each person by showing them how they might add colour, sparkle and “a bit of magic” to a presentation or speech that might otherwise be bland, flat or unconvincing. Self-belief, motivation and inspiration are an integral part of what Alp does, along with the requisite amount of Fipriotic fun!</p>

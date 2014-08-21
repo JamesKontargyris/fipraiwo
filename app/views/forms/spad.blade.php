@@ -30,16 +30,16 @@
 					@else
 						{{ Form::text('special_adviser_instructed', Input::old('special_adviser_instructed'), ['class' => 'spad_reps_autocomplete', 'data-rep-field' => 'fipra_representative']) }}
 					@endif
-					{{ display_form_error('special_adviser', $errors) }}
+					{{ display_form_error('special_adviser_instructed', $errors) }}
 				</div>
 				<div class="formfield">
-					{{ Form::label('sub_email_address', 'Special Adviser Email Address:', ['class' => 'required']) }}
+					{{ Form::label('lead_email_address', 'Special Adviser Email Address:', ['class' => 'required']) }}
 					@if(editing())
-						{{ Form::text('sub_email_address', $workorder->workorder->sub_email_address, ['readonly' => 'readonly']) }}
+						{{ Form::text('lead_email_address', $workorder->workorder->lead_email_address, ['readonly' => 'readonly']) }}
 					@else
-						{{ Form::text('sub_email_address', Input::old('sub_email_address')) }}
+						{{ Form::text('lead_email_address', Input::old('lead_email_address')) }}
 					@endif
-					{{ display_form_error('sub_email_address', $errors) }}
+					{{ display_form_error('lead_email_address', $errors) }}
 				</div>
                 <div class="formfield">
                     {{ Form::label('account_director', 'Account Director responsible for this instruction:', ['class' => 'required']) }}
@@ -52,13 +52,13 @@
                     <span class="small-print">No Unit other than Fipra International can submit an Internal Work Order for a Special Adviser.</span>
                 </div>
                 <div class="formfield">
-                    {{ Form::label('lead_email_address', 'Account Director Email Address:', ['class' => 'required']) }}
+                    {{ Form::label('sub_email_address', 'Account Director Email Address:', ['class' => 'required']) }}
                     @if(editing())
-                        {{ Form::text('lead_email_address', $workorder->workorder->lead_email_address, ['readonly' => 'readonly']) }}
+                        {{ Form::text('sub_email_address', $workorder->workorder->sub_email_address, ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('lead_email_address', Input::old('lead_email_address')) }}
+                        {{ Form::text('sub_email_address', Input::old('sub_email_address')) }}
                     @endif
-                    {{ display_form_error('lead_email_address', $errors) }}
+                    {{ display_form_error('sub_email_address', $errors) }}
                 </div>
 
                 <div class="formfield">
