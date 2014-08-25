@@ -13,6 +13,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->hasMany('Note');
     }
 
+    public function workorder()
+    {
+        return $this->hasOne('Workorder');
+    }
+
+    public static function login_user($user_id, $iwo_id, $iwo_ref)
+    {
+        Auth::loginUsingId($user_id);
+        Session::set('user_id', $user_id);
+        Session::set('iwo_id', $iwo_id);
+        Session::set('iwo_ref', $iwo_ref);
+
+        return true;
+    }
+
     /**
 	 * The database table used by the model.
 	 *

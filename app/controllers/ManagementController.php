@@ -12,6 +12,7 @@ class ManagementController extends BaseController
     protected $iwo_key;
     protected $validator;
     protected $upload;
+    protected $no_perms_message = 'Sorry, you do not have the necessary permissions to do that.';
 
     public function __construct()
     {
@@ -63,12 +64,9 @@ class ManagementController extends BaseController
         //Check to see if user exists
         if($user = User::where('email', '=', $email)->where('iwo_id', '=', $iwo_id)->first())
         {
-            //    If user found, log the user in, add some useful session variables
+            //If user found, log the user in, add some useful session variables
             //and redirect to view IWO
-            Auth::loginUsingId($user->id);
-            Session::set('user_id', $user->id);
-            Session::set('iwo_id', $iwo_id);
-            Session::set('iwo_ref', $iwo_ref);
+            User::login_user($user->id, $iwo_id, $iwo_ref);
 
             return Redirect::to('manage/view');
         }
@@ -81,7 +79,7 @@ class ManagementController extends BaseController
 
     public function getView()
     {
-        $this->check_permission('read');
+        if( ! $this->check_permission('read')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
         return View::make('manage.view_iwo')->with(['page_title' => $this->page_title, 'workorder' => $this->workorder, 'user' => $this->user]);
     }
@@ -96,7 +94,7 @@ class ManagementController extends BaseController
 
     public function postNote()
     {
-        $this->check_permission('comment');
+        if( ! $this->check_permission('comment')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
         if(trim(Input::get('note')) != "")
         {
@@ -127,14 +125,14 @@ class ManagementController extends BaseController
 
     public function getEdit()
     {
-        $this->check_permission('edit');
+        if( ! $this->check_permission('edit')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
         return View::make('forms.' . $this->iwo_key)->with(['page_title' => 'Editing "' . $this->workorder->title . '"', 'workorder' => $this->workorder, 'iwo_key' => $this->iwo_key]);
     }
 
     public function postConfirmupdates()
     {
-        $this->check_permission('edit');
+        if( ! $this->check_permission('edit')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
         $validator_name = ucfirst($this->iwo_key) . "WorkOrderValidator";
         $controller_name = ucfirst($this->iwo_key) . "WorkOrderController";
@@ -172,7 +170,7 @@ class ManagementController extends BaseController
 
     public function getUpdate()
     {
-        $this->check_permission('edit');
+        if( ! $this->check_permission('edit')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
         //If a token exists, input has been passed through and it is safe to process the update
         if(Input::old('_token'))
@@ -228,22 +226,14 @@ class ManagementController extends BaseController
 
     public function getUpdatecomplete()
     {
-        $this->check_permission('edit');
+        if( ! $this->check_permission('edit')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
         return View::make('manage.update_complete')->with('page_title', 'Work Order Re-submitted');
     }
 
-    public function getLogout()
-    {
-        Auth::logout();
-        Session::flush();
-
-        return Redirect::to('manage')->with('message', 'You have been logged out.');
-    }
-
     public function getConfirm()
     {
-        $this->check_permission('confirm');
+        if( ! $this->check_permission('confirm')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
         $workorder = Workorder::find(Session::get('iwo_id'));
         $workorder->confirmed = 1;
@@ -263,7 +253,7 @@ class ManagementController extends BaseController
     {
         //Return false temporarily until this feature is available
         return false;
-        $this->check_permission('confirm');
+        if( ! $this->check_permission('confirm')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
         $workorder = Workorder::find(Session::get('iwo_id'));
         $workorder->confirmed = 0;
@@ -281,7 +271,7 @@ class ManagementController extends BaseController
 
     public function getCancel()
     {
-        $this->check_permission('cancel');
+        if( ! $this->check_permission('cancel')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
         $workorder = Workorder::find(Session::get('iwo_id'));
         $workorder->cancelled = 1;
@@ -297,11 +287,19 @@ class ManagementController extends BaseController
         return Redirect::to('manage/view')->with('message', 'Work order cancelled.');
     }
 
+    public function getLogout()
+    {
+        Auth::logout();
+        Session::flush();
+
+        return Redirect::to('manage/view')->with('message', 'You have been logged out.');
+    }
+
     private function check_permission($permission)
     {
         if( ! $this->user->can($permission))
         {
-            return Redirect::to('manage')->with('message', 'Sorry, you do not have the necessary permissions to do that.');
+            return false;
         }
         else
         {

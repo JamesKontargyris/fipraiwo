@@ -30,6 +30,16 @@ class Workorder extends Eloquent
         return $this->hasMany('Logger', 'iwo_id');
     }
 
+    public function confirmation_code()
+    {
+        return $this->hasOne('Confirmation_code', 'iwo_id');
+    }
+
+    public function users()
+    {
+        return $this->hasMany('User', 'iwo_id');
+    }
+
     public static function update_date_time()
     {
         $workorder = Workorder::find(Session::get('iwo_id'));

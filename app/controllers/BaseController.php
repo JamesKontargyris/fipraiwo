@@ -100,6 +100,11 @@ class BaseController extends Controller {
         $lead_contact->email = Input::old('lead_email_address');
         $lead_contact->save();
 
+        $confirmation_code = new Confirmation_code;
+        $confirmation_code->iwo_id = $workorder->id;
+        $confirmation_code->code = $confirmation_code->generate_code();
+        $confirmation_code->save();
+
         //Assign Lead role to user
         $user_lead = User::find($lead_contact->id);
         $user_lead->attachRole(Role::where('name', 'Lead')->pluck('id'));
@@ -136,6 +141,10 @@ class BaseController extends Controller {
             'iwo_key' => $this->iwo_key,
         //    Workorder title
             'iwo_title' => $workorder->title,
+        //    Workorder id
+            'iwo_id' => $workorder->id,
+        //    Confirmation code
+            'confirmation_code' => $confirmation_code->code
         ];
 
         /**

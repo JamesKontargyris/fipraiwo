@@ -70,6 +70,11 @@ Route::get('/emailtest', function()
     $data['form_data'] = ['Test' => 'test'];
     $data['recipient'] = 'jk@webfane.net';
     return View::make('emails.unit.sub')->with('data', $data);
+});
 
-
+Route::get('/permstest', function()
+{
+    Auth::loginUsingId(50);
+    $user = Auth::user();
+    dd($user->can('read'));
 });
