@@ -15,6 +15,8 @@ Route::when('manage/*', 'auth');
 Route::controller('admin', 'AdminController');
 //Route::when('admin/*', 'auth_superuser');
 
+Route::controller('confirm', 'ConfirmController');
+
 Route::get('about/edt', 'PagesController@about_edt');
 Route::get('about/fiplex', 'PagesController@about_fiplex');
 
@@ -60,9 +62,14 @@ Route::get('ac/unit_reps', 'AutocompleteController@unit_reps');
 Route::get('ac/spad_reps', 'AutocompleteController@spad_reps');
 
 
-Route::get('/reftest', function()
+Route::get('/emailtest', function()
 {
-    $ref = '1408120001';
+    $data['subject'] = 'Test';
+    $data['iwo_ref'] = '1234';
+    $data['status'] = 'Confirmed';
+    $data['form_data'] = ['Test' => 'test'];
+    $data['recipient'] = 'jk@webfane.net';
+    return View::make('emails.unit.sub')->with('data', $data);
 
 
 });

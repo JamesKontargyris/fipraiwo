@@ -22,7 +22,7 @@ class SendEmail {
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_created_lead($job, $data)
     {
-        $data['subject'] = "Your " . $data['form_type'] . " Internal Work Order was submitted";
+        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
 
         $this->send($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".lead", $data);
 
@@ -32,7 +32,7 @@ class SendEmail {
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_created_sub($job, $data)
     {
-        $data['subject'] = $data['form_type'] . " Internal Work Order was submitted";
+        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
 
         $this->send($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".sub", $data);
 
@@ -40,9 +40,29 @@ class SendEmail {
     }
 
     //When an IWO is created, send an email to the lead unit contact
+    public function iwo_created_rep($job, $data)
+    {
+        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
+
+        $this->send($data['recipient'], $data['subject'], "emails.rep", $data);
+
+        $job->delete();
+    }
+
+    //When an IWO is created, send an email to the lead unit contact
+    public function iwo_created_copy($job, $data)
+    {
+        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
+
+        $this->send($data['recipient'], $data['subject'], "emails.copy", $data);
+
+        $job->delete();
+    }
+
+    //When an IWO is created, send an email to the lead unit contact
     public function iwo_auto_confirmed($job, $data)
     {
-        $data['subject'] = $data['form_type'] . " Internal Work Order was submitted and confirmed (ref: " . $data['iwo_ref'] . ")";
+        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") Internal Work Order was submitted and confirmed";
 
         foreach($data['recipient'] as $recipient)
         {
@@ -55,7 +75,7 @@ class SendEmail {
     //Send an email when an IWO is updated
     public function iwo_updated($job, $data)
     {
-        $data['subject'] = "Internal Work Order " . $data['old_ref'] . " has been updated";
+        $data['subject'] = "IWO: " . $data['iwo_title'] .  " (" . $data['old_ref'] . ") has been updated";
 
         foreach($data['recipient'] as $recipient)
         {
@@ -68,7 +88,7 @@ class SendEmail {
     //Send an email when an IWO is cancelled
     public function iwo_cancelled($job, $data)
     {
-        $data['subject'] = "Internal Work Order " . $data['iwo_ref'] . " has been cancelled";
+        $data['subject'] = "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") has been cancelled";
 
         foreach($data['recipient'] as $recipient)
         {
@@ -81,7 +101,7 @@ class SendEmail {
     //Send an email when an IWO is confirmed
     public function iwo_confirmed($job, $data)
     {
-        $data['subject'] = "Internal Work Order " . $data['iwo_ref'] . " has been confirmed";
+        $data['subject'] = "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") has been confirmed";
 
         foreach($data['recipient'] as $recipient)
         {
@@ -94,7 +114,7 @@ class SendEmail {
     //Send an email when an IWO is un-confirmed
     public function iwo_unconfirmed($job, $data)
     {
-        $data['subject'] = "Internal Work Order " . $data['iwo_ref'] . " has been un-confirmed";
+        $data['subject'] = "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") has been unconfirmed";
 
         foreach($data['recipient'] as $recipient)
         {
@@ -107,7 +127,7 @@ class SendEmail {
     //Send an email when an IWO is un-confirmed
     public function iwo_note_added($job, $data)
     {
-        $data['subject'] = "A note was added to Internal Work Order " . $data['iwo_ref'];
+        $data['subject'] = "A note has been added to IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ")";
 
         foreach($data['recipient'] as $recipient)
         {

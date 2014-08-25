@@ -62,9 +62,9 @@
                 </div>
 
                 <div class="formfield">
-                    {{ Form::label('fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
-                    {{ Form::text('fipra_representative', (editing()) ? $workorder->workorder->fipra_representative : Input::old('fipra_representative')) }}
-                    {{ display_form_error('fipra_representative', $errors) }}
+                    {{ Form::label('lead_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
+                    {{ Form::text('lead_fipra_representative', (editing()) ? $workorder->workorder->lead_fipra_representative : Input::old('lead_fipra_representative')) }}
+                    {{ display_form_error('lead_fipra_representative', $errors) }}
                 </div>
 			</div>
 
@@ -108,9 +108,9 @@
 		
 		<section class="col-6 last">
             <div class="formfield">
-                {{ Form::label('name_of_client', 'Name of client associated with the account:') }}
-                {{ Form::text('name_of_client', (editing()) ? $workorder->workorder->name_of_client : Input::old('name_of_client')) }}
-                {{ display_form_error('name_of_client', $errors) }}
+                {{ Form::label('name_of_client_company', 'Name of client company associated with the account:') }}
+                {{ Form::text('name_of_client_company', (editing()) ? $workorder->workorder->name_of_client_company : Input::old('name_of_client_company')) }}
+                {{ display_form_error('name_of_client_company', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('project_name', 'Project name (if any):') }}
@@ -164,6 +164,8 @@
 				{{ display_form_error('other_information', $errors) }}
 			</div>
 		</section>
+
+		@include('forms.partials.copy_emails')
 
 		<section class="col-12" style="clear:both">
 			

@@ -113,7 +113,7 @@
 //        Remove input values in the cloned row
         tr_clone.find('input').val('');
 //        Update the person and rate ids in the name attributes
-        tr_clone.find('.person-field input').attr('name', 'team[' + person_count + '][person]');
+        tr_clone.find('.person-field input').attr('name', 'team[' + person_count + '][person]').removeClass('autofill');
         tr_clone.find('.rate-field input').attr('name', 'team[' + person_count + '][rate]');
 //        Display the remove-row button
         tr_clone.find('.remove-row').show();
@@ -130,6 +130,13 @@
 
         return false;
 
+    });
+
+    $('.lead_unit_account_director').focusout('change', function()
+    {
+        console.log('Changed!');
+        var name = $(this).val();
+        $('.autofill').val(name);
     });
 
 

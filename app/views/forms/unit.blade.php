@@ -51,7 +51,7 @@
                     @if(editing())
                         {{ Form::text('lead_unit_account_director', $workorder->workorder->lead_unit_account_director, ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('lead_unit_account_director', Input::old('lead_unit_account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'lead_email_address']) }}
+                        {{ Form::text('lead_unit_account_director', Input::old('lead_unit_account_director'), ['class' => 'account_director_autocomplete lead_unit_account_director', 'data-email-field' => 'lead_email_address']) }}
                     @endif
 
                     <span class="small-print">Only Account Directors/senior staff can confirm Internal Work Orders.</span>
@@ -193,7 +193,7 @@
                             <!--Otherwise display the default entry form-->
                             @else
                                 <tr class="fees-person">
-                                    <td class="person-field">{{ Form::text('team[1][person]', null, ['style' => 'width:90%']) }}</td>
+                                    <td class="person-field">{{ Form::text('team[1][person]', null, ['style' => 'width:90%', 'class' => 'autofill']) }}</td>
                                     <td class="rate-field"><span class="inline">&euro;</span> {{ Form::text('team[1][rate]', null, ['style' => 'width:80%']) }}</td>
                                     <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                 </tr>
@@ -238,9 +238,9 @@
 
 		<section class="col-6 last">
             <div class="formfield">
-                {{ Form::label('name_of_client', 'Name of client associated with the account:') }}
-                {{ Form::text('name_of_client', (editing()) ? $workorder->workorder->name_of_client : Input::old('name_of_client')) }}
-                {{ display_form_error('name_of_client', $errors) }}
+                {{ Form::label('name_of_client_company', 'Name of client company associated with the account:') }}
+                {{ Form::text('name_of_client_company', (editing()) ? $workorder->workorder->name_of_client_company : Input::old('name_of_client_company')) }}
+                {{ display_form_error('name_of_client_company', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('project_name', 'Project name (if any):') }}
@@ -296,6 +296,8 @@
 				{{ display_form_error('other_information', $errors) }}
 			</div>
 		</section>
+
+		@include('forms.partials.copy_emails')
 
         <section class="col-12" style="clear:both">
 

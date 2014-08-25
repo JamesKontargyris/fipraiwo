@@ -56,10 +56,10 @@
 			{{ display_form_error('account_director', $errors) }}
 		</div>
 		<div class="formfield">
-			{{ Form::label('project_and_client_name', 'Project and client name:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+			{{ Form::label('project_and_client_company_name', 'Project and client company name:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
 			<div class="help-box">Please also denote if work is for internal or external use.</div>
-			{{ Form::text('project_and_client_name', (editing()) ? $workorder->workorder->project_and_client_name : Input::old('project_and_client_name')) }}
-			{{ display_form_error('project_and_client_name', $errors) }}
+			{{ Form::text('project_and_client_company_name', (editing()) ? $workorder->workorder->project_and_client_company_name : Input::old('project_and_client_company_name')) }}
+			{{ display_form_error('project_and_client_company_name', $errors) }}
 		</div>
 		<div class="formfield">
 			{{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
@@ -123,6 +123,8 @@
             </div>
         @endif
 	</section>
+
+	@include('forms.partials.copy_emails')
 
 	<section class="col-12" style="clear:both">
 		

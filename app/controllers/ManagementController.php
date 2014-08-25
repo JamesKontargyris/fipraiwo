@@ -29,6 +29,12 @@ class ManagementController extends BaseController
             //Get the iwo key (edt, unit, etc.)
             $this->iwo_key = Formtype::where('id', '=', $this->workorder->formtype_id)->pluck('key');
 
+            //Email variables
+            $data = [
+              'iwo_title' => $this->workorder->title,
+              'iwo_ref' => $this->workorder->id,
+            ];
+
         }
 
         $this->user = Auth::user();
@@ -101,9 +107,9 @@ class ManagementController extends BaseController
             //Include copy contacts if the work order is confirmed
             $iwo_id = Session::get('iwo_id');
             $workorder = Workorder::find($iwo_id)->first();
-            $data['iwo_ref'] = Session::get('iwo_ref');
             $data['note'] = trim(Input::get('note'));
             $data['recipient'] = $this->get_user_emails($iwo_id);
+
             if($workorder->confirmed > 0)
             {
                 $data['recipient'] = array_merge($data['recipient'], $this->get_copy_emails($workorder->formtype_id));
@@ -207,7 +213,6 @@ class ManagementController extends BaseController
             }
             //dd($users);
             //Send an email to everyone that should receive one
-            $data['iwo_ref'] = Session::get('iwo_ref');
             $data['old_ref'] = get_original_ref(Session::get('iwo_ref'));
             $data['recipient'] = $users;
             Queue::push('\Iwo\Workers\SendEmail@iwo_updated', $data);
@@ -246,7 +251,6 @@ class ManagementController extends BaseController
         $workorder->save();
 
         //Send an email to lead and sub units plus copy contacts now the work order is confirmed
-        $data['iwo_ref'] = Session::get('iwo_ref');
         $data['recipient'] = array_merge($this->get_user_emails($workorder->id), $this->get_copy_emails($workorder->formtype_id));
         Queue::push('\Iwo\Workers\SendEmail@iwo_confirmed', $data);
 
@@ -267,7 +271,6 @@ class ManagementController extends BaseController
         $workorder->save();
 
         //Send an email to lead and sub units plus copy contacts now the work order is un-confirmed
-        $data['iwo_ref'] = Session::get('iwo_ref');
         $data['recipient'] = array_merge($this->get_user_emails($workorder->id), $this->get_copy_emails($workorder->formtype_id));
         Queue::push('\Iwo\Workers\SendEmail@iwo_unconfirmed', $data);
 
@@ -286,7 +289,6 @@ class ManagementController extends BaseController
         $workorder->save();
 
         //Send an email to lead and sub units plus copy contacts now the work order is un-confirmed
-        $data['iwo_ref'] = Session::get('iwo_ref');
         $data['recipient'] = array_merge($this->get_user_emails($workorder->id), $this->get_copy_emails($workorder->formtype_id));
         Queue::push('\Iwo\Workers\SendEmail@iwo_cancelled', $data);
 

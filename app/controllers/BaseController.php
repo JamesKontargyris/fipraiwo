@@ -134,6 +134,8 @@ class BaseController extends Controller {
             'iwo_ref' => $iwo_ref->iwo_ref,
             //IWO key
             'iwo_key' => $this->iwo_key,
+        //    Workorder title
+            'iwo_title' => $workorder->title,
         ];
 
         /**
@@ -145,34 +147,69 @@ class BaseController extends Controller {
 
         //Send Lead Unit an email
         $data['recipient'] = $lead_contact->email;
-        //$emailer->sendTo($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".lead", $data);
         Queue::push('\Iwo\Workers\SendEmail@iwo_created_lead', $data);
-
-
 
         //Send Sub Unit an email if they exist
         if(isset($sub_contact->email))
         {
             $data['recipient'] = $sub_contact->email;
-            //$emailer->sendTo($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".sub", $data, $data['file_names']);
             Queue::push('\Iwo\Workers\SendEmail@iwo_created_sub', $data);
         }
-
 
         //If this type of IWO is set to 'confirmed' by default, send an
         //email to the copy contacts for this form type
         if($workorder->confirmed > 0)
         {
             $data['recipient'] = $this->get_copy_emails($workorder->formtype_id);
-            //$emailer->sendTo($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".auto_confirm", $data, $data['file_names']);
             Queue::push('\Iwo\Workers\SendEmail@iwo_auto_confirmed', $data);
         }
+
+        //If a Lead Fipra Rep was included in the form, send a copy of the work order to them
+        if(Input::old('lead_fipra_representative')) {
+            //If this is a unit IWO...
+            if($this->iwo_key == 'unit') {
+                $data['recipient'] = Unit_rep::where('rep', '=', Input::old('lead_fipra_representative'))->first()->pluck('rep_email');
+            }
+            //If this is a spad IWO...
+            elseif($this->iwo_key == 'spad') {
+                $data['recipient'] = Spad_rep::where('rep', '=', Input::old('lead_fipra_representative'))->first()->pluck('rep_email');
+            }
+
+            Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
+        }
+
+        //If a Sub Fipra Rep was included in the form, send a copy of the work order to them
+        if(Input::old('sub_fipra_representative')) {
+            //If this is a unit IWO...
+            if($this->iwo_key == 'unit') {
+                $data['recipient'] = Unit_rep::where('rep', '=', Input::old('sub_fipra_representative'))->first()->pluck('rep_email');
+            }
+            //If this is a spad IWO...
+            elseif($this->iwo_key == 'spad') {
+                $data['recipient'] = Spad_rep::where('rep', '=', Input::old('sub_fipra_representative'))->first()->pluck('rep_email');
+            }
+
+            Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
+        }
+
+        //If a copy recipient or recipients were entered in the form, send a copy of the work order to them
+        if(Input::old('also_send_work_order_to'))
+        {
+           $addresses = explode(",", $Input::old('also_send_work_order_to'));
+
+            foreach($addresses as $address)
+            {
+                $data['recipient'] = trim($address);
+                Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
+            }
+        }
+
+        // Once emails are sent, delete files uploaded for security.
+        Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
 
         // Redirect to the complete/success page
         return Redirect::route('complete')->with('iwo_ref', $iwo_ref->iwo_ref);
 
-        // Once emails are sent, delete files uploaded for security.
-        //Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
 
     }
 
