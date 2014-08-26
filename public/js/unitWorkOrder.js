@@ -115,6 +115,7 @@
 //        Update the person and rate ids in the name attributes
         tr_clone.find('.person-field input').attr('name', 'team[' + person_count + '][person]').removeClass('autofill');
         tr_clone.find('.rate-field input').attr('name', 'team[' + person_count + '][rate]');
+        tr_clone.find('.rate-field select').attr('name', 'team[' + person_count + '][rate]');
 //        Display the remove-row button
         tr_clone.find('.remove-row').show();
 //        Add the cloned row after the final existing row
@@ -149,11 +150,30 @@
         rate_labels['at a day rate'] = 'Final Day Rate';
         rate_labels['at a flat or project rate'] = 'Final Flat/Project Rate';
 
-        if(selection != '') {
+        if(selection != '')
+        {
             $('.fees-people').slideDown();
             $('.rate-label').text(rate_labels[selection]);
         } else {
             $('.fees-people').slideUp();
+        }
+
+        //If standard Fipra hourly rates have been selected,
+        //display the dropdown boxes with rates
+        if(selection == 'at the standard Fipra hourly rates')
+        {
+            $('.fees-text input').attr('disabled', true);
+            $('.fees-text').hide();
+            $('.fees-select select').attr('disabled', false);
+            $('.fees-select').show();
+        }
+        else
+        {
+            //Otherwise display standard text inputs
+            $('.fees-text input').attr('disabled', false);
+            $('.fees-text').show();
+            $('.fees-select select').attr('disabled', true);
+            $('.fees-select').hide();
         }
         return true;
     }

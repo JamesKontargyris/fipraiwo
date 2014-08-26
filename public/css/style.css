@@ -256,7 +256,7 @@ strong {
 
 /* line 159, ../../app/assets/sass/_base.scss */
 .red {
-  color: #cc0a12; }
+  color: #cc0a12 !important; }
 
 /* line 162, ../../app/assets/sass/_base.scss */
 .white {
@@ -803,50 +803,53 @@ ul.display-details li {
   .fees-people .table-option {
     float: right;
     font-weight: bold; }
+  /* line 240, ../../app/assets/sass/_modules.scss */
+  .fees-people .fees-select {
+    display: none; }
 
-/* line 242, ../../app/assets/sass/_modules.scss */
+/* line 245, ../../app/assets/sass/_modules.scss */
 ul.square {
   list-style: square;
   margin-bottom: 20px;
   padding-left: 20px; }
 
-/* line 247, ../../app/assets/sass/_modules.scss */
+/* line 250, ../../app/assets/sass/_modules.scss */
 .datepicker {
   background: url(images/iconCalendar.gif) no-repeat 10px center;
   padding-left: 40px !important;
   padding: 5px 10px; }
 
-/* line 253, ../../app/assets/sass/_modules.scss */
+/* line 256, ../../app/assets/sass/_modules.scss */
 .workorder-table thead {
   background-color: #00257f;
   color: white; }
-/* line 257, ../../app/assets/sass/_modules.scss */
+/* line 260, ../../app/assets/sass/_modules.scss */
 .workorder-table tr {
   border-bottom: 1px solid #ccd3e5; }
-  /* line 259, ../../app/assets/sass/_modules.scss */
+  /* line 262, ../../app/assets/sass/_modules.scss */
   .workorder-table tr:last-child {
     border-bottom: 0; }
-  /* line 262, ../../app/assets/sass/_modules.scss */
+  /* line 265, ../../app/assets/sass/_modules.scss */
   .workorder-table tr td {
     padding: 10px 10px; }
 
-/* line 269, ../../app/assets/sass/_modules.scss */
+/* line 272, ../../app/assets/sass/_modules.scss */
 .euro-field:before {
   content: "€"; }
 
-/* line 274, ../../app/assets/sass/_modules.scss */
+/* line 277, ../../app/assets/sass/_modules.scss */
 .rate-table {
   border: 1px solid white; }
-  /* line 277, ../../app/assets/sass/_modules.scss */
+  /* line 280, ../../app/assets/sass/_modules.scss */
   .rate-table thead td {
     border-top: 1px solid white;
     border-bottom: 1px solid white; }
-  /* line 283, ../../app/assets/sass/_modules.scss */
+  /* line 286, ../../app/assets/sass/_modules.scss */
   .rate-table tr td {
     border-bottom: 1px solid white;
     padding: 5px;
     text-align: right; }
-    /* line 287, ../../app/assets/sass/_modules.scss */
+    /* line 290, ../../app/assets/sass/_modules.scss */
     .rate-table tr td:first-child {
       text-align: left; }
 

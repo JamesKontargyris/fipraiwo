@@ -62,11 +62,26 @@ class SpadRepsTableSeeder extends DatabaseSeeder
             'Shan Ramburuth '       => 'Phil Evans'
         ];
 
+        $email = [
+            'Peter-Carlo Lehrell' => 'lehrell@fipra.com',
+            'David Lawsky' => 'david.lawsky@fipra.com',
+            'Nathalie Hesketh' => 'nathalie.hesketh@fipra.com',
+            'Sebastian Vos' => 'sebastian.vos@fipra.com',
+            'Jan Ahlskog' => 'jan.ahlskog@fipra.com',
+            'Laura Batchelor' => 'laura.batchelor@fipra.com',
+            'Ukko Metsola' => 'ukko.metsola@fipra.com',
+            'Rory Chisholm' => 'rory.chisholm@fipra.com',
+            'Dirk Hudig' => 'dirk.hudig@fipra.com',
+            'Ann Kelly' => 'dirk.hudig@fipra.com',
+            'Phil Evans' => 'phil.evans@fipra.com',
+        ];
+
         foreach ($spad_reps as $spad => $rep)
         {
             Spad_rep::create([
                     'spad' => $spad,
-                    'rep'  => $rep
+                    'rep'  => $rep,
+                    'rep_email' => isset($email[$rep]) ? $email[$rep] : '',
                 ]
 
             );

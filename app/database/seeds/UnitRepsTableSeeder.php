@@ -52,11 +52,25 @@ class UnitRepsTableSeeder extends DatabaseSeeder
             'South Africa' => 'Sebastian Vos'
         ];
 
+        $email = [
+            'Peter-Carlo Lehrell' => 'lehrell@fipra.com',
+            'David Lawsky' => 'david.lawsky@fipra.com',
+            'Nathalie Hesketh' => 'nathalie.hesketh@fipra.com',
+            'Sebastian Vos' => 'sebastian.vos@fipra.com',
+            'Jan Ahlskog' => 'jan.ahlskog@fipra.com',
+            'Laura Batchelor' => 'laura.batchelor@fipra.com',
+            'Ukko Metsola' => 'ukko.metsola@fipra.com',
+            'Rory Chisholm' => 'rory.chisholm@fipra.com',
+            'Dirk Hudig' => 'dirk.hudig@fipra.com',
+            'Ann Kelly' => 'dirk.hudig@fipra.com',
+        ];
+
         foreach($unit_reps as $unit => $rep)
         {
             Unit_rep::create([
                 'fipra_unit' => $unit,
-                'rep' => $rep
+                'rep' => $rep,
+                'rep_email' => isset($email[$rep]) ? $email[$rep] : '',
             ]
 
             );

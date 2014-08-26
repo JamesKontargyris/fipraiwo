@@ -173,7 +173,23 @@
                                 @foreach(Input::old('team') as $id => $values)
                                     <tr class="fees-person">
                                         <td class="person-field">{{ Form::text("team[$id][person]", $values['person'], ['style' => 'width:90%']) }}</td>
-                                        <td class="rate-field"><span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", $values['rate'], ['style' => 'width:80%']) }}</td>
+                                        <td class="rate-field">
+                                        	@if(Input::old('the_work_will_be_done') == 'at the standard Fipra hourly rates')
+												<div class="fees-select">
+													{{ Form::select("team[$id][rate]", ['340' => '€340', '260' => '€260', '180' => '€180', '100' => '€100'], $values['rate'], ['class' => 'inline']) }}
+												</div>
+												<div class="fees-text">
+													<span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", null, ['style' => 'width:80%']) }}
+												</div>
+                                        	@else
+												<div class="fees-text">
+													<span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", $values['rate'], ['style' => 'width:80%']) }}
+												</div>
+												<div class="fees-select">
+													{{ Form::select("team[$id][rate]", ['340' => '€340', '260' => '€260', '180' => '€180', '100' => '€100'], null, ['class' => 'inline']) }}
+												</div>
+                                        	@endif
+                                        </td>
                                         <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                     </tr>
                                 @endforeach
@@ -194,7 +210,14 @@
                             @else
                                 <tr class="fees-person">
                                     <td class="person-field">{{ Form::text('team[1][person]', null, ['style' => 'width:90%', 'class' => 'autofill']) }}</td>
-                                    <td class="rate-field"><span class="inline">&euro;</span> {{ Form::text('team[1][rate]', null, ['style' => 'width:80%']) }}</td>
+                                    <td class="rate-field">
+                                    	<div class="fees-text">
+                                    		<span class="inline">&euro;</span> {{ Form::text('team[1][rate]', null, ['style' => 'width:80%']) }}
+                                    	</div>
+                                    	<div class="fees-select">
+											{{ Form::select('team[1][rate]', ['340' => '€340', '260' => '€260', '180' => '€180', '100' => '€100'], ['class' => 'inline']) }}
+										</div>
+                                    </td>
                                     <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                 </tr>
                                 {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}

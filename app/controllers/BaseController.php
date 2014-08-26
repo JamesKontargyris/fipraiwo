@@ -37,6 +37,7 @@ class BaseController extends Controller {
 
 	public function postIndex()
 	{
+        //dd(Input::all());
 		// Use $this->validator set in the sub class to use the validation rules
 		// specific to this form
 		$this->validator->validate(Input::all());
