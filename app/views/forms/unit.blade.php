@@ -72,7 +72,7 @@
 
                 <div class="formfield">
 					{{ Form::label('lead_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
-					{{ Form::text('lead_fipra_representative', (editing()) ? $workorder->workorder->lead_fipra_representative : Input::old('lead_fipra_representative')) }}
+					{{ Form::select('lead_fipra_representative', get_fipra_reps(), (editing()) ? $workorder->workorder->lead_fipra_representative : Input::old('lead_fipra_representative'), ['style' => 'width:100%']) }}
 					{{ display_form_error('lead_fipra_representative', $errors) }}
 				</div>
 
@@ -116,7 +116,7 @@
 
                 <div class="formfield">
                     {{ Form::label('sub_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
-                    {{ Form::text('sub_fipra_representative', (editing()) ? $workorder->workorder->sub_fipra_representative : Input::old('sub_fipra_representative')) }}
+                    {{ Form::select('sub_fipra_representative', get_fipra_reps(), (editing()) ? $workorder->workorder->sub_fipra_representative : Input::old('sub_fipra_representative'), ['style' => 'width:100%']) }}
                     {{ display_form_error('sub_fipra_representative', $errors) }}
                 </div>
             </div>
@@ -363,5 +363,5 @@
 
 	{{ Form::close() }}
 
-	<script type="text/javascript" src="{{ asset('js/unitWorkOrder.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/unitWorkOrder.js?140826') }}"></script>
 @stop

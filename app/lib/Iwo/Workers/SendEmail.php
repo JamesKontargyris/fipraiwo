@@ -22,7 +22,7 @@ class SendEmail {
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_created_lead($job, $data)
     {
-        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
+        $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
 
         $this->send($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".lead", $data);
 
@@ -32,7 +32,7 @@ class SendEmail {
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_created_sub($job, $data)
     {
-        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
+        $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
 
         $this->send($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".sub", $data);
 
@@ -42,7 +42,7 @@ class SendEmail {
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_created_rep($job, $data)
     {
-        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
+        $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
 
         $this->send($data['recipient'], $data['subject'], "emails.rep", $data);
 
@@ -52,7 +52,7 @@ class SendEmail {
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_created_copy($job, $data)
     {
-        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
+        $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
 
         $this->send($data['recipient'], $data['subject'], "emails.copy", $data);
 
@@ -62,7 +62,7 @@ class SendEmail {
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_auto_confirmed($job, $data)
     {
-        $data['subject'] = $data['form_type'] . "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") Internal Work Order was submitted and confirmed";
+        $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") Internal Work Order was submitted and confirmed";
 
         foreach($data['recipient'] as $recipient)
         {

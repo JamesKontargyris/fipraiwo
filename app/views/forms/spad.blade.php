@@ -63,7 +63,7 @@
 
                 <div class="formfield">
                     {{ Form::label('lead_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
-                    {{ Form::text('lead_fipra_representative', (editing()) ? $workorder->workorder->lead_fipra_representative : Input::old('lead_fipra_representative')) }}
+                    {{ Form::select('lead_fipra_representative', get_fipra_reps(), (editing()) ? $workorder->workorder->lead_fipra_representative : Input::old('lead_fipra_representative'), ['style' => 'width:100%']) }}
                     {{ display_form_error('lead_fipra_representative', $errors) }}
                 </div>
 			</div>

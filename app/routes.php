@@ -60,21 +60,3 @@ Route::get('ac/account_directors', 'AutocompleteController@account_directors');
 Route::get('ac/unit_reps', 'AutocompleteController@unit_reps');
 //Spad reps autocomplete
 Route::get('ac/spad_reps', 'AutocompleteController@spad_reps');
-
-
-Route::get('/emailtest', function()
-{
-    $data['subject'] = 'Test';
-    $data['iwo_ref'] = '1234';
-    $data['status'] = 'Confirmed';
-    $data['form_data'] = ['Test' => 'test'];
-    $data['recipient'] = 'jk@webfane.net';
-    return View::make('emails.unit.sub')->with('data', $data);
-});
-
-Route::get('/permstest', function()
-{
-    Auth::loginUsingId(50);
-    $user = Auth::user();
-    dd($user->can('read'));
-});

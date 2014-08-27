@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder {
 		 $this->call('AccountDirectorTableSeeder');
 		 $this->call('UnitRepsTableSeeder');
 		 $this->call('SpadRepsTableSeeder');
+		 $this->call('RepEmailsTableSeeder');
 	}
 
 }

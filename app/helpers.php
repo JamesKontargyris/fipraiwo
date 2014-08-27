@@ -168,3 +168,15 @@ function get_original_ref($ref)
 {
     return preg_replace("/[^0-9,.]/", "", $ref);
 }
+
+function get_fipra_reps()
+{
+    $reps = Rep_email::all();
+    $rep_options = [];
+    $rep_options[''] = 'Please select...';
+    foreach($reps as $rep)
+    {
+        $rep_options[$rep->rep_name] = $rep->rep_name;
+    }
+    return $rep_options;
+}

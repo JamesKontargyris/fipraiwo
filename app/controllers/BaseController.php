@@ -37,7 +37,6 @@ class BaseController extends Controller {
 
 	public function postIndex()
 	{
-        //dd(Input::all());
 		// Use $this->validator set in the sub class to use the validation rules
 		// specific to this form
 		$this->validator->validate(Input::all());
@@ -166,6 +165,21 @@ class BaseController extends Controller {
             Queue::push('\Iwo\Workers\SendEmail@iwo_created_sub', $data);
         }
 
+        //If a Lead Fipra Rep was included in the form, and an address exists for them in the DB,
+        //send a copy of the work order to them
+        if($rep = Rep_email::where('rep_name', '=', trim(Input::old('lead_fipra_representative')))->first())
+        {
+            $data['recipient'] = $rep->rep_email;
+            Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
+        }
+        //If a Sub Fipra Rep was included in the form, and an address exists for them in the DB,
+        //send a copy of the work order to them
+        if($rep = Rep_email::where('rep_name', '=', trim(Input::old('sub_fipra_representative')))->first())
+        {
+            $data['recipient'] = $rep->rep_email;
+            Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
+        }
+
         //If this type of IWO is set to 'confirmed' by default, send an
         //email to the copy contacts for this form type
         if($workorder->confirmed > 0)
@@ -174,38 +188,10 @@ class BaseController extends Controller {
             Queue::push('\Iwo\Workers\SendEmail@iwo_auto_confirmed', $data);
         }
 
-        //If a Lead Fipra Rep was included in the form, send a copy of the work order to them
-        if(Input::old('lead_fipra_representative')) {
-            //If this is a unit IWO...
-            if($this->iwo_key == 'unit') {
-                $data['recipient'] = Unit_rep::where('rep', '=', Input::old('lead_fipra_representative'))->first()->pluck('rep_email');
-            }
-            //If this is a spad IWO...
-            elseif($this->iwo_key == 'spad') {
-                $data['recipient'] = Spad_rep::where('rep', '=', Input::old('lead_fipra_representative'))->first()->pluck('rep_email');
-            }
-
-            Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
-        }
-
-        //If a Sub Fipra Rep was included in the form, send a copy of the work order to them
-        if(Input::old('sub_fipra_representative')) {
-            //If this is a unit IWO...
-            if($this->iwo_key == 'unit') {
-                $data['recipient'] = Unit_rep::where('rep', '=', Input::old('sub_fipra_representative'))->first()->pluck('rep_email');
-            }
-            //If this is a spad IWO...
-            elseif($this->iwo_key == 'spad') {
-                $data['recipient'] = Spad_rep::where('rep', '=', Input::old('sub_fipra_representative'))->first()->pluck('rep_email');
-            }
-
-            Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
-        }
-
         //If a copy recipient or recipients were entered in the form, send a copy of the work order to them
         if(Input::old('also_send_work_order_to'))
         {
-           $addresses = explode(",", $Input::old('also_send_work_order_to'));
+           $addresses = explode(",", Input::old('also_send_work_order_to'));
 
             foreach($addresses as $address)
             {

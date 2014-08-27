@@ -84,25 +84,25 @@
 		<div class="formfield">
 			{{ Form::label('services_required', 'Service(s) required:', ['class' => 'required']) }} 
 			<div>{{ Form::checkbox('proofreading', (editing()) ? $workorder->workorder->proofreading : Input::old('proofreading')) }} Proofreading <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Proofreading help box</div>
+                <div class="help-box">Reading the text for consistency in usage and layout, for accuracy in the text and references, and for typesetting errors. Proofreading is a last quality check to ensure consistency and adherence to the Fipra editorial style guidelines.</div>
             </div>
 			<div>{{ Form::checkbox('copy_editing', (editing()) ? $workorder->workorder->copy_editing : Input::old('copy_editing')) }} Copy Editing <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Copy Editing help box</div>
+                <div class="help-box">Making sure that raw text, or copy, is correct in terms of spelling and grammar and is easy to read; preventing embarrassing errors of fact; correcting errors in spelling, grammar, punctuation, style and usage; checking suitability of language and that abbreviations/ acronyms have been explained; and checking that text is not missing or redundant.</div>
             </div>
 			<div>{{ Form::checkbox('rewriting', (editing()) ? $workorder->workorder->rewriting : Input::old('rewriting')) }} Re-writing <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Re-writing help box</div>
+                <div class="help-box">Revising and restructuring text in depth (often known as substantive editing), making comments on content and style, and suggesting new text or areas for further consideration; this service can also include the reworking, shortening or summarising of any kind of text.</div>
             </div>
 			<div>{{ Form::checkbox('quickedit', (editing()) ? $workorder->workorder->quickedit : Input::old('quickedit')) }} Quick-Edit <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Quick-Edit help box</div>
+                <div class="help-box">New service offering quick spelling and grammar check and ensuring adherence to Fipra's editorial guidelines.</div>
             </div>
 			<div>{{ Form::checkbox('graphic_or_print_design', (editing()) ? $workorder->workorder->graphic_or_print_design : Input::old('graphic_or_print_design')) }} Graphic/Print Design <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Graphic/Print Design help box</div>
+                <div class="help-box">Formatting and layout to an existing house/client brand style or a totally new design across a wide range of products.</div>
             </div>
 			<div>{{ Form::checkbox('web_design', (editing()) ? $workorder->workorder->web_design : Input::old('web_design')) }} Web Design <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Web Design help box</div>
+                <div class="help-box">Set up a website or web app – we can help with design, hosting, domain name registration, SEO etc.</div>
             </div>
 			<div>{{ Form::checkbox('translation', (editing()) ? $workorder->workorder->translation : Input::old('translation')) }} Translation <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Translation help box</div></div>
+                <div class="help-box">Our translators can translate documents, presentations, proposals and any other materials you require into their own native language.</div></div>
 		</div>
 		<div class="formfield">
 			{{ Form::label('instructions', 'Any other instructions:') }} <a href="#" class="help">&nbsp;</a>

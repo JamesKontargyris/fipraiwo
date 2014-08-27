@@ -3,6 +3,8 @@
 
 class Confirmation_code extends Eloquent {
 
+    public $timestamps = false;
+
     public function workorder()
     {
         return $this->belongsTo('Workorder');

@@ -135,7 +135,6 @@
 
     $('.lead_unit_account_director').focusout('change', function()
     {
-        console.log('Changed!');
         var name = $(this).val();
         $('.autofill').val(name);
     });

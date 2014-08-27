@@ -54,7 +54,7 @@
         <div class="container">
             <footer>
                 <p>&copy; Fipra <?php echo date("Y"); ?>. All Rights Reserved.<br><a href="http://fipra.com/other~3/code_of_conduct~7/" target="_blank">Code of conduct</a></p>
-                <script src="{{ asset('js/site.js') }}"></script>
+                <script src="{{ asset('js/site.js?140826') }}"></script>
             </footer>
         </div>
 
