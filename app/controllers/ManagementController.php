@@ -240,6 +240,19 @@ class ManagementController extends BaseController
         $workorder->updated_at = date_time_now();
         $workorder->save();
 
+	    /**
+	     * FORMAT FORM DATA FOR EMAILS
+	     */
+	    $data = [
+		    // Use the pretty_input() helper to make form input data user friendly and pretty for display in emails
+		    //IWO reference
+		    'iwo_ref' => Session::get('iwo_ref'),
+		    //    Workorder title
+		    'iwo_title' => $workorder->title,
+		    //    Workorder id
+		    'iwo_id' => $workorder->id
+	    ];
+
         //Send an email to lead and sub units plus copy contacts now the work order is confirmed
         $data['recipient'] = array_merge($this->get_user_emails($workorder->id), $this->get_copy_emails($workorder->formtype_id));
         Queue::push('\Iwo\Workers\SendEmail@iwo_confirmed', $data);
