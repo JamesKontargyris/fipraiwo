@@ -103,15 +103,11 @@ class ManagementController extends BaseController
 
             //Send a notification email to lead and sub units
             //Include copy contacts if the work order is confirmed
-            $iwo_id = Session::get('iwo_id');
-            $workorder = Workorder::find($iwo_id)->first();
             $data['note'] = trim(Input::get('note'));
-            $data['recipient'] = $this->get_user_emails($iwo_id);
-
-            if($workorder->confirmed > 0)
-            {
-                $data['recipient'] = array_merge($data['recipient'], $this->get_copy_emails($workorder->formtype_id));
-            }
+	        $data['iwo_ref'] = $this->workorder->iwo_ref;
+	        $data['iwo_title'] = $this->workorder->title;
+	        //Get all email addresses linked to this work order along with copy contacts so we can email them about the update
+	        $data['recipient'] = $this->get_all_emails($this->workorder->id, $this->workorder->formtype_id);
             Queue::push('\Iwo\Workers\SendEmail@iwo_note_added', $data);
 
             return Redirect::to('manage/view')->with('message', 'Note added.');
@@ -176,19 +172,19 @@ class ManagementController extends BaseController
         if(Input::old('_token'))
         {
             //Find the workorder to be updated in the DB
-            $workorder = Workorder::find(Session::get('iwo_id'));
             $updated_workorder = $this->get_input_for_db();
             //If the workorder is exactly the same as the entry in the DB, redirect to the view page
             //with a message, as no updates have been made
-            if($updated_workorder == $workorder->workorder)
+            if($updated_workorder == $this->workorder->workorder)
             {
                 return Redirect::to('manage/view')->with('message', 'No updates made.');
             }
             //Otherwise, carry on wih the update
-            $workorder->workorder = $this->get_input_for_db();
-            $workorder->updated_at = date_time_now();
-            $workorder->expiry_date = Input::old('expiry_date') ? strtotime(Input::old('expiry_date')) : '2999-01-01';
-            $workorder->save();
+	        $new_workorder = Workorder::find(Session::get('iwo_id'));
+            $new_workorder->workorder = $this->get_input_for_db();
+            $new_workorder->updated_at = date_time_now();
+            $new_workorder->expiry_date = Input::old('expiry_date') ? strtotime(Input::old('expiry_date')) : '2999-01-01';
+            $new_workorder->save();
 
             $iwo_ref = Iwo_ref::where('iwo_id', '=', Session::get('iwo_id'))->first();
             $iwo_ref->iwo_ref = update_iwo_ref(Session::get('iwo_ref'));
@@ -199,21 +195,15 @@ class ManagementController extends BaseController
 
             //Add an event log entry for this update
             Logger::add_log('Work order updated.', 'update');
-            //Get all users linked to this work order so we can email them about the update
-            //If workorder is confirmed, include the copy contacts;
-            if($workorder->confirmed > 0)
-            {
-                $users = array_merge($this->get_user_emails($workorder->id), $this->get_copy_emails($workorder->formtype_id));
-            }
-            else
-            {
-                $users = $this->get_user_emails($workorder->id);
-            }
-            //dd($users);
-            //Send an email to everyone that should receive one
-            $data['old_ref'] = get_original_ref(Session::get('iwo_ref'));
-            $data['recipient'] = $users;
-            Queue::push('\Iwo\Workers\SendEmail@iwo_updated', $data);
+
+	        $data['iwo_ref'] = $iwo_ref->iwo_ref;
+	        $data['iwo_title'] = $this->workorder->title;
+            //Get all email addresses linked to this work order along with copy contacts so we can email them about the update
+	        $data['recipient'] = $this->get_all_emails($workorder->id, $workorder->formtype_id);
+	        //Get the old reference code
+	        $data['old_ref'] = get_original_ref(Session::get('iwo_ref'));
+	        //Send an email to everyone that should receive one
+	        Queue::push('\Iwo\Workers\SendEmail@iwo_updated', $data);
 
             return Redirect::to('manage/updatecomplete');
         }
@@ -235,26 +225,27 @@ class ManagementController extends BaseController
     {
         if( ! $this->check_permission('confirm')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
-        $workorder = Workorder::find(Session::get('iwo_id'));
-        $workorder->confirmed = 1;
-        $workorder->updated_at = date_time_now();
-        $workorder->save();
+	    $new_workorder = Workorder::find(Session::get('iwo_id'));
+        $new_workorder->confirmed = 1;
+        $new_workorder->updated_at = date_time_now();
+        $new_workorder->save();
 
 	    /**
 	     * FORMAT FORM DATA FOR EMAILS
 	     */
 	    $data = [
 		    // Use the pretty_input() helper to make form input data user friendly and pretty for display in emails
+		    'form_data' => pretty_input(Input::old()),
 		    //IWO reference
 		    'iwo_ref' => Session::get('iwo_ref'),
 		    //    Workorder title
-		    'iwo_title' => $workorder->title,
+		    'iwo_title' => $this->workorder->title,
 		    //    Workorder id
-		    'iwo_id' => $workorder->id
+		    'iwo_id' => $this->workorder->id
 	    ];
 
         //Send an email to lead and sub units plus copy contacts now the work order is confirmed
-        $data['recipient'] = array_merge($this->get_user_emails($workorder->id), $this->get_copy_emails($workorder->formtype_id));
+        $data['recipient'] = $this->get_all_emails($this->workorder->id, $this->workorder->formtype_id);
         Queue::push('\Iwo\Workers\SendEmail@iwo_confirmed', $data);
 
         Logger::add_log('Work order confirmed.', 'success');
@@ -268,13 +259,15 @@ class ManagementController extends BaseController
         return false;
         if( ! $this->check_permission('confirm')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
-        $workorder = Workorder::find(Session::get('iwo_id'));
-        $workorder->confirmed = 0;
-        $workorder->updated_at = date_time_now();
-        $workorder->save();
+        $this->workorder = Workorder::find(Session::get('iwo_id'));
+        $this->workorder->confirmed = 0;
+        $this->workorder->updated_at = date_time_now();
+        $this->workorder->save();
 
+	    $data['iwo_ref'] = $this->workorder->iwo_ref;
+	    $data['iwo_title'] = $this->workorder->title;
         //Send an email to lead and sub units plus copy contacts now the work order is un-confirmed
-        $data['recipient'] = array_merge($this->get_user_emails($workorder->id), $this->get_copy_emails($workorder->formtype_id));
+	    $data['recipient'] = $this->get_all_emails($workorder->id, $workorder->formtype_id);
         Queue::push('\Iwo\Workers\SendEmail@iwo_unconfirmed', $data);
 
         Logger::add_log('Work order un-confirmed.', 'warning');
@@ -286,13 +279,15 @@ class ManagementController extends BaseController
     {
         if( ! $this->check_permission('cancel')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
-        $workorder = Workorder::find(Session::get('iwo_id'));
-        $workorder->cancelled = 1;
-        $workorder->updated_at = date_time_now();
-        $workorder->save();
+        $new_workorder = Workorder::find(Session::get('iwo_id'));
+        $new_workorder->cancelled = 1;
+        $new_workorder->updated_at = date_time_now();
+        $new_workorder->save();
 
-        //Send an email to lead and sub units plus copy contacts now the work order is un-confirmed
-        $data['recipient'] = array_merge($this->get_user_emails($workorder->id), $this->get_copy_emails($workorder->formtype_id));
+	    $data['iwo_ref'] = $this->workorder->iwo_ref;
+	    $data['iwo_title'] = $this->workorder->title;
+	    //Send an email to lead and sub units plus copy contacts now the work order is confirmed
+	    $data['recipient'] = $this->get_all_emails($workorder->id, $workorder->formtype_id);
         Queue::push('\Iwo\Workers\SendEmail@iwo_cancelled', $data);
 
         Logger::add_log('Work order cancelled.', 'alert');

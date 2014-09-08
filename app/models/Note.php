@@ -3,6 +3,8 @@
 
 class Note extends Eloquent {
 
+	public $guarded = ['id'];
+
     public function workorder()
     {
         return $this->belongsTo('Workorder');

@@ -182,11 +182,8 @@ class BaseController extends Controller {
 
         //If this type of IWO is set to 'confirmed' by default, send an
         //email to the copy contacts for this form type
-        if($workorder->confirmed > 0)
-        {
-            $data['recipient'] = $this->get_copy_emails($workorder->formtype_id);
-            Queue::push('\Iwo\Workers\SendEmail@iwo_auto_confirmed', $data);
-        }
+        $data['recipient'] = $this->get_copy_emails($workorder->formtype_id);
+	    Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
 
         //If a copy recipient or recipients were entered in the form, send a copy of the work order to them
         if(Input::old('also_send_work_order_to'))
@@ -236,9 +233,15 @@ class BaseController extends Controller {
     {
         return User::where('iwo_id', '=', $iwo_id)->lists('email');
     }
+
     protected function get_copy_emails($formtype = 0)
     {
         return Copy_contact::where('formtype_id', '=', $formtype)->lists('email');
     }
+
+	protected function get_all_emails($iwo_id = 0, $formtype = 0)
+	{
+		return array_merge($this->get_user_emails($iwo_id), $this->get_copy_emails($formtype));
+	}
 
 }

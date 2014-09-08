@@ -54,7 +54,10 @@ class SendEmail {
     {
         $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
 
-        $this->send($data['recipient'], $data['subject'], "emails.copy", $data);
+	    foreach($data['recipient'] as $recipient)
+	    {
+		    $this->send($recipient, $data['subject'], "emails.COPY", $data);
+	    }
 
         $job->delete();
     }

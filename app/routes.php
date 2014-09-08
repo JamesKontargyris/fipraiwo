@@ -37,20 +37,11 @@ Route::get('complete', ['as' => 'complete', function()
 
 Route::get('add_roles_and_perms', function()
 {
-    $lead = Role::find(1);
 
-    $sub = Role::find(2);
+});
 
-    $read = new Permission();
-    $read->name = 'read';
-    $read->display_name = "Can Read IWOs";
-    $read->save();
-
-    $lead->attachPermission($read);
-
-    $sub->attachPermission($read);
-
-    return "Done.";
+Route::get('test', function()
+{
 });
 
 
