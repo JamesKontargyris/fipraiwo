@@ -6,7 +6,7 @@
 <body>
 <h2>{{ $data['subject'] }}</h2>
 @include('emails.partials.iwo_ref')
-<p>The following IWO was submitted. You are listed as Account Director. More information here.</p>
+<p>The following IWO was submitted. You are listed as Account Director.</p>
 
 <div>
     @include('emails.partials.form')

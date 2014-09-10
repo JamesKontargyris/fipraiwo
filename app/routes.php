@@ -42,7 +42,6 @@ Route::get('add_roles_and_perms', function()
 
 Route::get('test', function()
 {
-	dd(Spad_email::where('spad_name', '=', 'John Bowis')->pluck('spad_email'));
 });
 
 

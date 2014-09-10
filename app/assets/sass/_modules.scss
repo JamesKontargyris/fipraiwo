@@ -268,8 +268,13 @@ ul.square {
     }
     td {
       padding:($v-rhythm / 2) 10px;
+
+      .action-buttons {
+        text-align: right;
+      }
     }
   }
+
 }
 
 .euro-field {

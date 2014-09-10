@@ -24,6 +24,7 @@
 				<td>Created on</td>
 				<td>Last updated</td>
 				<td>Status</td>
+				<td></td>
 			</tr>
 			</thead>
         	@if(count($formtype->workorders) > 0)
@@ -48,6 +49,9 @@
 								@else
 									Unconfirmed
 								@endif
+							</td>
+							<td class="action-buttons" style="text-align: right;">
+								<a class="secondary" href="/admin/delete/{{ $workorder->id }}" onClick="return confirm('Are you sure you want to delete this IWO? This action cannot be undone.');"><i class="fa fa-lg fa-times"></i></a>
 							</td>
 						</tr>
                 	@endif

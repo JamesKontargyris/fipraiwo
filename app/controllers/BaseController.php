@@ -180,8 +180,7 @@ class BaseController extends Controller {
             Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
         }
 
-        //If this type of IWO is set to 'confirmed' by default, send an
-        //email to the copy contacts for this form type
+        //Send an email to the copy contacts for this form type
         $data['recipient'] = $this->get_copy_emails($workorder->formtype_id);
 	    Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
 
@@ -189,16 +188,13 @@ class BaseController extends Controller {
         if(Input::old('also_send_work_order_to'))
         {
            $addresses = explode(",", Input::old('also_send_work_order_to'));
-
-            foreach($addresses as $address)
-            {
-                $data['recipient'] = trim($address);
-                Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
-            }
+	        $data['recipient'] = $addresses;
+	        Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
         }
 
         // Once emails are sent, delete files uploaded for security.
-        Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
+        //// Once emails are se['james@jameskontargyris.co.uk
+ ;       Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
 
         // Redirect to the complete/success page
         return Redirect::route('complete')->with('iwo_ref', $iwo_ref->iwo_ref);

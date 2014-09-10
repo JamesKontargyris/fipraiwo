@@ -849,24 +849,27 @@ ul.square {
   /* line 269, ../../app/assets/sass/_modules.scss */
   .workorder-table tr td {
     padding: 10px 10px; }
+    /* line 272, ../../app/assets/sass/_modules.scss */
+    .workorder-table tr td .action-buttons {
+      text-align: right; }
 
-/* line 276, ../../app/assets/sass/_modules.scss */
+/* line 281, ../../app/assets/sass/_modules.scss */
 .euro-field:before {
   content: "Ôé¼"; }
 
-/* line 281, ../../app/assets/sass/_modules.scss */
+/* line 286, ../../app/assets/sass/_modules.scss */
 .rate-table {
   border: 1px solid white; }
-  /* line 284, ../../app/assets/sass/_modules.scss */
+  /* line 289, ../../app/assets/sass/_modules.scss */
   .rate-table thead td {
     border-top: 1px solid white;
     border-bottom: 1px solid white; }
-  /* line 290, ../../app/assets/sass/_modules.scss */
+  /* line 295, ../../app/assets/sass/_modules.scss */
   .rate-table tr td {
     border-bottom: 1px solid white;
     padding: 5px;
     text-align: right; }
-    /* line 294, ../../app/assets/sass/_modules.scss */
+    /* line 299, ../../app/assets/sass/_modules.scss */
     .rate-table tr td:first-child {
       text-align: left; }
 

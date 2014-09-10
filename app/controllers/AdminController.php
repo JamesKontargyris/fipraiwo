@@ -9,6 +9,7 @@ class AdminController extends BaseController {
     {
         $this->page_title = "Fipra Online IWO Admin";
     }
+
     public function getIndex()
     {
         return View::make('admin.login')->with('page_title', $this->page_title);
@@ -30,7 +31,7 @@ class AdminController extends BaseController {
 
     public function getDashboard()
     {
-        if(Session::get('admin_logged_in'))
+        if($this->check_admin_user())
         {
             $formtypes = Formtype::all();
 
@@ -44,7 +45,7 @@ class AdminController extends BaseController {
 
     public function getView()
     {
-        if(Session::get('admin_logged_in'))
+        if($this->check_admin_user())
         {
             $iwo_id = Request::segment(3);
             if(isset($iwo_id))
@@ -61,10 +62,38 @@ class AdminController extends BaseController {
         }
     }
 
+	public function getDelete()
+	{
+		if($this->check_admin_user())
+		{
+			$id = Request::segment(3);
+			$iwo = Workorder::find($id);
+			if($iwo)
+			{
+				$iwo->delete();
+				return Redirect::to('admin/dashboard')->with('message', 'Work order deleted.');
+			}
+			else
+			{
+				return Redirect::to('admin/dashboard')->withErrors('Work order not found.');
+			}
+		}
+	}
+
     public function getLogout()
     {
         Session::flush();
 
         return Redirect::route('home')->with('message', 'You have been logged out.');
     }
+
+	private function check_admin_user()
+	{
+		if( ! Session::get('admin_logged_in') && Session::get('admin_logged_in') != 'yes')
+		{
+			return Redirect::back()->withErrors('You need to be logged in to carry out that action.');
+		}
+
+		return true;
+	}
 } 

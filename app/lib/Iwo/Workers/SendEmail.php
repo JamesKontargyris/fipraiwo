@@ -56,7 +56,7 @@ class SendEmail {
 
 	    foreach($data['recipient'] as $recipient)
 	    {
-		    $this->send($recipient, $data['subject'], "emails.COPY", $data);
+		    $this->send($recipient, $data['subject'], "emails.copy", $data);
 	    }
 
         $job->delete();
