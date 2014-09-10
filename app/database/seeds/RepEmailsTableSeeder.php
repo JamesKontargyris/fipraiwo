@@ -20,7 +20,7 @@ class RepEmailsTableSeeder extends DatabaseSeeder
             'Ukko Metsola' => 'ukko.metsola@fipra.com',
             'Rory Chisholm' => 'rory.chisholm@fipra.com',
             'Dirk Hudig' => 'dirk.hudig@fipra.com',
-            'Ann Kelly' => 'dirk.hudig@fipra.com',
+            'Ann Kelly' => 'ann.kelly@fipra.com',
             'Phil Evans' => 'phil.evans@fipra.com',
         ];
 

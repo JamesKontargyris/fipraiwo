@@ -71,7 +71,8 @@ class AutocompleteController extends BaseController
                 // Add the necessary "value" and "label" fields and append to result set
                 $found_rep['value'] = $rep['spad'];
                 $found_rep['rep'] = $rep['rep'];
-                $found_rep['label'] = $rep['spad'];
+	            $found_rep['email'] = Spad_email::where('spad_name', '=', $rep['spad'])->pluck('spad_email');
+                $found_rep['label'] = $rep['spad'] . " (" . $found_rep['email'] . ")";
                 $matches[] = $found_rep;
             }
         }

@@ -147,6 +147,10 @@
 		font-weight:$font-bold;
 		color:darken($periwinkle, 30%);
 		margin-bottom:$v-rhythm;
+
+      small {
+        font-size:70%;
+      }
 	}
 	.formfield {
 		padding-left: 20px;

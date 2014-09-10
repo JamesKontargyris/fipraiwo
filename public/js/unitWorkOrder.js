@@ -133,7 +133,7 @@
 
     });
 
-    $('.lead_unit_account_director').focusout('change', function()
+    $('.sub_contracted_unit_correspondent_affiliate_account_director').focusout('change', function()
     {
         var name = $(this).val();
         $('.autofill').val(name);
@@ -144,10 +144,10 @@
     function show_fees_people_form(selection)
     {
         var rate_labels = new Array();
-        rate_labels['at the standard Fipra hourly rates'] = 'Final Hourly Rate';
-        rate_labels['at a different Fipra hourly rate'] = 'Final Hourly Rate';
-        rate_labels['at a day rate'] = 'Final Day Rate';
-        rate_labels['at a flat or project rate'] = 'Final Flat/Project Rate';
+        rate_labels['at the standard Fipra hourly rates'] = 'Hourly Rate';
+        rate_labels['at a different Fipra hourly rate'] = 'Hourly Rate';
+        rate_labels['at a day rate'] = 'Day Rate';
+        rate_labels['at a flat or project rate'] = 'Flat/Project Rate';
 
         if(selection != '')
         {

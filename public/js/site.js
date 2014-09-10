@@ -118,6 +118,7 @@
         minLength:1,
         select: function(event, ui) {
             $(this).val(ui.item.value);
+            $('input[name=' + $(this).data('email-field') + ']').val(ui.item.email);
             $('select[name=' + $(this).data('rep-field') + ']').val(ui.item.rep);
         }
     });

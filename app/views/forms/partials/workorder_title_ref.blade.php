@@ -1,7 +1,7 @@
 <section class="formgroup highlight">
 
     <div class="formfield col-8">
-        {{ Form::label('workorder_title', 'Workorder title:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+        {{ Form::label('workorder_title', 'Work Order title:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
         <div class="help-box">This is a user-friendly title that can be used to refer to this work order, e.g. &quot;Monthly Uber Monitoring&quot;. There is no need to include dates as these will be automatically stored alongside your work order submission. Please note that once submitted, the name cannot be changed.</div>
 
         @if(editing())

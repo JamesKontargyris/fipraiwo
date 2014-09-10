@@ -17,7 +17,7 @@ class SpadWorkOrderController extends BaseController
     //Array of form field names to use as user names in the DB
     protected $user_names = [
         'lead' => 'account_director',
-        'sub' => 'special_adviser',
+        'sub' => 'special_adviser_instructed',
     ];
     //Default confirmed state for this IWO type
     protected $confirmed = 0;

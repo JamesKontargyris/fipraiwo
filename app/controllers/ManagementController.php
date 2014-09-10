@@ -199,7 +199,7 @@ class ManagementController extends BaseController
 	        $data['iwo_ref'] = $iwo_ref->iwo_ref;
 	        $data['iwo_title'] = $this->workorder->title;
             //Get all email addresses linked to this work order along with copy contacts so we can email them about the update
-	        $data['recipient'] = $this->get_all_emails($workorder->id, $workorder->formtype_id);
+            $data['recipient'] = $this->get_all_emails($workorder->id, $workorder->formtype_id);
 	        //Get the old reference code
 	        $data['old_ref'] = get_original_ref(Session::get('iwo_ref'));
 	        //Send an email to everyone that should receive one
@@ -234,8 +234,7 @@ class ManagementController extends BaseController
 	     * FORMAT FORM DATA FOR EMAILS
 	     */
 	    $data = [
-		    // Use the pretty_input() helper to make form input data user friendly and pretty for display in emails
-		    'form_data' => pretty_input(Input::old()),
+		    'form_data' => $this->workorder->pretty_workorder,
 		    //IWO reference
 		    'iwo_ref' => Session::get('iwo_ref'),
 		    //    Workorder title
@@ -267,7 +266,7 @@ class ManagementController extends BaseController
 	    $data['iwo_ref'] = $this->workorder->iwo_ref;
 	    $data['iwo_title'] = $this->workorder->title;
         //Send an email to lead and sub units plus copy contacts now the work order is un-confirmed
-	    $data['recipient'] = $this->get_all_emails($workorder->id, $workorder->formtype_id);
+        $data['recipient'] = $this->get_all_emails($workorder->id, $workorder->formtype_id);
         Queue::push('\Iwo\Workers\SendEmail@iwo_unconfirmed', $data);
 
         Logger::add_log('Work order un-confirmed.', 'warning');

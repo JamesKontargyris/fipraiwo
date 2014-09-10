@@ -98,7 +98,7 @@
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', $workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director, ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', Input::old('sub_contracted_unit_correspondent_affiliate_account_director'), ['data-email-field' => 'sub_email_address', 'class' => 'account_director_autocomplete']) }}
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', Input::old('sub_contracted_unit_correspondent_affiliate_account_director'), ['data-email-field' => 'sub_email_address', 'class' => 'account_director_autocomplete sub_contracted_unit_correspondent_affiliate_account_director']) }}
                     @endif
 
                     {{ display_form_error('sub_contracted_unit_correspondent_affiliate_account_director', $errors) }}
@@ -121,7 +121,7 @@
                 </div>
             </div>
             <div class="formgroup">
-                <div class="title">Fees</div>
+                <div class="title">Fees <small>before inter-unit discount</small></div>
                 <div class="formfield">
                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
 
@@ -176,7 +176,7 @@
                                         <td class="rate-field">
                                         	@if(Input::old('the_work_will_be_done') == 'at the standard Fipra hourly rates')
 												<div class="fees-select">
-													{{ Form::select("team[$id][rate]", ['340' => '€340', '260' => '€260', '180' => '€180', '100' => '€100'], $values['rate'], ['class' => 'inline']) }}
+													{{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125'], $values['rate'], ['class' => 'inline']) }}
 												</div>
 												<div class="fees-text">
 													<span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", null, ['style' => 'width:80%']) }}
@@ -186,7 +186,7 @@
 													<span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", $values['rate'], ['style' => 'width:80%']) }}
 												</div>
 												<div class="fees-select">
-													{{ Form::select("team[$id][rate]", ['340' => '€340', '260' => '€260', '180' => '€180', '100' => '€100'], null, ['class' => 'inline']) }}
+													{{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125'], null, ['class' => 'inline']) }}
 												</div>
                                         	@endif
                                         </td>
@@ -215,7 +215,7 @@
                                     		<span class="inline">&euro;</span> {{ Form::text('team[1][rate]', null, ['style' => 'width:80%']) }}
                                     	</div>
                                     	<div class="fees-select">
-											{{ Form::select('team[1][rate]', ['340' => '€340', '260' => '€260', '180' => '€180', '100' => '€100'], ['class' => 'inline']) }}
+											{{ Form::select('team[1][rate]', ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125'], ['class' => 'inline']) }}
 										</div>
                                     </td>
                                     <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>

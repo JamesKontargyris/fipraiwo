@@ -55,12 +55,12 @@
 
                 @if($count == 0)
                 	<tr>
-						<td colspan="4">No workorders found.</td>
+						<td colspan="4">No work orders found.</td>
 					</tr>
 				@endif
        		@else
 				<tr>
-					<td colspan="4">No workorders found.</td>
+					<td colspan="4">No work orders found.</td>
 				</tr>
 			@endif
         </table>

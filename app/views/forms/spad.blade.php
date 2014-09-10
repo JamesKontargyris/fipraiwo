@@ -28,7 +28,7 @@
 					@if(editing())
 						{{ Form::text('special_adviser_instructed', $workorder->workorder->special_adviser_instructed, ['class' => 'spad_reps_autocomplete', 'data-rep-field' => 'fipra_representative', 'readonly' => 'readonly']) }}
 					@else
-						{{ Form::text('special_adviser_instructed', Input::old('special_adviser_instructed'), ['class' => 'spad_reps_autocomplete', 'data-rep-field' => 'fipra_representative']) }}
+						{{ Form::text('special_adviser_instructed', Input::old('special_adviser_instructed'), ['class' => 'spad_reps_autocomplete', 'data-rep-field' => 'fipra_representative', 'data-email-field' => 'lead_email_address']) }}
 					@endif
 					{{ display_form_error('special_adviser_instructed', $errors) }}
 				</div>
@@ -44,9 +44,9 @@
                 <div class="formfield">
                     {{ Form::label('account_director', 'Account Director responsible for this instruction:', ['class' => 'required']) }}
                     @if(editing())
-                        {{ Form::text('account_director', $workorder->workorder->account_director, ['class' => 'account_director_autocomplete', 'data-email-field' => 'lead_email_address', 'readonly' => 'readonly']) }}
+                        {{ Form::text('account_director', $workorder->workorder->account_director, ['class' => 'account_director_autocomplete', 'data-email-field' => 'sub_email_address', 'readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('account_director', Input::old('account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'lead_email_address']) }}
+                        {{ Form::text('account_director', Input::old('account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'sub_email_address']) }}
                     @endif
                     {{ display_form_error('account_director', $errors) }}
                     <span class="small-print">No Unit other than Fipra International can submit an Internal Work Order for a Special Adviser.</span>
@@ -62,20 +62,20 @@
                 </div>
 
                 <div class="formfield">
-                    {{ Form::label('lead_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
-                    {{ Form::select('lead_fipra_representative', get_fipra_reps(), (editing()) ? $workorder->workorder->lead_fipra_representative : Input::old('lead_fipra_representative'), ['style' => 'width:100%']) }}
-                    {{ display_form_error('lead_fipra_representative', $errors) }}
+                    {{ Form::label('fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
+                    {{ Form::select('fipra_representative', get_fipra_reps(), (editing()) ? $workorder->workorder->fipra_representative : Input::old('fipra_representative'), ['style' => 'width:100%']) }}
+                    {{ display_form_error('fipra_representative', $errors) }}
                 </div>
 			</div>
 
             <div class="formgroup">
-                <div class="title">Fees</div>
+                <div class="title">Fees <small>before inter-unit discount</small></div>
                 <div class="formfield">
                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
                     {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rate' => 'at the standard Fipra hourly rate', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? $workorder->workorder->the_work_will_be_done : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
 
                     <div class="sub-box rate-field col-12">
-                        {{ Form::label('rate_is', ' Confirm Final Rate with Discount (&euro;):', ['class' => 'required rate-label']) }}
+                        {{ Form::label('rate_is', 'Rate (&euro;):', ['class' => 'required rate-label']) }}
 						{{ Form::text('rate_is', (editing()) ? $workorder->workorder->rate_is : Input::old('rate_is'), ['class' => 'euro-field']) }}
                         {{ display_form_error('rate_is', $errors) }}
 
@@ -99,7 +99,7 @@
                     {{ display_form_error('work_capped_each_month', $errors) }}
                 </div>
                 <div class="formfield hide" id="work-capped-each-month-reveal">
-                    {{ Form::label('work_cap', 'What is the cap?') }}
+                    {{ Form::label('work_cap', 'What is the cap? (&euro;)') }}
                     {{ Form::text('work_cap', (editing()) ? $workorder->workorder->work_cap : Input::old('work_cap')) }}
                     {{ display_form_error('work_cap', $errors) }}
                 </div>
