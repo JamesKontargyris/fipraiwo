@@ -30,7 +30,31 @@
 	// Hide all help boxes
 	$('.help-box').css('display', 'none');
 
-    $( ".datepicker" ).datepicker({ dateFormat: "dd-mm-yy" });
+    //jQuery UI Datepicker for IWO start/end dates
+    //Ensure only today's date or dates in the future are selectable
+    //Once a start date is selected, onSelect ensures expiry dates are the same day or in the future
+    var dateToday = new Date();
+    var dates = $("#internal_work_order_start_date, #internal_work_order_expiry_date").datepicker({
+        dateFormat: "dd-mm-yy",
+        numberOfMonths: 1,
+        onSelect: function(selectedDate) {
+            var option = this.id == "internal_work_order_start_date" ? "minDate" : "maxDate",
+                instance = $(this).data("datepicker"),
+                date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+            dates.not(this).datepicker("option", option, date);
+
+        }
+    });
+
+    $("#internal_work_order_start_date, #internal_work_order_expiry_date").change(function () {
+        var updatedDate = $(this).val();
+        var instance = $(this).data("datepicker");
+        var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, updatedDate, instance.settings);
+
+        if (date < dateToday) {
+            $(this).datepicker("setDate", dateToday);
+        }
+    });
 
 	// Show help box when help button is clicked
 	$('a.help').on('click', function(e)

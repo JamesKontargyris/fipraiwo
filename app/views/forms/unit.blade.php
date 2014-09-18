@@ -291,13 +291,13 @@
             <div class="formfield">
                 {{ Form::label('internal_work_order_start_date', 'IWO start date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">The Start date is from when payments can be made under this IWO.</div>
-                {{ Form::text('internal_work_order_start_date', (editing()) ? $workorder->workorder->internal_work_order_start_date : Input::old('internal_work_order_start_date'), ['class' => 'datepicker']) }}
+                {{ Form::text('internal_work_order_start_date', (editing()) ? $workorder->workorder->internal_work_order_start_date : Input::old('internal_work_order_start_date'), ['class' => 'datepicker', 'id' => 'internal_work_order_start_date']) }}
                 {{ display_form_error('internal_work_order_start_date', $errors) }}
             </div>
             <div class="formfield">
                 {{ Form::label('internal_work_order_expiry_date', 'IWO expiry date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                 <div class="help-box">This is the date payment will stop under this IWO.</div>
-                {{ Form::text('internal_work_order_expiry_date', (editing()) ? $workorder->workorder->internal_work_order_expiry_date : Input::old('internal_work_order_expiry_date'), ['class' => 'datepicker']) }}
+                {{ Form::text('internal_work_order_expiry_date', (editing()) ? $workorder->workorder->internal_work_order_expiry_date : Input::old('internal_work_order_expiry_date'), ['class' => 'datepicker', 'id' => 'internal_work_order_expiry_date']) }}
                 {{ display_form_error('internal_work_order_expiry_date', $errors) }}
                 <p class="small-print">An email will be sent to you 10 days before this work order expires.</p>
             </div>
