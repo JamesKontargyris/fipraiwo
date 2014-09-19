@@ -81,4 +81,32 @@ class AutocompleteController extends BaseController
         $matches = array_slice($matches, 0, 5);
         return json_encode($matches);
     }
+
+	public function unit_lead_contacts_and_reps()
+	{
+		$unit_lead_contacts = Unit_lead_contact::all()->toArray();
+
+		// Cleaning up the term
+		$term = trim(strip_tags($_GET['term']));
+
+		// Rudimentary search
+		$matches = [];
+		foreach($unit_lead_contacts as $contact)
+		{
+			if(stripos($contact['unit_name'], $term) !== false)
+			{
+				// Add the necessary "value" and "label" fields and append to result set
+				$found_unit['value'] = $contact['unit_name'];
+				$found_unit['name'] = $contact['lead_contact_name'];
+				$found_unit['email'] = $contact['email'];
+				$found_unit['rep'] = Unit_rep::where('fipra_unit', '=', $contact['unit_name'])->pluck('rep');
+				$found_unit['label'] = $contact['unit_name'];
+				$matches[] = $found_unit;
+			}
+		}
+
+		// Truncate, encode and return the results
+		$matches = array_slice($matches, 0, 5);
+		return json_encode($matches);
+	}
 } 

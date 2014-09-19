@@ -51,3 +51,5 @@ Route::get('ac/account_directors', 'AutocompleteController@account_directors');
 Route::get('ac/unit_reps', 'AutocompleteController@unit_reps');
 //Spad reps autocomplete
 Route::get('ac/spad_reps', 'AutocompleteController@spad_reps');
+//Unit lead contacts/reps autocomplete
+Route::get('ac/unit_lead_contacts_and_reps', 'AutocompleteController@unit_lead_contacts_and_reps');

@@ -147,6 +147,17 @@
         }
     });
 
+    $(".unit_lead_contact_rep_autocomplete").autocomplete({
+        source: '/ac/unit_lead_contacts_and_reps',
+        minLength:1,
+        select: function(event, ui) {
+            $(this).val(ui.item.value);
+            $('input[name=' + $(this).data('name-field') + ']').val(ui.item.name);
+            $('input[name=' + $(this).data('email-field') + ']').val(ui.item.email);
+            $('select[name=' + $(this).data('rep-field') + ']').val(ui.item.rep);
+        }
+    });
+
 
 	// When a file is selected for upload, compare its size
 	// to the max upload size and display an alert if the file

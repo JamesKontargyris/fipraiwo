@@ -40,7 +40,7 @@
                     @if(editing())
                         {{ Form::text('lead_unit', $workorder->workorder->lead_unit, ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('lead_unit', Input::old('lead_unit'), ['class' => 'unit_reps_autocomplete', 'data-rep-field' => 'lead_fipra_representative']) }}
+                        {{ Form::text('lead_unit', Input::old('lead_unit'), ['class' => 'unit_lead_contact_rep_autocomplete', 'data-name-field' => 'lead_unit_account_director', 'data-email-field' => 'lead_email_address', 'data-rep-field' => 'lead_fipra_representative']) }}
                     @endif
                     {{ display_form_error('lead_unit', $errors) }}
                 </div>
@@ -87,7 +87,7 @@
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate', $workorder->workorder->sub_contracted_unit_correspondent_affiliate, ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate'), ['class' => 'unit_reps_autocomplete', 'data-rep-field' => 'sub_fipra_representative']) }}
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate'), ['class' => 'unit_lead_contact_rep_autocomplete', 'data-name-field' => 'sub_contracted_unit_correspondent_affiliate_account_director', 'data-email-field' => 'sub_email_address', 'data-rep-field' => 'sub_fipra_representative']) }}
                     @endif
 
                     {{ display_form_error('sub_contracted_unit_correspondent_affiliate', $errors) }}
