@@ -39,6 +39,10 @@ Route::get('add_roles_and_perms', function()
 {
 });
 
+Route::get('test', function()
+{
+});
+
 //Account Director autocomplete
 Route::get('ac/account_directors', 'AutocompleteController@account_directors');
 //Unit reps autocomplete

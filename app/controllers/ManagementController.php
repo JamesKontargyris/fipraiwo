@@ -223,6 +223,14 @@ class ManagementController extends BaseController
             $new_workorder->workorder = $this->get_input_for_db();
             $new_workorder->updated_at = date_time_now();
             $new_workorder->expiry_date = Input::old('internal_work_order_expiry_date') ? date("Y-m-d", strtotime(Input::old('internal_work_order_expiry_date'))) : '2999-01-01';
+
+	        if($new_workorder->confirmed == 1)
+	        {
+		        $new_workorder->confirmed = 0;
+		        //Add an event log entry for this update
+		        Logger::add_log('Work order unconfirmed.');
+	        }
+
             $new_workorder->save();
 
             $iwo_ref = Iwo_ref::where('iwo_id', '=', Session::get('iwo_id'))->first();
@@ -235,14 +243,61 @@ class ManagementController extends BaseController
             //Add an event log entry for this update
             Logger::add_log('Work order updated.', 'update');
 
-	        $data['iwo_ref'] = $iwo_ref->iwo_ref;
-	        $data['iwo_title'] = $this->workorder->title;
-            //Get all email addresses linked to this work order along with copy contacts so we can email them about the update
-            $data['recipient'] = $this->get_all_emails($new_workorder->id, $new_workorder->formtype_id);
+	        /**
+	         * FORMAT FORM DATA FOR EMAILS
+	         */
+	        $data = [
+		        // Use the pretty_input() helper to make form input data user friendly and pretty for display in emails
+		        'form_data' => pretty_input(unserialize($new_workorder->workorder)),
+		        //Get the "pretty" version of the IWO key
+		        'form_type' => Formtype::where('id', '=', $new_workorder->formtype_id)->pluck('label'),
+		        //The confirmed/unconfirmed status of the IWO
+		        'status' => ($new_workorder->confirmed == 0) ? 'unconfirmed' : 'confirmed',
+		        //IWO reference
+		        'iwo_ref' => Session::get('iwo_ref'),
+		        //IWO key
+		        'iwo_key' => Formtype::where('id', '=', $new_workorder->formtype_id)->pluck('key'),
+		        //    Workorder title
+		        'iwo_title' => $new_workorder->title,
+		        //    Workorder id
+		        'iwo_id' => $new_workorder->id,
+		        //    Confirmation code
+		        'confirmation_code' => Confirmation_code::where('iwo_id', '=', $new_workorder->id)->pluck('code'),
+	        ];
+
 	        //Get the old reference code
 	        $data['old_ref'] = get_original_ref(Session::get('iwo_ref'));
-	        //Send an email to everyone that should receive one
-	        Queue::push('\Iwo\Workers\SendEmail@iwo_updated', $data);
+
+	        //Get all email addresses linked to this work order
+	        $users = User::where('iwo_id', '=', $new_workorder->id)->get();
+
+	        //Send an email to all users linked to this IWO with customised content to their role
+	        foreach($users as $user)
+	        {
+		        $data['recipient'] = $user->email;
+
+		        if($user->hasRole('Lead'))
+		        {
+			        //Send Lead Unit an email
+			        Queue::push('\Iwo\Workers\SendEmail@iwo_updated_lead', $data);
+		        }
+		        elseif($user->hasRole('Sub'))
+		        {
+			        //Send Sub Unit an email
+			        Queue::push('\Iwo\Workers\SendEmail@iwo_updated_sub', $data);
+		        }
+		        else
+		        {
+			        //recipient must be in an array, due to the way the iwo_updated_copy method works
+			        $data['recipient'] = [$user->email];
+			        //Send user-entered copy contact an email
+			        Queue::push('\Iwo\Workers\SendEmail@iwo_updated_copy', $data);
+		        }
+	        }
+
+	        //Get all copy contacts for this form type and send them an email about the update
+	        $data['recipient'] = $this->get_copy_emails($new_workorder->formtype_id);
+	        Queue::push('\Iwo\Workers\SendEmail@iwo_updated_copy', $data);
 
             return Redirect::to('manage/updatecomplete');
         }

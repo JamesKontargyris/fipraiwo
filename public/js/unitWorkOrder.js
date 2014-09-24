@@ -1,4 +1,14 @@
 (function() {
+    // Make sure the "work will be done" section is displayed
+    // when the page reloads after a failed validation and the
+    // dropdown is set
+    if($('select#the-work-will-be-done').val() != '')
+    {
+        show_fees_people_form($('select#the-work-will-be-done').val());
+        if($('select#the-work-will-be-done').val() == 'at the standard Fipra hourly rates') {
+            $('#the-work-will-be-done').next('.help-box').slideDown();
+        }
+    }
     // When "The work will be done" box is changed...
     $('select#the-work-will-be-done').on('change', function()
     {

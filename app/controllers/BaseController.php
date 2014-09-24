@@ -166,19 +166,38 @@ class BaseController extends Controller {
         }
 
         //If a Lead Fipra Rep was included in the form, and an address exists for them in the DB,
-        //send a copy of the work order to them
-        if($rep = Rep_email::where('rep_name', '=', trim(Input::old('lead_fipra_representative')))->first())
+        //send a copy of the work order to them and add them as a user with the "viewer" role
+        if(Input::old('lead_fipra_representative') && $rep = Rep_email::where('rep_name', '=', trim(Input::old('lead_fipra_representative')))->first())
         {
+	        $rep_user = new User;
+	        $rep_user->name = $rep->rep_name . ' (Lead Rep)';
+	        $rep_user->iwo_id = $workorder->id;
+	        $rep_user->email = $rep->rep_email;
+	        $rep_user->save();
+
+	        //Assign viewer role to user
+	        $rep_user->attachRole(Role::where('name', 'Viewer')->pluck('id'));
+
             $data['recipient'] = $rep->rep_email;
             Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
         }
-        //If a Sub Fipra Rep was included in the form, and an address exists for them in the DB,
-        //send a copy of the work order to them
-        if($rep = Rep_email::where('rep_name', '=', trim(Input::old('sub_fipra_representative')))->first())
-        {
-            $data['recipient'] = $rep->rep_email;
-            Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
-        }
+
+		//If a Sub Fipra Rep was included in the form, and an address exists for them in the DB,
+		//send a copy of the work order to them and add them as a user with the "viewer" role
+		if(Input::old('sub_fipra_representative') && $rep = Rep_email::where('rep_name', '=', trim(Input::old('sub_fipra_representative')))->first())
+		{
+			$rep_user = new User;
+			$rep_user->name = $rep->rep_name . ' (Sub Rep)';
+			$rep_user->iwo_id = $workorder->id;
+			$rep_user->email = $rep->rep_email;
+			$rep_user->save();
+
+			//Assign viewer role to user
+			$rep_user->attachRole(Role::where('name', 'Viewer')->pluck('id'));
+
+			$data['recipient'] = $rep->rep_email;
+			Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
+		}
 
         //Send an email to the copy contacts for this form type
         $data['recipient'] = $this->get_copy_emails($workorder->formtype_id);
@@ -203,9 +222,8 @@ class BaseController extends Controller {
 		        $copy_user->email = $address;
 		        $copy_user->save();
 
-		        //Assign Sub role to user
-		        $user_sub = User::find($copy_user->id);
-		        $user_sub->attachRole(Role::where('name', 'Viewer')->pluck('id'));
+		        //Assign Viewer role to user
+		        $copy_user->attachRole(Role::where('name', 'Viewer')->pluck('id'));
 	        }
         }
 

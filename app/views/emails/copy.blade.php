@@ -10,6 +10,8 @@
 
 		<p>The following IWO was submitted. The submitter requested that you receive a copy.</p>
 
+		@include('emails.partials.status_manage')
+
 		<div>
 			@include('emails.partials.form')
 		</div>

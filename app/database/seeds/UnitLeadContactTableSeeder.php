@@ -51,7 +51,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 		];
 
 		$lead_contact_emails = [
-			'John Richardson'               => 'john.richardson@fipra.com',
+			'John Richardson'               => 'johnl.richardson@fipra.com',
 			'Vladimir Metelsky'             => 'vladimir.metelsky@fipra.com',
 			'José Gabriel Assis de Almeida' => 'jose.almeida@fipra.com',
 			'Rositsa Velkova'               => 'rositsa.velkova@fipra.com',

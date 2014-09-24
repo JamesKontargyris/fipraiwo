@@ -74,6 +74,48 @@ class SendEmail {
         $job->delete();
     }
 
+	//When an IWO is created, send an email to the lead unit contact
+	public function iwo_updated_lead($job, $data)
+	{
+		$data['subject'] = "IWO: " . $data['iwo_title'] .  " (" . $data['old_ref'] . ") has been updated and re-submitted";
+
+		//If this is a re-send request, make that clear in the subject line
+		if(isset($data['resend']) && $data['resend'] === true) $data['subject'] = '*RE-SENDING* ' . $data['subject'];
+
+		$this->send($data['recipient'], $data['subject'], "emails.manage.update.lead", $data);
+
+		$job->delete();
+	}
+
+	//When an IWO is created, send an email to the lead unit contact
+	public function iwo_updated_sub($job, $data)
+	{
+		$data['subject'] = "IWO: " . $data['iwo_title'] .  " (" . $data['old_ref'] . ") has been updated and re-submitted";
+
+		//If this is a re-send request, make that clear in the subject line
+		if(isset($data['resend']) && $data['resend'] === true) $data['subject'] = '*RE-SENDING* ' . $data['subject'];
+
+		$this->send($data['recipient'], $data['subject'], "emails.manage.update.sub", $data);
+
+		$job->delete();
+	}
+
+	//When an IWO is created, send an email to the lead unit contact
+	public function iwo_updated_copy($job, $data)
+	{
+		$data['subject'] = "IWO: " . $data['iwo_title'] .  " (" . $data['old_ref'] . ") has been updated and re-submitted";
+
+		//If this is a re-send request, make that clear in the subject line
+		if(isset($data['resend']) && $data['resend'] === true) $data['subject'] = '*RE-SENDING* ' . $data['subject'];
+
+		foreach($data['recipient'] as $recipient)
+		{
+			$this->send($recipient, $data['subject'], "emails.manage.update.copy", $data);
+		}
+
+		$job->delete();
+	}
+
     //When an IWO is created, send an email to the lead unit contact
     public function iwo_auto_confirmed($job, $data)
     {

@@ -8,12 +8,10 @@
 
 @include('emails.partials.iwo_ref')
 
-@if( ! $data['status'] == 'confirmed')
-	<h3><strong>{{ link_to('/confirm?id=' . $data['iwo_id'] . '&email=' .$data['recipient'] . '&code=' . $data['confirmation_code'], 'CLICK HERE TO CONFIRM THIS IWO') }}</strong></h3>
-@endif
+<h3><strong>{{ link_to('/confirm?id=' . $data['iwo_id'] . '&email=' .$data['recipient'] . '&code=' . $data['confirmation_code'], 'CLICK HERE TO CONFIRM THIS IWO') }}</strong></h3>
 
-<p>A Fipra Units IWO was recently submitted, listing you as the sub-contracted unit contact.</p>
-<p>A copy of the submitted IWO is included below.</p>
+<p>This IWO was recently re-submitted, listing you as the sub-contracted unit contact.</p>
+<p>A copy of the re-submitted IWO is included below.</p>
 
 @include('emails.partials.status_manage')
 

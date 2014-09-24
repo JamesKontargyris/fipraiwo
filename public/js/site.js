@@ -145,14 +145,6 @@
         $('#work-capped-each-month-reveal').show();
     }
 
-    if($('select#the-work-will-be-done').val() != '')
-    {
-        show_fees_people_form($('select#the-work-will-be-done').val());
-        if($('select#the-work-will-be-done').val() == 'at the standard Fipra hourly rates') {
-            $('#the-work-will-be-done').next('.help-box').slideDown();
-        }
-    }
-
 	// Show help box when help button is clicked
 	$('a.help').on('click', function(e)
 	{
