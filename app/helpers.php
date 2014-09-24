@@ -89,8 +89,9 @@ function pretty_team($team = [])
 
     foreach($team as $member)
     {
-        if($member['person'] != "" or $member['rate'] != "")
+        if($member['person'] != "")
         {
+	        if($member['rate'] == '') $member['rate'] = 'N/A';
             $pretty_team .= "<tr>";
             $pretty_team .= "<td style='padding-right:20px'>" . $member['person'] . "</td><td>&euro;" . remove_currency_symbol($member['rate']) . "</td>";
             $pretty_team .= "</tr>";

@@ -77,7 +77,7 @@ class BaseController extends Controller {
         $workorder = new Workorder;
         $workorder->workorder = $input_data;
         $workorder->title = trim(Input::old('workorder_title'));
-        $workorder->expiry_date = Input::old('expiry_date') ? strtotime(Input::old('expiry_date')) : '2999-01-01';
+        $workorder->expiry_date = date("Y-m-d", strtotime(Input::old('internal_work_order_expiry_date')));
         $workorder->confirmed = ($this->confirmed) ? $this->confirmed : 0;
         $workorder->formtype_id = Formtype::where('key', $this->iwo_key)->pluck('id');
         $workorder->created_at = date("Y-m-d H:i:s");
@@ -187,14 +187,31 @@ class BaseController extends Controller {
         //If a copy recipient or recipients were entered in the form, send a copy of the work order to them
         if(Input::old('also_send_work_order_to'))
         {
-           $addresses = explode(",", Input::old('also_send_work_order_to'));
+	        //Explode all email addresses to array and remove duplicates (trim addresses too)
+            $addresses = array_map('trim', array_unique(explode(",", Input::old('also_send_work_order_to'))));
+	        //Add addresses to $data array and send email(s)
 	        $data['recipient'] = $addresses;
 	        Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
+
+	        //Add the copy email addresses as users so they receive future emails
+	        //and so they can login to the management system as viewers
+	        foreach($addresses as $address)
+	        {
+		        $copy_user = new User;
+		        $copy_user->name = $address;
+		        $copy_user->iwo_id = $workorder->id;
+		        $copy_user->email = $address;
+		        $copy_user->save();
+
+		        //Assign Sub role to user
+		        $user_sub = User::find($copy_user->id);
+		        $user_sub->attachRole(Role::where('name', 'Viewer')->pluck('id'));
+	        }
         }
 
         // Once emails are sent, delete files uploaded for security.
         //// Once emails are se['james@jameskontargyris.co.uk
- ;       Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
+        Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
 
         // Redirect to the complete/success page
         return Redirect::route('complete')->with('iwo_ref', $iwo_ref->iwo_ref);
@@ -232,12 +249,11 @@ class BaseController extends Controller {
 
     protected function get_copy_emails($formtype = 0)
     {
-        return Copy_contact::where('formtype_id', '=', $formtype)->lists('email');
+        return array_unique(Copy_contact::where('formtype_id', '=', $formtype)->lists('email'));
     }
 
 	protected function get_all_emails($iwo_id = 0, $formtype = 0)
 	{
-		return array_merge($this->get_user_emails($iwo_id), $this->get_copy_emails($formtype));
+		return array_unique(array_merge($this->get_user_emails($iwo_id), $this->get_copy_emails($formtype)));
 	}
-
 }

@@ -1,7 +1,9 @@
 <h5 class="no-underline">ACTIONS</h5>
 
 <ul class="actions">
-@if($workorder->cancelled != 1)
+@if( ! $user->can('confirm') && ! $user->can('edit') && ! $user->can('comment') && ! $user->can('cancel'))
+	No actions available to viewers.
+@elseif($workorder->cancelled != 1)
     @if($user->can('confirm') && ! $workorder->confirmed)
     <li><a href="/manage/confirm" onClick="return confirm('Are you sure you want to confirm this IWO?');" class="primary">CONFIRM</a></li>
     @endif

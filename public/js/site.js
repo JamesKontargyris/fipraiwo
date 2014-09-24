@@ -35,7 +35,7 @@
     //Once a start date is selected, onSelect ensures expiry dates are the same day or in the future
     var dateToday = new Date();
     var dates = $("#internal_work_order_start_date, #internal_work_order_expiry_date").datepicker({
-        dateFormat: "dd-mm-yy",
+        dateFormat: "dd-mm-yyyy",
         numberOfMonths: 1,
         onSelect: function(selectedDate) {
             var option = this.id == "internal_work_order_start_date" ? "minDate" : "maxDate",
@@ -46,15 +46,109 @@
         }
     });
 
-    $("#internal_work_order_start_date, #internal_work_order_expiry_date").change(function () {
-        var updatedDate = $(this).val();
-        var instance = $(this).data("datepicker");
-        var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, updatedDate, instance.settings);
+    //jQuery UI Datepicker for EDT IWO required completion date
+    //Ensure only today's date or dates in the future are selectable
+    var dateToday = new Date();
+    $(".datepicker").datepicker({
+        dateFormat: "dd-mm-yyyy",
+        numberOfMonths: 1,
+        minDate:dateToday
+    });
 
-        if (date < dateToday) {
-            $(this).datepicker("setDate", dateToday);
+    // Make sure the agreed fee element details field is displayed
+    // when the page reloads after a failed validation and the
+    // agreed fee element dropdown is set to "Yes"
+    if($('select.agreed-fee-element').val() == "Yes")
+    {
+        $('#agreed-fee-element-reveal').show();
+    }
+    else
+    {
+        //otherwise disable the input fields so they are not passed through
+        $('#agreed-fee-element-reveal textarea').attr('disabled', true);
+    }
+    // Show/hide the agreed fee element details field depending
+    // on the value in the agree fee element dropdown
+    $('select.agreed-fee-element').on('change', function()
+    {
+        if($(this).val() == 'Yes') {
+            $('#agreed-fee-element-reveal').slideDown();
+            $('#agreed-fee-element-reveal textarea').attr('disabled', false);
+        }
+        else
+        {
+            $('#agreed-fee-element-reveal').slideUp(function()
+            {
+                $('#agreed-fee-element-reveal textarea').attr('disabled', true);
+            });
         }
     });
+
+    // Make sure the green sheet required confirmation checkbox is displayed
+    // when the page reloads after a failed validation and the
+    // green sheet required dropdown is set to "Yes"
+    if($('select.green-sheet-required').val() == "Yes")
+    {
+        $('#green-sheet-required-reveal').show();
+    }
+    // Show/hide the green sheet details field depending
+    // on the value in the green sheet required element dropdown
+    $('select.green-sheet-required').on('change', function()
+    {
+        if($(this).val() == 'Yes') {
+            $('#green-sheet-required-reveal').slideDown();
+        }
+        else
+        {
+            $('#green-sheet-required-reveal').slideUp();
+        }
+    });
+
+    // Make sure the work cap field is displayed
+    // when the page reloads after a failed validation and the
+    // work cap dropdown is set to "Yes"
+    if($('select.work-capped-each-month').val() == "Yes")
+    {
+        $('#work-capped-each-month-reveal').show();
+    }
+    else
+    {
+        //Otherwise, disable the work cap input and select fields so they are not passed through
+        $('#work-capped-each-month-reveal input, #work-capped-each-month-reveal select').attr('disabled', true);
+    }
+
+    // Show/hide the agreed fee element details field depending
+    // on the value in the agree fee element dropdown
+    $('select.work-capped-each-month').on('change', function()
+    {
+        if($(this).val() == 'Yes') {
+            $('#work-capped-each-month-reveal').slideDown();
+            $('#work-capped-each-month-reveal input, #work-capped-each-month-reveal select').attr('disabled', false);
+        }
+        else
+        {
+            $('#work-capped-each-month-reveal').slideUp(function()
+            {
+                $('#work-capped-each-month-reveal input, #work-capped-each-month-reveal select').attr('disabled', true);
+            });
+
+        }
+    });
+    // Make sure the work cap field is displayed
+    // when the page reloads after a failed validation and the
+    // work cap dropdown is set to "Yes"
+    if($('select.work-capped-each-month').val() == "Yes")
+    {
+        $('#work-capped-each-month-reveal').show();
+    }
+
+    if($('select#the-work-will-be-done').val() != '')
+    {
+        show_fees_people_form($('select#the-work-will-be-done').val());
+        if($('select#the-work-will-be-done').val() == 'at the standard Fipra hourly rates') {
+            $('#the-work-will-be-done').next('.help-box').slideDown();
+        }
+    }
 
 	// Show help box when help button is clicked
 	$('a.help').on('click', function(e)

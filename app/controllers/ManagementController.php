@@ -70,7 +70,7 @@ class ManagementController extends BaseController
 
             return Redirect::to('manage/view');
         }
-        else
+	    else
         {
             //    If no user found, throw an exception and redirect back with errors
             throw new ManagementLoginException('Login failed', 'Incorrect login details entered. Please try again.');

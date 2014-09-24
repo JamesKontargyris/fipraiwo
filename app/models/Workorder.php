@@ -40,6 +40,11 @@ class Workorder extends Eloquent
         return $this->hasMany('User', 'iwo_id');
     }
 
+	public function copy_emails()
+	{
+		return $this->hasMany('Copy_email', 'iwo_id');
+	}
+
     public static function update_date_time()
     {
         $workorder = Workorder::find(Session::get('iwo_id'));
