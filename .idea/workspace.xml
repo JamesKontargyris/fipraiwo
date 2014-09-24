@@ -6,20 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="ff7bbedb-20db-415d-8413-4130d0ad7c3f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/83d6ff21b66caa556f81206bf7bba347d2f24f7a/_modules.scssc" afterPath="$PROJECT_DIR$/.sass-cache/83d6ff21b66caa556f81206bf7bba347d2f24f7a/_modules.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/BaseController.php" afterPath="$PROJECT_DIR$/app/controllers/BaseController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ManagementController.php" afterPath="$PROJECT_DIR$/app/controllers/ManagementController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Workorder.php" afterPath="$PROJECT_DIR$/app/models/Workorder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/Iwo/Workers/SendEmail.php" afterPath="$PROJECT_DIR$/app/lib/Iwo/Workers/SendEmail.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/sass/_modules.scss" afterPath="$PROJECT_DIR$/app/assets/sass/_modules.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/manage/partials/actions.blade.php" afterPath="$PROJECT_DIR$/app/views/manage/partials/actions.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forms/partials/copy_emails.blade.php" afterPath="$PROJECT_DIR$/app/views/forms/partials/copy_emails.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/dashboard.blade.php" afterPath="$PROJECT_DIR$/app/views/admin/dashboard.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers.php" afterPath="$PROJECT_DIR$/app/helpers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/emails/copy.blade.php" afterPath="$PROJECT_DIR$/app/views/emails/copy.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forms/edt.blade.php" afterPath="$PROJECT_DIR$/app/views/forms/edt.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/edtWorkOrder.js" afterPath="$PROJECT_DIR$/public/js/edtWorkOrder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/emails/unit/lead.blade.php" afterPath="$PROJECT_DIR$/app/views/emails/unit/lead.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/site.js" afterPath="$PROJECT_DIR$/public/js/site.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forms/spad.blade.php" afterPath="$PROJECT_DIR$/app/views/forms/spad.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/emails/unit/sub.blade.php" afterPath="$PROJECT_DIR$/app/views/emails/unit/sub.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forms/unit.blade.php" afterPath="$PROJECT_DIR$/app/views/forms/unit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/unitWorkOrder.js" afterPath="$PROJECT_DIR$/public/js/unitWorkOrder.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="iwo.iws" />
@@ -44,7 +43,133 @@
     <favorites_list name="iwo" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="ManagementController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/ManagementController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.75" vertical-offset="8327" max-vertical-offset="10780">
+              <caret line="431" column="36" selection-start-line="431" selection-start-column="36" selection-end-line="431" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="unit.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/forms/unit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5119" max-vertical-offset="8500">
+              <caret line="262" column="309" selection-start-line="262" selection-start-column="309" selection-end-line="262" selection-end-column="309" />
+              <folding>
+                <marker date="1411556093163" expanded="true" signature="1813:2044" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="4649:4980" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="4756:4979" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="5682:5970" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="7511:7942" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="7537:7787" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="15208:15426" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="16347:16542" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="17007:17289" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="20065:20282" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="20701:20922" placeholder="..." />
+                <marker date="1411556093163" expanded="true" signature="21621:21808" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spad.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/forms/spad.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1740" max-vertical-offset="4840">
+              <caret line="103" column="309" selection-start-line="103" selection-start-column="309" selection-end-line="103" selection-end-column="309" />
+              <folding>
+                <marker date="1411556093170" expanded="true" signature="961:1149" placeholder="..." />
+                <marker date="1411556093170" expanded="true" signature="1185:1382" placeholder="..." />
+                <marker date="1411556093170" expanded="true" signature="4185:4614" placeholder="..." />
+                <marker date="1411556093170" expanded="true" signature="4211:4459" placeholder="..." />
+                <marker date="1411556093170" expanded="true" signature="6361:6556" placeholder="..." />
+                <marker date="1411556093170" expanded="true" signature="6976:7258" placeholder="..." />
+                <marker date="1411556093170" expanded="true" signature="11328:11515" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SendEmail.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/Iwo/Workers/SendEmail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="713" max-vertical-offset="3240">
+              <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lead.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/emails/unit/lead.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="520">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sub.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/emails/unit/sub.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="560">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="copy.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/emails/copy.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="440">
+              <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resend_message.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/emails/partials/resend_message.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.06204757" vertical-offset="0" max-vertical-offset="967">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+              <folding>
+                <element signature="e#64#81#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2899" max-vertical-offset="5280">
+              <caret line="157" column="41" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="41" />
+              <folding>
+                <element signature="e#7#29#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resend.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/manage/resend.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="980">
+              <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -62,22 +187,15 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/ConfirmController.php" />
-        <option value="$PROJECT_DIR$/app/models/Confirmation_code.php" />
-        <option value="$PROJECT_DIR$/app/views/emails/partials/status_manage.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/emails/partials/head.blade.php" />
-        <option value="$PROJECT_DIR$/laravel.log" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_26_122356_drop_rep_email_column_from_unit_reps_and_spad_reps_tables.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_26_122523_create_rep_emails_table.php" />
         <option value="$PROJECT_DIR$/app/models/Rep_email.php" />
         <option value="$PROJECT_DIR$/app/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/app/database/seeds/UnitRepsTableSeeder.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app/models/User.php" />
         <option value="$PROJECT_DIR$/app/models/Copy_contact.php" />
         <option value="$PROJECT_DIR$/app/models/Note.php" />
         <option value="$PROJECT_DIR$/app/views/emails/manage/confirm.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/emails/unit/sub.blade.php" />
         <option value="$PROJECT_DIR$/app/database/seeds/RepEmailsTableSeeder.php" />
         <option value="$PROJECT_DIR$/app/database/seeds/AccountDirectorTableSeeder.php" />
         <option value="$PROJECT_DIR$/app/database/seeds/SpadRepsTableSeeder.php" />
@@ -88,7 +206,6 @@
         <option value="$PROJECT_DIR$/app/views/forms/partials/workorder_title_ref.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/SpadWorkOrderController.php" />
         <option value="$PROJECT_DIR$/.env.local.php" />
-        <option value="$PROJECT_DIR$/app/lib/Iwo/Workers/SendEmail.php" />
         <option value="$PROJECT_DIR$/app/views/emails/spad/sub.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/app/models/Unit_lead_contact.php" />
@@ -99,20 +216,28 @@
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_23_183209_create_copy_emails_table.php" />
         <option value="$PROJECT_DIR$/app/controllers/Copy_email.php" />
         <option value="$PROJECT_DIR$/app/models/Workorder.php" />
-        <option value="$PROJECT_DIR$/app/assets/sass/_modules.scss" />
         <option value="$PROJECT_DIR$/app/lib/Iwo/Validation/UnitWorkOrderValidator.php" />
         <option value="$PROJECT_DIR$/app/helpers.php" />
-        <option value="$PROJECT_DIR$/app/views/forms/unit.blade.php" />
-        <option value="$PROJECT_DIR$/app/controllers/ManagementController.php" />
-        <option value="$PROJECT_DIR$/app/views/manage/partials/actions.blade.php" />
         <option value="$PROJECT_DIR$/app/views/admin/dashboard.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/unitWorkOrder.js" />
-        <option value="$PROJECT_DIR$/app/views/forms/spad.blade.php" />
         <option value="$PROJECT_DIR$/app/views/forms/partials/copy_emails.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/forms/edt.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/site.js" />
         <option value="$PROJECT_DIR$/app/controllers/BaseController.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
+        <option value="$PROJECT_DIR$/app/views/manage/partials/actions.blade.php" />
+        <option value="$PROJECT_DIR$/app/models/User.php" />
+        <option value="$PROJECT_DIR$/app/views/forms/edt.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/site.js" />
+        <option value="$PROJECT_DIR$/public/js/edtWorkOrder.js" />
+        <option value="$PROJECT_DIR$/public/js/unitWorkOrder.js" />
+        <option value="$PROJECT_DIR$/app/assets/sass/_modules.scss" />
+        <option value="$PROJECT_DIR$/app/views/emails/unit/lead.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/emails/unit/sub.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/emails/copy.blade.php" />
+        <option value="$PROJECT_DIR$/app/lib/Iwo/Workers/SendEmail.php" />
+        <option value="$PROJECT_DIR$/app/views/manage/resend.blade.php" />
+        <option value="$PROJECT_DIR$/app/controllers/ManagementController.php" />
+        <option value="$PROJECT_DIR$/app/views/forms/unit.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/forms/spad.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/emails/partials/resend_message.blade.php" />
       </list>
     </option>
   </component>
@@ -217,7 +342,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iwo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iwo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="emails" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -331,12 +478,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964823" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -347,7 +495,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964823" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -396,59 +543,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/emails/manage/update.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="967">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1840">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Note.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="700">
-          <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/emails/partials/form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="280">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/emails/unit/lead.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="460">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/emails/manage/confirm.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/forms/partials/green_sheet_links.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/emails/unit/sub.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="500">
-          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -543,13 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/Iwo/Workers/SendEmail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68665975" vertical-offset="496" max-vertical-offset="2940">
-          <caret line="58" column="66" selection-start-line="58" selection-start-column="66" selection-end-line="58" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/emails/spad/sub.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16546018" vertical-offset="0" max-vertical-offset="967">
@@ -629,14 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/sass/_modules.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.321428" vertical-offset="4547" max-vertical-offset="6240">
-          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/Iwo/Validation/UnitWorkOrderValidator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="640">
@@ -679,51 +762,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/ManagementController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1599" max-vertical-offset="6400">
-          <caret line="99" column="9" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/manage/partials/actions.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="640">
-          <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/dashboard.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="193" max-vertical-offset="1640">
           <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/unitWorkOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.020682523" vertical-offset="0" max-vertical-offset="2400">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/forms/spad.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8479835" vertical-offset="1440" max-vertical-offset="4840">
-          <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
-          <folding>
-            <marker date="1411500354845" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411500354845" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411500354845" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411500354845" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411500354845" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411500354845" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411500354845" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -735,59 +778,183 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/forms/unit.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39400208" vertical-offset="6179" max-vertical-offset="8500">
-          <caret line="304" column="63" selection-start-line="304" selection-start-column="32" selection-end-line="304" selection-end-column="63" />
-          <folding>
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1411497242790" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.8273009" vertical-offset="0" max-vertical-offset="1080">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1840">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/manage/partials/actions.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="700">
+          <caret line="19" column="71" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/forms/edt.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58634955" vertical-offset="993" max-vertical-offset="3820">
-          <caret line="72" column="181" selection-start-line="72" selection-start-column="181" selection-end-line="72" selection-end-column="181" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="993" max-vertical-offset="3820">
+          <caret line="72" column="183" selection-start-line="72" selection-start-column="183" selection-end-line="72" selection-end-column="183" />
           <folding>
-            <marker date="1411544277504" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1411552964270" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1411552964270" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/edtWorkOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6204757" vertical-offset="480" max-vertical-offset="5840">
-          <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="5900">
+          <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/unitWorkOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="2400">
+          <caret line="40" column="48" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/sass/_modules.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5313" max-vertical-offset="6340">
+          <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2239" max-vertical-offset="5280">
-          <caret line="134" column="36" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2899" max-vertical-offset="5280">
+          <caret line="157" column="41" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="41" />
           <folding>
             <element signature="e#7#29#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
+    <entry file="file://$PROJECT_DIR$/app/views/emails/unit/lead.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8273009" vertical-offset="0" max-vertical-offset="1080">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="520">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="42" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/emails/unit/sub.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="560">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/emails/copy.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="440">
+          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/Iwo/Workers/SendEmail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="713" max-vertical-offset="3240">
+          <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/manage/add_note.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20682523" vertical-offset="0" max-vertical-offset="967">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/manage/resend.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="980">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ManagementController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.75" vertical-offset="8327" max-vertical-offset="10780">
+          <caret line="431" column="36" selection-start-line="431" selection-start-column="36" selection-end-line="431" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/forms/unit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5119" max-vertical-offset="8500">
+          <caret line="262" column="309" selection-start-line="262" selection-start-column="309" selection-end-line="262" selection-end-column="309" />
+          <folding>
+            <marker date="1411556093163" expanded="true" signature="1813:2044" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="4649:4980" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="4756:4979" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="5682:5970" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="7511:7942" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="7537:7787" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="15208:15426" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="16347:16542" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="17007:17289" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="20065:20282" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="20701:20922" placeholder="..." />
+            <marker date="1411556093163" expanded="true" signature="21621:21808" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/forms/spad.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1740" max-vertical-offset="4840">
+          <caret line="103" column="309" selection-start-line="103" selection-start-column="309" selection-end-line="103" selection-end-column="309" />
+          <folding>
+            <marker date="1411556093170" expanded="true" signature="961:1149" placeholder="..." />
+            <marker date="1411556093170" expanded="true" signature="1185:1382" placeholder="..." />
+            <marker date="1411556093170" expanded="true" signature="4185:4614" placeholder="..." />
+            <marker date="1411556093170" expanded="true" signature="4211:4459" placeholder="..." />
+            <marker date="1411556093170" expanded="true" signature="6361:6556" placeholder="..." />
+            <marker date="1411556093170" expanded="true" signature="6976:7258" placeholder="..." />
+            <marker date="1411556093170" expanded="true" signature="11328:11515" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/emails/partials/resend_message.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06204757" vertical-offset="0" max-vertical-offset="967">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+          <folding>
+            <element signature="e#64#81#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -305,3 +305,8 @@ ul.square {
     }
   }
 }
+
+//Buttons that are JS-dependent. Hide until JS displays them.
+.js-block {
+  display:none;
+}

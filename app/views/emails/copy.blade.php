@@ -6,6 +6,8 @@
 	<body>
 		<h2>{{ $data['subject'] }}</h2>
 
+		@include('emails.partials.resend_message')
+
 		<p>The following IWO was submitted. The submitter requested that you receive a copy.</p>
 
 		<div>

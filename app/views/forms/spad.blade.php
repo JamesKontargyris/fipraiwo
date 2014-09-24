@@ -100,8 +100,8 @@
                 </div>
                 <div class="formfield hide" id="work-capped-each-month-reveal">
 					{{ Form::label('work_cap', 'What is the cap (€)?') }}
-					{{ Form::text('work_cap', (editing()) ? $workorder->workorder->work_cap : Input::old('work_cap')) }}
-					{{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? $workorder->workorder->work_cap_period : Input::old('work_cap_period'), ['class' => 'work-capped-period']) }}
+					{{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap')) }}
+					{{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
 					{{ display_form_error('work_cap', $errors) }}
 				</div>
             </div> <!-- /formgroup -->

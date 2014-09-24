@@ -70,7 +70,7 @@
 		<div class="formfield">
 			{{ Form::label('required_completion_date', 'Required completion date:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
 			<div class="help-box">If you would like the EDT to factor in a second modification round after the initial draft, we'll be pleased to include this as part of our project planning. Subject to time, we can plan further modification rounds as the project progresses. Please indicate time constraints as early as possible so we can effectively plan to meet your deadlines.</div>
-			{{ Form::text('required_completion_date', (editing()) ? $workorder->workorder->required_completion_date : Input::old('required_completion_date'), ['class' => 'datepicker']) }}
+			{{ Form::text('required_completion_date', (editing()) ? $workorder->workorder->required_completion_date : Input::old('required_completion_date'), ['class' => 'datepicker', 'id' => 'required_completion_date']) }}
 			{{ display_form_error('required_completion_date', $errors) }}
 		</div>
 		<div class="formfield">

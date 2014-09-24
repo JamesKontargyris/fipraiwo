@@ -24,6 +24,9 @@ class SendEmail {
     {
         $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
 
+	    //If this is a re-send request, make that clear in the subject line
+	    if(isset($data['resend']) && $data['resend'] === true) $data['subject'] = '*RE-SENDING* ' . $data['subject'];
+
         $this->send($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".lead", $data);
 
         $job->delete();
@@ -33,6 +36,9 @@ class SendEmail {
     public function iwo_created_sub($job, $data)
     {
         $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
+
+	    //If this is a re-send request, make that clear in the subject line
+	    if(isset($data['resend']) && $data['resend'] === true) $data['subject'] = '*RE-SENDING* ' . $data['subject'];
 
         $this->send($data['recipient'], $data['subject'], "emails." . $data['iwo_key'] . ".sub", $data);
 
@@ -44,6 +50,9 @@ class SendEmail {
     {
         $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
 
+	    //If this is a re-send request, make that clear in the subject line
+	    if(isset($data['resend']) && $data['resend'] === true) $data['subject'] = '*RE-SENDING* ' . $data['subject'];
+
         $this->send($data['recipient'], $data['subject'], "emails.rep", $data);
 
         $job->delete();
@@ -53,6 +62,9 @@ class SendEmail {
     public function iwo_created_copy($job, $data)
     {
         $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") was submitted";
+
+	    //If this is a re-send request, make that clear in the subject line
+	    if(isset($data['resend']) && $data['resend'] === true) $data['subject'] = '*RE-SENDING* ' . $data['subject'];
 
 	    foreach($data['recipient'] as $recipient)
 	    {
@@ -66,6 +78,9 @@ class SendEmail {
     public function iwo_auto_confirmed($job, $data)
     {
         $data['subject'] = $data['form_type'] . " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") Internal Work Order was submitted and confirmed";
+
+	    //If this is a re-send request, make that clear in the subject line
+	    if(isset($data['resend']) && $data['resend'] === true) $data['subject'] = '*RE-SENDING* ' . $data['subject'];
 
         foreach($data['recipient'] as $recipient)
         {

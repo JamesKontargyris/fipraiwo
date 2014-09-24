@@ -9,6 +9,18 @@
     $('.hidejs').css('display', 'none');
 	// Show all help buttons
 	$('.help').css('display', 'inline-block');
+    //If select-all button is clicked, select all checkboxes on page
+    $('button.select-all, a.select-all').on('click', function()
+    {
+        $('body input[type=checkbox]').prop("checked", !$(this).prop("checked"));
+        return false;
+    });
+    //If deselect-all button is clicked, deselect all checkboxes on page
+    $('button.deselect-all, a.deselect-all').on('click', function()
+    {
+        $('body input[type=checkbox]').removeAttr('checked');
+        return false;
+    });
 
     $('.euro-field').keydown(function(e)
     {
@@ -35,7 +47,7 @@
     //Once a start date is selected, onSelect ensures expiry dates are the same day or in the future
     var dateToday = new Date();
     var dates = $("#internal_work_order_start_date, #internal_work_order_expiry_date").datepicker({
-        dateFormat: "dd-mm-yyyy",
+        dateFormat: "dd-mm-yy",
         numberOfMonths: 1,
         onSelect: function(selectedDate) {
             var option = this.id == "internal_work_order_start_date" ? "minDate" : "maxDate",
@@ -44,15 +56,6 @@
             dates.not(this).datepicker("option", option, date);
 
         }
-    });
-
-    //jQuery UI Datepicker for EDT IWO required completion date
-    //Ensure only today's date or dates in the future are selectable
-    var dateToday = new Date();
-    $(".datepicker").datepicker({
-        dateFormat: "dd-mm-yyyy",
-        numberOfMonths: 1,
-        minDate:dateToday
     });
 
     // Make sure the agreed fee element details field is displayed

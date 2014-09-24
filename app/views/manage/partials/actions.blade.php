@@ -16,6 +16,9 @@
     @if($user->can('comment'))
     <li><a href="/manage/note" class="secondary">ADD A NOTE</a></li>
     @endif
+    @if($user->hasRole('Lead'))
+        <li><a href="/manage/resend" class="secondary">RE-SEND EMAIL(S)</a></li>
+        @endif
     @if($user->can('cancel') && ! $workorder->confirmed)
     <li><a href="/manage/cancel" onClick="return confirm('Are you sure you want to cancel this IWO? This action cannot be undone.');" class="secondary">CANCEL</a></li>
     @endif

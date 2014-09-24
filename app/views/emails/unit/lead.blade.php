@@ -3,6 +3,9 @@
 @include('emails.partials.head')
 <body>
 <h2>{{ $data['subject'] }}</h2>
+
+@include('emails.partials.resend_message')
+
 @include('emails.partials.iwo_ref')
 <h3><strong>{{ link_to('http://fipraiwo.jamkon.co.uk/manage', 'MANAGE THIS IWO') }}</strong></h3>
 <p>Thank you for submitting your Fipra Units IWO.</p>

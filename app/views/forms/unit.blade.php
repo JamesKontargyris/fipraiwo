@@ -245,7 +245,7 @@
                 </div>
                 <div class="formfield hide" id="agreed-fee-element-reveal">
                     {{ Form::label('agreed_fee_element_details', 'Please set out fee element details:', ['class' => 'required']) }}
-                    {{ Form::textarea('agreed_fee_element_details', (editing()) ? $workorder->workorder->agreed_fee_element_details : Input::old('agreed_fee_element_details'), ['rows' => '10']) }}
+                    {{ Form::textarea('agreed_fee_element_details', (editing()) ? isset($workorder->workorder->agreed_fee_element_details) ? $workorder->workorder->agreed_fee_element_details : '' : Input::old('agreed_fee_element_details'), ['rows' => '10']) }}
                     {{ display_form_error('agreed_fee_element_details', $errors) }}
                 </div>
                 <div class="formfield">
@@ -259,8 +259,8 @@
                 </div>
                 <div class="formfield hide" id="work-capped-each-month-reveal">
                     {{ Form::label('work_cap', 'What is the cap (€)?') }}
-                    {{ Form::text('work_cap', (editing()) ? $workorder->workorder->work_cap : Input::old('work_cap')) }}
-                    {{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? $workorder->workorder->work_cap_period : Input::old('work_cap_period'), ['class' => 'work-capped-period']) }}
+                    {{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap')) }}
+                    {{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
                     {{ display_form_error('work_cap', $errors) }}
                 </div>
             </div> <!-- /formgroup -->

@@ -876,6 +876,10 @@ ul.square {
     .rate-table tr td:first-child {
       text-align: left; }
 
+/* line 310, ../../app/assets/sass/_modules.scss */
+.js-block {
+  display: none; }
+
 /* line 1, ../../app/assets/sass/_header.scss */
 .user-details {
   font-size: 12px;
