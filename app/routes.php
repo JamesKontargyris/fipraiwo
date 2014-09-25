@@ -35,12 +35,57 @@ Route::get('complete', ['as' => 'complete', function()
 	return View::make('complete')->with('page_title', 'Work Order Submitted');
 }]);
 
-Route::get('add_roles_and_perms', function()
-{
-});
-
 Route::get('test', function()
 {
+	$iwo = Iwo_ref::where('iwo_id', '=', 37)->first();
+	return $iwo->iwo_ref;
+});
+
+Route::get('updaterepemails', function()
+{
+	//$iwos = Workorder::all();
+	//$count = 0;
+	//foreach($iwos as $iwo)
+	//{
+	//	$workorder = unserialize($iwo->workorder);
+	//	if(isset($workorder['lead_fipra_representative']))
+	//	{
+	//		$email = Rep_email::where('rep_name', $workorder['lead_fipra_representative'])->pluck('rep_email');
+	//		$count++;
+	//		var_dump($email);
+	//
+	//		if($email != NULL)
+	//		{
+	//			$new_user = new User;
+	//			$new_user->email = trim($email);
+	//			$new_user->name = $workorder['lead_fipra_representative'] . ' (Lead Rep)';
+	//			$new_user->iwo_id = $iwo->id;
+	//			$new_user->save();
+	//
+	//			$new_user->attachRole(Role::where('name', 'Viewer')->pluck('id'));
+	//		}
+	//	}
+	//
+	//	if(isset($workorder['sub_fipra_representative']))
+	//	{
+	//		$email = Rep_email::where('rep_name', $workorder['sub_fipra_representative'])->pluck('rep_email');
+	//		$count++;
+	//		var_dump($email);
+	//
+	//		if($email != NULL)
+	//		{
+	//			$new_user = new User;
+	//			$new_user->email = trim($email);
+	//			$new_user->name = $workorder['sub_fipra_representative'] . ' (Sub Rep)';
+	//			$new_user->iwo_id = $iwo->id;
+	//			$new_user->save();
+	//
+	//			$new_user->attachRole(Role::where('name', 'Viewer')->pluck('id'));
+	//		}
+	//	}
+	//}
+	//
+	//return "All done! " . $count . " users created.";
 });
 
 //Account Director autocomplete
