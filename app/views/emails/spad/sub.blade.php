@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="utf-8">
-</head>
+@include('emails.partials.head')
 <body>
 <h2>{{ $data['subject'] }}</h2>
+
+@include('emails.partials.resend_message')
+
 @include('emails.partials.iwo_ref')
-<p>The following IWO was submitted. You are listed as Account Director.</p>
+
+@if( ! $data['status'] == 'confirmed')
+	<h3><strong>{{ link_to('/confirm?id=' . $data['iwo_id'] . '&email=' .$data['recipient'] . '&code=' . $data['confirmation_code'], 'CLICK HERE TO CONFIRM THIS IWO') }}</strong></h3>
+@endif
+
+<p>A Special Adviser IWO was recently submitted, listing you as the Special Adviser.</p>
+<p>A copy of the submitted IWO is included below.</p>
+
+@include('emails.partials.status_manage')
+
+<p><a href="http://fipraiwo.jamkon.co.uk/downloads/green_sheet_template.xls">Click here to download a Green Sheet</a>.</p>
+<p><a href="http://fipraiwo.jamkon.co.uk/downloads/green_sheet_instructions.pdf">Click here to download Green Sheet instructions</a>.</p>
 
 <div>
     @include('emails.partials.form')
