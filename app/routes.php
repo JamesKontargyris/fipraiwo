@@ -37,8 +37,6 @@ Route::get('complete', ['as' => 'complete', function()
 
 Route::get('test', function()
 {
-	$iwo = Iwo_ref::where('iwo_id', '=', 37)->first();
-	return $iwo->iwo_ref;
 });
 
 Route::get('updaterepemails', function()

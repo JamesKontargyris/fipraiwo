@@ -11,7 +11,13 @@
 
 	<div class="buttons">
         @if(Session::get('iwo_id'))
-            <p><a class="secondary button" href="/manage/view"><i class="fa fa-edit"></i> Continue managing &quot;{{ Workorder::where('id', Session::get('iwo_id'))->pluck('title') }}&quot;</a></p>
+            <div class="message-box">
+				<p class="message"><i class="fa fa-warning"></i> <strong>You are currently logged in and managing <em>&quot;{{ Workorder::where('id', Session::get('iwo_id'))->pluck('title') }}&quot;</em> (ref: {{ Session::get('iwo_ref')  }}).</strong><br/><br/>To manage another IWO, you must log out – otherwise you can continue to manage this IWO. If you submit a new IWO you will be logged out.<br>
+				<ul class="actions">
+				<li><a href="/manage" class="primary"><i class="fa fa-edit"></i> Continue managing this IWO</a></li>
+				<li><a href="/manage/logout" class="red-but"><i class="fa fa-times"></i> Logout</a></li>
+				</ul>
+            </div>
         @endif
 
 		<div class="col-12">

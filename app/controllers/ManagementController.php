@@ -120,18 +120,20 @@ class ManagementController extends BaseController
     {
         if( ! $this->check_permission('comment')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
-        if(trim(Input::get('note')) != "")
+	    $note = trim(htmlspecialchars(Input::get('note')));
+
+        if($note != "")
         {
-            Note::add_note(trim(Input::get('note')));
+            Note::add_note($note);
             Logger::add_log('New note added.');
 
             //Send a notification email to lead and sub units
             //Include copy contacts if the work order is confirmed
-            $data['note'] = trim(Input::get('note'));
 	        $data['iwo_ref'] = $this->workorder->iwo_ref;
 	        $data['iwo_title'] = $this->workorder->title;
 	        //Get all email addresses linked to this work order along with copy contacts so we can email them about the update
 	        $data['recipient'] = $this->get_all_emails($this->workorder->id, $this->workorder->formtype_id);
+	        $data['note'] = $note;
             Queue::push('\Iwo\Workers\SendEmail@iwo_note_added', $data);
 
             return Redirect::to('manage/view')->with('message', 'Note added.');
@@ -506,7 +508,7 @@ class ManagementController extends BaseController
         Auth::logout();
         Session::flush();
 
-        return Redirect::to('manage/view')->with('message', 'You have been logged out.');
+        return Redirect::to('/')->with('message', 'You have been logged out.');
     }
 
 	/**
@@ -536,11 +538,14 @@ class ManagementController extends BaseController
 	private function get_associated_users()
 	{
 		$users = User::where('iwo_id', '=', Session::get('iwo_id'))->orderBy('id')->get();
+
 		$data = [];
 		$i = 0;
 		foreach($users as $user)
 		{
 			$data[$i]['id'] = $user->id;
+			//If the user name equals the user's email address, this is a copy recipient entered by the user
+			//when the IWO was submitted (other recipients are named)
 			$data[$i]['name'] = ($user->name == $user->email) ? 'User-entered copy recipient' : $user->name;
 			$data[$i]['email'] = $user->email;
 			$data[$i]['roles'] = '';

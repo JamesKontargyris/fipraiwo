@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('nav_links')
-<li><a class="highlight" href="/admin/logout"><i class="fa fa-caret-left"></i> Logout</a></li>
 @stop
 
 @section('content')
 
-<h2>SuperUser Dashboard</h2>
+<h2>SuperUser Dashboard <a href="/admin/logout" class="red-but"><i class="fa fa-times"></i> LOGOUT</a></h2>
 
 @include('manage.partials.messages')
 

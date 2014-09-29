@@ -70,6 +70,9 @@ class BaseController extends Controller {
 
 	public function getSave()
 	{
+		//If a user is logged in, log them out so they can log in again with the new IWO if they wish.
+		Auth::logout();
+
         //Get input array
         $input_data = $this->get_input_for_db();
 
