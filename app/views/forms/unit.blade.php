@@ -253,11 +253,11 @@
                     <p class="help-box">When a Unit subcontracts to another Unit for work, a percentage known as the Inter-Unit discount is paid to the Unit that introduced the client work. Thus the Lead Unit receives an Inter-Unit discount on the net invoice amount billed to the client.</p></div>
                 </div>
                 <div class="formfield">
-                    {{ Form::label('work_capped_each_month', 'Is this work capped at a maximum level each month?', ['class' => 'required']) }}
-                    {{ Form::select('work_capped_each_month', ['No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->work_capped_each_month : Input::old('work_capped_each_month'), ['class' => 'work-capped-each-month']) }}
-                    {{ display_form_error('work_capped_each_month', $errors) }}
+                    {{ Form::label('work_capped_at_maximum_level', 'Is this work capped at a maximum level?', ['class' => 'required']) }}
+                    {{ Form::select('work_capped_at_maximum_level', ['No' => 'No', 'Yes' => 'Yes'], (editing()) ? $workorder->workorder->work_capped_at_maximum_level : Input::old('work_capped_at_maximum_level'), ['class' => 'work-capped-at-maximum-level']) }}
+                    {{ display_form_error('work_capped_at_maximum_level', $errors) }}
                 </div>
-                <div class="formfield hide" id="work-capped-each-month-reveal">
+                <div class="formfield hide" id="work-capped-at-maximum-level-reveal">
                     {{ Form::label('work_cap', 'What is the cap (€)?') }}
                     {{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap')) }}
                     {{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}

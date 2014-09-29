@@ -110,29 +110,29 @@
     // Make sure the work cap field is displayed
     // when the page reloads after a failed validation and the
     // work cap dropdown is set to "Yes"
-    if($('select.work-capped-each-month').val() == "Yes")
+    if($('select.work-capped-at-maximum-level').val() == "Yes")
     {
-        $('#work-capped-each-month-reveal').show();
+        $('#work-capped-at-maximum-level-reveal').show();
     }
     else
     {
         //Otherwise, disable the work cap input and select fields so they are not passed through
-        $('#work-capped-each-month-reveal input, #work-capped-each-month-reveal select').attr('disabled', true);
+        $('#work-capped-at-maximum-level-reveal input, #work-capped-at-maximum-level-reveal select').attr('disabled', true);
     }
 
     // Show/hide the agreed fee element details field depending
     // on the value in the agree fee element dropdown
-    $('select.work-capped-each-month').on('change', function()
+    $('select.work-capped-at-maximum-level').on('change', function()
     {
         if($(this).val() == 'Yes') {
-            $('#work-capped-each-month-reveal').slideDown();
-            $('#work-capped-each-month-reveal input, #work-capped-each-month-reveal select').attr('disabled', false);
+            $('#work-capped-at-maximum-level-reveal').slideDown();
+            $('#work-capped-at-maximum-level-reveal input, #work-capped-at-maximum-level-reveal select').attr('disabled', false);
         }
         else
         {
-            $('#work-capped-each-month-reveal').slideUp(function()
+            $('#work-capped-at-maximum-level-reveal').slideUp(function()
             {
-                $('#work-capped-each-month-reveal input, #work-capped-each-month-reveal select').attr('disabled', true);
+                $('#work-capped-at-maximum-level-reveal input, #work-capped-at-maximum-level-reveal select').attr('disabled', true);
             });
 
         }
@@ -140,9 +140,9 @@
     // Make sure the work cap field is displayed
     // when the page reloads after a failed validation and the
     // work cap dropdown is set to "Yes"
-    if($('select.work-capped-each-month').val() == "Yes")
+    if($('select.work-capped-at-maximum-level').val() == "Yes")
     {
-        $('#work-capped-each-month-reveal').show();
+        $('#work-capped-at-maximum-level-reveal').show();
     }
 
 	// Show help box when help button is clicked
