@@ -5,11 +5,16 @@
 @stop
 
 @section('content')
-	<p class="intro">Before payments can be made between members of the Fipra Network, Internal Work Orders (IWOs) are required.</p>
+	<div class="intro col-9">Before payments can be made between members of the Fipra Network, Internal Work Orders (IWOs) are required.</div>
+	<div class="col-3 last" align="right">
+		@if( ! Session::get('iwo_id'))
+				<a href="manage" class="secondary block-but"><i class="fa fa-edit"></i> Manage an existing Internal Work Order</a>
+		@endif
+	</div>
 
     @include('manage.partials.messages')
 
-	<div class="buttons">
+	<div class="buttons col-12">
         @if(Session::get('iwo_id'))
             <div class="message-box">
 				<p class="message"><i class="fa fa-warning"></i> <strong>You are currently logged in and managing <em>&quot;{{ Workorder::where('id', Session::get('iwo_id'))->pluck('title') }}&quot;</em> (ref: {{ Session::get('iwo_ref')  }}).</strong><br/><br/>To manage another IWO, you must log out – otherwise you can continue to manage this IWO. If you submit a new IWO you will be logged out.<br>
@@ -21,6 +26,7 @@
         @endif
 
 		<div class="col-12">
+			<h2>Submit a new Internal Work Order</h2>
 			<ul class="work-order-menu">
 				<li class="col-6">
 					<a href="unit" class="highlight"><i class="fa fa-group fa-4x"></i><p>Fipra Unit</p></a>
@@ -36,28 +42,22 @@
 		</div>
 		<div class="col-12">
 			<ul class="work-order-menu">
-				<li class="col-3">
+				<li class="col-4">
 					<a href="edt"><i class="fa fa-picture-o fa-4x"></i><p>EDT</p></a>
 					<span class="hidejs">The Editorial, Design and Translation Team (EDT) provides professional editorial, graphic design and translation services to the Fipra Network.</span>
 					<i class="fa fa-info fa-lg info showjs"></i>
 				</li>
-				<li class="col-3">
+				<li class="col-4">
 					<a href="fiplex"><i class="fa fa-shield fa-4x"></i><p>Fiplex</p></a>
 					<span class="hidejs">Fiplex is Fipra's "in-house" team of trained lawyers who offer a professional legal service to the Fipra Network on an on-demand basis.</span>
 					<i class="fa fa-info fa-lg info showjs"></i>
 				</li>
-				<li class="col-3">
+				<li class="col-4 last">
 					<a href="fiptalk"><i class="fa fa-comments fa-4x"></i><p>Fiptalk</p></a>
 					<span class="hidejs">Fiptalk is a team of freelance professional coaches who provide expert training in oral presentation skills.</span>
 					<i class="fa fa-info fa-lg info showjs"></i>
 				</li>
-				@if( ! Session::get('iwo_id'))
-					<li class="col-3 last">
-						<a href="manage" class="secondary"><i class="fa fa-edit fa-4x"></i><p>Manage an existing IWO</p></a>
-						<span class="hidejs">Edit, confirm or cancel an existing IWO. Ensure you have your IWO's reference to hand.</span>
-						<i class="fa fa-info fa-lg info showjs"></i>
-					</li>
-				@endif
+
 			</ul>
 		</div>
 	</div>

@@ -25,7 +25,6 @@
 
 .intro {
     margin-bottom: $v-rhythm;
-    border-bottom:1px solid $light-grey;
   @include font-size(16);
   @include breakpoint($l) {
     @include font-size(18);
@@ -320,6 +319,10 @@ ul.square {
       }
     }
   }
+}
+
+.block-but {
+  line-height:1.2; display:block;
 }
 
 //Buttons that are JS-dependent. Hide until JS displays them.
