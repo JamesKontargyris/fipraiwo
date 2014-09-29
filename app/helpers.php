@@ -31,9 +31,9 @@ function convert_to_mb($bytes, $add_mb = false)
 function pretty_input($input)
 {
 	// Words that should be lowercase in field names
-	$field_lc = ['or', 'as', 'and', 'the', 'for', 'of'];
+	$field_lc = ['as', 'and', 'the', 'for', 'of'];
 	// Uppercase versions to be replaced
-	$field_uc = ['Or', 'As', 'And', 'The', 'For', 'Of'];
+	$field_uc = ['As', 'And', 'The', 'For', 'Of'];
 
     foreach($input as $key => $value)
     {

@@ -10,11 +10,11 @@
 @include('manage.partials.messages')
 
 <div class="col-12">
-    <section class="outline-box col-4">
+    <section class="outline-box col-3">
         @include('manage.partials.status')
     </section>
 
-    <section class="outline-box col-8 last">
+    <section class="outline-box col-9 last">
     	<h5 class="no-underline">ACTIONS</h5>
         @include('manage.partials.actions')
     </section>

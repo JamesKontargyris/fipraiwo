@@ -18,7 +18,7 @@
         <li><a href="/manage/resend" class="secondary"><i class="fa fa-envelope"></i> RE-SEND EMAIL(S)</a></li>
         @endif
     @if($user->can('cancel') && ! $workorder->confirmed)
-    <li><a href="/manage/cancel" onClick="return confirm('Are you sure you want to cancel this IWO? This action cannot be undone.');" class="secondary"> <i class="fa fa-trash"></i>CANCEL</a></li>
+    <li><a href="/manage/cancel" onClick="return confirm('Are you sure you want to cancel this IWO? This action cannot be undone.');" class="secondary"> <i class="fa fa-trash"></i> CANCEL</a></li>
     @endif
 @else
     @if($user->can('comment'))
