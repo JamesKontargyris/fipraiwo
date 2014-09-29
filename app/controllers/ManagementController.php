@@ -134,6 +134,7 @@ class ManagementController extends BaseController
 	        //Get all email addresses linked to this work order along with copy contacts so we can email them about the update
 	        $data['recipient'] = $this->get_all_emails($this->workorder->id, $this->workorder->formtype_id);
 	        $data['note'] = $note;
+	        $data['user_name'] = $this->user->name;
             Queue::push('\Iwo\Workers\SendEmail@iwo_note_added', $data);
 
             return Redirect::to('manage/view')->with('message', 'Note added.');

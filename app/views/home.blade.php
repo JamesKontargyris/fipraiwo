@@ -5,12 +5,19 @@
 @stop
 
 @section('content')
-	<div class="intro col-9">Before payments can be made between members of the Fipra Network, Internal Work Orders (IWOs) are required.</div>
-	<div class="col-3 last" align="right">
-		@if( ! Session::get('iwo_id'))
-				<a href="manage" class="secondary block-but"><i class="fa fa-edit"></i> Manage an existing Internal Work Order</a>
-		@endif
-	</div>
+	@if( ! Session::get('iwo_id'))
+		<div class="intro col-9">
+	@else
+		<div class="intro col-12">
+	@endif
+			Before payments can be made between members of the Fipra Network, Internal Work Orders (IWOs) are required.
+		</div>
+
+	@if( ! Session::get('iwo_id'))
+		<div class="col-3 last" align="right">
+			<a href="manage" class="secondary block-but"><i class="fa fa-edit"></i> Manage an existing Internal Work Order</a>
+		</div>
+    @endif
 
     @include('manage.partials.messages')
 
@@ -62,3 +69,4 @@
 		</div>
 	</div>
 @stop
+	</div>

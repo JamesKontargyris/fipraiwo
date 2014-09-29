@@ -643,40 +643,44 @@ strong {
 /* line 102, ../../app/assets/sass/_modules.scss */
 .errors,
 .error {
+  overflow: hidden;
+  *zoom: 1;
   background-color: #fdd8d9;
   border: 1px solid #fcc0c2;
   margin-bottom: 20px;
   padding: 10px 10px; }
-  /* line 108, ../../app/assets/sass/_modules.scss */
+  /* line 109, ../../app/assets/sass/_modules.scss */
   .errors ul li,
   .error ul li {
     padding: 5px 0; }
 
-/* line 112, ../../app/assets/sass/_modules.scss */
+/* line 113, ../../app/assets/sass/_modules.scss */
 .messages,
 .message {
+  overflow: hidden;
+  *zoom: 1;
   background-color: #bcf5bc;
   border: 1px solid lightgreen;
   margin-bottom: 20px;
   padding: 10px 10px; }
-  /* line 118, ../../app/assets/sass/_modules.scss */
+  /* line 120, ../../app/assets/sass/_modules.scss */
   .messages ul li,
   .message ul li {
     padding: 5px 0; }
 
-/* line 122, ../../app/assets/sass/_modules.scss */
+/* line 124, ../../app/assets/sass/_modules.scss */
 .formfield {
   margin-bottom: 20px; }
-  /* line 124, ../../app/assets/sass/_modules.scss */
+  /* line 126, ../../app/assets/sass/_modules.scss */
   .formfield.highlight {
     padding: 10px 10px;
     background-color: #e5edff;
     border: 1px solid #b2c8ff; }
-  /* line 129, ../../app/assets/sass/_modules.scss */
+  /* line 131, ../../app/assets/sass/_modules.scss */
   .formfield.hide {
     display: none; }
 
-/* line 133, ../../app/assets/sass/_modules.scss */
+/* line 135, ../../app/assets/sass/_modules.scss */
 .formgroup {
   overflow: hidden;
   *zoom: 1;
@@ -684,25 +688,25 @@ strong {
   padding: 10px 0;
   background-color: #eef0f6;
   margin-bottom: 20px; }
-  /* line 139, ../../app/assets/sass/_modules.scss */
+  /* line 141, ../../app/assets/sass/_modules.scss */
   .formgroup.highlight {
     background-color: #00257f; }
-    /* line 141, ../../app/assets/sass/_modules.scss */
+    /* line 143, ../../app/assets/sass/_modules.scss */
     .formgroup.highlight label {
       color: white; }
-  /* line 145, ../../app/assets/sass/_modules.scss */
+  /* line 147, ../../app/assets/sass/_modules.scss */
   .formgroup .file-upload-close {
     position: absolute;
     top: 50%;
     margin-top: -10px;
     right: 10px; }
-    /* line 150, ../../app/assets/sass/_modules.scss */
+    /* line 152, ../../app/assets/sass/_modules.scss */
     .formgroup .file-upload-close a {
       color: #aab6d4; }
-      /* line 152, ../../app/assets/sass/_modules.scss */
+      /* line 154, ../../app/assets/sass/_modules.scss */
       .formgroup .file-upload-close a:hover {
         color: #8899c3; }
-  /* line 157, ../../app/assets/sass/_modules.scss */
+  /* line 159, ../../app/assets/sass/_modules.scss */
   .formgroup .title {
     margin-top: -10px;
     padding: 10px 20px;
@@ -712,15 +716,15 @@ strong {
     font-weight: bold;
     color: #677cb1;
     margin-bottom: 20px; }
-    /* line 166, ../../app/assets/sass/_modules.scss */
+    /* line 168, ../../app/assets/sass/_modules.scss */
     .formgroup .title small {
       font-size: 70%; }
-  /* line 170, ../../app/assets/sass/_modules.scss */
+  /* line 172, ../../app/assets/sass/_modules.scss */
   .formgroup .formfield {
     padding-left: 20px;
     padding-right: 20px; }
 
-/* line 175, ../../app/assets/sass/_modules.scss */
+/* line 177, ../../app/assets/sass/_modules.scss */
 ul.button-menu {
   margin: 0;
   padding: 0;
@@ -745,7 +749,7 @@ ul.button-menu {
     /* line 52, C:\Program Files (x86)\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.1.0.alpha.0\stylesheets\compass\typography\lists\_horizontal-list.scss */
     ul.button-menu li.last {
       padding-right: 0; }
-  /* line 177, ../../app/assets/sass/_modules.scss */
+  /* line 179, ../../app/assets/sass/_modules.scss */
   ul.button-menu li a {
     display: inline-block;
     cursor: pointer;
@@ -771,17 +775,17 @@ ul.button-menu {
     ul.button-menu li a:hover {
       opacity: 0.8; }
 
-/* line 182, ../../app/assets/sass/_modules.scss */
+/* line 184, ../../app/assets/sass/_modules.scss */
 .help {
   display: none;
   width: 16px;
   height: 16px;
   background: url("../img/help_icon.png") top left no-repeat; }
-  /* line 187, ../../app/assets/sass/_modules.scss */
+  /* line 189, ../../app/assets/sass/_modules.scss */
   .help:hover {
     background: url("../img/help_icon.png") top right no-repeat; }
 
-/* line 191, ../../app/assets/sass/_modules.scss */
+/* line 193, ../../app/assets/sass/_modules.scss */
 .help-box {
   background: #dee0e6;
   border: #dedede 1px solid;
@@ -789,40 +793,40 @@ ul.button-menu {
   display: block;
   margin-bottom: 10px; }
 
-/* line 198, ../../app/assets/sass/_modules.scss */
+/* line 200, ../../app/assets/sass/_modules.scss */
 .sub-box {
   display: none;
   background: white;
   padding: 10px 20px;
   border: 1px solid #ccd3e5; }
 
-/* line 204, ../../app/assets/sass/_modules.scss */
+/* line 206, ../../app/assets/sass/_modules.scss */
 .buttons,
 .loading {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 20px; }
 
-/* line 209, ../../app/assets/sass/_modules.scss */
+/* line 211, ../../app/assets/sass/_modules.scss */
 .loading {
   display: none; }
 
-/* line 212, ../../app/assets/sass/_modules.scss */
+/* line 214, ../../app/assets/sass/_modules.scss */
 .small-print {
   font-size: 12px;
   font-size: 0.75rem;
   color: #5F697F;
   font-style: italic; }
 
-/* line 217, ../../app/assets/sass/_modules.scss */
+/* line 219, ../../app/assets/sass/_modules.scss */
 .italic {
   font-style: italic; }
 
-/* line 220, ../../app/assets/sass/_modules.scss */
+/* line 222, ../../app/assets/sass/_modules.scss */
 .bold {
   font-style: bold; }
 
-/* line 223, ../../app/assets/sass/_modules.scss */
+/* line 225, ../../app/assets/sass/_modules.scss */
 .grey-box {
   overflow: hidden;
   *zoom: 1;
@@ -835,100 +839,100 @@ ul.button-menu {
   border-bottom: 2px solid #00257f;
   padding: 10px 20px; }
 
-/* line 231, ../../app/assets/sass/_modules.scss */
+/* line 233, ../../app/assets/sass/_modules.scss */
 ul.display-details li {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 10px; }
-  /* line 234, ../../app/assets/sass/_modules.scss */
+  /* line 236, ../../app/assets/sass/_modules.scss */
   ul.display-details li strong {
     display: block;
     padding: 5px 10px;
     background-color: #e5edff; }
-  /* line 239, ../../app/assets/sass/_modules.scss */
+  /* line 241, ../../app/assets/sass/_modules.scss */
   ul.display-details li span {
     display: block;
     border: 1px solid #e5edff;
     padding: 5px 10px; }
   @media (min-width: 900px) {
-    /* line 231, ../../app/assets/sass/_modules.scss */
+    /* line 233, ../../app/assets/sass/_modules.scss */
     ul.display-details li {
       width: 70%; } }
 
-/* line 249, ../../app/assets/sass/_modules.scss */
+/* line 251, ../../app/assets/sass/_modules.scss */
 .fees-people {
   display: none;
   font-size: 12px;
   font-size: 0.75rem; }
-  /* line 252, ../../app/assets/sass/_modules.scss */
+  /* line 254, ../../app/assets/sass/_modules.scss */
   .fees-people .fees-person-clone {
     display: none; }
-  /* line 255, ../../app/assets/sass/_modules.scss */
+  /* line 257, ../../app/assets/sass/_modules.scss */
   .fees-people .table-option {
     float: right;
     font-weight: bold; }
-  /* line 259, ../../app/assets/sass/_modules.scss */
+  /* line 261, ../../app/assets/sass/_modules.scss */
   .fees-people .fees-select {
     display: none; }
-  /* line 262, ../../app/assets/sass/_modules.scss */
+  /* line 264, ../../app/assets/sass/_modules.scss */
   .fees-people .total-project-fee {
     margin-top: 20px; }
 
-/* line 267, ../../app/assets/sass/_modules.scss */
+/* line 269, ../../app/assets/sass/_modules.scss */
 ul.square {
   list-style: square;
   margin-bottom: 20px;
   padding-left: 20px; }
 
-/* line 272, ../../app/assets/sass/_modules.scss */
+/* line 274, ../../app/assets/sass/_modules.scss */
 .datepicker {
   background: url(images/iconCalendar.gif) no-repeat 10px center;
   padding-left: 40px !important;
   padding: 5px 10px; }
 
-/* line 278, ../../app/assets/sass/_modules.scss */
+/* line 280, ../../app/assets/sass/_modules.scss */
 .workorder-table thead {
   background-color: #00257f;
   color: white; }
-/* line 282, ../../app/assets/sass/_modules.scss */
+/* line 284, ../../app/assets/sass/_modules.scss */
 .workorder-table tr {
   border-bottom: 1px solid #ccd3e5; }
-  /* line 284, ../../app/assets/sass/_modules.scss */
+  /* line 286, ../../app/assets/sass/_modules.scss */
   .workorder-table tr:last-child {
     border-bottom: 0; }
-  /* line 287, ../../app/assets/sass/_modules.scss */
+  /* line 289, ../../app/assets/sass/_modules.scss */
   .workorder-table tr td {
     padding: 10px 10px; }
-    /* line 290, ../../app/assets/sass/_modules.scss */
+    /* line 292, ../../app/assets/sass/_modules.scss */
     .workorder-table tr td .action-buttons {
       text-align: right; }
 
-/* line 299, ../../app/assets/sass/_modules.scss */
+/* line 301, ../../app/assets/sass/_modules.scss */
 .euro-field:before {
   content: "Ôé¼"; }
 
-/* line 304, ../../app/assets/sass/_modules.scss */
+/* line 306, ../../app/assets/sass/_modules.scss */
 .rate-table {
   border: 1px solid white; }
-  /* line 307, ../../app/assets/sass/_modules.scss */
+  /* line 309, ../../app/assets/sass/_modules.scss */
   .rate-table thead td {
     border-top: 1px solid white;
     border-bottom: 1px solid white; }
-  /* line 313, ../../app/assets/sass/_modules.scss */
+  /* line 315, ../../app/assets/sass/_modules.scss */
   .rate-table tr td {
     border-bottom: 1px solid white;
     padding: 5px;
     text-align: right; }
-    /* line 317, ../../app/assets/sass/_modules.scss */
+    /* line 319, ../../app/assets/sass/_modules.scss */
     .rate-table tr td:first-child {
       text-align: left; }
 
-/* line 324, ../../app/assets/sass/_modules.scss */
+/* line 326, ../../app/assets/sass/_modules.scss */
 .block-but {
   line-height: 1.2;
   display: block; }
 
-/* line 329, ../../app/assets/sass/_modules.scss */
+/* line 331, ../../app/assets/sass/_modules.scss */
 .js-block {
   display: none; }
 

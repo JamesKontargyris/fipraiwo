@@ -4,7 +4,7 @@
 <body>
 <h2>{{ $data['subject'] }}</h2>
 @include('emails.partials.iwo_ref')
-<p>A note was added to this work order:</p>
+<p>A note was added to this work order by {{ $data['user_name'] }}:</p>
 
 <h3><em>{{ $data['note'] }}</em></h3>
 

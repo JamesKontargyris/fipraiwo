@@ -34,4 +34,8 @@
     </div>
 {{ Form::close() }}
 
+	<div class="col-12">
+		<p><a class="secondary" href="/"><i class="fa fa-home"></i> Return to IWO Homepage</a></p>
+	</div>
+
 @stop
