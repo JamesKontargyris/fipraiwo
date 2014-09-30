@@ -6,7 +6,7 @@
     {
         show_fees_people_form($('select#the-work-will-be-done').val());
         if($('select#the-work-will-be-done').val() == 'at the standard Fipra hourly rates') {
-            $('#the-work-will-be-done').next('.help-box').slideDown();
+            $(this).next('.help-box').slideDown();
         }
     }
     // When "The work will be done" box is changed...

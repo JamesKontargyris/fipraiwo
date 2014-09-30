@@ -327,6 +327,10 @@ ul.square {
   line-height:1.2; display:block;
 }
 
+.inline-field {
+  width:80% !important;
+}
+
 //Buttons that are JS-dependent. Hide until JS displays them.
 .js-block {
   display:none;

@@ -75,8 +75,8 @@
                     {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rate' => 'at the standard Fipra hourly rate', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
 
                     <div class="sub-box rate-field col-12">
-                        {{ Form::label('rate_is', 'Rate (&euro;):', ['class' => 'required rate-label']) }}
-						{{ Form::text('rate_is', (editing()) ? isset($workorder->workorder->rate_is) ? $workorder->workorder->rate_is : '' : Input::old('rate_is'), ['class' => 'euro-field']) }}
+                        {{ Form::label('rate_is', 'Rate:', ['class' => 'required rate-label']) }}
+						<span class="inline bold"><br/>&euro;</span> {{ Form::text('rate_is', (editing()) ? isset($workorder->workorder->rate_is) ? $workorder->workorder->rate_is : '' : Input::old('rate_is'), ['class' => 'euro-field inline-field']) }}
                         {{ display_form_error('rate_is', $errors) }}
 
                     </div>
@@ -99,8 +99,8 @@
                     {{ display_form_error('work_capped_at_maximum_level', $errors) }}
                 </div>
                 <div class="formfield hide" id="work-capped-at-maximum-level-reveal">
-					{{ Form::label('work_cap', 'What is the cap (€)?') }}
-					{{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap')) }}
+					{{ Form::label('work_cap', 'Work Cap:') }}
+					<span class="inline bold"><br/>&euro;</span> {{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap'), ['class' => 'inline-field']) }}
 					{{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
 					{{ display_form_error('work_cap', $errors) }}
 				</div>

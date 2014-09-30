@@ -26,7 +26,7 @@
 
     <div class="buttons">
         @if(editing())
-            {{ link_to('manage/view', 'Cancel', ['class' => 'secondary']) }}
+            {{ link_to('manage/edit', 'Go Back', ['class' => 'secondary']) }}
         @else
             {{ link_to("$iwo_key", 'Go Back', ['class' => 'secondary']) }}
         @endif

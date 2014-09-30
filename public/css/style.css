@@ -265,10 +265,14 @@ strong {
   color: white !important; }
 
 /* line 165, ../../app/assets/sass/_base.scss */
+.bold {
+  font-weight: bold; }
+
+/* line 168, ../../app/assets/sass/_base.scss */
 .showjs {
   display: none; }
 
-/* line 168, ../../app/assets/sass/_base.scss */
+/* line 171, ../../app/assets/sass/_base.scss */
 .hidejs {
   display: block; }
 
@@ -932,7 +936,11 @@ ul.square {
   line-height: 1.2;
   display: block; }
 
-/* line 331, ../../app/assets/sass/_modules.scss */
+/* line 330, ../../app/assets/sass/_modules.scss */
+.inline-field {
+  width: 80% !important; }
+
+/* line 335, ../../app/assets/sass/_modules.scss */
 .js-block {
   display: none; }
 

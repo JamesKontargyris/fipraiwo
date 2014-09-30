@@ -6,7 +6,6 @@ class EDTWorkOrderValidator extends FormValidator
 {
     protected $rules = [
         'commissioned_by'                       => 'required',
-        'unit_special_adviser_or_correspondent' => 'required',
         'lead_email_address'                    => 'required|email',
         'project_and_client_company_name'       => 'required',
         'required_completion_date'              => 'required|futuredate',

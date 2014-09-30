@@ -80,10 +80,10 @@
     function show_rate_form(selection)
     {
         var rate_labels = new Array();
-        rate_labels['at the standard Fipra hourly rate'] = 'Hourly Rate is (€):';
-        rate_labels['at a different Fipra hourly rate'] = 'Hourly Rate is (€):';
-        rate_labels['at a day rate'] = 'Day Rate is (€):';
-        rate_labels['at a flat or project rate'] = 'Flat/Project Rate is (€):';
+        rate_labels['at the standard Fipra hourly rate'] = 'Hourly Rate:';
+        rate_labels['at a different Fipra hourly rate'] = 'Hourly Rate:';
+        rate_labels['at a day rate'] = 'Day Rate:';
+        rate_labels['at a flat or project rate'] = 'Flat/Project Rate:';
 
         if(selection != '') {
             $('.rate-field').slideDown();

@@ -126,7 +126,7 @@
                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
 
                     {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
-                    <div class="help-box">
+                    <div class="help-box fipra-rates">
                         <table width="100%" class="rate-table">
                         	<thead>
 								<tr>
@@ -179,11 +179,11 @@
 													{{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], isset($values['rate']) ? $values['rate'] : null, ['class' => 'inline']) }}
 												</div>
 												<div class="fees-text">
-													<span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", null, ['style' => 'width:80%']) }}
+													<span class="inline bold"><br/>&euro;</span> {{ Form::text("team[$id][rate]", null, ['class' => 'inline-field']) }}
 												</div>
                                         	@else
 												<div class="fees-text">
-													<span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", isset($values['rate']) ? $values['rate'] : null, ['style' => 'width:80%']) }}
+													<span class="inline bold"><br/>&euro;</span> {{ Form::text("team[$id][rate]", isset($values['rate']) ? $values['rate'] : null, ['class' => 'inline-field']) }}
 												</div>
 												<div class="fees-select">
 													{{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], null, ['class' => 'inline']) }}
@@ -200,19 +200,26 @@
                                 @foreach($workorder->workorder->team as $id => $values)
                                 <tr class="fees-person">
                                     <td class="person-field">{{ Form::text("team[$id][person]", isset($values['person']) ? $values['person'] : '', ['style' => 'width:90%']) }}</td>
-                                    <td class="rate-field"><span class="inline">&euro;</span> {{ Form::text("team[$id][rate]", isset($values['rate']) ? $values['rate'] : '', ['style' => 'width:80%']) }}</td>
+                                    <td class="rate-field">
+                                    	<div class="fees-text">
+                                    		<span class="inline bold"><br/>&euro;</span> {{ Form::text('team[1][rate]', isset($values['rate']) ? $values['rate'] : '', ['class' => 'inline-field']) }}
+                                    	</div>
+                                    	<div class="fees-select">
+                                    		<span class="inline bold"><br/>&euro;</span> {{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], isset($values['rate']) ? $values['rate'] : '', ['class' => 'inline']) }}
+                                    	</div>
+                                    </td>
                                     <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                 </tr>
                                 @endforeach
-                                {{ form::hidden('person_count', Input::old('person_count'), ['class' => 'person-count']) }}
+                                {{ form::hidden('person_count', count($workorder->workorder->team), ['class' => 'person-count']) }}
 
                             <!--Otherwise display the default entry form-->
                             @else
                                 <tr class="fees-person">
-                                    <td class="person-field">{{ Form::text('team[1][person]', null, ['style' => 'width:90%', 'class' => 'autofill']) }}</td>
+                                    <td class="person-field">{{ Form::text('team[1][person]', null, ['class' => 'autofill inline-field']) }}</td>
                                     <td class="rate-field">
                                     	<div class="fees-text">
-                                    		<span class="inline">&euro;</span> {{ Form::text('team[1][rate]', null, ['style' => 'width:80%']) }}
+                                    		<span class="inline bold"><br/>&euro;</span> {{ Form::text('team[1][rate]', null, ['class' => 'inline-field']) }}
                                     	</div>
                                     	<div class="fees-select">
 											{{ Form::select('team[1][rate]', ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], ['class' => 'inline']) }}
@@ -230,8 +237,8 @@
                         </table>
 
 						<div class="total-project-fee">
-                        	{{ Form::label('', 'Total project fee (€):') }}
-                        	{{ Form::text("total_project_fee", (editing()) ? isset($workorder->workorder->total_project_fee) ? $workorder->workorder->total_project_fee : null : Input::old('total_project_fee')) }}
+                        	{{ Form::label('', 'Total project fee:') }}
+                        	<span class="inline bold"><br/>&euro;</span> {{ Form::text("total_project_fee", (editing()) ? isset($workorder->workorder->total_project_fee) ? $workorder->workorder->total_project_fee : null : Input::old('total_project_fee'), ['class' => 'inline-field']) }}
 						</div>
 
                     </div>
@@ -258,8 +265,8 @@
                     {{ display_form_error('work_capped_at_maximum_level', $errors) }}
                 </div>
                 <div class="formfield hide" id="work-capped-at-maximum-level-reveal">
-                    {{ Form::label('work_cap', 'What is the cap (€)?') }}
-                    {{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap')) }}
+                    {{ Form::label('work_cap', 'Work Cap:') }}
+                    <span class="inline bold"><br/>&euro;</span> {{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap'), ['class' => 'inline-field']) }}
                     {{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
                     {{ display_form_error('work_cap', $errors) }}
                 </div>
