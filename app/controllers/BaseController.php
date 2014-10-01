@@ -187,7 +187,7 @@ class BaseController extends Controller {
 
 		//If a Sub Fipra Rep was included in the form, and an address exists for them in the DB,
 		//send a copy of the work order to them and add them as a user with the "viewer" role
-		if(Input::old('sub_fipra_representative') && $rep = Rep_email::where('rep_name', '=', trim(Input::old('sub_fipra_representative')))->first())
+		if(Input::old('sub_fipra_representative') && Input::old('sub_fipra_representative') != Input::old('lead_fipra_representative') && $rep = Rep_email::where('rep_name', '=', trim(Input::old('sub_fipra_representative')))->first())
 		{
 			$rep_user = new User;
 			$rep_user->name = $rep->rep_name . ' (Sub Rep)';

@@ -272,7 +272,7 @@ class ManagementController extends BaseController
 	        $data['old_ref'] = get_original_ref(Session::get('iwo_ref'));
 
 	        //Get all email addresses linked to this work order
-	        $users = User::where('iwo_id', '=', $new_workorder->id)->get();
+	        $users = $this->get_all_emails($this->workorder->id, $this->workorder->formtype_id);
 
 	        //Send an email to all users linked to this IWO with customised content to their role
 	        foreach($users as $user)
