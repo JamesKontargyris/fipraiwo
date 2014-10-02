@@ -28,7 +28,7 @@ class ManagementController extends BaseController
             $this->workorder->pretty_workorder = pretty_input(unserialize($this->workorder->workorder));
             $this->workorder->workorder = (object) unserialize($this->workorder->workorder);
             //Get the iwo key (edt, unit, etc.)
-            $this->iwo_key = Formtype::where('id', '=', $this->workorder->formtype_id)->pluck('key');
+            $this->workorder->iwo_key = Formtype::where('id', '=', $this->workorder->formtype_id)->pluck('key');
 
             //Email variables
             $data = [
@@ -448,7 +448,7 @@ class ManagementController extends BaseController
 				//IWO reference
 				'iwo_ref' => Session::get('iwo_ref'),
 				//IWO key
-				'iwo_key' => Formtype::where('id', '=', $this->workorder->formtype_id)->pluck('key'),
+				'iwo_key' => $this->workorder->iwo_key,
 				//    Workorder title
 				'iwo_title' => $this->workorder->title,
 				//    Workorder id

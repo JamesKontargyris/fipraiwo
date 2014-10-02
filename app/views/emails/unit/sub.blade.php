@@ -8,7 +8,7 @@
 
 @include('emails.partials.iwo_ref')
 
-@if( ! $data['status'] == 'confirmed')
+@if( $data['status'] != 'confirmed')
 	<h3><strong>{{ link_to('/confirm?id=' . $data['iwo_id'] . '&email=' .$data['recipient'] . '&code=' . $data['confirmation_code'], 'CLICK HERE TO CONFIRM THIS IWO') }}</strong></h3>
 @endif
 
