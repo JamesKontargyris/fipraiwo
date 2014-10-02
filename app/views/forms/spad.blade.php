@@ -26,9 +26,9 @@
                 <div class="formfield">
 					{{ Form::label('special_adviser_instructed', 'Special Adviser instructed:', ['class' => 'required']) }}
 					@if(editing())
-						{{ Form::text('special_adviser_instructed', isset($workorder->workorder->special_adviser_instructed) ? $workorder->workorder->special_adviser_instructed : '', ['class' => 'spad_reps_autocomplete', 'data-rep-field' => 'fipra_representative', 'readonly' => 'readonly']) }}
+						{{ Form::text('special_adviser_instructed', isset($workorder->workorder->special_adviser_instructed) ? $workorder->workorder->special_adviser_instructed : '', ['class' => 'spad_reps_autocomplete', 'data-rep-field' => 'sub_fipra_representative', 'readonly' => 'readonly']) }}
 					@else
-						{{ Form::text('special_adviser_instructed', Input::old('special_adviser_instructed'), ['class' => 'spad_reps_autocomplete', 'data-rep-field' => 'fipra_representative', 'data-email-field' => 'lead_email_address']) }}
+						{{ Form::text('special_adviser_instructed', Input::old('special_adviser_instructed'), ['class' => 'spad_reps_autocomplete', 'data-rep-field' => 'sub_fipra_representative', 'data-email-field' => 'sub_email_address']) }}
 					@endif
 					{{ display_form_error('special_adviser_instructed', $errors) }}
 				</div>
@@ -44,9 +44,9 @@
                 <div class="formfield">
                     {{ Form::label('account_director', 'Account Director responsible for this instruction:', ['class' => 'required']) }}
                     @if(editing())
-                        {{ Form::text('account_director', isset($workorder->workorder->account_director) ? $workorder->workorder->account_director : '', ['class' => 'account_director_autocomplete', 'data-email-field' => 'sub_email_address', 'readonly' => 'readonly']) }}
+                        {{ Form::text('account_director', isset($workorder->workorder->account_director) ? $workorder->workorder->account_director : '', ['class' => 'account_director_autocomplete', 'data-email-field' => 'lead_email_address', 'readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('account_director', Input::old('account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'sub_email_address']) }}
+                        {{ Form::text('account_director', Input::old('account_director'), ['class' => 'account_director_autocomplete', 'data-email-field' => 'lead_email_address']) }}
                     @endif
                     {{ display_form_error('account_director', $errors) }}
                     <span class="small-print">No Unit other than Fipra International can submit an Internal Work Order for a Special Adviser.</span>
