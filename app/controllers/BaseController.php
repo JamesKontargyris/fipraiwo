@@ -201,7 +201,7 @@ class BaseController extends Controller {
 			//Assign viewer role to user
 			$rep_user->attachRole(Role::where('name', 'Viewer')->pluck('id'));
 
-			if(Input::old('sub_fipra_representative') != $lead_contact->email && Input::old('sub_fipra_representative') != $sub_contact->email)
+			if(Input::old('sub_fipra_representative') != $lead_contact->email && Input::old('sub_fipra_representative') != $sub_contact->email && Input::old('sub_fipra_representative') != Input::old('lead_fipra_representative'))
 			{
 				$data['recipient'] = $rep->rep_email;
 				Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
