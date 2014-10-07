@@ -155,7 +155,7 @@ class ManagementController extends BaseController
     {
         if( ! $this->check_permission('edit')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
-        return View::make('forms.' . $this->iwo_key)->with(['page_title' => 'Editing "' . $this->workorder->title . '"', 'workorder' => $this->workorder, 'iwo_key' => $this->iwo_key]);
+        return View::make('forms.' . $this->workorder->iwo_key)->with(['page_title' => 'Editing "' . $this->workorder->title . '"', 'workorder' => $this->workorder, 'iwo_key' => $this->workorder->iwo_key]);
     }
 
 	/**
@@ -167,8 +167,8 @@ class ManagementController extends BaseController
     {
         if( ! $this->check_permission('edit')) { return Redirect::to('manage/view')->withErrors($this->no_perms_message); }
 
-        $validator_name = ucfirst($this->iwo_key) . "WorkOrderValidator";
-        $controller_name = ucfirst($this->iwo_key) . "WorkOrderController";
+        $validator_name = ucfirst($this->workorder->iwo_key) . "WorkOrderValidator";
+        $controller_name = ucfirst($this->workorder->iwo_key) . "WorkOrderController";
         $this->validator = App::make('\\Iwo\\Validation\\' . $validator_name);
 
         // Use $this->validator set in the sub class to use the validation rules
@@ -197,7 +197,7 @@ class ManagementController extends BaseController
         // whether that be submitting the form or going back to the form to make changes
         Input::flash();
         // Display the confirmation page
-        return View::make('confirm', compact('input'))->with(['page_title' => '"' . $this->workorder->title . '": Update and Re-submit', 'iwo_key' => $this->iwo_key]);
+        return View::make('confirm', compact('input'))->with(['page_title' => '"' . $this->workorder->title . '": Update and Re-submit', 'iwo_key' => $this->workorder->iwo_key]);
 
     }
 
@@ -272,7 +272,7 @@ class ManagementController extends BaseController
 	        $data['old_ref'] = get_original_ref(Session::get('iwo_ref'));
 
 	        //Get all email addresses linked to this work order
-	        $users = $this->get_all_emails($this->workorder->id, $this->workorder->formtype_id);
+	        $users = $this->get_associated_users(true);
 
 	        //Send an email to all users linked to this IWO with customised content to their role
 	        foreach($users as $user)
@@ -536,9 +536,11 @@ class ManagementController extends BaseController
 	 *
 	 * @return array
 	 */
-	private function get_associated_users()
+	private function get_associated_users($return_users = false)
 	{
 		$users = User::where('iwo_id', '=', Session::get('iwo_id'))->orderBy('id')->get();
+
+		if($return_users) return $users;
 
 		$data = [];
 		$i = 0;

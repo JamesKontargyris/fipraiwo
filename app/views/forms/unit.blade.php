@@ -72,7 +72,11 @@
 
                 <div class="formfield">
 					{{ Form::label('lead_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
-					{{ Form::select('lead_fipra_representative', get_fipra_reps(), (editing()) ? isset($workorder->workorder->lead_fipra_representative) ? $workorder->workorder->lead_fipra_representative : '' : Input::old('lead_fipra_representative'), ['style' => 'width:100%']) }}
+					@if(editing())
+						{{ Form::text('lead_fipra_representative', isset($workorder->workorder->lead_fipra_representative) ? $workorder->workorder->lead_fipra_representative : '', ['style' => 'width:100%', 'readonly' => 'readonly']) }}
+					@else
+						{{ Form::select('lead_fipra_representative', get_fipra_reps(), Input::old('lead_fipra_representative'), ['style' => 'width:100%']) }}
+					@endif
 					{{ display_form_error('lead_fipra_representative', $errors) }}
 				</div>
 
@@ -116,7 +120,11 @@
 
                 <div class="formfield">
                     {{ Form::label('sub_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
-                    {{ Form::select('sub_fipra_representative', get_fipra_reps(), (editing()) ? isset($workorder->workorder->sub_fipra_representative) ? $workorder->workorder->sub_fipra_representative : '' : Input::old('sub_fipra_representative'), ['style' => 'width:100%']) }}
+                    @if(editing())
+						{{ Form::text('sub_fipra_representative', isset($workorder->workorder->sub_fipra_representative) ? $workorder->workorder->sub_fipra_representative : '', ['style' => 'width:100%', 'readonly' => 'readonly']) }}
+					@else
+						{{ Form::select('sub_fipra_representative', get_fipra_reps(), Input::old('sub_fipra_representative'), ['style' => 'width:100%']) }}
+					@endif
                     {{ display_form_error('sub_fipra_representative', $errors) }}
                 </div>
             </div>

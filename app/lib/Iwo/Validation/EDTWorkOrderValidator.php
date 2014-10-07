@@ -8,7 +8,7 @@ class EDTWorkOrderValidator extends FormValidator
         'commissioned_by'                       => 'required',
         'lead_email_address'                    => 'required|email',
         'project_and_client_company_name'       => 'required',
-        'required_completion_date'              => 'required|futuredate',
+        'required_completion_date'              => 'required',
         'type_of_product'                       => 'required',
         'require_cost_estimate'                 => 'required',
     ];

@@ -16,7 +16,7 @@ class UnitWorkOrderValidator extends FormValidator {
 		'agreed_fee_element_details'                                   => 'required_if:agreed_fee_element,Yes',
 		'work_capped_at_maximum_level'                                 => 'required',
 		'work_cap'                                                     => 'required_if:work_capped_at_maximum_level,Yes|numeric',
-		'internal_work_order_expiry_date'                              => 'required|futuredate',
+		'internal_work_order_expiry_date'                              => 'required',
 		'green_sheet_required'                                         => 'required',
 	];
 
