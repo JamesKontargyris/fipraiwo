@@ -66,11 +66,13 @@ class ManagementController extends BaseController
 	 */
 	public function postIndex()
     {
-    //    Attempt to find user in DB
         $email = Input::get('email');
-        $iwo_ref = Input::get('iwo_ref');
+        //Find the core reference, stripping off any letters from the end
+        $user_iwo_ref = get_original_ref(Input::get('iwo_ref'));
         //Get IWO id
-        $iwo_id = Iwo_ref::where('iwo_ref', $iwo_ref)->pluck('iwo_id');
+        $iwo_id = Iwo_ref::where('iwo_ref', 'LIKE', $user_iwo_ref . '%')->pluck('iwo_id');
+	    //Get the current IWO reference code
+	    $iwo_ref = Iwo_ref::where('iwo_id', '=', $iwo_id)->pluck('iwo_ref');
         //Check to see if user exists
         if($user = User::where('email', '=', $email)->where('iwo_id', '=', $iwo_id)->first())
         {
