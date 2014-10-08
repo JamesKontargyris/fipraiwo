@@ -12,6 +12,7 @@
 
 	<div class="intro">
         <p>This form confirms financial instructions between Members of the Fipra Network. Please fill one form out each time a Unit is subcontracted.</p>
+        <p><strong>Please note: all amounts quoted are gross, i.e. before the inter unit discount.</strong></p>
         <p class="italic small-print">Please see full explanatory notes at the end of the page.</p>
         @if(editing())
             <p class="red">Fields in red cannot be edited.</p>
