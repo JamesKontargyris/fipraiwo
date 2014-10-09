@@ -271,7 +271,7 @@ class BaseController extends Controller {
 
     protected function get_user_emails($iwo_id = 0)
     {
-        return User::where('iwo_id', '=', $iwo_id)->lists('email');
+        return array_unique(User::where('iwo_id', '=', $iwo_id)->lists('email'));
     }
 
     protected function get_copy_emails($formtype = 0)
@@ -281,6 +281,6 @@ class BaseController extends Controller {
 
 	protected function get_all_emails($iwo_id = 0, $formtype = 0)
 	{
-		return array_unique(array_merge($this->get_user_emails($iwo_id), $this->get_copy_emails($formtype)));
+		return array_merge($this->get_user_emails($iwo_id), $this->get_copy_emails($formtype));
 	}
 }

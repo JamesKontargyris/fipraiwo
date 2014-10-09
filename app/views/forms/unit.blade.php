@@ -211,7 +211,7 @@
                                     <td class="person-field">{{ Form::text("team[$id][person]", isset($values['person']) ? $values['person'] : '', ['style' => 'width:90%']) }}</td>
                                     <td class="rate-field">
                                     	<div class="fees-text">
-                                    		<span class="inline bold"><br/>&euro;</span> {{ Form::text('team[1][rate]', isset($values['rate']) ? $values['rate'] : '', ['class' => 'inline-field']) }}
+                                    		<span class="inline bold"><br/>&euro;</span> {{ Form::text("team[$id][rate]", isset($values['rate']) ? $values['rate'] : '', ['class' => 'inline-field']) }}
                                     	</div>
                                     	<div class="fees-select">
                                     		<span class="inline bold"><br/>&euro;</span> {{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], isset($values['rate']) ? $values['rate'] : '', ['class' => 'inline']) }}
