@@ -5,7 +5,7 @@
         <div class="help-box">This is a user-friendly title that can be used to refer to this work order, e.g. &quot;Monthly Uber Monitoring&quot;. There is no need to include dates as these will be automatically stored alongside your work order submission. Please note that once submitted, the name cannot be changed.</div>
 
         @if(editing())
-        {{ Form::text('workorder_title', $workorder->title, ['readonly' => 'readonly']) }}
+        {{ Form::text('workorder_title', $workorder->title) }}
         @else
         {{ Form::text('workorder_title', Input::old('workorder_title')) }}
         @endif
@@ -18,7 +18,7 @@
             <div class="help-box">If this work order follows on from, or superceeds, a previous work order, please enter the previous work order reference code here.</div>
 
             @if(editing())
-            {{ Form::text('workorder_follows_on_from', $workorder->workorder_follows_on_from, ['readonly' => 'readonly']) }}
+            {{ Form::text('workorder_follows_on_from', $workorder->workorder_follows_on_from) }}
             @else
             {{ Form::text('workorder_follows_on_from', Input::old('workorder_follows_on_from')) }}
             @endif

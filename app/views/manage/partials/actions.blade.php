@@ -14,7 +14,7 @@
     @if($user->can('comment'))
     <li><a href="/manage/note" class="secondary"><i class="fa fa-file-text"></i> ADD A NOTE</a></li>
     @endif
-    @if($user->hasRole('Lead'))
+    @if($user->hasRole('Lead') || $user->hasRole('SuperUser'))
         <li><a href="/manage/resend" class="secondary"><i class="fa fa-envelope"></i> RE-SEND EMAIL(S)</a></li>
         @endif
     @if($user->can('cancel') && ! $workorder->confirmed)

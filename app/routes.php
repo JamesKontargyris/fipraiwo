@@ -37,6 +37,8 @@ Route::get('complete', ['as' => 'complete', function()
 
 Route::get('test', function()
 {
+	//$pcl = User::find(5);
+	//$pcl->attachRole();
 });
 
 Route::get('updaterepemails', function()

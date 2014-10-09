@@ -15,7 +15,7 @@
         <p><strong>Please note: all amounts quoted are gross, i.e. before the inter unit discount.</strong></p>
         <p class="italic small-print">Please see full explanatory notes at the end of the page.</p>
         @if(editing())
-            <p class="red">Fields in red cannot be edited.</p>
+        	<p class="red">Fields in red cannot be edited.</p>
         @endif
 	</div>
 
@@ -50,7 +50,7 @@
                     {{ Form::label('lead_unit_account_director', 'Account Director responsible at the Lead Unit:', ['class' => 'required']) }}
 
                     @if(editing())
-                        {{ Form::text('lead_unit_account_director', isset($workorder->workorder->lead_unit_account_director) ? $workorder->workorder->lead_unit_account_director : '', ['readonly' => 'readonly']) }}
+                        {{ Form::text('lead_unit_account_director', isset($workorder->workorder->lead_unit_account_director) ? $workorder->workorder->lead_unit_account_director : '', ( ! $loggedin_user->hasRole('SuperUser') ? ['readonly' => 'readonly'] : [])) }}
                     @else
                         {{ Form::text('lead_unit_account_director', Input::old('lead_unit_account_director'), ['class' => 'account_director_autocomplete lead_unit_account_director', 'data-email-field' => 'lead_email_address']) }}
                     @endif
@@ -63,7 +63,7 @@
                     {{ Form::label('lead_email_address', 'Email Address:', ['class' => 'required']) }}
 
                     @if(editing())
-                        {{ Form::text('lead_email_address', isset($workorder->workorder->lead_email_address) ? $workorder->workorder->lead_email_address : '', ['readonly' => 'readonly']) }}
+                        {{ Form::text('lead_email_address', isset($workorder->workorder->lead_email_address) ? $workorder->workorder->lead_email_address : '', ( ! $loggedin_user->hasRole('SuperUser') ? ['readonly' => 'readonly'] : [])) }}
                     @else
                         {{ Form::text('lead_email_address', Input::old('lead_email_address'), ['id' => 'lead_email_address']) }}
                     @endif
@@ -74,7 +74,7 @@
                 <div class="formfield">
 					{{ Form::label('lead_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
 					@if(editing())
-						{{ Form::text('lead_fipra_representative', isset($workorder->workorder->lead_fipra_representative) ? $workorder->workorder->lead_fipra_representative : '', ['style' => 'width:100%', 'readonly' => 'readonly']) }}
+						{{ Form::text('lead_fipra_representative', isset($workorder->workorder->lead_fipra_representative) ? $workorder->workorder->lead_fipra_representative : '', ['readonly' => 'readonly']) }}
 					@else
 						{{ Form::select('lead_fipra_representative', get_fipra_reps(), Input::old('lead_fipra_representative'), ['style' => 'width:100%']) }}
 					@endif
@@ -101,7 +101,7 @@
                 <div class="formfield">
                     {{ Form::label('sub_contracted_unit_correspondent_affiliate_account_director', 'Account Director responsible at the Sub-contracted Unit:', ['class' => 'required']) }}
                     @if(editing())
-                        {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director : '', ['readonly' => 'readonly']) }}
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director : '', ( ! $loggedin_user->hasRole('SuperUser') ? ['readonly' => 'readonly'] : [])) }}
                     @else
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', Input::old('sub_contracted_unit_correspondent_affiliate_account_director'), ['data-email-field' => 'sub_email_address', 'class' => 'account_director_autocomplete sub_contracted_unit_correspondent_affiliate_account_director']) }}
                     @endif
@@ -112,7 +112,7 @@
                 <div class="formfield">
                     {{ Form::label('sub_email_address', 'Email Address:', ['class' => 'required']) }}
                     @if(editing())
-                        {{ Form::text('sub_email_address', isset($workorder->workorder->sub_email_address) ? $workorder->workorder->sub_email_address : '', ['readonly' => 'readonly']) }}
+                        {{ Form::text('sub_email_address', isset($workorder->workorder->sub_email_address) ? $workorder->workorder->sub_email_address : '', ( ! $loggedin_user->hasRole('SuperUser') ? ['readonly' => 'readonly'] : [])) }}
                     @else
                         {{ Form::text('sub_email_address', Input::old('sub_email_address')) }}
                     @endif
@@ -122,11 +122,11 @@
                 <div class="formfield">
                     {{ Form::label('sub_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
                     @if(editing())
-						{{ Form::text('sub_fipra_representative', isset($workorder->workorder->sub_fipra_representative) ? $workorder->workorder->sub_fipra_representative : '', ['style' => 'width:100%', 'readonly' => 'readonly']) }}
+						{{ Form::text('sub_fipra_representative', isset($workorder->workorder->sub_fipra_representative) ? $workorder->workorder->sub_fipra_representative : '', ['readonly' => 'readonly']) }}
 					@else
 						{{ Form::select('sub_fipra_representative', get_fipra_reps(), Input::old('sub_fipra_representative'), ['style' => 'width:100%']) }}
 					@endif
-                    {{ display_form_error('sub_fipra_representative', $errors) }}
+					{{ display_form_error('sub_fipra_representative', $errors) }}
                 </div>
             </div>
             <div class="formgroup">

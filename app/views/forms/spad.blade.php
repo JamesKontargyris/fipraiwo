@@ -8,6 +8,9 @@
 	<div class="intro">
 		<p>This form confirms instructions between Fipra International and its Special Advisers, who are full members of the Fipra Network. Please fill one out each time you engage a Special Adviser.</p>
 		<p><strong>Please note: all amounts quoted are gross, i.e. before the inter unit discount.</strong></p>
+		@if(editing())
+			<p class="red">Fields in red cannot be edited.</p>
+		@endif
 	</div>
 
 	@include('forms.partials.messages')

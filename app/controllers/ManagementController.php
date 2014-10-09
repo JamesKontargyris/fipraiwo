@@ -30,6 +30,7 @@ class ManagementController extends BaseController
 			//Get the iwo key (edt, unit, etc.)
 			$this->workorder->iwo_key = Formtype::where( 'id', '=', $this->workorder->formtype_id )->pluck( 'key' );
 
+			View::share('loggedin_user', Auth::user());
 			//Email variables
 			$data = [
 				'iwo_title' => $this->workorder->title,
@@ -74,7 +75,15 @@ class ManagementController extends BaseController
 		//Get the current IWO reference code
 		$iwo_ref = Iwo_ref::where( 'iwo_id', '=', $iwo_id )->pluck( 'iwo_ref' );
 		//Is this a super user, with access to all IWOs?
-		if ( $user = User::where( 'email', '=', $email )->where( 'iwo_id', '=', $iwo_id )->first() )
+		if ( in_array( strtolower( $email ), Config::get( 'iwo_vars.super_users' ) ) )
+		{
+			//Super users have an iwo_id of 0 in the DB. Log the super user in.
+			$user = User::where( 'email', '=', $email )->where( 'iwo_id', '=', 0 )->first();
+			User::login_user( $user->id, $iwo_id, $iwo_ref );
+
+			return Redirect::to( 'manage/view' );
+		} //Check to see if user exists
+		elseif ( $user = User::where( 'email', '=', $email )->where( 'iwo_id', '=', $iwo_id )->first() )
 		{
 			//If user found, log the user in, add some useful session variables
 			//and redirect to view IWO
@@ -101,10 +110,10 @@ class ManagementController extends BaseController
 		}
 
 		return View::make( 'manage.view_iwo' )->with( [
-				'page_title' => $this->page_title,
-				'workorder'  => $this->workorder,
-				'user'       => $this->user
-			] );
+			'page_title' => $this->page_title,
+			'workorder'  => $this->workorder,
+			'user'       => $this->user
+		] );
 	}
 
 	/**
@@ -117,10 +126,10 @@ class ManagementController extends BaseController
 		$this->check_permission( 'comment' );
 
 		return View::make( 'manage.add_note' )->with( [
-				'page_title' => $this->page_title,
-				'workorder'  => $this->workorder,
-				'user'       => Auth::user()
-			] );
+			'page_title' => $this->page_title,
+			'workorder'  => $this->workorder,
+			'user'       => Auth::user()
+		] );
 	}
 
 	/**
@@ -173,10 +182,10 @@ class ManagementController extends BaseController
 		}
 
 		return View::make( 'forms.' . $this->workorder->iwo_key )->with( [
-				'page_title' => 'Editing "' . $this->workorder->title . '"',
-				'workorder'  => $this->workorder,
-				'iwo_key'    => $this->workorder->iwo_key
-			] );
+			'page_title' => 'Editing "' . $this->workorder->title . '"',
+			'workorder'  => $this->workorder,
+			'iwo_key'    => $this->workorder->iwo_key
+		] );
 	}
 
 	/**
@@ -223,9 +232,9 @@ class ManagementController extends BaseController
 
 		// Display the confirmation page
 		return View::make( 'confirm', compact( 'input' ) )->with( [
-				'page_title' => '"' . $this->workorder->title . '": Update and Re-submit',
-				'iwo_key'    => $this->workorder->iwo_key
-			] );
+			'page_title' => '"' . $this->workorder->title . '": Update and Re-submit',
+			'iwo_key'    => $this->workorder->iwo_key
+		] );
 
 	}
 
@@ -255,6 +264,7 @@ class ManagementController extends BaseController
 			//Otherwise, carry on wih the update
 			$new_workorder              = Workorder::find( Session::get( 'iwo_id' ) );
 			$new_workorder->workorder   = $this->get_input_for_db();
+			$new_workorder->title       = trim( Input::old( 'workorder_title' ) );
 			$new_workorder->updated_at  = date_time_now();
 			$new_workorder->expiry_date = Input::old( 'internal_work_order_expiry_date' ) ? date( "Y-m-d", strtotime( Input::old( 'internal_work_order_expiry_date' ) ) ) : '2999-01-01';
 
@@ -305,31 +315,44 @@ class ManagementController extends BaseController
 			//Get all email addresses linked to this work order
 			$users = $this->get_associated_users( true );
 
-			//Send an email to all users linked to this IWO with customised content to their role
+			//Update users if they have been edited and
+			//send an email to all users linked to this IWO with customised content to their role
 			foreach ( $users as $user )
 			{
-				$data['recipient'] = $user->email;
-
 				if ( $user->hasRole( 'Lead' ) )
 				{
+					if($user->email != Input::old('lead_email_address'))
+					{
+						$user->name = Input::old('lead_unit_account_director');
+						$user->email = Input::old('lead_email_address');
+						$user->save();
+					}
+					$data['recipient'] = $user->email;
 					//Send Lead Unit an email
-					Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_lead', $data );
+					//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_lead', $data );
 				} elseif ( $user->hasRole( 'Sub' ) )
 				{
+					if($user->email != Input::old('sub_email_address'))
+					{
+						$user->name = Input::old('sub_contracted_unit_correspondent_affiliate_account_director');
+						$user->email = Input::old('sub_email_address');
+						$user->save();
+					}
+					$data['recipient'] = $user->email;
 					//Send Sub Unit an email
-					Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_sub', $data );
+					//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_sub', $data );
 				} else
 				{
 					//recipient must be in an array, due to the way the iwo_updated_copy method works
 					$data['recipient'] = [ $user->email ];
 					//Send user-entered copy contact an email
-					Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
+					//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
 				}
 			}
 
 			//Get all copy contacts for this form type and send them an email about the update
 			$data['recipient'] = $this->get_copy_emails( $new_workorder->formtype_id );
-			Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
+			//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
 
 			return Redirect::to( 'manage/updatecomplete' );
 		} else
