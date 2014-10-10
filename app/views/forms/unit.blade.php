@@ -101,7 +101,7 @@
                 <div class="formfield">
                     {{ Form::label('sub_contracted_unit_correspondent_affiliate_account_director', 'Account Director responsible at the Sub-contracted Unit:', ['class' => 'required']) }}
                     @if(editing())
-                        {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director : '', ( ! $loggedin_user->hasRole('SuperUser') ? ['readonly' => 'readonly'] : [])) }}
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director : '', ($loggedin_user->hasRole('Lead') || $loggedin_user->hasRole('SuperUser')) ? [] : ['readonly' => 'readonly']) }}
                     @else
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', Input::old('sub_contracted_unit_correspondent_affiliate_account_director'), ['data-email-field' => 'sub_email_address', 'class' => 'account_director_autocomplete sub_contracted_unit_correspondent_affiliate_account_director']) }}
                     @endif
@@ -112,7 +112,7 @@
                 <div class="formfield">
                     {{ Form::label('sub_email_address', 'Email Address:', ['class' => 'required']) }}
                     @if(editing())
-                        {{ Form::text('sub_email_address', isset($workorder->workorder->sub_email_address) ? $workorder->workorder->sub_email_address : '', ( ! $loggedin_user->hasRole('SuperUser') ? ['readonly' => 'readonly'] : [])) }}
+                        {{ Form::text('sub_email_address', isset($workorder->workorder->sub_email_address) ? $workorder->workorder->sub_email_address : '', ($loggedin_user->hasRole('Lead') || $loggedin_user->hasRole('SuperUser')) ? [] : ['readonly' => 'readonly']) }}
                     @else
                         {{ Form::text('sub_email_address', Input::old('sub_email_address')) }}
                     @endif

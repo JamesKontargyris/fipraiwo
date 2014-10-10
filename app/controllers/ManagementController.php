@@ -329,7 +329,7 @@ class ManagementController extends BaseController
 					}
 					$data['recipient'] = $user->email;
 					//Send Lead Unit an email
-					//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_lead', $data );
+					Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_lead', $data );
 				} elseif ( $user->hasRole( 'Sub' ) )
 				{
 					if($user->email != Input::old('sub_email_address'))
@@ -340,19 +340,19 @@ class ManagementController extends BaseController
 					}
 					$data['recipient'] = $user->email;
 					//Send Sub Unit an email
-					//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_sub', $data );
+					Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_sub', $data );
 				} else
 				{
 					//recipient must be in an array, due to the way the iwo_updated_copy method works
 					$data['recipient'] = [ $user->email ];
 					//Send user-entered copy contact an email
-					//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
+					Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
 				}
 			}
 
 			//Get all copy contacts for this form type and send them an email about the update
 			$data['recipient'] = $this->get_copy_emails( $new_workorder->formtype_id );
-			//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
+			Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
 
 			return Redirect::to( 'manage/updatecomplete' );
 		} else
@@ -533,19 +533,19 @@ class ManagementController extends BaseController
 				$collected_emails[] = $user->email;
 				$data['recipient']  = $user->email;
 
-				if ( $user->hasRole( 'Lead' ) )
+				if ( $user->hasRole( 'Lead' ))
 				{
 					//Send Lead Unit an email
 					Queue::push( '\Iwo\Workers\SendEmail@iwo_created_lead', $data );
 				}
 
-				if ( $user->hasRole( 'Sub' ) )
+				if ( $user->hasRole( 'Sub' ))
 				{
 					//Send Sub Unit an email
 					Queue::push( '\Iwo\Workers\SendEmail@iwo_created_sub', $data );
 				}
 
-				if ( $user->hasRole( 'Viewer' ) )
+				if ( $user->hasRole( 'Viewer' ) && ! in_array($user->email, $collected_emails) )
 				{
 					//recipient must be in an array, due to the way the iwo_created_copy method works
 					$data['recipient'] = [ $user->email ];
