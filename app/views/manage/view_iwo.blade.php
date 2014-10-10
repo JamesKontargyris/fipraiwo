@@ -9,6 +9,12 @@
 
 @include('manage.partials.messages')
 
+<div class="col-12" style="margin-bottom:0">
+	<section class="outline-box">
+		Logged in as: <strong>{{ $loggedin_user->email }} ({{ $loggedin_user->name }})</strong>
+	</section>
+</div>
+
 <div class="col-12">
     <section class="outline-box col-3">
         @include('manage.partials.status')

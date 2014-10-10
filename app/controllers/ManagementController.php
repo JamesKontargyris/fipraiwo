@@ -106,7 +106,7 @@ class ManagementController extends BaseController
 	{
 		if ( ! $this->check_permission( 'read' ) )
 		{
-			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
+			return Redirect::to( 'manage' )->withErrors( $this->no_perms_message );
 		}
 
 		return View::make( 'manage.view_iwo' )->with( [

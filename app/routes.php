@@ -35,10 +35,21 @@ Route::get('complete', ['as' => 'complete', function()
 	return View::make('complete')->with('page_title', 'Work Order Submitted');
 }]);
 
-Route::get('test', function()
+Route::get('addsuperuser', function()
 {
-	//$pcl = User::find(5);
-	//$pcl->attachRole();
+	$superuser_id = Role::where('name', '=', 'SuperUser')->pluck('id');
+
+	$pcl = new User;
+	$pcl->email = 'superuser@fipra.com';
+	$pcl->name = 'Peter-Carlo Lehrell';
+	$pcl->iwo_id = 0;
+	$pcl->created_at = date_time_now();
+	$pcl->updated_at = date_time_now();
+	$pcl->save();
+
+	$pcl->attachRole($superuser_id);
+
+	return "All done!";
 });
 
 Route::get('updaterepemails', function()
