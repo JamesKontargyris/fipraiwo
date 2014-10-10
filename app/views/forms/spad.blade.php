@@ -84,7 +84,7 @@
 
                     <div class="sub-box rate-field col-12">
                         {{ Form::label('rate_is', 'Rate:', ['class' => 'required rate-label']) }}
-						<span class="inline bold"><br/>&euro;</span> {{ Form::text('rate_is', (editing()) ? isset($workorder->workorder->rate_is) ? $workorder->workorder->rate_is : '' : Input::old('rate_is'), ['class' => 'euro-field inline-field']) }}
+						<span class="inline bold"><br/>&euro;</span> {{ Form::text('rate_is', (editing()) ? isset($workorder->workorder->rate_is) ? $workorder->workorder->rate_is : '' : Input::old('rate_is'), ['class' => 'inline-field']) }}
                         {{ display_form_error('rate_is', $errors) }}
 
                     </div>
