@@ -26,30 +26,35 @@ class ConfirmController extends BaseController
         //Find a workorder for the id passed in
         $workorder = Workorder::find($iwo_id);
         //Find a user for the email address passed in
-        $user = User::where('email', '=', $email)->where('iwo_id', '=', $iwo_id)->first();
-        //Check the confirmation code passed in links to the correct work order
-        $confirmation_code = Confirmation_code::where('code', '=', $code)->where('iwo_id', '=', $iwo_id)->first();
+        //More than one user may be found, if the same email address is duplicated on an IWO
+        $users = User::where('email', '=', $email)->where('iwo_id', '=', $iwo_id)->get();
+	    //Check the confirmation code passed in links to the correct work order
+	    $confirmation_code = Confirmation_code::where('code', '=', $code)->where('iwo_id', '=', $iwo_id)->first();
 
-        //Does a workorder exist that is linked to the id passed in?
-        //Does the email address passed in link to a user linked to the current workorder?
-        //Is the confirmation code correct for the workorder found by the reference?
-        if ( ! $workorder || ! $user || ! $confirmation_code)
-        {
-            return Redirect::to('/')->withErrors($this->message);
-        }
-        else
-        {
-	        $iwo = Iwo_ref::where('iwo_id', '=', $iwo_id)->first();
-	        $iwo_ref = $iwo->iwo_ref;
+	    //Does a workorder exist that is linked to the id passed in?
+	    //Does the email address passed in link to a user linked to the current workorder?
+	    //Is the confirmation code correct for the workorder found by the reference?
+	    if ( ! $workorder || ! $confirmation_code)
+	    {
+		    return Redirect::to('/')->withErrors($this->message);
+	    }
 
-            //If the workorder id, user email and confirmation code all stack up,
-            //log the user in and redirect to the management controller 'confirm' method,
-            //where user permissions will be checked and the confirmation will take place
-            User::login_user($user->id, $iwo_id, $iwo_ref);
+	    foreach($users as $user)
+	    {
+		    if($user->can('confirm'))
+		    {
+			    $iwo_ref = Iwo_ref::where('iwo_id', '=', $iwo_id)->pluck('iwo_ref');
 
-            return Redirect::to('manage/confirm');
-        }
+			    //If the workorder id, user email and confirmation code all stack up,
+			    //log the user in and redirect to the management controller 'confirm' method,
+			    //where user permissions will be checked and the confirmation will take place
+			    User::login_user($user->id, $iwo_id, $iwo_ref);
 
+			    return Redirect::to('manage/confirm');
+		    }
+	    }
+
+	    return Redirect::to('/')->withErrors($this->message);
     }
 
     private function check_input()
@@ -66,6 +71,6 @@ class ConfirmController extends BaseController
     private function check_confirmed($iwo_id)
     {
 	    $iwo = Workorder::find($iwo_id);
-	    return $iwo->confirmed;
+	    return isset($iwo->confirmed) ? $iwo->confirmed : false;
     }
 }
