@@ -180,8 +180,9 @@ class BaseController extends Controller {
 
 	        //Assign viewer role to user
 	        $rep_user->attachRole(Role::where('name', 'Viewer')->pluck('id'));
+	        $rep_email = Rep_email::where('rep_name', '=', Input::old('lead_fipra_representative'))->pluck('rep_email');
 
-	        if(Input::old('lead_fipra_representative') != $lead_contact->email && Input::old('lead_fipra_representative') != $sub_contact->email)
+	        if($rep_email != $lead_contact->email && $rep_email != $sub_contact->email)
 	        {
 		        $data['recipient'] = $rep->rep_email;
 		        Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
@@ -200,8 +201,9 @@ class BaseController extends Controller {
 
 			//Assign viewer role to user
 			$rep_user->attachRole(Role::where('name', 'Viewer')->pluck('id'));
+			$rep_email = Rep_email::where('rep_name', '=', Input::old('sub_fipra_representative'))->pluck('rep_email');
 
-			if(Input::old('sub_fipra_representative') != $lead_contact->email && Input::old('sub_fipra_representative') != $sub_contact->email && Input::old('sub_fipra_representative') != Input::old('lead_fipra_representative'))
+			if($rep_email != $lead_contact->email && $rep_email != $sub_contact->email && Input::old('sub_fipra_representative') != Input::old('lead_fipra_representative'))
 			{
 				$data['recipient'] = $rep->rep_email;
 				Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
