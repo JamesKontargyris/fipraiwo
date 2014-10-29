@@ -81,7 +81,7 @@ App::error(function(Iwo\Exceptions\ManagementLoginException $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+	return Response::make("The Fipra IWO system is down for maintenance. Please check back soon.", 503);
 });
 
 /*
