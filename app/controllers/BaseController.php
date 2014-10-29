@@ -185,7 +185,7 @@ class BaseController extends Controller {
 	        if($rep_email != $lead_contact->email && $rep_email != $sub_contact->email)
 	        {
 		        $data['recipient'] = $rep->rep_email;
-		        Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
+		        //Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
 	        }
         }
 
@@ -206,13 +206,13 @@ class BaseController extends Controller {
 			if($rep_email != $lead_contact->email && $rep_email != $sub_contact->email && Input::old('sub_fipra_representative') != Input::old('lead_fipra_representative'))
 			{
 				$data['recipient'] = $rep->rep_email;
-				Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
+				//Queue::push('\Iwo\Workers\SendEmail@iwo_created_rep', $data);
 			}
 		}
 
         //Send an email to the copy contacts for this form type
         $data['recipient'] = $this->get_copy_emails($workorder->formtype_id);
-	    Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
+	    //Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
 
         //If a copy recipient or recipients were entered in the form, send a copy of the work order to them
         if(Input::old('also_send_work_order_to'))
@@ -221,7 +221,7 @@ class BaseController extends Controller {
             $addresses = array_map('trim', array_unique(explode(",", Input::old('also_send_work_order_to'))));
 	        //Add addresses to $data array and send email(s)
 	        $data['recipient'] = $addresses;
-	        Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
+	        //Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
 
 	        //Add the copy email addresses as users so they receive future emails
 	        //and so they can login to the management system as viewers
@@ -240,7 +240,7 @@ class BaseController extends Controller {
 
         // Once emails are sent, delete files uploaded for security.
         //// Once emails are se['james@jameskontargyris.co.uk
-        Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
+        //Queue::push('\Iwo\Workers\DeleteUploads', $data['file_names']);
 
         // Redirect to the complete/success page
         return Redirect::route('complete')->with('iwo_ref', $iwo_ref->iwo_ref);

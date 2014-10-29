@@ -65,17 +65,6 @@ return array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET time_zone = \'Europe/Brussels\''
             ),
 		),
-		// Local
-		// 'mysql' => array(
-		// 	'driver'    => 'mysql',
-		// 	'host'      => 'localhost',
-		// 	'database'  => 'iwo',
-		// 	'username'  => 'root',
-		// 	'password'  => 'root',
-		// 	'charset'   => 'utf8',
-		// 	'collation' => 'utf8_unicode_ci',
-		// 	'prefix'    => '',
-		// ),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
