@@ -7,7 +7,7 @@
 @include('emails.partials.resend_message')
 
 @include('emails.partials.iwo_ref')
-<h3><strong>{{ link_to('http://fipraiwo.jamkon.co.uk/manage', 'CLICK HERE TO MANAGE THIS IWO') }}</strong></h3>
+<h3><strong>{{ link_to('http://iwo.fipra.com/manage', 'CLICK HERE TO MANAGE THIS IWO') }}</strong></h3>
 <p>Thank you for submitting your Special Adviser IWO.</p>
 <p>A copy of your submitted IWO request is included below. A copy has been sent to the Special Adviser you entered in the form, as well as other relevant parties.</p>
 

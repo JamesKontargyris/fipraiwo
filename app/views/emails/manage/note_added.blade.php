@@ -8,6 +8,6 @@
 
 <h3><em>{{ $data['note'] }}</em></h3>
 
-Visit <a href="http://fipraiwo.jamkon.co.uk/manage">http://fipraiwo.jamkon.co.uk/manage</a> to login and view this IWO. To login, you will need the reference code above and your email address.</p>
+Visit <a href="http://iwo.fipra.com/manage">http://iwo.fipra.com/manage</a> to login and view this IWO. To login, you will need the reference code above and your email address.</p>
 </body>
 </html>

@@ -15,8 +15,8 @@
 
 @include('emails.partials.status_manage')
 
-<p><a href="http://fipraiwo.jamkon.co.uk/downloads/green_sheet_template.xls">Click here to download a Green Sheet</a>.</p>
-<p><a href="http://fipraiwo.jamkon.co.uk/downloads/green_sheet_instructions.pdf">Click here to download Green Sheet instructions</a>.</p>
+<p><a href="http://iwo.fipra.com/downloads/green_sheet_template.xls">Click here to download a Green Sheet</a>.</p>
+<p><a href="http://iwo.fipra.com/downloads/green_sheet_instructions.pdf">Click here to download Green Sheet instructions</a>.</p>
 
 <div>
     @include('emails.partials.form')
