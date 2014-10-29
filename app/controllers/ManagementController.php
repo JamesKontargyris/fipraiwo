@@ -159,7 +159,7 @@ class ManagementController extends BaseController
 			$data['recipient'] = $this->get_all_emails( $this->workorder->id, $this->workorder->formtype_id );
 			$data['note']      = $note;
 			$data['user_name'] = $this->user->name;
-			Queue::push( '\Iwo\Workers\SendEmail@iwo_note_added', $data );
+			//Queue::push( '\Iwo\Workers\SendEmail@iwo_note_added', $data );
 
 			return Redirect::to( 'manage/view' )->with( 'message', 'Note added.' );
 		} else
@@ -346,13 +346,13 @@ class ManagementController extends BaseController
 					//recipient must be in an array, due to the way the iwo_updated_copy method works
 					$data['recipient'] = [ $user->email ];
 					//Send user-entered copy contact an email
-					Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
+					//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
 				}
 			}
 
 			//Get all copy contacts for this form type and send them an email about the update
 			$data['recipient'] = $this->get_copy_emails( $new_workorder->formtype_id );
-			Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
+			//Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
 
 			return Redirect::to( 'manage/updatecomplete' );
 		} else
@@ -409,7 +409,7 @@ class ManagementController extends BaseController
 
 		//Send an email to lead and sub units plus copy contacts now the work order is confirmed
 		$data['recipient'] = $this->get_all_emails( $this->workorder->id, $this->workorder->formtype_id );
-		Queue::push( '\Iwo\Workers\SendEmail@iwo_confirmed', $data );
+		//Queue::push( '\Iwo\Workers\SendEmail@iwo_confirmed', $data );
 
 		Logger::add_log( 'Work order confirmed.', 'success' );
 
@@ -439,7 +439,7 @@ class ManagementController extends BaseController
 		$data['iwo_title'] = $this->workorder->title;
 		//Send an email to lead and sub units plus copy contacts now the work order is un-confirmed
 		$data['recipient'] = $this->get_all_emails( $workorder->id, $workorder->formtype_id );
-		Queue::push( '\Iwo\Workers\SendEmail@iwo_unconfirmed', $data );
+		//Queue::push( '\Iwo\Workers\SendEmail@iwo_unconfirmed', $data );
 
 		Logger::add_log( 'Work order un-confirmed.', 'warning' );
 
@@ -467,7 +467,7 @@ class ManagementController extends BaseController
 		$data['iwo_title'] = $this->workorder->title;
 		//Send an email to lead and sub units plus copy contacts now the work order is confirmed
 		$data['recipient'] = $this->get_all_emails( $new_workorder->id, $new_workorder->formtype_id );
-		Queue::push( '\Iwo\Workers\SendEmail@iwo_cancelled', $data );
+		//Queue::push( '\Iwo\Workers\SendEmail@iwo_cancelled', $data );
 
 		Logger::add_log( 'Work order cancelled.', 'alert' );
 
@@ -536,13 +536,13 @@ class ManagementController extends BaseController
 				if ( $user->hasRole( 'Lead' ))
 				{
 					//Send Lead Unit an email
-					Queue::push( '\Iwo\Workers\SendEmail@iwo_created_lead', $data );
+					//Queue::push( '\Iwo\Workers\SendEmail@iwo_created_lead', $data );
 				}
 
 				if ( $user->hasRole( 'Sub' ))
 				{
 					//Send Sub Unit an email
-					Queue::push( '\Iwo\Workers\SendEmail@iwo_created_sub', $data );
+					//Queue::push( '\Iwo\Workers\SendEmail@iwo_created_sub', $data );
 				}
 
 				if ( $user->hasRole( 'Viewer' ) && ! in_array($user->email, $collected_emails) )
@@ -550,7 +550,7 @@ class ManagementController extends BaseController
 					//recipient must be in an array, due to the way the iwo_created_copy method works
 					$data['recipient'] = [ $user->email ];
 					//Send user-entered copy contact an email
-					Queue::push( '\Iwo\Workers\SendEmail@iwo_created_copy', $data );
+					//Queue::push( '\Iwo\Workers\SendEmail@iwo_created_copy', $data );
 				}
 			}
 

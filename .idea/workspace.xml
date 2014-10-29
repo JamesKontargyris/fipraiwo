@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff7bbedb-20db-415d-8413-4130d0ad7c3f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/BaseController.php" afterPath="$PROJECT_DIR$/app/controllers/BaseController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/database.php" afterPath="$PROJECT_DIR$/app/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ManagementController.php" afterPath="$PROJECT_DIR$/app/controllers/ManagementController.php" />
     </list>
     <ignored path="iwo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,11 +30,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64219236" vertical-offset="2679" max-vertical-offset="5800">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2679" max-vertical-offset="5800">
               <caret line="168" column="9" selection-start-line="168" selection-start-column="9" selection-end-line="168" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManagementController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/ManagementController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.60703206" vertical-offset="6253" max-vertical-offset="13380">
+              <caret line="343" column="22" selection-start-line="343" selection-start-column="22" selection-end-line="343" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -97,7 +105,6 @@
         <option value="$PROJECT_DIR$/app/views/manage/partials/notes.blade.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_10_10_104318_add_name_field_to_logs_table.php" />
         <option value="$PROJECT_DIR$/app/views/manage/partials/eventlog.blade.php" />
-        <option value="$PROJECT_DIR$/app/controllers/ManagementController.php" />
         <option value="$PROJECT_DIR$/app/views/manage/view_iwo.blade.php" />
         <option value="$PROJECT_DIR$/app/views/forms/spad.blade.php" />
         <option value="$PROJECT_DIR$/public/js/site.js" />
@@ -111,6 +118,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/config/database.php" />
         <option value="$PROJECT_DIR$/app/controllers/BaseController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/ManagementController.php" />
       </list>
     </option>
   </component>
@@ -550,13 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/ManagementController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1740" max-vertical-offset="13400">
-          <caret line="111" column="39" selection-start-line="111" selection-start-column="39" selection-end-line="111" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/ConfirmController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="413" max-vertical-offset="1620">
@@ -686,8 +687,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64219236" vertical-offset="2679" max-vertical-offset="5800">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2679" max-vertical-offset="5800">
           <caret line="168" column="9" selection-start-line="168" selection-start-column="9" selection-end-line="168" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ManagementController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60703206" vertical-offset="6253" max-vertical-offset="13380">
+          <caret line="343" column="22" selection-start-line="343" selection-start-column="22" selection-end-line="343" selection-end-column="22" />
           <folding />
         </state>
       </provider>
