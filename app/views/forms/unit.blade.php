@@ -274,7 +274,7 @@
                     {{ display_form_error('work_capped_at_maximum_level', $errors) }}
                 </div>
                 <div class="formfield hide" id="work-capped-at-maximum-level-reveal">
-                    {{ Form::label('work_cap', 'Work Cap:') }}
+                    {{ Form::label('work_cap', 'Work Cap (before IUD):') }}
                     <span class="inline bold"><br/>&euro;</span> {{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap'), ['class' => 'inline-field']) }}
                     {{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
                     {{ display_form_error('work_cap', $errors) }}

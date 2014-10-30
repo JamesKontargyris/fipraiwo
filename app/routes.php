@@ -22,6 +22,7 @@ Route::get('about/fiplex', 'PagesController@about_fiplex');
 
 Route::post('queue/push', function()
 {
+	Log::info('marshal!');
 	return Queue::marshal();
 });
 
