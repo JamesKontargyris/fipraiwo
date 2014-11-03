@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration {
         {
             $table->increments('id');
             $table->string('email');
-            $table->integer('iwo_id');
+            $table->integer('iwo_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('iwo_id')->references('id')->on('workorders');

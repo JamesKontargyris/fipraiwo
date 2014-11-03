@@ -15,7 +15,7 @@ class CreateConfirmationCodesTable extends Migration {
 		Schema::create('confirmation_codes', function($table)
         {
             $table->increments('id');
-            $table->integer('iwo_id');
+            $table->integer('iwo_id')->unsigned();
             $table->string('code');
 
             $table->foreign('iwo_id')->references('id')->on('workorders')->onDelete('cascade');

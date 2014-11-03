@@ -17,7 +17,7 @@ class CreateEmailrecipientsTable extends Migration {
 			$table->increments('id');
 			$table->string('email');
 			$table->string('name');
-			$table->integer('formtype_id');
+			$table->integer('formtype_id')->unsigned();
 			$table->timestamps();
 
 			$table->foreign('formtype_id')->references('id')->on('formtypes');

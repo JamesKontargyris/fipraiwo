@@ -15,8 +15,8 @@ class CreateLogsTable extends Migration {
 		Schema::create('logs', function($table)
         {
             $table->increments('id');
-            $table->integer('iwo_id');
-            $table->integer('user_id');
+            $table->integer('iwo_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->mediumText('log');
             $table->timestamps();
         });
