@@ -16,7 +16,7 @@ return array(
 	*/
 
 	'default' => 'iron',
-	
+
 	/*
 	|--------------------------------------------------------------------------
 	| Queue Connections
@@ -53,6 +53,7 @@ return array(
 			'project' => '536f8dfa703f51000900003b',
 			'token'   => '9n5H46FuOlyNVgxlTZ5xd2Tke7E',
 			'queue'   => 'fipraiwo',
+			'encrypt' => true,
 		),
 
 		'redis' => array(
