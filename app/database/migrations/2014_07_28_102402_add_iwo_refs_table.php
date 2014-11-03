@@ -15,7 +15,7 @@ class AddIwoRefsTable extends Migration {
 		Schema::create('iwo_refs', function($table)
         {
             $table->increments('id');
-            $table->string('iwo_id');
+            $table->integer('iwo_id');
             $table->string('iwo_ref');
             $table->timestamps();
 

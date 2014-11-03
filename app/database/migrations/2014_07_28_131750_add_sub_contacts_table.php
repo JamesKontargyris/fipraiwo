@@ -15,7 +15,7 @@ class AddSubContactsTable extends Migration {
         Schema::create('sub_contacts', function($table)
         {
             $table->increments('id');
-            $table->string('iwo_id')->unique();
+            $table->integer('iwo_id')->unique();
             $table->string('email');
 
             $table->foreign('iwo_id')->references('id')->on('workorders');

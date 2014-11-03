@@ -16,8 +16,8 @@ class CreateNotesTable extends Migration {
         {
             $table->increments('id');
             $table->longText('note');
-            $table->string('iwo_id');
-            $table->string('user_id');
+            $table->integer ('iwo_id');
+            $table->integer('user_id');
             $table->timestamps();
 
             $table->foreign('iwo_id')->references('id')->on('workorders');
