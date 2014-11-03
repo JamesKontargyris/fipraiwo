@@ -79,7 +79,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Per Høiby'                     => 'per.hoiby@fipra.com',
 			'Marek Matraszek'               => 'marek.matraszek@fipra.com',
 			'Ana Vila Nova'                 => 'ana.vilanova@fipra.com',
-			'Danut Nicolai'                 => 'danut.nicolae@fipra.com',
+			'Danut Nicolae'                 => 'danut.nicolae@fipra.com',
 			'Alex Andreev'                  => 'alex.andreev@fipra.com',
 			'Patrik Zoltvany'               => 'patrik.zoltvany@fipra.com',
 			'Michael Cigler'                => 'michael.cigler@fipra.com',
