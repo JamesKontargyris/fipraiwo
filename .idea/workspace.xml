@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff7bbedb-20db-415d-8413-4130d0ad7c3f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/migrations/2014_04_28_164846_create_emailrecipients_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_04_28_164846_create_emailrecipients_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/migrations/2014_07_28_102901_add_workorders_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_07_28_102901_add_workorders_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/migrations/2014_07_28_131323_add_lead_contacts_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_07_28_131323_add_lead_contacts_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/migrations/2014_07_28_131750_add_sub_contacts_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_07_28_131750_add_sub_contacts_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/migrations/2014_07_29_080042_create_users_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_07_29_080042_create_users_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/migrations/2014_07_30_134827_create_notes_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_07_30_134827_create_notes_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/migrations/2014_07_30_153708_create_logs_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_07_30_153708_create_logs_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/migrations/2014_08_25_174810_create_confirmation_codes_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_08_25_174810_create_confirmation_codes_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\UniServer\www\iwo\app\database\migrations\2014_07_28_102402_add_iwo_refs_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_07_28_102902_add_iwo_refs_table.php" />
+      <change type="DELETED" beforePath="D:\UniServer\www\iwo\app\database\migrations\2014_07_29_075819_entrust_setup_tables.php" afterPath="" />
+      <change type="MOVED" beforePath="D:\UniServer\www\iwo\app\database\migrations\2014_07_29_075819_entrust_setup_tables.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_07_29_080043_entrust_setup_tables.php" />
     </list>
     <ignored path="iwo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,108 +30,7 @@
     <favorites_list name="iwo" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="2014_07_28_131750_add_sub_contacts_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_28_131750_add_sub_contacts_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="800">
-              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_07_29_080042_create_users_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_29_080042_create_users_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="820">
-              <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_07_28_102901_add_workorders_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_28_102901_add_workorders_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
-              <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_07_29_113707_drop_lead_contacts_and_sub_contacts_tables.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_29_113707_drop_lead_contacts_and_sub_contacts_tables.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1000">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_07_30_153708_create_logs_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_30_153708_create_logs_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="800">
-              <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_08_04_092006_create_account_directors_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_04_092006_create_account_directors_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="760">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_08_25_174810_create_confirmation_codes_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_25_174810_create_confirmation_codes_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="800">
-              <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_08_26_122523_create_rep_emails_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_26_122523_create_rep_emails_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="760">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_09_19_131629_create_unit_lead_contacts_table.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_19_131629_create_unit_lead_contacts_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="921">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_07_30_134827_create_notes_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_30_134827_create_notes_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="860">
-              <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -452,7 +343,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -461,7 +352,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25052083" sideWeight="0.49949747" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25052083" sideWeight="0.49949747" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22447917" sideWeight="0.5005025" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -731,14 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_29_075819_entrust_setup_tables.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1640">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_29_151622_add_remember_token_field_to_users_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="921">
@@ -885,7 +768,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_30_134827_create_notes_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="860">
+        <state vertical-scroll-proportion="0.37228543" vertical-offset="0" max-vertical-offset="967">
           <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
           <folding />
         </state>
@@ -926,6 +809,14 @@
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_19_131629_create_unit_lead_contacts_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="921">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_29_080043_entrust_setup_tables.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1640">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
