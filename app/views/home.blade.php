@@ -15,7 +15,7 @@
 
 	@if( ! Session::get('iwo_id'))
 		<div class="col-4 last" align="right">
-			<a href="manage" class="secondary block-but"><i class="fa fa-edit"></i> Manage / Edit / Confirm an existing Internal Work Order</a>
+			<a href="manage" class="secondary block-but"><i class="fa fa-edit"></i> Manage / edit / confirm an existing Internal Work Order</a>
 		</div>
     @endif
 

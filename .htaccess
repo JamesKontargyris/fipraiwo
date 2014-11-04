@@ -1,8 +1,8 @@
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^fipraiwo.jamkon.co.uk$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^fipraiwo.jamkon.co.uk$
+RewriteCond %{HTTP_HOST} ^iwo.fipra.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^iwo.fipra.com$
 RewriteCond %{REQUEST_URI} !public/
 RewriteRule (.*) /public/$1 [L]
     
 #1and1 to enable PHP 5.4
-AddHandler x-mapp-php6 .php 
+AddHandler x-mapp-php6 .php
