@@ -6,7 +6,7 @@
 
 @section('content')
 	@if( ! Session::get('iwo_id'))
-		<div class="intro col-9">
+		<div class="intro col-8">
 	@else
 		<div class="intro col-12">
 	@endif
@@ -14,7 +14,7 @@
 		</div>
 
 	@if( ! Session::get('iwo_id'))
-		<div class="col-3 last" align="right">
+		<div class="col-4 last" align="right">
 			<a href="manage" class="secondary block-but"><i class="fa fa-edit"></i> Manage / Edit / Confirm an existing Internal Work Order</a>
 		</div>
     @endif
