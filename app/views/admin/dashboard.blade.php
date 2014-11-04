@@ -28,7 +28,7 @@
 			</thead>
         	@if(count($formtype->workorders) > 0)
                 @foreach($formtype->workorders as $workorder)
-                	@if($workorder->expiry_date > date('Y-m-d'))
+{{--                	@if($workorder->expiry_date > date('Y-m-d'))--}}
                 		<?php $count++; ?>
 						<tr>
 							<td><a href="/admin/view/{{ $workorder->id }}"><strong>{{ $workorder->title }}</strong></a></td>
@@ -53,7 +53,7 @@
 								<a class="secondary" href="/admin/delete/{{ $workorder->id }}" onClick="return confirm('Are you sure you want to delete this IWO? This action cannot be undone.');"><i class="fa fa-lg fa-times"></i></a>
 							</td>
 						</tr>
-                	@endif
+                	{{--@endif--}}
                 @endforeach
 
                 @if($count == 0)
