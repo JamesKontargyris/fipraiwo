@@ -195,22 +195,12 @@
         source: '/ac/account_directors',
         minLength:1,
         select: function(event, ui) {
-            var copy_contact_field = $('input[name=also_send_work_order_to]'),
-                hidden_contact_field = $('#account_directors_contacts');
+            var copy_contact_field = $('input[name=also_send_work_order_to]');
+
             //Set text box to the label value
             $(this).val(ui.item.value);
             //Set the email field to the email value
             $('input[name=' + $(this).data('email-field') + ']').val(ui.item.email);
-            //Remove the existing AD-specific copy contacts from the main copy contacts field
-            //and tidy up commas and extra white space
-            copy_contact_field.val(function(index, value) {
-                value = $.trim(value.replace(hidden_contact_field.val(), ''));
-                value = value.replace(',,', ',').replace(', ,', ',').replace(/^,|,$/g,'');
-
-                return $.trim(value);
-            });
-            //Add the current AD-specific copy contacts to the hidden holding field
-            hidden_contact_field.val(ui.item.copy_contacts);
 
             if($.trim(ui.item.copy_contacts) != '')
             {
