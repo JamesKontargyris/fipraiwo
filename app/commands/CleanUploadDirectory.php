@@ -18,7 +18,7 @@ class CleanUploadDirectory extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Remove all files from the upload directory set in the iwo_vars config file.';
+	protected $description = 'Remove all files from the upload directory set in the iwo_vars config file';
 
 	/**
 	 * Create a new command instance.

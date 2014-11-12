@@ -196,4 +196,17 @@ class SendEmail {
 
         $job->delete();
     }
+
+	//When an IWO will shortly expire, send an email to all users linked to the IWO
+	public function iwo_expiry_notification($job, $data)
+	{
+		$data['subject'] = " IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") will expire in 7 days";
+
+		foreach($data['recipient'] as $recipient)
+		{
+			$this->send($recipient, $data['subject'], "emails.expire", $data);
+		}
+
+		$job->delete();
+	}
 }
