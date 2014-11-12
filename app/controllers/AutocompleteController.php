@@ -14,11 +14,14 @@ class AutocompleteController extends BaseController
         $matches = [];
         foreach($account_directors as $ad)
         {
-            if(stripos($ad['name'], $term) !== false)
-            {
-                // Add the necessary "value" and "label" fields and append to result set
+	        if(stripos($ad['name'], $term) !== false)
+	        {
+		        $ad_copy_contacts = implode(', ', Account_directors_contact::where('account_director_name', '=', $ad['name'])->lists('copy_email'));
+
+		        // Add the necessary "value" and "label" fields and append to result set
                 $found_ad['value'] = $ad['name'];
                 $found_ad['email'] = $ad['email'];
+		        $found_ad['copy_contacts'] = $ad_copy_contacts;
                 $found_ad['label'] = $ad['name'] . " (" . $ad['email'] . ")";
                 $matches[] = $found_ad;
             }

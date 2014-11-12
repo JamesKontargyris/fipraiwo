@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		 $this->call('AccountDirectorTableSeeder');
+		 $this->call('AccountDirectorsContactsTableSeeder');
 		 $this->call('UnitRepsTableSeeder');
 		 $this->call('SpadRepsTableSeeder');
 		 $this->call('RepEmailsTableSeeder');
