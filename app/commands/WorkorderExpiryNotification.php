@@ -41,8 +41,7 @@ class WorkorderExpiryNotification extends Command {
 	 */
 	public function fire()
 	{
-		//$seven_days_in_future = date('Y-m-d', strtotime('1 week'));
-		$seven_days_in_future = '2014-10-10';
+		$seven_days_in_future = date('Y-m-d', strtotime('1 week'));
 		$expiring_iwos = Workorder::where('expiry_date', '=', $seven_days_in_future)->get();
 
 		$this->info("IWOs expiring 7 days from today: " . $expiring_iwos->count());
@@ -77,8 +76,7 @@ class WorkorderExpiryNotification extends Command {
 					];
 
 					//Get all email addresses linked to this work order along with copy contacts so we can email them about the update
-					//$data['recipient'] = $this->get_all_emails( $this->workorder->id, $this->workorder->formtype_id );
-					$data['recipient'] = ['james.kontargyris@fipra.com'];
+					$data['recipient'] = $this->get_all_emails( $iwo->id, $iwo->formtype_id );
 
 					Queue::push( '\Iwo\Workers\SendEmail@iwo_expiry_notification', $data );
 
