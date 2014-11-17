@@ -3,9 +3,9 @@
 @section('content')
 
     @if(editing())
-        <p>Please look over your update work order:</p>
+        <p>Please look over your updated work order and re-submit at the end of the page, or click 'Go Back' to make changes.</p>
     @else
-        <p>Please confirm the details you have entered:</p>
+        <p>Please look over the details you have entered and submit your IWO at the end of the page, or click 'Go Back' to make changes.</p>
     @endif
 
     <ul class="display-details">
@@ -40,4 +40,13 @@
     </div>
 
     @include('forms.partials.loading')
+
+    <script>
+    	$('a').click(function () { window.onbeforeunload = null; });
+    	$('input[type=submit]').click(function () { window.onbeforeunload = null; });
+
+    	window.onbeforeunload = function() {
+            return 'Your IWO has not yet been submitted.';
+        };
+    </script>
 @stop
