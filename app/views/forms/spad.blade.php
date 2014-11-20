@@ -39,7 +39,7 @@
 				<div class="formfield">
 					{{ Form::label('sub_email_address', 'Special Adviser Email Address:', ['class' => 'required']) }}
 					@if(editing())
-						{{ Form::text('sub_email_address', isset($workorder->workorder->sub_email_address) ? $workorder->workorder->sub_email_address : '', ['readonly' => 'readonly']) }}
+						{{ Form::text('sub_email_address', isset($workorder->workorder->sub_email_address) ? $workorder->workorder->sub_email_address : '', ($loggedin_user->hasRole('Lead') || $loggedin_user->hasRole('SuperUser')) ? [] : ['readonly' => 'readonly']) }}
 					@else
 						{{ Form::text('sub_email_address', Input::old('sub_email_address')) }}
 					@endif
