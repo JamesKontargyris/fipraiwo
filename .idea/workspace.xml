@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff7bbedb-20db-415d-8413-4130d0ad7c3f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/forms/spad.blade.php" afterPath="$PROJECT_DIR$/app/views/forms/spad.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/confirm.blade.php" afterPath="$PROJECT_DIR$/app/views/confirm.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="iwo.iws" />
@@ -34,44 +34,28 @@
       <file leaf-file-name="ManagementController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/ManagementController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3939" max-vertical-offset="13400">
-              <caret line="515" column="25" selection-start-line="515" selection-start-column="25" selection-end-line="515" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="7560" max-vertical-offset="13380">
+              <caret line="416" column="5" selection-start-line="416" selection-start-column="5" selection-end-line="416" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spad.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/forms/spad.blade.php">
+      <file leaf-file-name="confirm.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/confirm.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.434333" vertical-offset="500" max-vertical-offset="5380">
-              <caret line="41" column="263" selection-start-line="41" selection-start-column="263" selection-end-line="41" selection-end-column="263" />
-              <folding>
-                <marker date="1416507669299" expanded="true" signature="1147:1403" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="1439:1639" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="1907:2132" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="2558:2787" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="4135:4325" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="4965:5453" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="4991:5239" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="6269:6504" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="6854:7072" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="7398:7683" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="8146:8393" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="8418:8700" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="11675:11918" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="12337:12584" placeholder="..." />
-                <marker date="1416507669299" expanded="true" signature="13172:13417" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="0.12409514" vertical-offset="0" max-vertical-offset="1180">
+              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unit.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/forms/unit.blade.php">
+      <file leaf-file-name="ConfirmController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/ConfirmController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1660" max-vertical-offset="9440">
-              <caret line="103" column="396" selection-start-line="103" selection-start-column="396" selection-end-line="103" selection-end-column="396" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1620">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -144,8 +128,8 @@
         <option value="$PROJECT_DIR$/app/views/forms/partials/copy_emails.blade.php" />
         <option value="$PROJECT_DIR$/app/database/seeds/AccountDirectorsContactsTableSeeder.php" />
         <option value="$PROJECT_DIR$/public/js/site.js" />
-        <option value="$PROJECT_DIR$/app/views/confirm.blade.php" />
         <option value="$PROJECT_DIR$/app/views/forms/spad.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/confirm.blade.php" />
       </list>
     </option>
   </component>
@@ -282,15 +266,15 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -319,7 +303,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25052083" sideWeight="0.49949747" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14322917" sideWeight="0.49949747" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22447917" sideWeight="0.5005025" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -349,9 +333,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22447917" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -375,13 +359,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_25_174810_create_confirmation_codes_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="800">
-          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_26_122523_create_rep_emails_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="921">
@@ -404,13 +381,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.lock">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.033334" vertical-offset="2489" max-vertical-offset="50800">
           <caret line="141" column="34" selection-start-line="141" selection-start-column="34" selection-end-line="141" selection-end-column="34" />
         </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php">
@@ -617,13 +594,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel.log">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="47040">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/Iwo/Workers/SendEmail.php">
@@ -710,51 +687,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/confirm.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/views/forms/unit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87590486" vertical-offset="113" max-vertical-offset="1140">
-          <caret line="48" column="56" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1660" max-vertical-offset="9440">
+          <caret line="103" column="396" selection-start-line="103" selection-start-column="396" selection-end-line="103" selection-end-column="396" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/forms/spad.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47569802" vertical-offset="980" max-vertical-offset="5380">
+          <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ConfirmController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/ManagementController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3939" max-vertical-offset="13400">
-          <caret line="515" column="25" selection-start-line="515" selection-start-column="25" selection-end-line="515" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="7560" max-vertical-offset="13380">
+          <caret line="416" column="5" selection-start-line="416" selection-start-column="5" selection-end-line="416" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/forms/unit.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/views/confirm.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1660" max-vertical-offset="9440">
-          <caret line="103" column="396" selection-start-line="103" selection-start-column="396" selection-end-line="103" selection-end-column="396" />
+        <state vertical-scroll-proportion="0.12409514" vertical-offset="0" max-vertical-offset="1180">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/forms/spad.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.434333" vertical-offset="500" max-vertical-offset="5380">
-          <caret line="41" column="263" selection-start-line="41" selection-start-column="263" selection-end-line="41" selection-end-column="263" />
-          <folding>
-            <marker date="1416507669299" expanded="true" signature="1147:1403" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="1439:1639" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="1907:2132" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="2558:2787" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="4135:4325" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="4965:5453" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="4991:5239" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="6269:6504" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="6854:7072" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="7398:7683" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="8146:8393" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="8418:8700" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="11675:11918" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="12337:12584" placeholder="..." />
-            <marker date="1416507669299" expanded="true" signature="13172:13417" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>

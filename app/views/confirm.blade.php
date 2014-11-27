@@ -4,8 +4,10 @@
 
     @if(editing())
         <p>Please look over your updated work order and re-submit at the end of the page, or click 'Go Back' to make changes.</p>
+        <h3>Please note: your updated IWO will not be processed until you click the 'Update and Re-submit Work Order' button!</h3>
     @else
         <p>Please look over the details you have entered and submit your IWO at the end of the page, or click 'Go Back' to make changes.</p>
+        <h3>Please note: your IWO will not be submitted until you click the 'Submit Work Order' button!</h3>
     @endif
 
     <ul class="display-details">
