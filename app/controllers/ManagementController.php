@@ -232,7 +232,7 @@ class ManagementController extends BaseController
 
 		// Display the confirmation page
 		return View::make( 'confirm', compact( 'input' ) )->with( [
-			'page_title' => '"' . $this->workorder->title . '": Update and Re-submit',
+			'page_title' => 'Please Approve and Re-submit "' . $this->workorder->title . '"',
 			'iwo_key'    => $this->workorder->iwo_key
 		] );
 

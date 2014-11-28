@@ -4,10 +4,10 @@
 
     @if(editing())
         <p>Please look over your updated work order and re-submit at the end of the page, or click 'Go Back' to make changes.</p>
-        <h3>Please note: your updated IWO will not be processed until you click the 'Update and Re-submit Work Order' button!</h3>
+        <h4>Please note: your updated IWO will not be processed until you click the 'Approve and Re-submit Work Order' button at the bottom of the page.</h4>
     @else
         <p>Please look over the details you have entered and submit your IWO at the end of the page, or click 'Go Back' to make changes.</p>
-        <h3>Please note: your IWO will not be submitted until you click the 'Submit Work Order' button!</h3>
+        <h4>Please note: your IWO will not be submitted until you click the 'Approve and Submit Work Order' button at the bottom of the page.</h4>
     @endif
 
     <ul class="display-details">
@@ -34,9 +34,9 @@
         @endif
 
         @if(editing())
-                {{ link_to("manage/update", 'Update and Re-submit Work Order', ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
+                {{ link_to("manage/update", 'Approve and Re-submit Work Order', ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
         @else
-                {{ link_to("$iwo_key/save", 'Submit Work Order', ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
+                {{ link_to("$iwo_key/save", 'Approve and Submit Work Order', ['class' => 'primary swap-for-loading', 'id' => 'submit']) }}
             <p class="small-print">Please note: if you uploaded files on the previous page and choose to go back, you will need to select those files again.</p>
         @endif
     </div>
