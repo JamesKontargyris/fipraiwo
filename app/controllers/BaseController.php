@@ -65,7 +65,7 @@ class BaseController extends Controller {
 		// whether that be submitting the form or going back to the form to make changes
 		Session::reflash();
 		// Display the confirmation page
-		return View::make('confirm', compact('input'))->with(['page_title' => $this->page_title . ": Please Approve and Submit your IWO", 'iwo_key' => $this->iwo_key]);
+		return View::make('confirm', compact('input'))->with(['page_title' => "Please Approve and Submit your IWO", 'iwo_key' => $this->iwo_key]);
 	}
 
 	public function getSave()

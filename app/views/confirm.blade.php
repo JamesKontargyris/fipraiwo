@@ -3,11 +3,15 @@
 @section('content')
 
     @if(editing())
-        <p>Please look over your updated work order and re-submit at the end of the page, or click 'Go Back' to make changes.</p>
-        <h4>Please note: your updated IWO will not be processed until you click the 'Approve and Re-submit Work Order' button at the bottom of the page.</h4>
+    	<div class="col-9">
+			<p>Please look over your updated work order and re-submit at the end of the page, or click 'Go Back' to make changes.</p>
+			<h4>Please note: your updated IWO will not be processed until you click the 'Approve and Re-submit Work Order' button at the bottom of the page.</h4>
+    	</div>
     @else
-        <p>Please look over the details you have entered and submit your IWO at the end of the page, or click 'Go Back' to make changes.</p>
-        <h4>Please note: your IWO will not be submitted until you click the 'Approve and Submit Work Order' button at the bottom of the page.</h4>
+    	<div class="col-9">
+			<p>Please look over the details you have entered and submit your IWO at the end of the page, or click 'Go Back' to make changes.</p>
+			<h4>Please note: your IWO will not be submitted until you click the 'Approve and Submit Work Order' button at the bottom of the page.</h4>
+    	</div>
     @endif
 
     <ul class="display-details">
