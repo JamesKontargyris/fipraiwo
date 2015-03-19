@@ -11,7 +11,9 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
         DB::table('unit_lead_contacts')->delete();
 
         $unit_lead_contacts = [
+            'Fipra Africa'         => 'Abdul Waheed Patel',
             'Fipra Australia'      => 'John Richardson',
+            'Fipra Azerbaijan'     => 'Sayer Aliyev',
             'Fipra Brazil'         => 'José Gabriel Assis de Almeida',
             'Fipra Bulgaria'       => 'Rositsa Velkova',
             'Fipra Canada'         => 'Andre Albinati',
@@ -32,6 +34,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra Ireland'        => 'Ann Kelly',
             'Fipra Italy'          => 'Mariella Palazzolo',
             'Fipra Japan'          => 'Philip Howard',
+            'Fipra Singapore'      => 'Richard Andrew',
             'Fipra South Korea'    => 'Yun-Hee Lee',
             'Fipra Latvia'         => 'Armands Gutmanis',
             'Fipra Lithuania'      => 'Arūnas Pemkus',
@@ -90,6 +93,9 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Ayse Aricioglu'                => 'ayse.aricioglu@fipra.com',
             'James Wilson'                  => 'james.wilson@fipra.com',
             'Rory Chisholm'                 => 'rory.chisholm@fipra.com',
+            'Abdul Waheed Patel'            => 'abdulwaheed.patel@fipra.com',
+            'Sayer Aliyev'                  => 'sayer.aliyev@fipra.com',
+            'Richard Andrew'                => 'richard.andrew@fipra.com'
         ];
 
         foreach ($unit_lead_contacts as $unit => $contact) {
