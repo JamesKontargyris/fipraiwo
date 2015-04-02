@@ -13,7 +13,7 @@
 @endif
 
 <p>A Fipra Units IWO was recently submitted, listing you as the sub-contracted unit contact.</p>
-<p>A copy of the submitted IWO is included below.</p>
+<p>A copy of the submitted IWO is included below. <strong>Please ensure you have read the accompanying explanatory notes below the IWO.</strong></p>
 
 @include('emails.partials.status_manage')
 
@@ -22,6 +22,10 @@
 
 <div>
     @include('emails.partials.form')
+</div>
+<br/>
+<div>
+    @include('emails.partials.notes_unit')
 </div>
 </body>
 </html>

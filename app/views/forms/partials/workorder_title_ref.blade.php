@@ -15,7 +15,7 @@
 
     <div class="formfield col-4 last">
             {{ Form::label('workorder_follows_on_from', 'This IWO follows on from (ref):', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-            <div class="help-box">If this work order follows on from, or superceeds, a previous work order, please enter the previous work order reference code here.</div>
+            <div class="help-box">If this work order follows on from, or supersedes, a previous work order, please enter the previous work order reference code here.</div>
 
             @if(editing())
             {{ Form::text('workorder_follows_on_from', $workorder->workorder_follows_on_from) }}

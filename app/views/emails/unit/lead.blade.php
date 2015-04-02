@@ -16,5 +16,9 @@
 <div>
     @include('emails.partials.form')
 </div>
+<br/>
+<div>
+    @include('emails.partials.notes_unit')
+</div>
 </body>
 </html>
