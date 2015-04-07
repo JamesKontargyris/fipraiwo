@@ -21,5 +21,9 @@
 <div>
     @include('emails.partials.form')
 </div>
+
+<div>
+    @include('emails.partials.notes_unit')
+</div>
 </body>
 </html>
