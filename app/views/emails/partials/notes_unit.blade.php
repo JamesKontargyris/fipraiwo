@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <td valign="top" width="200"><strong>Lead Unit</strong></td>
-        <td valign="top" width="400">Where a client requires advice in more than one territory the Lead unit is the one responsible for managing a particular client relationship or instructions, including any financial arrangements with and billing to that client directly.  All other units are subcontracting units. It is the Lead Unit, and not the subcontracting Unit, that bears ultimate responsibility to the client for quality control.</td>
+        <td valign="top" width="400">Where a client requires advice in more than one territory the Fipra Lead Unit is the one responsible for a particular client relationship including taking instructions and any financial arrangements with and billing to that client directly. All other Units are subcontracting Units. It is the Lead Unit, and not the subcontracting Unit, that bears ultimate responsibility to the client for quality control and shall always pay the subcontracting Unit irrespective of whether the client has paid them. For Special Advisers the Lead Unit is always Fipra International.</td>
     </tr>
     <tr>
         <td valign="top" width="200"><strong>Fees</strong></td>
@@ -30,6 +30,6 @@
     </tr>
     <tr>
         <td valign="top" width="200"><strong>Green Sheet</strong></td>
-        <td valign="top" width="400">Green Sheet is the term for the time-sheet template that Fipra uses and can be obtained from Fipra International’s finance department or any Fipra International Account Director.  When requested, they need to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked and are irrespective of the type of fee structure chosen above.</td>
+        <td valign="top" width="400">Green Sheet is the term for the time-sheet template that Fipra uses and can be obtained by clicking above. Where they are requested, these timesheets need to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked and are irrespective of the type of fee structure chosen above. Where they are requested, payment is conditional on greesheets being produced on time and should they be late, this needs to be advised beforehand. If Green Sheets are submitted too late to make the billing cycle it may not be possible to pay the subcontracting Unit or Special Adviser.</td>
     </tr>
 </table>
