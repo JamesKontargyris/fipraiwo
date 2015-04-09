@@ -218,7 +218,9 @@ class BaseController extends Controller {
         if(Input::old('also_send_work_order_to'))
         {
 	        //Explode all email addresses to array and remove duplicates (trim addresses too)
-            $addresses = array_map('trim', array_unique(explode(",", Input::old('also_send_work_order_to'))));
+            $addresses = str_replace(';', ',', Input::old('also_send_work_order_to'));
+            $addresses = array_map('trim', array_unique(explode(",", $addresses)));
+
 	        //Add addresses to $data array and send email(s)
 	        $data['recipient'] = $addresses;
 	        Queue::push('\Iwo\Workers\SendEmail@iwo_created_copy', $data);
