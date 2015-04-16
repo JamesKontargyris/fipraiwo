@@ -134,7 +134,7 @@
                 <div class="formfield">
                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
 
-                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
                     <div class="help-box fipra-rates">
                         <table width="100%" class="rate-table">
                         	<thead>
@@ -171,8 +171,8 @@
                         {{ Form::label('', 'The following person(s) will work at these rates:') }}
                         <table width="100%">
                             <thead>
-                            <td width="60%">Name</td>
-                            <td width="30%" class="rate-label">Rate</td>
+                            <td width="60%" class="bold">Name</td>
+                            <td width="30%" class="rate-label bold">Rate</td>
                             <td width="10%"></td>
                             </thead>
 
@@ -228,7 +228,7 @@
                                     <td class="person-field">{{ Form::text('team[1][person]', null, ['class' => 'autofill inline-field']) }}</td>
                                     <td class="rate-field">
                                     	<div class="fees-text">
-                                    		<span class="inline bold"><br/>&euro;</span> {{ Form::text('team[1][rate]', null, ['class' => 'inline-field']) }}
+                                    		<span class="inline bold">&euro;</span> {{ Form::text('team[1][rate]', null, ['class' => 'inline-field']) }}
                                     	</div>
                                     	<div class="fees-select">
 											{{ Form::select('team[1][rate]', ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], ['class' => 'inline']) }}
@@ -277,7 +277,7 @@
                     {{ Form::label('work_cap', 'Work Cap (before IUD):') }}
                     {{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap'), ['class' => 'inline-field inline']) }}
                     {{ Form::select('work_cap_currency', ['EUR' => 'EUR €', 'USD' => 'USD $', 'GBP' => 'GBP £'], (editing()) ? isset($workorder->workorder->work_cap_currency) ? $workorder->workorder->work_cap_currency : '' : Input::old('work_cap_currency'), ['style' => 'float:left'])}}
-                    {{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
+                    {{ Form::select('work_cap_period', ['Per month' => 'per month', 'Per day' => 'per day', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
                     {{ display_form_error('work_cap', $errors) }}
                 </div>
             </div> <!-- /formgroup -->

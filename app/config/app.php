@@ -14,7 +14,7 @@ return array(
 	|
 	*/
 
-	'debug'     => getenv( 'DEBUG' ),
+	'debug'     => $_ENV['DEBUG'],
 	/*
 	|--------------------------------------------------------------------------
 	| Application URL

@@ -81,7 +81,7 @@
         var rate_labels = new Array();
         rate_labels['at the standard Fipra hourly rates'] = 'Hourly Rate';
         rate_labels['at a different Fipra hourly rate'] = 'Hourly Rate';
-        rate_labels['at a day rate'] = 'Day Rate';
+        rate_labels['at a daily rate'] = 'Day Rate';
         rate_labels['at a flat or project rate'] = 'Flat/Project Rate';
 
         if(selection != '')
