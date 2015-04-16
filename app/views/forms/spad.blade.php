@@ -80,7 +80,7 @@
                 <div class="title">Fees <small>before inter-unit discount</small></div>
                 <div class="formfield">
                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
-                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rate' => 'at the standard Fipra hourly rate', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rate' => 'at the standard Fipra hourly rate', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
 
                     <div class="sub-box rate-field col-12">
                         {{ Form::label('rate_is', 'Rate:', ['class' => 'required rate-label']) }}
@@ -110,7 +110,7 @@
 					{{ Form::label('work_cap', 'Work Cap (before IUD):') }}
 					{{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap'), ['class' => 'inline-field']) }}
 					{{ Form::select('work_cap_currency', ['EUR' => 'EUR €', 'USD' => 'USD $', 'GBP' => 'GBP £'], (editing()) ? isset($workorder->workorder->work_cap_currency) ? $workorder->workorder->work_cap_currency : '' : Input::old('work_cap_currency'), ['style' => 'float:left'])}}
-					{{ Form::select('work_cap_period', ['Per month' => 'per month', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
+					{{ Form::select('work_cap_period', ['Per month' => 'per month', 'Per day' => 'per day', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
 					{{ display_form_error('work_cap', $errors) }}
 				</div>
             </div> <!-- /formgroup -->
