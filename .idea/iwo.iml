@@ -7,5 +7,15 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sass-stdlib" level="application" />
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/vendor/iron-io/iron_mq/iron_mq.phar" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/vendor/iron-io/iron_mq/iron_mq.phar" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
