@@ -85,7 +85,11 @@
                     <div class="sub-box rate-field col-12">
                         {{ Form::label('rate_is', 'Rate:', ['class' => 'required rate-label']) }}
 						<span class="inline bold"><br/>&euro;</span> {{ Form::text('rate_is', (editing()) ? isset($workorder->workorder->rate_is) ? $workorder->workorder->rate_is : '' : Input::old('rate_is'), ['class' => 'inline-field']) }}
-                        {{ display_form_error('rate_is', $errors) }}
+                        {{ display_form_error('rate_is', $errors) }}<br/><br/>
+
+                        {{ Form::label('amount_payable', 'Amount payable (after IUD):', ['class' => 'required']) }}
+                        <span class="inline bold"><br/>&euro;</span> {{ Form::text('amount_payable', (editing()) ? isset($workorder->workorder->amount_payable) ? $workorder->workorder->amount_payable : '' : Input::old('amount_payable'), ['class' => 'inline-field']) }}
+                        {{ display_form_error('amount_payable', $errors) }}
 
                     </div>
                     {{ display_form_error('the_work_will_be_done', $errors) }}

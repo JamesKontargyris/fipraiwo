@@ -1,5 +1,7 @@
 (function() {
 
+    var interUnitDiscount = 0.2;
+
     // Make sure the agreed fee element details field is displayed
     // when the page reloads after a failed validation and the
     // agreed fee element dropdown is set to "Yes"
@@ -63,6 +65,7 @@
     {
         $('#green-sheet-required-reveal').show();
     }
+
     // Show/hide the green sheet details field depending
     // on the value in the green sheet required element dropdown
     $('select.green-sheet-required').on('change', function()
@@ -75,6 +78,17 @@
             $('#green-sheet-required-reveal').slideUp();
         }
     });
+
+    //Work out the amount payable when a figure is entered in the hourly rate box
+    //put the amount payable in the amount_payable box
+    $('#rate_is').on('blur', function()
+    {
+        var amountPayable = parseInt($(this).val()) - (parseInt($(this).val()) * interUnitDiscount);
+        if(isNaN(amountPayable.toFixed(2))) {
+            amountPayable = 0;
+        }
+        $('#amount_payable').val(amountPayable.toFixed(2));
+    })
 
 
     function show_rate_form(selection)
