@@ -52,6 +52,7 @@ class UnitRepsTableSeeder extends DatabaseSeeder
             'Fipra Turkey'         => 'Peter-Carlo Lehrell',
             'Fipra Ukraine'        => 'Dirk Hudig',
             'Fipra United Kingdom' => 'Rory Chisholm',
+            'Fipra Uruguay'        => 'Laura Batchelor'
         ];
 
         foreach ($unit_reps as $unit => $rep) {
