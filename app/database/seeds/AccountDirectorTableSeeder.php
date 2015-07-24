@@ -16,7 +16,7 @@ class AccountDirectorTableSeeder extends DatabaseSeeder
             'Jan Ahlskog'         => 'jan.ahlskog@fipra.com',
             'John Gray'           => 'john.gray@fipra.com',
             'Laura Batchelor'     => 'laura.batchelor@fipra.com',
-            'Peter-Carlo Lehrell' => 'lehrell@fipra.com',
+            'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
             'Mark MacGann'        => 'mark.macgann@fipra.com',
             'Paul Buffet'         => 'paul.buffet@fipra.com',
             'Nathalie Hesketh'    => 'nathalie.hesketh@fipra.com',

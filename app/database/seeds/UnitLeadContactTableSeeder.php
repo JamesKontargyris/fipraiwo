@@ -71,7 +71,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Anthony Gortzis'               => 'anthony.gortzis@fipra.com',
             'Tamás Sárdi'                   => 'tamas.sardi@fipra.com',
             'Manash Neog'                   => 'manash.neog@fipra.com',
-            'Peter-Carlo Lehrell'           => 'lehrell@fipra.com',
+            'Peter-Carlo Lehrell'           => 'mark.fielding@fipra.com',
             'Ann Kelly'                     => 'ann.kelly@fipra.com',
             'Mariella Palazzolo'            => 'mariella.palazzolo@fipra.com',
             'Philip Howard'                 => 'philip.howard@fipra.com',

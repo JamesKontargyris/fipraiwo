@@ -9,7 +9,7 @@ class RepEmailsTableSeeder extends DatabaseSeeder
         DB::table('rep_emails')->delete();
 
         $email = [
-            'Peter-Carlo Lehrell' => 'lehrell@fipra.com',
+            'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
             'David Lawsky'        => 'david.lawsky@fipra.com',
             'Nathalie Hesketh'    => 'nathalie.hesketh@fipra.com',
             'Sebastian Vos'       => 'sebastian.vos@fipra.com',
