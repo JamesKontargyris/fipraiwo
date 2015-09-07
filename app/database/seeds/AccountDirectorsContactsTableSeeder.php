@@ -11,7 +11,7 @@ class AccountDirectorsContactsTableSeeder extends DatabaseSeeder
 
 		$account_directors_contacts = [
 			['Laura Batchelor', 'mariehelene.chevallier@fipra.com'],
-			['Laura Batchelor', 'fiona.oconnor@fipra.com'],
+			['Laura Batchelor', 'fiona.oconnor@fipra.com']
 		];
 
 		foreach ( $account_directors_contacts as $row )
