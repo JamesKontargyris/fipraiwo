@@ -29,7 +29,7 @@ class UnitRepsTableSeeder extends DatabaseSeeder
             'Fipra Greece'         => 'Nikos Stathopoulos',
             'Fipra Hungary'        => 'Rory Chisholm',
             'Fipra India'          => 'Peter-Carlo Lehrell',
-            'Fipra International'  => '',
+//            'Fipra International'  => '',
             'Fipra Ireland'        => 'Ann Kelly',
             'Fipra Italy'          => 'Peter-Carlo Lehrell',
             'Fipra Japan'          => 'Peter-Carlo Lehrell',
