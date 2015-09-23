@@ -29,7 +29,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra Greece'         => 'Anthony Gortzis',
             'Fipra Hungary'        => 'Tamás Sárdi',
             'Fipra India'          => 'Manash Neog',
-            'Fipra International'  => 'Peter-Carlo Lehrell',
+//            'Fipra International'  => 'Peter-Carlo Lehrell',
             'Fipra Ireland'        => 'Ann Kelly',
             'Fipra Italy'          => 'Mariella Palazzolo',
             'Fipra Japan'          => 'Philip Howard',
