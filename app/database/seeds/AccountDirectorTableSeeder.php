@@ -23,7 +23,8 @@ class AccountDirectorTableSeeder extends DatabaseSeeder
             'Phil Evans'          => 'phil.evans@fipra.com',
             'Rory Chisholm'       => 'rory.chisholm@fipra.com',
             'Ukko Metsola'        => 'ukko.metsola@fipra.com',
-            'Paul Buffet'         => 'paul.buffet@fipra.com'
+            'Paul Buffet'         => 'paul.buffet@fipra.com',
+            'Hilary Hudson'       => 'hilary.hudson@fipra.com'
         ];
 
         foreach ($account_directors as $name => $email) {
