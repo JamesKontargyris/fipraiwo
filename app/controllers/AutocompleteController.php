@@ -60,22 +60,23 @@ class AutocompleteController extends BaseController
 
     public function spad_reps()
     {
-        $spad_reps = Spad_email::all()->toArray();
+//        Changed to use Spad_email table rather than Spad_rep for better functionality
+        $spads = Spad_email::all()->toArray();
 
         // Cleaning up the term
         $term = trim(strip_tags($_GET['term']));
 
         // Rudimentary search
         $matches = [];
-        foreach($spad_reps as $rep)
+        foreach($spads as $spad)
         {
-            if(stripos($rep['spad_name'], $term) !== false)
+            if(stripos($spad['spad_name'], $term) !== false)
             {
                 // Add the necessary "value" and "label" fields and append to result set
-                $found_rep['value'] = $rep['spad'];
-                $found_rep['rep'] = $rep['rep'];
-	            $found_rep['email'] = Spad_email::where('spad_name', '=', $rep['spad'])->pluck('spad_email');
-                $found_rep['label'] = $rep['spad'] . " (" . $found_rep['email'] . ")";
+                $found_rep['value'] = $spad['spad_name'];
+                $found_rep['rep'] = Spad_rep::where('spad', '=', $spad['spad_name'])->pluck('rep');
+	            $found_rep['email'] = Spad_email::where('spad_name', '=', $spad['spad_name'])->pluck('spad_email');
+                $found_rep['label'] = $spad['spad_name'] . " (" . $found_rep['email'] . ")";
                 $matches[] = $found_rep;
             }
         }
