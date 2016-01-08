@@ -69,7 +69,7 @@ class AutocompleteController extends BaseController
         $matches = [];
         foreach($spad_reps as $rep)
         {
-            if(stripos($rep['spad'], $term) !== false)
+            if(stripos($rep['spad_name'], $term) !== false)
             {
                 // Add the necessary "value" and "label" fields and append to result set
                 $found_rep['value'] = $rep['spad'];
