@@ -60,7 +60,7 @@ class AutocompleteController extends BaseController
 
     public function spad_reps()
     {
-        $spad_reps = Spad_rep::all()->toArray();
+        $spad_reps = Spad_email::all()->toArray();
 
         // Cleaning up the term
         $term = trim(strip_tags($_GET['term']));
