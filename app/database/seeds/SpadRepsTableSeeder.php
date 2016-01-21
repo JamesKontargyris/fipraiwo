@@ -60,8 +60,8 @@ class SpadRepsTableSeeder extends DatabaseSeeder
             "Flor O'Mahony"          => "Peter-Carlo Lehrell",
             "Juan Prat y Coll"       => "Jan Ahlskog",
             "John Prideaux"          => "Peter-Carlo Lehrell",
-            "Shan Ramburuth"         => "Phil Evans",
-            "Julius Sen"             => "Phil Evans",
+            "Shan Ramburuth"         => "Peter-Carlo Lehrell",
+            "Julius Sen"             => "Peter-Carlo Lehrell",
             'Sabine Seeger'          => 'David Lawsky',
             "Greg Shea"              => "Peter-Carlo Lehrell",
             "Alexander Shelemekh"    => "Peter-Carlo Lehrell",
@@ -70,13 +70,15 @@ class SpadRepsTableSeeder extends DatabaseSeeder
             "John Tzoannos"          => "Peter-Carlo Lehrell",
             "Anton Van der Lande"    => "Dirk Hudig",
             "Paul Vandoren"          => "Dirk Hudig",
-            "Joris Vos"              => "Ukko Metsola",
+            "Joris Vos"              => "Hilary Hudson",
             "Richard Wainwright"     => "Dirk Hudig",
             "Rob Walton"             => "Laura Batchelor",
             "Florus Wijsenbeek"      => "Peter-Carlo Lehrell",
             'Mikhail Yurlov'         => 'Peter-Carlo Lehrell',
             'Gianluca Comin'         => 'Mariella Palazzolo',
-            'Krzysztof Lisek'        => 'Ukko Metsola',
+            'Krzysztof Lisek'        => 'Hilary Hudson',
+            'Martin Cauchi Inglott' => 'Hilary Hudson',
+            'Nathalie Hesketh' => 'Hilary Hudson',
         ];
 
         foreach ($spad_reps as $spad => $rep) {

@@ -77,6 +77,7 @@ class SpadEmailsTableSeeder extends DatabaseSeeder
             'Krzysztof Lisek'       => 'krzysztof.lisek@fipra.com',
             'Wolfgang Schneider'       => 'wolfgang.schneider@fipra.com',
             'Nathalie Hesketh'       => 'nathalie.hesketh@fipra.com',
+            'Martin Cauchi Inglott' => 'martin.cauchiinglott@fipra.com',
         ];
 
         foreach ($email as $name => $address) {

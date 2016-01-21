@@ -22,7 +22,6 @@ class AccountDirectorTableSeeder extends DatabaseSeeder
             'Nathalie Hesketh' => 'nathalie.hesketh@fipra.com',
             'Phil Evans' => 'phil.evans@fipra.com',
             'Rory Chisholm' => 'rory.chisholm@fipra.com',
-            'Ukko Metsola' => 'ukko.metsola@fipra.com',
             'Paul Buffet' => 'paul.buffet@fipra.com',
             'Hilary Hudson' => 'hilary.hudson@fipra.com',
             'Martina Bianchini' => 'martina.bianchini@fipra.com',
