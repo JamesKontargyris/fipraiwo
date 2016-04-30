@@ -42,7 +42,17 @@ function pretty_input($input)
         //make it look nice
         if($key == 'team')
         {
-            $input['Team Members and Rates'] = pretty_team($input['team']);
+//            if this array key exists, it is the old model of fees entry
+            if(array_key_exists('the_work_will_be_done', $input))
+            {
+                $input['Team'] = pretty_team_old($input['team']);
+
+            }
+            else
+            {
+//                Otherwise, it is the new model of fees entry
+                $input['Team'] = pretty_team($input['team']);
+            }
             //Remove the old team form data
             unset($input['team']);
             //Continue with the foreach loop
@@ -83,7 +93,8 @@ function pretty_input($input)
     return $input;
 }
 
-function pretty_team($team = [])
+//Prettify the new fees model input
+function pretty_team($team = [], $rate_type = 'Fipra day rate')
 {
     $pretty_team  = "<table cellspacing='10' cellpadding='10' border='1'>";
 
@@ -91,15 +102,61 @@ function pretty_team($team = [])
     {
         if(isset($member['person']) && $member['person'] != "")
         {
-	        if( ! isset($member['rate']) || $member['rate'] == '') $member['rate'] = 'N/A';
-            $pretty_team .= "<tr>";
-            $pretty_team .= "<td style='padding-right:20px'>" . $member['person'] . "</td><td>&euro;" . remove_currency_symbol($member['rate']) . "</td>";
-            $pretty_team .= "</tr>";
+            if(isset($member['level']))
+            {
+//                This is the new style fees entry
+                $friendly_levels = [
+                    'account_director' => 'Account Director',
+                    'account_manager' => 'Account Manager',
+                    'account_executive' => 'Account Executive'
+                ];
+
+                $pretty_team .= "<tr>";
+                $pretty_team .= "<td style='padding-right:20px'>" . $member['person'] . " (" .$friendly_levels[$member['level']] . ")</td>";
+
+                if(isset($member['ratetype']) && $member['ratetype'] == 'dayrate')
+                {
+                    $days_plural = $member['days'] == 1 ? 'Day' : 'Days';
+                    $pretty_team .= "<td style='padding-right:20px'>" . $member['days'] . " " . $days_plural . "</td>";
+                    $pretty_team .= "<td>Total: " . $member['persontotal'] . "</td>";
+                }
+                else
+                {
+                    $pretty_team .= "<td>&euro;" . remove_currency_symbol($member['flatrate']) . " (project rate)</td>";
+                }
+                $pretty_team .= "</tr>";
+            }
+            else {
+                // This is the old style fees entry
+                if( ! isset($member['rate']) || $member['rate'] == '') $member['rate'] = 'N/A';
+                $pretty_team .= "<tr>";
+                $pretty_team .= "<td style='padding-right:20px'>" . $member['person'] . "</td><td>&euro;" . remove_currency_symbol($member['rate']) . "</td>";
+                $pretty_team .= "</tr>";
+            }
+
         }
     }
 
     $pretty_team .= "</table>";
 
+    return $pretty_team;
+}
+
+//Prettify the old fees form input
+function pretty_team_old($team = [])
+{
+    $pretty_team  = "<table cellspacing='10' cellpadding='10' border='1'>";
+    foreach($team as $member)
+    {
+        if(isset($member['person']) && $member['person'] != "")
+        {
+            if( ! isset($member['rate']) || $member['rate'] == '') $member['rate'] = 'N/A';
+            $pretty_team .= "<tr>";
+            $pretty_team .= "<td style='padding-right:20px'>" . $member['person'] . "</td><td>&euro;" . remove_currency_symbol($member['rate']) . "</td>";
+            $pretty_team .= "</tr>";
+        }
+    }
+    $pretty_team .= "</table>";
     return $pretty_team;
 }
 

@@ -55,10 +55,10 @@ class BaseController extends Controller {
 
 	public function getConfirm()
 	{
-		// Use the pretty_input() function to make form input data user friendly and pretty for display
+        // Use the pretty_input() function to make form input data user friendly and pretty for display
         //But first, for display purposes, remove the 'editing' flag if it exists
         //(It will still stay in the input array for use in getSave)
-		$input = Input::old();
+        $input = Input::old();
         $input = pretty_input($input);
 
 		// Reflash the input data for another request so it can be used in the next stage,

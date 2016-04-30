@@ -12,7 +12,6 @@
 
 	<div class="intro">
         <p>This form confirms financial instructions between Members of the Fipra Network. Please fill one form out each time a Unit is subcontracted.</p>
-        <p><strong>Please note: all amounts quoted are gross, i.e. before the inter unit discount.</strong></p>
         <p class="italic small-print">Please see full explanatory notes at the end of the page.</p>
         @if(editing())
         	<p class="red">Fields in red cannot be edited.</p>
@@ -129,133 +128,324 @@
 					{{ display_form_error('sub_fipra_representative', $errors) }}
                 </div>
             </div>
+
+
             <div class="formgroup">
-                <div class="title">Fees <small>before inter-unit discount</small></div>
-                <div class="formfield">
-                    {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
+                <div class="title">Fees</div>
 
-                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
-                    <div class="help-box fipra-rates">
-                        <table width="100%" class="rate-table">
-                        	<thead>
-								<tr>
-									<td></td>
-									<td>Hourly Rate</td>
-									<td>20% Discount</td>
-								</tr>
-                        	</thead>
-                            <tr>
-                                <td>Account Directors and Senior Consultants</td>
-                                <td>€425</td>
-                                <td>€340</td>
-                            </tr>
-                            <tr>
-                                <td>Account Managers</td>
-                                <td>€325</td>
-                                <td>€260</td>
-                            </tr>
-                            <tr>
-                                <td>Account Executives</td>
-                                <td>€225</td>
-                                <td>€180</td>
-                            </tr>
-                            <tr>
-                                <td>Researchers</td>
-                                <td>€125</td>
-                                <td>€100</td>
-                            </tr>
-                        </table>
-                    </div>
+                        {{--If the old fees model was submitted, use this fees layout--}}
+                        @if(Input::old('team') && array_key_exists('the_work_will_be_done', Input::old()))
+                            <div class="formfield">
+                                {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
 
-                    <div class="fees-people sub-box">
-                        {{ Form::label('', 'The following person(s) will work at these rates:') }}
-                        <table width="100%">
-                            <thead>
-                            <td width="60%" class="bold">Name</td>
-                            <td width="30%" class="rate-label bold">Rate</td>
-                            <td width="10%"></td>
-                            </thead>
+                                {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
 
-                            <!--If this request is a failed validation or the user clicked 'go back' on the confirm page, load the old team member names and rate-->
-                            @if(Input::old('team'))
+                                @include('partials.old_fipraratestable')
 
-                                @foreach(Input::old('team') as $id => $values)
-                                    <tr class="fees-person">
-                                        <td class="person-field">{{ Form::text("team[$id][person]", $values['person'], ['style' => 'width:90%']) }}</td>
-                                        <td class="rate-field">
-                                        	@if(Input::old('the_work_will_be_done') == 'at the standard Fipra hourly rates')
-												<div class="fees-select">
-													{{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], isset($values['rate']) ? $values['rate'] : null, ['class' => 'inline']) }}
-												</div>
-												<div class="fees-text">
-													<span class="inline bold"><br/>&euro;</span> {{ Form::text("team[$id][rate]", null, ['class' => 'inline-field']) }}
-												</div>
-                                        	@else
-												<div class="fees-text">
-													<span class="inline bold"><br/>&euro;</span> {{ Form::text("team[$id][rate]", isset($values['rate']) ? $values['rate'] : null, ['class' => 'inline-field']) }}
-												</div>
-												<div class="fees-select">
-													{{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], null, ['class' => 'inline']) }}
-												</div>
-                                        	@endif
-                                        </td>
-                                        <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
-                                    </tr>
-                                @endforeach
-                                {{ form::hidden('person_count', Input::old('person_count'), ['class' => 'person-count']) }}
+                                <div class="fees-people sub-box">
+                                    {{ Form::label('', 'The following person(s) will work at these rates:') }}
+                                    <table width="100%">
+                                        <thead>
+                                            <td width="60%" class="bold">Name</td>
+                                            <td width="30%" class="rate-label bold">Rate</td>
+                                            <td width="10%"></td>
+                                        </thead>
 
-                            <!--Otherwise, if this is an edit, use that data-->
-                            @elseif(isset($workorder->workorder->team))
-                                @foreach($workorder->workorder->team as $id => $values)
-                                <tr class="fees-person">
-                                    <td class="person-field">{{ Form::text("team[$id][person]", isset($values['person']) ? $values['person'] : '', ['style' => 'width:90%']) }}</td>
-                                    <td class="rate-field">
-                                    	<div class="fees-text">
-                                    		<span class="inline bold"><br/>&euro;</span> {{ Form::text("team[$id][rate]", isset($values['rate']) ? $values['rate'] : '', ['class' => 'inline-field']) }}
-                                    	</div>
-                                    	<div class="fees-select">
-                                    		<span class="inline bold"><br/>&euro;</span> {{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], isset($values['rate']) ? $values['rate'] : '', ['class' => 'inline']) }}
-                                    	</div>
-                                    </td>
-                                    <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
-                                </tr>
-                                @endforeach
-                                {{ form::hidden('person_count', count($workorder->workorder->team), ['class' => 'person-count']) }}
+                                        @foreach(Input::old('team') as $id => $values)
+                                            <tr class="fees-person">
+                                                <td class="person-field">{{ Form::text("team[$id][person]", $values['person'], ['style' => 'width:90%']) }}</td>
+                                                <td class="rate-field">
+                                                    @if(Input::old('the_work_will_be_done') == 'at the standard Fipra hourly rates')
+                                                        <div class="fees-select">
+                                                            {{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], isset($values['rate']) ? $values['rate'] : null, ['class' => 'inline']) }}
+                                                        </div>
+                                                        <div class="fees-text">
+                                                            <span class="inline bold">&euro;</span> {{ Form::text("team[$id][rate]", null, ['class' => 'inline-field']) }}
+                                                        </div>
+                                                    @else
+                                                        <div class="fees-text">
+                                                            <span class="inline bold">&euro;</span> {{ Form::text("team[$id][rate]", isset($values['rate']) ? $values['rate'] : null, ['class' => 'inline-field']) }}
+                                                        </div>
+                                                        <div class="fees-select">
+                                                            {{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], null, ['class' => 'inline']) }}
+                                                        </div>
+                                                    @endif
+                                                </td>
+                                                <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
 
-                            <!--Otherwise display the default entry form-->
+                                    {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
+                                    <a class="secondary add-new-person">Add new person</a>
+
+                                    <div class="total-project-fee">
+                                        {{ Form::label('', 'Total project fee:') }}
+                                        <span class="inline bold"><br/>&euro;</span> {{ Form::text("total_project_fee", (editing()) ? isset($workorder->workorder->total_project_fee) ? $workorder->workorder->total_project_fee : null : Input::old('total_project_fee'), ['class' => 'inline-field']) }}
+                                    </div>
+                                </div>
+
+                                {{ display_form_error('the_work_will_be_done', $errors) }}
+                            </div>
+
+
+
+                        {{--If the new fees model was submitted, use this fees layout--}}
+                        @elseif(Input::old('team') && ! array_key_exists('the_work_will_be_done', Input::old()))
+
+                            @include('partials.field_rate_band')
+
+                            <div class="formfield">
+
+                                @include('partials.field_rate_type')
+
+                                <div class="fees-people sub-box">
+                                    {{ Form::label('', 'The following person(s) will work at these rates:') }}<br>
+
+                                    @foreach(Input::old('team') as $id => $values)
+                                        <table width="100%" class="fees-person" style="background-color:#efefef; margin-bottom:10px;">
+                                            <tr>
+                                                <td style="padding:6px 10px;">{{ Form::label('', 'Name', ['class' => 'required']) }}</td>
+                                                <td style="padding:6px 10px;" class="person-field">{{ Form::text("team[$id][person]", $values['person'], ['class' => 'autofill inline-field']) }}</td>
+                                                <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:6px 10px;">{{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}</td>
+                                                <td style="padding:6px 10px;">
+                                                    <div class="level-select">
+                                                        {{ Form::select("team[$id][level]", ['account_director' => 'Account Director', 'account_manager' => 'Account Manager', 'account_executive' => 'Account Executive'], isset($values['level']) ? $values['level'] : null, ['class' => 'inline']) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="rate-type-days">
+                                                <td style="padding:6px 10px;">{{ Form::label('', 'No. of Days', ['class' => 'required']) }}</td>
+                                                <td style="padding:6px 10px;">
+                                                    <div class="days-text-input" style="width:50%">
+                                                        {{ Form::text("team[$id][days]", $values['days'], ['class' => 'inline-field', 'width' => '10']) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="rate-type-flat-rate">
+                                                <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
+                                                <td style="padding:6px 10px;">
+                                                    <div class="flat-rate-text-input">
+                                                        &euro; {{ Form::text("team[$id][flatrate]", $values['flatrate'], ['class' => 'inline-field', 'width' => '10']) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="person-total-row">
+                                                <td style="padding:6px 10px;">{{ Form::label('', 'Total') }}</td>
+                                                <td style="padding:6px 10px;">
+                                                    <div class="person-total" style="font-weight:bold;">
+                                                        €0
+                                                    </div>
+                                                    {{ Form::hidden("team[$id][persontotal]", $values['persontotal'], ['class' => 'hidden-total']) }}
+                                                    {{ Form::hidden("team[$id][ratetype]", $values['ratetype'], ['class' => 'hidden-rate-type']) }}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    @endforeach
+
+                                    <div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>
+
+                                    {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
+                                    <a class="secondary add-new-person">Add new person</a>
+                                </div>
+
+
+                            </div>
+
+
+
+                        {{--Is this an edit of an existing IWO? If a team value has been passed in, it is--}}
+                        @elseif(isset($workorder->workorder->team))
+
+                            {{--If the_work_will_be_done field exists, this is the old model--}}
+                            @if(isset($workorder->workorder->the_work_will_be_done))
+                                <div class="formfield">
+                                    {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
+
+                                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+
+                                    @include('partials.old_fipraratestable')
+
+
+                                    <div class="fees-people sub-box">
+                                        {{ Form::label('', 'The following person(s) will work at these rates:') }}
+                                        <table width="100%">
+                                            <thead>
+                                            <td width="60%" class="bold">Name</td>
+                                            <td width="30%" class="rate-label bold">Rate</td>
+                                            <td width="10%"></td>
+                                            </thead>
+
+                                            @foreach($workorder->workorder->team as $id => $values)
+                                                    <tr class="fees-person">
+                                                        <td class="person-field">{{ Form::text("team[$id][person]", isset($values['person']) ? $values['person'] : '', ['style' => 'width:90%']) }}</td>
+                                                        <td class="rate-field">
+                                                            <div class="fees-text">
+                                                                <span class="inline bold">&euro;</span> {{ Form::text("team[$id][rate]", isset($values['rate']) ? $values['rate'] : '', ['class' => 'inline-field']) }}
+                                                            </div>
+                                                            <div class="fees-select">
+                                                                <span class="inline bold">&euro;</span> {{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], isset($values['rate']) ? $values['rate'] : '', ['class' => 'inline']) }}
+                                                            </div>
+                                                        </td>
+                                                        <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
+                                                    </tr>
+                                            @endforeach
+                                        </table>
+
+                                        {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
+                                        <a class="secondary add-new-person">Add new person</a>
+
+                                        <div class="total-project-fee">
+                                            {{ Form::label('', 'Total project fee:') }}
+                                            <span class="inline bold"><br/>&euro;</span> {{ Form::text("total_project_fee", (editing()) ? isset($workorder->workorder->total_project_fee) ? $workorder->workorder->total_project_fee : null : Input::old('total_project_fee'), ['class' => 'inline-field']) }}
+                                        </div>
+                                    </div>
+
+                                    {{ display_form_error('the_work_will_be_done', $errors) }}
+
+                                </div>
                             @else
-                                <tr class="fees-person">
-                                    <td class="person-field">{{ Form::text('team[1][person]', null, ['class' => 'autofill inline-field']) }}</td>
-                                    <td class="rate-field">
-                                    	<div class="fees-text">
-                                    		<span class="inline bold">&euro;</span> {{ Form::text('team[1][rate]', null, ['class' => 'inline-field']) }}
-                                    	</div>
-                                    	<div class="fees-select">
-											{{ Form::select('team[1][rate]', ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], ['class' => 'inline']) }}
-										</div>
-                                    </td>
-                                    <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
-                                </tr>
-                                {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
+                                {{--Otherwise, it is the new model--}}
+                                @include('partials.field_rate_band')
+
+                                <div class="formfield">
+
+                                    @include('partials.field_rate_type')
+
+                                    <div class="fees-people sub-box">
+                                        {{ Form::label('', 'The following person(s) will work at these rates:') }}<br>
+
+                                        @foreach($workorder->workorder->team as $id => $values)
+                                            <table width="100%" class="fees-person" style="background-color:#efefef; margin-bottom:10px;">
+                                                <tr>
+                                                    <td style="padding:6px 10px;">{{ Form::label('', 'Name', ['class' => 'required']) }}</td>
+                                                    <td style="padding:6px 10px;" class="person-field">{{ Form::text("team[$id][person]", isset($values['person']) ? $values['person'] : '', ['class' => 'autofill inline-field']) }}</td>
+                                                    <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding:6px 10px;">{{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}</td>
+                                                    <td style="padding:6px 10px;">
+                                                        <div class="level-select">
+                                                            {{ Form::select("team[$id][level]", ['account_director' => 'Account Director', 'account_manager' => 'Account Manager', 'account_executive' => 'Account Executive'], isset($values['level']) ? $values['level'] : null, ['class' => 'inline']) }}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="rate-type-days">
+                                                    <td style="padding:6px 10px;">{{ Form::label('', 'No. of Days', ['class' => 'required']) }}</td>
+                                                    <td style="padding:6px 10px;">
+                                                        <div class="days-text-input" style="width:50%">
+                                                            {{ Form::text("team[$id][days]", isset($values['days']) ? $values['days'] : '', ['class' => 'inline-field', 'width' => '10']) }}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="rate-type-flat-rate">
+                                                    <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
+                                                    <td style="padding:6px 10px;">
+                                                        <div class="flat-rate-text-input">
+                                                            &euro; {{ Form::text("team[$id][flatrate]", isset($values['flatrate']) ? $values['flatrate'] : '', ['class' => 'inline-field', 'width' => '10']) }}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="person-total-row">
+                                                    <td style="padding:6px 10px;">{{ Form::label('', 'Total') }}</td>
+                                                    <td style="padding:6px 10px;">
+                                                        <div class="person-total" style="font-weight:bold;">
+                                                            €0
+                                                        </div>
+                                                        {{ Form::hidden("team[$id][persontotal]", $values['persontotal'], ['class' => 'hidden-total']) }}
+                                                        {{ Form::hidden("team[$id][ratetype]", $values['ratetype'], ['class' => 'hidden-rate-type']) }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </div>
+
+                                    <div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>
+
+                                    {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
+                                    <a class="secondary add-new-person">Add new person</a>
+
+                                </div>
                             @endif
 
 
-                            <tr colspan="3">
-                                <td><a class="secondary add-new-person">Add new person</a></td>
-                            </tr>
-                        </table>
 
-						<div class="total-project-fee">
-                        	{{ Form::label('', 'Total project fee:') }}
-                        	<span class="inline bold"><br/>&euro;</span> {{ Form::text("total_project_fee", (editing()) ? isset($workorder->workorder->total_project_fee) ? $workorder->workorder->total_project_fee : null : Input::old('total_project_fee'), ['class' => 'inline-field']) }}
-						</div>
+                        {{--Otherwise, use the standard blank fees layout--}}
+                        @else
 
-                    </div>
-                    {{ display_form_error('the_work_will_be_done', $errors) }}
+                            @include('partials.field_rate_band')
 
-                </div>
+                            <div class="formfield">
+
+                                @include('partials.field_rate_type')
+
+                                <div class="fees-people sub-box">
+                                    {{ Form::label('', 'The following person(s) will work at these rates:') }}<br>
+
+                                    <table width="100%" class="fees-person" style="background-color:#efefef; margin-bottom:10px;">
+                                        <tr>
+                                            <td style="padding:6px 10px;">{{ Form::label('', 'Name', ['class' => 'required']) }}</td>
+                                            <td style="padding:6px 10px;" class="person-field">{{ Form::text('team[1][person]', null, ['class' => 'autofill inline-field']) }}</td>
+                                            <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:6px 10px;">{{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}</td>
+                                            <td style="padding:6px 10px;">
+                                                <div class="level-select">
+                                                    {{ Form::select('team[1][level]', ['account_director' => 'Account Director', 'account_manager' => 'Account Manager', 'account_executive' => 'Account Executive'], ['class' => 'inline']) }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="rate-type-days">
+                                            <td style="padding:6px 10px;">{{ Form::label('', 'No. of Days', ['class' => 'required']) }}</td>
+                                            <td style="padding:6px 10px;">
+                                                <div class="days-text-input" style="width:50%">
+                                                    {{ Form::text('team[1][days]', null, ['class' => 'inline-field', 'width' => '10']) }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="rate-type-flat-rate">
+                                            <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
+                                            <td style="padding:6px 10px;">
+                                                <div class="flat-rate-text-input">
+                                                    &euro; {{ Form::text('team[1][flatrate]', null, ['class' => 'inline-field', 'width' => '10']) }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="person-total-row">
+                                            <td style="padding:6px 10px;">{{ Form::label('', 'Total') }}</td>
+                                            <td style="padding:6px 10px;">
+                                                <div class="person-total" style="font-weight:bold;">
+                                                    €0
+                                                </div>
+                                                {{ Form::hidden('team[1][persontotal]', null, ['class' => 'hidden-total']) }}
+                                                {{ Form::hidden('team[1][ratetype]', null, ['class' => 'hidden-rate-type']) }}
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>
+
+                                    {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
+                                    <a class="secondary add-new-person">Add new person</a>
+
+                                    <div class="total-project-fee">
+                                        {{ Form::label('', 'Total project fee:') }}
+                                        <span class="inline bold"><br/>&euro;</span> {{ Form::text("total_project_fee", (editing()) ? isset($workorder->workorder->total_project_fee) ? $workorder->workorder->total_project_fee : null : Input::old('total_project_fee'), ['class' => 'inline-field']) }}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        @endif
+
+
                 <div class="formfield">
-                    {{ Form::label('agreed_fee_element', 'Is there any other fee element, such as a success or finders fee?', ['class' => 'required']) }}
+                    {{ Form::label('agreed_fee_element', 'Is there any other fee element (e.g. success or finders\' fee)?', ['class' => 'required']) }}
                     {{ Form::select('agreed_fee_element', ['No' => 'No', 'Yes' => 'Yes'], (editing()) ? isset($workorder->workorder->agreed_fee_element) ? $workorder->workorder->agreed_fee_element : '' : Input::old('agreed_fee_element'), ['class' => 'agreed-fee-element']) }}
                     {{ display_form_error('agreed_fee_element', $errors) }}
                 </div>
@@ -263,10 +453,6 @@
                     {{ Form::label('agreed_fee_element_details', 'Please set out fee element details:', ['class' => 'required']) }}
                     {{ Form::textarea('agreed_fee_element_details', (editing()) ? isset($workorder->workorder->agreed_fee_element_details) ? $workorder->workorder->agreed_fee_element_details : '' : Input::old('agreed_fee_element_details'), ['rows' => '10']) }}
                     {{ display_form_error('agreed_fee_element_details', $errors) }}
-                </div>
-                <div class="formfield">
-                    <div>All the fees above, except success/finders fee, will be invoiced with the 20% Fipra Inter-Unit discount, unless otherwise stated in the notes at the end of this form. <a href="#" class="help">&nbsp;</a>
-                    <p class="help-box">When a Unit subcontracts to another Unit for work, a percentage known as the Inter-Unit discount is paid to the Unit that introduced the client work. Thus the Lead Unit receives an Inter-Unit discount on the net invoice amount billed to the client.</p></div>
                 </div>
                 <div class="formfield">
                     {{ Form::label('work_capped_at_maximum_level', 'Is this work capped at a maximum level?', ['class' => 'required']) }}
@@ -387,5 +573,12 @@
 
 	{{ Form::close() }}
 
-	<script type="text/javascript" src="{{ asset('js/unitWorkOrder.js?140826') }}"></script>
+@stop
+
+@section('footer')
+    @if(Input::has('the_work_will_be_done') || isset($workorder->workorder->the_work_will_be_done))
+        <script type="text/javascript" src="{{ asset('js/old_unitWorkOrder.js?140826') }}"></script>
+    @else
+        <script type="text/javascript" src="{{ asset('js/unitWorkOrder.js?140826') }}"></script>
+    @endif
 @stop

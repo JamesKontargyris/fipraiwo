@@ -1,26 +1,34 @@
 (function() {
+
     // Make sure the "work will be done" section is displayed
     // when the page reloads after a failed validation and the
     // dropdown is set
-    if($('select#the-work-will-be-done').val() != '')
+    if($('select#rate-type').val() != '')
     {
-        show_fees_people_form($('select#the-work-will-be-done').val());
-        if($('select#the-work-will-be-done').val() == 'at the standard Fipra hourly rates') {
-            $(this).next('.help-box').slideDown();
-        }
+        show_fees_people_form($('select#rate-type').val());
+        update_fees_form();
+        update_all_totals();
     }
-    // When "The work will be done" box is changed...
-    $('select#the-work-will-be-done').on('change', function()
+
+    // When a level of seniority is changed or a day total is entered/changed, update that person's total
+    $('.fees-person .level-select select, .fees-person .days-text-input input, .flat-rate-text-input input').on('change blur', function()
     {
-        // If "at the standard Fipra hourly rates" is selected in the fees section,
-        // show the hourly rates info drop down
-        if($(this).val() == 'at the standard Fipra hourly rates') {
-            $(this).next('.help-box').slideDown();
-        }
-        else
-        {
-            $(this).next('.help-box').slideUp();
-        }
+        update_person_total($(this));
+        update_grand_total();
+    });
+
+    // When the rate band is changed or a day total is entered/changed, update that person's total
+    $('.rate-band-select').on('change blur', function()
+    {
+        update_all_totals($(this));
+    });
+
+    // When "The work will be done" box is changed...
+    $('select#rate-type').on('change', function()
+    {
+        update_grand_total();
+
+        update_fees_form();
 
         show_fees_people_form($(this).val());
     });
@@ -35,6 +43,14 @@
 //    so the first name/rate entry row can't be removed
     $('.remove-row').first().hide();
 
+    $('.remove-row').on('click', function()
+    {
+        $(this).closest('.fees-person').remove();
+        update_grand_total();
+
+        return false;
+    });
+
 //    When the add new person button is clicked...
     $('.add-new-person').on('click', function()
     {
@@ -47,10 +63,15 @@
 
 //        Remove input values in the cloned row
         tr_clone.find('input').val('');
+        // Make total 0 in clone
+        tr_clone.find('.person-total').text('€0');
 //        Update the person and rate ids in the name attributes
         tr_clone.find('.person-field input').attr('name', 'team[' + person_count + '][person]').removeClass('autofill');
-        tr_clone.find('.rate-field input').attr('name', 'team[' + person_count + '][rate]');
-        tr_clone.find('.rate-field select').attr('name', 'team[' + person_count + '][rate]');
+        tr_clone.find('.level-select select').attr('name', 'team[' + person_count + '][level]');
+        tr_clone.find('.days-text-input input').attr('name', 'team[' + person_count + '][days]');
+        tr_clone.find('.rate-type-flat-rate input').attr('name', 'team[' + person_count + '][flatrate]');
+        tr_clone.find('.hidden-total').attr('name', 'team[' + person_count + '][persontotal]');
+        tr_clone.find('.hidden-rate-type').attr('name', 'team[' + person_count + '][ratetype]').val($('.fees-person').first().find('.hidden-rate-type').val());
 //        Display the remove-row button
         tr_clone.find('.remove-row').show();
 //        Add the cloned row after the final existing row
@@ -61,7 +82,16 @@
         $('.remove-row').on('click', function()
         {
             $(this).closest('.fees-person').remove();
+            update_grand_total();
+
             return false;
+        });
+
+        // When a level of seniority is changed or a day total is entered/changed, update that person's total
+        $('.fees-person .level-select select, .fees-person .days-text-input input, .flat-rate-text-input input').on('change blur', function()
+        {
+            update_person_total($(this));
+            update_grand_total();
         });
 
         return false;
@@ -74,14 +104,10 @@
         $('.autofill').val(name);
     });
 
-
-
     function show_fees_people_form(selection)
     {
         var rate_labels = new Array();
-        rate_labels['at the standard Fipra hourly rates'] = 'Hourly Rate';
-        rate_labels['at a different Fipra hourly rate'] = 'Hourly Rate';
-        rate_labels['at a daily rate'] = 'Day Rate';
+        rate_labels['Fipra day rate'] = 'Day Rate';
         rate_labels['at a flat or project rate'] = 'Flat/Project Rate';
 
         if(selection != '')
@@ -94,7 +120,7 @@
 
         //If standard Fipra hourly rates have been selected,
         //display the dropdown boxes with rates
-        if(selection == 'at the standard Fipra hourly rates')
+        if(selection == 'Fipra day rate')
         {
             $('.fees-text input').attr('disabled', true);
             $('.fees-text').hide();
@@ -122,4 +148,122 @@
         }
         return true;
     }
+
+    function find_rate(rate_band, seniority_level)
+    {
+        if(rate_band && seniority_level)
+        {
+            var high_rates = [],
+                standard_rates = [];
+
+            high_rates['account_director'] = 2250;
+            high_rates['account_manager'] = 1500;
+            high_rates['account_executive'] = 750;
+            standard_rates['account_director'] = 1500;
+            standard_rates['account_manager'] = 1000;
+            standard_rates['account_executive'] = 500;
+
+            return rate_band == 'High' ? high_rates[seniority_level] : standard_rates[seniority_level];
+        }
+
+        return false;
+    }
+
+    // Ensure days is a valid number
+    function valid_days(days_entry)
+    {
+        var day_fraction = 0.25;
+        if(days_entry % day_fraction){              //Check if there is a remainder
+            var remainder = days_entry % day_fraction; //Get remainder
+            days_entry -= remainder;
+        }
+
+        return days_entry;
+    }
+
+    function update_person_total(el)
+    {
+
+        var rate_band = $('.rate-band-select').val(),
+            seniority_level = el.closest('.fees-person').find('.level-select select').val(),
+            days = valid_days(el.closest('.fees-person').find('.days-text-input input'));
+
+        days.val(valid_days(days.val()));
+
+        if(rate_band && seniority_level && days) {
+            var rate = find_rate(rate_band, seniority_level),
+                rate_type = $('#rate-type').val();
+
+            if(rate_type == 'Fipra day rate') {
+                el.closest('.fees-person').find('.person-total').text('€' + (rate * days.val()).formatMoney(0));
+                el.closest('.fees-person').find('.hidden-total').val('€' + (rate * days.val()).formatMoney(0));
+            }
+
+        }
+
+    }
+
+    function update_grand_total()
+    {
+        var grand_total = 0,
+            rate_type = $('#rate-type').val();
+
+        $('.fees-person').each(function()
+        {
+            if(rate_type == 'Fipra day rate') {
+                var rate = $(this).find('.person-total').text().replace('€', '').replace(',', '');
+                grand_total = grand_total + parseInt(rate == false ? 0 : rate);
+            } else {
+                var rate = $(this).find('.flat-rate-text-input input').val().replace('€', '').replace(',', '');
+                grand_total = grand_total + parseInt(rate == false ? 0 : rate);
+            }
+        })
+
+        $('.grand-total').text('Grand Total: €' + (grand_total).formatMoney(0));
+        return grand_total;
+    }
+
+    function update_all_totals(el)
+    {
+        $('.fees-person').each(function()
+        {
+            var seniority_level = $(this).find('.level-select select').val(),
+                days = valid_days($(this).find('.days-text-input input')),
+                rate_band = $('.rate-band-select').val();
+
+            days.val(valid_days(days.val()));
+
+            if(rate_band && seniority_level && days) {
+                var rate = find_rate(rate_band, seniority_level);
+
+                if(rate) { $(this).find('.person-total').text('€' + (rate * days.val()).formatMoney(0)); }
+            }
+        });
+
+        update_grand_total();
+    }
+
+    function update_fees_form()
+    {
+        var rate_type = $('select#rate-type');
+
+        // If "at the Fipra day rate" is selected in the fees section,
+        // show the hourly rates info drop down
+        if(rate_type.val() == 'Fipra day rate') {
+            rate_type.next('.help-box').slideDown();
+            $('.rate-type-days').show();
+            $('.rate-type-flat-rate').hide();
+            $('.person-total-row').show();
+            $('.hidden-rate-type').val('dayrate');
+        }
+        else
+        {
+            rate_type.next('.help-box').slideUp();
+            $('.rate-type-days').hide();
+            $('.rate-type-flat-rate').show();
+            $('.person-total-row').hide();
+            $('.hidden-rate-type').val('flatrate');
+        }
+    }
+
 })();
