@@ -91,7 +91,7 @@
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate : '', ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate'), ['class' => 'unit_lead_contact_rep_autocomplete', 'data-name-field' => 'sub_contracted_unit_correspondent_affiliate_account_director', 'data-email-field' => 'sub_email_address', 'data-rep-field' => 'sub_fipra_representative']) }}
+                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate'), ['class' => 'unit_lead_contact_rep_autocomplete', 'data-name-field' => 'sub_contracted_unit_correspondent_affiliate_account_director', 'data-email-field' => 'sub_email_address', 'data-rep-field' => 'sub_fipra_representative', 'data-rate-band-field' => 'rate_band']) }}
                     @endif
 
                     {{ display_form_error('sub_contracted_unit_correspondent_affiliate', $errors) }}

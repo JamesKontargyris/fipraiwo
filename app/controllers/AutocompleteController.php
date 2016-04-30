@@ -103,6 +103,7 @@ class AutocompleteController extends BaseController
 				$found_unit['value'] = $contact['unit_name'];
 				$found_unit['name'] = $contact['lead_contact_name'];
 				$found_unit['email'] = $contact['email'];
+				$found_unit['rate_band'] = $contact['rate_band'];
 				$found_unit['rep'] = Unit_rep::where('fipra_unit', '=', $contact['unit_name'])->pluck('rep');
 				$found_unit['label'] = $contact['unit_name'];
 				$matches[] = $found_unit;
