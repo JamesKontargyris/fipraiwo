@@ -361,12 +361,13 @@
                                                 </tr>
                                             </table>
                                         @endforeach
+
+                                        <div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>
+
+                                        {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
+                                        <a class="secondary add-new-person">Add new person</a>
                                     </div>
 
-                                    <div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>
-
-                                    {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
-                                    <a class="secondary add-new-person">Add new person</a>
 
                                 </div>
                             @endif
@@ -577,8 +578,8 @@
 
 @section('footer')
     @if(Input::has('the_work_will_be_done') || isset($workorder->workorder->the_work_will_be_done))
-        <script type="text/javascript" src="{{ asset('js/old_unitWorkOrder.js?140826') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/old_fees_unit.js?160430') }}"></script>
     @else
-        <script type="text/javascript" src="{{ asset('js/unitWorkOrder.js?140826') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/new_fees_unit.js?160430') }}"></script>
     @endif
 @stop

@@ -331,6 +331,10 @@ ul.square {
   width:80% !important;
 }
 
+.fee-days, .fee-flatrate {
+  display:none;
+}
+
 //Buttons that are JS-dependent. Hide until JS displays them.
 .js-block {
   display:none;

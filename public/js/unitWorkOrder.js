@@ -163,7 +163,7 @@
             standard_rates['account_manager'] = 1000;
             standard_rates['account_executive'] = 500;
 
-            return rate_band == 'High' ? high_rates[seniority_level] : standard_rates[seniority_level];
+            return rate_band == 'high' ? high_rates[seniority_level] : standard_rates[seniority_level];
         }
 
         return false;

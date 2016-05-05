@@ -7,7 +7,6 @@
 @section('content')
 	<div class="intro">
 		<p>This form confirms instructions between Fipra International and its Special Advisers, who are full members of the Fipra Network. Please fill one out each time you engage a Special Adviser.</p>
-		<p><strong>Please note: all amounts quoted are gross, i.e. before the inter unit discount.</strong></p>
 		@if(editing())
 			<p class="red">Fields in red cannot be edited.</p>
 		@endif
@@ -77,24 +76,63 @@
 			</div>
 
             <div class="formgroup">
-                <div class="title">Fees <small>before inter-unit discount</small></div>
-                <div class="formfield">
-                    {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
-                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rate' => 'at the standard Fipra hourly rate', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+                <div class="title">Fees</div>
 
-                    <div class="sub-box rate-field col-12">
-                        {{ Form::label('rate_is', 'Rate:', ['class' => 'required rate-label']) }}
-						<span class="inline bold"><br/>&euro;</span> {{ Form::text('rate_is', (editing()) ? isset($workorder->workorder->rate_is) ? $workorder->workorder->rate_is : '' : Input::old('rate_is'), ['class' => 'inline-field']) }}
-                        {{ display_form_error('rate_is', $errors) }}<br/><br/>
+                @if(isset($workorder->workorder->the_work_will_be_done) || Input::old('the_work_will_be_done'))
 
-                        {{ Form::label('amount_payable', 'Amount payable (after IUD):', ['class' => 'required']) }}
-                        <span class="inline bold"><br/>&euro;</span> {{ Form::text('amount_payable', (editing()) ? isset($workorder->workorder->amount_payable) ? $workorder->workorder->amount_payable : '' : Input::old('amount_payable'), ['class' => 'inline-field']) }}
-                        {{ display_form_error('amount_payable', $errors) }}
+                    <div class="formfield">
+                        {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
+                        {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rate' => 'at the standard Fipra hourly rate', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+
+                        <div class="sub-box rate-field col-12">
+                            {{ Form::label('rate_is', 'Rate:', ['class' => 'required rate-label']) }}
+                            <span class="inline bold"><br/>&euro;</span> {{ Form::text('rate_is', (editing()) ? isset($workorder->workorder->rate_is) ? $workorder->workorder->rate_is : '' : Input::old('rate_is'), ['class' => 'inline-field']) }}
+                            {{ display_form_error('rate_is', $errors) }}<br/><br/>
+
+                            {{ Form::label('amount_payable', 'Amount payable (after IUD):', ['class' => 'required']) }}
+                            <span class="inline bold"><br/>&euro;</span> {{ Form::text('amount_payable', (editing()) ? isset($workorder->workorder->amount_payable) ? $workorder->workorder->amount_payable : '' : Input::old('amount_payable'), ['class' => 'inline-field']) }}
+                            {{ display_form_error('amount_payable', $errors) }}
+
+                        </div>
+                        {{ display_form_error('the_work_will_be_done', $errors) }}
 
                     </div>
-                    {{ display_form_error('the_work_will_be_done', $errors) }}
 
-                </div>
+                @else
+
+                    <div class="formfield">
+
+                        @include('partials.field_rate_type')
+
+                    </div>
+
+                    <div class="formfield fee-days">
+                        {{ Form::label('days', 'No. of days:', ['class' => 'required']) }}
+                        @if(editing())
+                            {{ Form::text('days', isset($workorder->workorder->days) ? $workorder->workorder->days : '', ['style' => 'width:30%']) }}
+                        @else
+                            {{ Form::text('days', Input::old('days'), ['style' => 'width:30%']) }}
+                        @endif
+                        {{ display_form_error('days', $errors) }}
+
+                        <div style="padding:6px 0; font-size:16px; font-weight:bold;" class="grand-total">Total: €0</div>
+                        {{ Form::hidden('day_rate_in_euros', 2000, ['class' => 'day_rate']) }}
+                        {{ Form::hidden('total_in_euros', Input::old('total_in_euros'), ['class' => 'day_rate_total']) }}
+                    </div>
+
+                    <div class="formfield fee-flatrate">
+                        {{ Form::label('flat_rate_in_euros', 'Rate:', ['class' => 'required']) }}
+                        @if(editing())
+                        &euro; {{ Form::text('flat_rate_in_euros', isset($workorder->workorder->flat_rate_in_euros) ? $workorder->workorder->flat_rate_in_euros : '', ['style' => 'width:30%']) }}
+                        @else
+                        &euro; {{ Form::text('flat_rate_in_euros', Input::old('flat_rate_in_euros'), ['style' => 'width:30%']) }}
+                        @endif
+                        {{ display_form_error('flat_rate_in_euros', $errors, ['class' => 'day_rate']) }}
+                    </div>
+
+                @endif
+
+
                 <div class="formfield">
                     {{ Form::label('agreed_fee_element', 'Is there any other fee element such as a success or finders fee?', ['class' => 'required']) }}
                     {{ Form::select('agreed_fee_element', ['No' => 'No', 'Yes' => 'Yes'], (editing()) ? isset($workorder->workorder->agreed_fee_element) ? $workorder->workorder->agreed_fee_element : '' : Input::old('agreed_fee_element'), ['class' => 'agreed-fee-element']) }}
@@ -217,5 +255,14 @@
 
 	{{ Form::close() }}
 
-    <script type="text/javascript" src="{{ asset('js/spadWorkOrder.js') }}"></script>
+@stop
+
+@section('footer')
+    @if(Input::has('the_work_will_be_done') || isset($workorder->workorder->the_work_will_be_done))
+        {{--If this IWO uses the old style fees model, load the necessary JS--}}
+        <script type="text/javascript" src="{{ asset('js/old_fees_spad.js?160430') }}"></script>
+    @else
+        {{--Otherwise, use the JS relevant to the new style fees model--}}
+        <script type="text/javascript" src="{{ asset('js/new_fees_spad.js?160430') }}"></script>
+    @endif
 @stop
