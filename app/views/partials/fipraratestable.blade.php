@@ -3,24 +3,23 @@
         <thead>
         <tr>
             <td></td>
-            <td style="font-weight:bold">High Day Rate</td>
-            <td style="font-weight:bold">Standard Day Rate</td>
+            <td style="font-weight:bold">Day Rate</td>
         </tr>
         </thead>
         <tr>
             <td>Account Directors</td>
-            <td>€2,250</td>
-            <td>€1,500</td>
+            <td class="rate-table-high-rate">€2,250</td>
+            <td class="rate-table-standard-rate">€1,500</td>
         </tr>
         <tr>
             <td>Account Managers</td>
-            <td>€1,500</td>
-            <td>€1,000</td>
+            <td class="rate-table-high-rate">€1,500</td>
+            <td class="rate-table-standard-rate">€1,000</td>
         </tr>
         <tr>
             <td>Account Executives</td>
-            <td>€750</td>
-            <td>€500</td>
+            <td class="rate-table-high-rate">€750</td>
+            <td class="rate-table-standard-rate">€500</td>
         </tr>
     </table>
 </div>

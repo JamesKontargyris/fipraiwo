@@ -247,7 +247,7 @@
             $('input[name=' + $(this).data('name-field') + ']').val(ui.item.name);
             $('input[name=' + $(this).data('email-field') + ']').val(ui.item.email);
             $('select[name=' + $(this).data('rep-field') + ']').val(ui.item.rep);
-            $('select[name=' + $(this).data('rate-band-field') + ']').val(ui.item.rate_band);
+            $('input[name=' + $(this).data('rate-band-field') + ']').val(ui.item.rate_band);
         }
     });
 

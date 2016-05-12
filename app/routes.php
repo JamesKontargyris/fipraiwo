@@ -44,3 +44,5 @@ Route::get('ac/unit_reps', 'AutocompleteController@unit_reps');
 Route::get('ac/spad_reps', 'AutocompleteController@spad_reps');
 //Unit lead contacts/reps autocomplete
 Route::get('ac/unit_lead_contacts_and_reps', 'AutocompleteController@unit_lead_contacts_and_reps');
+//Unit lead contacts/reps dropdown autofill
+Route::get('ac/unit_dropdown', 'AutocompleteController@unit_dropdown');

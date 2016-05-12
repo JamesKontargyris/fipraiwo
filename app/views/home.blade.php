@@ -36,12 +36,11 @@
 			<h2>Submit a new Internal Work Order</h2>
 			<ul class="work-order-menu">
 				<li class="col-6">
-					<a href="unit" class="highlight"><i class="fa fa-group fa-4x"></i><p>Fipra Unit</p></a>
-					<span class="hidejs">Units are all companies who hold a Fipra Licence. Correspondents and Affiliates should also use this IWO.</span>
+					<a href="unit" class="highlight"><i class="fa fa-group fa-4x"></i><p>Fipra Units<br>(including Fipra Correspondents)</p></a><span class="hidejs">Units are all companies who hold a Fipra Licence. Correspondents should also use this IWO.</span>
 					<i class="fa fa-info fa-lg info showjs"></i>
 				</li>
 				<li class="col-6 last">
-					<a href="spad/check" class="highlight"><i class="fa fa-sitemap fa-4x"></i><p>Fipra Special Adviser</p></a>
+					<a href="spad/check" class="highlight"><i class="fa fa-sitemap fa-4x"></i><p>Fipra Special Advisers</p></a>
 					<span class="hidejs">Full members of the Fipra Network who are independent individuals as opposed to companies/Units.</span>
 					<i class="fa fa-info fa-lg info showjs"></i>
 				</li>

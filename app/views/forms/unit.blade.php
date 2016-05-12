@@ -11,7 +11,7 @@
 @section('content')
 
 	<div class="intro">
-        <p>This form confirms financial instructions between Members of the Fipra Network. Please fill one form out each time a Unit is subcontracted.</p>
+        <p>This form confirms financial instructions given by Unit who are Members of the Fipra Network to other Units or Correspondents. Please fill one form out each time a Unit is subcontracted. Please do not use the form below for anything Special Advisers of any type. </p>
         <p class="italic small-print">Please see full explanatory notes at the end of the page.</p>
         @if(editing())
         	<p class="red">Fields in red cannot be edited.</p>
@@ -85,13 +85,25 @@
             <div class="formgroup">
                 <div class="title">Sub-contracted Unit</div>
 
+                {{--<div class="formfield">--}}
+                    {{--{{ Form::label('sub_contracted_unit_correspondent_affiliate', 'Sub-contracted Unit:', ['class' => 'required']) }}--}}
+
+                    {{--@if(editing())--}}
+                        {{--{{ Form::text('sub_contracted_unit_correspondent_affiliate', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate : '', ['readonly' => 'readonly']) }}--}}
+                    {{--@else--}}
+                        {{--{{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate'), ['class' => 'unit_lead_contact_rep_autocomplete', 'data-name-field' => 'sub_contracted_unit_correspondent_affiliate_account_director', 'data-email-field' => 'sub_email_address', 'data-rep-field' => 'sub_fipra_representative', 'data-rate-band-field' => 'rate_band']) }}--}}
+                    {{--@endif--}}
+
+                    {{--{{ display_form_error('sub_contracted_unit_correspondent_affiliate', $errors) }}--}}
+                {{--</div>--}}
+
                 <div class="formfield">
                     {{ Form::label('sub_contracted_unit_correspondent_affiliate', 'Sub-contracted Unit:', ['class' => 'required']) }}
 
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate : '', ['readonly' => 'readonly']) }}
                     @else
-                        {{ Form::text('sub_contracted_unit_correspondent_affiliate', Input::old('sub_contracted_unit_correspondent_affiliate'), ['class' => 'unit_lead_contact_rep_autocomplete', 'data-name-field' => 'sub_contracted_unit_correspondent_affiliate_account_director', 'data-email-field' => 'sub_email_address', 'data-rep-field' => 'sub_fipra_representative', 'data-rate-band-field' => 'rate_band']) }}
+                        {{ Form::select('sub_contracted_unit_correspondent_affiliate', get_all_units_for_dropdown(), Input::old('sub_contracted_unit_correspondent_affiliate'), ['style' => 'width:100%', 'data-name-field' => 'sub_contracted_unit_correspondent_affiliate_account_director', 'data-email-field' => 'sub_email_address', 'data-rep-field' => 'sub_fipra_representative', 'data-rate-band-field' => 'rate_band']) }}
                     @endif
 
                     {{ display_form_error('sub_contracted_unit_correspondent_affiliate', $errors) }}
@@ -222,8 +234,12 @@
                                                 <td style="padding:6px 10px;">
                                                     <div class="days-text-input" style="width:50%">
                                                         {{ Form::text("team[$id][days]", $values['days'], ['class' => 'inline-field', 'width' => '10']) }}
+                                                        <br>{{ Form::checkbox("team[$id][per-month]", isset($values['per-month']) ? $values['per-month'] : '') }} Per month
                                                     </div>
                                                 </td>
+                                            </tr>
+                                            <tr class="rate-type-days">
+                                                <td colspan="3" style="padding:6px 10px;">@include('partials.days-help-message')</td>
                                             </tr>
                                             <tr class="rate-type-flat-rate">
                                                 <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
@@ -234,7 +250,7 @@
                                                 </td>
                                             </tr>
                                             <tr class="person-total-row">
-                                                <td style="padding:6px 10px;">{{ Form::label('', 'Total') }}</td>
+                                                <td style="padding:6px 10px;">{{ Form::label('', 'Total', ['class' => 'person-total-text']) }}</td>
                                                 <td style="padding:6px 10px;">
                                                     <div class="person-total" style="font-weight:bold;">
                                                         €0
@@ -246,7 +262,7 @@
                                         </table>
                                     @endforeach
 
-                                    <div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>
+                                    {{--<div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>--}}
 
                                     {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
                                     <a class="secondary add-new-person">Add new person</a>
@@ -338,8 +354,12 @@
                                                     <td style="padding:6px 10px;">
                                                         <div class="days-text-input" style="width:50%">
                                                             {{ Form::text("team[$id][days]", isset($values['days']) ? $values['days'] : '', ['class' => 'inline-field', 'width' => '10']) }}
+                                                            <br>{{ Form::checkbox("team[$id][per-month]", isset($values['per-month']) ? $values['per-month'] : '') }} Per month
                                                         </div>
                                                     </td>
+                                                </tr>
+                                                <tr class="rate-type-days">
+                                                    <td colspan="3" style="padding:6px 10px;">@include('partials.days-help-message')</td>
                                                 </tr>
                                                 <tr class="rate-type-flat-rate">
                                                     <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
@@ -350,7 +370,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr class="person-total-row">
-                                                    <td style="padding:6px 10px;">{{ Form::label('', 'Total') }}</td>
+                                                    <td style="padding:6px 10px;">{{ Form::label('', 'Total', ['class' => 'person-total-text']) }}</td>
                                                     <td style="padding:6px 10px;">
                                                         <div class="person-total" style="font-weight:bold;">
                                                             €0
@@ -362,7 +382,7 @@
                                             </table>
                                         @endforeach
 
-                                        <div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>
+                                        {{--<div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>--}}
 
                                         {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
                                         <a class="secondary add-new-person">Add new person</a>
@@ -405,8 +425,12 @@
                                             <td style="padding:6px 10px;">
                                                 <div class="days-text-input" style="width:50%">
                                                     {{ Form::text('team[1][days]', null, ['class' => 'inline-field', 'width' => '10']) }}
+                                                    <br>{{ Form::checkbox('team[1][per-month]', null, null, ['class' => 'checkbox-per-month']) }} Per month
                                                 </div>
                                             </td>
+                                        </tr>
+                                        <tr class="rate-type-days">
+                                            <td colspan="3" style="padding:6px 10px;">@include('partials.days-help-message')</td>
                                         </tr>
                                         <tr class="rate-type-flat-rate">
                                             <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
@@ -417,7 +441,7 @@
                                             </td>
                                         </tr>
                                         <tr class="person-total-row">
-                                            <td style="padding:6px 10px;">{{ Form::label('', 'Total') }}</td>
+                                            <td style="padding:6px 10px;">{{ Form::label('', 'Total', ['class' => 'person-total-text']) }}</td>
                                             <td style="padding:6px 10px;">
                                                 <div class="person-total" style="font-weight:bold;">
                                                     €0
@@ -428,7 +452,7 @@
                                         </tr>
                                     </table>
 
-                                    <div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>
+                                    {{--<div style="padding:6px 10px; font-size:16px; font-weight:bold;" class="grand-total">Grand Total: €0</div>--}}
 
                                     {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
                                     <a class="secondary add-new-person">Add new person</a>
@@ -520,7 +544,7 @@
 			</div>
             <div class="formfield hide" id="green-sheet-required-reveal">
 				@include('forms.partials.green_sheet_links')
-                <span class="small-print">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked, irrespective of the type of fee structure chosen above. Please Click here to download a Greensheet template.</span>
+                <span class="small-print">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the days, quarter days - and in rare cases hours (where a client needs this information) worked and are irrespective of the type of fee structure chosen or the fee agreed above. Such time sheets are only needed for billing purposes.</span>
             </div>
 
 

@@ -202,7 +202,7 @@
 
 			<div class="formfield">
 				{{ Form::label('green_sheet_required', 'Is a Fipra Green Sheet required at the end of each month?', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-				<div class="help-box">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked and are irrespective of the type of fee structure chosen above.</div>
+				<div class="help-box">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the days, quarter days - and in rare cases hours (where a client needs this information) worked and are irrespective of the type of fee structure chosen or the fee agreed above. Such time sheets are only needed for billing purposes.</div>
 				{{ Form::select('green_sheet_required', ['No' => 'No', 'Yes' => 'Yes'], (editing()) ? isset($workorder->workorder->green_sheet_required) ? $workorder->workorder->green_sheet_required : '' : Input::old('green_sheet_required'), ['class' => 'green-sheet-required']) }}
 				{{ display_form_error('green_sheet_required', $errors) }}
 			</div>

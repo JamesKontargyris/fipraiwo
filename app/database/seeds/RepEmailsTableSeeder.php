@@ -9,20 +9,15 @@ class RepEmailsTableSeeder extends DatabaseSeeder
         DB::table('rep_emails')->delete();
 
         $email = [
-            'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
-            'David Lawsky'        => 'david.lawsky@fipra.com',
-            'Nathalie Hesketh'    => 'nathalie.hesketh@fipra.com',
-            'Sebastian Vos'       => 'sebastian.vos@fipra.com',
             'Jan Ahlskog'         => 'jan.ahlskog@fipra.com',
             'Laura Batchelor'     => 'laura.batchelor@fipra.com',
-            'Ukko Metsola'        => 'ukko.metsola@fipra.com',
-            'Rory Chisholm'       => 'rory.chisholm@fipra.com',
-            'Dirk Hudig'          => 'dirk.hudig@fipra.com',
-            'Ann Kelly'           => 'ann.kelly@fipra.com',
-            'Phil Evans'          => 'phil.evans@fipra.com',
             'Paul Buffet'         => 'paul.buffet@fipra.com',
-            'Mariella Palazzolo'  => 'mariella.palazzolo@fipra.com',
-            'Hilary Hudson' => 'hilary.hudson@fipra.com'
+            'Rory Chisholm'       => 'rory.chisholm@fipra.com',
+            'Mark Fielding' => 'mark.fielding@fipra.com',
+            'Dirk Hudig'          => 'dirk.hudig@fipra.com',
+            'Hilary Hudson' => 'hilary.hudson@fipra.com',
+            'David Lawsky'        => 'david.lawsky@fipra.com',
+            'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
         ];
 
         foreach ($email as $name => $address) {

@@ -6,6 +6,7 @@
     if($('select#rate-type').val() != '')
     {
         show_fees_people_form($('select#rate-type').val());
+        update_fees_table();
         update_fees_form();
         update_all_totals();
     }
@@ -17,19 +18,12 @@
         update_grand_total();
     });
 
-    // When the rate band is changed or a day total is entered/changed, update that person's total
-    $('.rate-band-select').on('change blur', function()
-    {
-        update_all_totals($(this));
-    });
-
     // When the rate type is changed...
     $('select#rate-type').on('change', function()
     {
         update_grand_total();
-
         update_fees_form();
-
+        update_fees_table();
         show_fees_people_form($(this).val());
     });
 
@@ -51,6 +45,11 @@
         return false;
     });
 
+    // $('.checkbox-per-month').on('change', function()
+    // {
+    //     $(this).closest('.fees-person').find('.person-total-text').text($(this).val() == 'on' ? 'Total per month' : 'Total');
+    // });
+
 //    When the add new person button is clicked...
     $('.add-new-person').on('click', function()
     {
@@ -68,7 +67,8 @@
 //        Update the person and rate ids in the name attributes
         tr_clone.find('.person-field input').attr('name', 'team[' + person_count + '][person]').removeClass('autofill');
         tr_clone.find('.level-select select').attr('name', 'team[' + person_count + '][level]');
-        tr_clone.find('.days-text-input input').attr('name', 'team[' + person_count + '][days]');
+        tr_clone.find('.days-text-input input[type=text]').attr('name', 'team[' + person_count + '][days]');
+        tr_clone.find('.days-text-input input[type=checkbox]').attr('name', 'team[' + person_count + '][per-month]');
         tr_clone.find('.rate-type-flat-rate input').attr('name', 'team[' + person_count + '][flatrate]');
         tr_clone.find('.hidden-total').attr('name', 'team[' + person_count + '][persontotal]');
         tr_clone.find('.hidden-rate-type').attr('name', 'team[' + person_count + '][ratetype]').val($('.fees-person').first().find('.hidden-rate-type').val());
@@ -104,6 +104,35 @@
         $('.autofill').val(name);
     });
 
+    // Autofill relevant fields when sub-contracted Unit is selected
+    $('#sub_contracted_unit_correspondent_affiliate').on('change', function()
+    {
+        var unit = $(this).val(),
+            field = $(this);
+        $.ajax({
+                method: "GET",
+                url: "/ac/unit_dropdown",
+                data: { selected: unit },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(xhr.responseText);
+                    console.log(thrownError);
+                }
+            })
+            .done(function( data ) {
+                data = JSON.parse(data);
+                $('input[name=' + field.data('name-field') + ']').val(data.name);
+                $('input[name=' + field.data('email-field') + ']').val(data.email);
+                $('select[name=' + field.data('rep-field') + ']').val(data.rep);
+                $('input[name=' + field.data('rate-band-field') + ']').val(data.rate_band);
+                update_all_totals($(this));
+                update_fees_table();
+            });
+    });
+
+
+
+
     function show_fees_people_form(selection)
     {
         var rate_labels = new Array();
@@ -126,6 +155,7 @@
             $('.fees-text').hide();
             $('.fees-select select').attr('disabled', false);
             $('.fees-select').show();
+
         }
         else
         {
@@ -174,7 +204,7 @@
 
         var rate_band = $('.rate-band-select').val(),
             seniority_level = el.closest('.fees-person').find('.level-select select').val(),
-            days = valid_days(el.closest('.fees-person').find('.days-text-input input'));
+            days = valid_days(el.closest('.fees-person').find('.days-text-input input[type=text]'));
 
         days.val(valid_days(days.val()));
 
@@ -238,7 +268,7 @@
         // If "at the Fipra day rate" is selected in the fees section,
         // show the hourly rates info drop down
         if(rate_type.val() == 'Fipra day rate') {
-            rate_type.next('.help-box').slideDown();
+            update_fees_table();
             $('.rate-type-days').show();
             $('.rate-type-flat-rate').hide();
             $('.person-total-row').show();
@@ -246,12 +276,44 @@
         }
         else
         {
-            rate_type.next('.help-box').slideUp();
+            update_fees_table();
             $('.rate-type-days').hide();
             $('.rate-type-flat-rate').show();
             $('.person-total-row').hide();
             $('.hidden-rate-type').val('flatrate');
         }
+    }
+
+    function update_fees_table()
+    {
+        var rate_band = $('input[name=rate_band]').val(),
+            rate_type = $('select#rate-type').val();
+
+        if(rate_type == 'Fipra day rate')
+        {
+            //    Update the fees table dropdown
+            if(rate_band == 'high')
+            {
+                $('.rate-table-high-rate').show();
+                $('.rate-table-standard-rate').hide();
+                $('.fipra-rates').slideDown();
+            }
+            if(rate_band == 'standard') {
+                $('.rate-table-high-rate').hide();
+                $('.rate-table-standard-rate').show();
+                $('.fipra-rates').slideDown();
+            }
+            if(rate_band == '') {
+                $('.rate-table-high-rate').hide();
+                $('.rate-table-standard-rate').show();
+                $('.fipra-rates').slideUp();
+            }
+        }
+        else {
+            $('.fipra-rates').slideUp();
+        }
+
+
     }
 
     // Ensure days is a valid number

@@ -88,7 +88,8 @@ class AutocompleteController extends BaseController
 
 	public function unit_lead_contacts_and_reps()
 	{
-		$unit_lead_contacts = Unit_lead_contact::all()->toArray();
+
+        $unit_lead_contacts = Unit_lead_contact::all()->toArray();
 
 		// Cleaning up the term
 		$term = trim(strip_tags($_GET['term']));
@@ -114,4 +115,23 @@ class AutocompleteController extends BaseController
 		$matches = array_slice($matches, 0, 5);
 		return json_encode($matches);
 	}
+
+    public function unit_dropdown()
+    {
+        $unit_info = Unit_lead_contact::where('unit_name', '=', $_GET['selected'])->first();
+
+        if($unit_info)
+        {
+            $found_unit['value'] = $unit_info['unit_name'];
+            $found_unit['name'] = $unit_info['lead_contact_name'];
+            $found_unit['email'] = $unit_info['email'];
+            $found_unit['rate_band'] = $unit_info['rate_band'];
+            $found_unit['rep'] = Unit_rep::where('fipra_unit', '=', $unit_info['unit_name'])->pluck('rep');
+            $found_unit['label'] = $unit_info['unit_name'];
+
+            return json_encode($found_unit);
+        }
+
+        return false;
+    }
 } 

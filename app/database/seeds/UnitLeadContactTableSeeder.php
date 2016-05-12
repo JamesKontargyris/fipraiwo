@@ -54,6 +54,50 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra Uruguay'        => 'Jose Luis Echevarria'
         ];
 
+        $unit_rate_bands = [
+            'Fipra Africa'         => 'standard',
+            'Fipra Australia'      => 'high',
+            'Fipra Azerbaijan'     => 'standard',
+            'Fipra Brazil'         => 'standard',
+            'Fipra Bulgaria'       => 'standard',
+            'Fipra Canada'         => 'high',
+            'Fipra China'          => 'standard',
+            'Fipra Croatia'        => 'standard',
+            'Fipra Cyprus'         => 'standard',
+            'Fipra Czech Republic' => 'standard',
+            'Fipra Denmark'        => 'high',
+            'Fipra Estonia'        => 'standard',
+            'Fipra Finland'        => 'high',
+            'Fipra France'         => 'high',
+            'Fipra Germany'        => 'high',
+            'Fipra Greece'         => 'standard',
+            'Fipra Hungary'        => 'standard',
+            'Fipra India'          => 'standard',
+//            'Fipra International'  => 'standard,
+            'Fipra Ireland'        => 'high',
+            'Fipra Italy'          => 'high',
+            'Fipra Japan'          => 'high',
+            'Fipra Singapore'      => 'standard',
+            'Fipra South Korea'    => 'high',
+            'Fipra Latvia'         => 'standard',
+            'Fipra Lithuania'      => 'standard',
+            'Fipra Malta'          => 'standard',
+            'Fipra Netherlands'    => 'high',
+            'Fipra Norway'         => 'high',
+            'Fipra Poland'         => 'standard',
+            'Fipra Portugal'       => 'standard',
+            'Fipra Russia'         => 'standard',
+            'Fipra Slovakia'       => 'standard',
+            'Fipra Slovenia'       => 'standard',
+            'Fipra Spain'          => 'standard',
+            'Fipra Sweden'         => 'high',
+            'Fipra Switzerland'    => 'high',
+            'Fipra Turkey'         => 'standard',
+            'Fipra Ukraine'        => 'standard',
+            'Fipra United Kingdom' => 'standard',
+            'Fipra Uruguay'        => 'standard'
+        ];
+
         $lead_contact_emails = [
             'John Richardson'               => 'johnl.richardson@fipra.com',
             'José Gabriel Assis de Almeida' => 'jose.almeida@fipra.com',
@@ -104,6 +148,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
                     'unit_name'         => $unit,
                     'lead_contact_name' => $contact,
                     'email'             => $lead_contact_emails[$contact],
+                    'rate_band'             => $unit_rate_bands[$unit],
                 ]
             );
         }

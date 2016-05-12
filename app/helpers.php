@@ -117,8 +117,10 @@ function pretty_team($team = [], $rate_type = 'Fipra day rate')
                 if(isset($member['ratetype']) && $member['ratetype'] == 'dayrate')
                 {
                     $days_plural = $member['days'] == 1 ? 'Day' : 'Days';
-                    $pretty_team .= "<td style='padding-right:20px'>" . $member['days'] . " " . $days_plural . "</td>";
-                    $pretty_team .= "<td>Total: " . $member['persontotal'] . "</td>";
+                    $per_month = isset($member['per-month']) ? ' per month' : ' in total';
+                    $total_text = isset($member['per-month']) ? 'Total per month: ' : 'Total: ';
+                    $pretty_team .= "<td style='padding-right:20px'>" . $member['days'] . " " . $days_plural . $per_month . "</td>";
+                    $pretty_team .= "<td>" . $total_text . $member['persontotal'] . "</td>";
                 }
                 else
                 {
@@ -236,5 +238,19 @@ function get_fipra_reps()
     {
         $rep_options[$rep->rep_name] = $rep->rep_name;
     }
+
     return $rep_options;
+}
+
+function get_all_units_for_dropdown()
+{
+    $units = Unit_lead_contact::all()->toArray();
+    $options = ['' => 'Please select...'];
+
+    foreach($units as $unit)
+    {
+        $options[$unit['unit_name']] = $unit['unit_name'];
+    }
+
+    return $options;
 }
