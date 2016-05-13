@@ -11,7 +11,7 @@
 @section('content')
 
 	<div class="intro">
-        <p>This form confirms financial instructions given by Unit who are Members of the Fipra Network to other Units or Correspondents. Please fill one form out each time a Unit is subcontracted. Please do not use the form below for anything Special Advisers of any type. </p>
+        <p>This form confirms financial instructions given by Unit who are Members of the Fipra Network to other Units or Correspondents. Please fill one form out each time a Unit is subcontracted. Please do not use the form below for Special Advisers or any other membership category.</p>
         <p class="italic small-print">Please see full explanatory notes at the end of the page.</p>
         @if(editing())
         	<p class="red">Fields in red cannot be edited.</p>
