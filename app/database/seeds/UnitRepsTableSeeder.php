@@ -10,25 +10,23 @@ class UnitRepsTableSeeder extends DatabaseSeeder
         DB::table('unit_reps')->delete();
 
         $unit_reps = [
-            'Fipra Africa'         => 'Mark Fielding',
+            'Fipra South Africa (Correspondent)'         => 'Mark Fielding',
             'Fipra Australia'      => 'Paul Buffet',
-            'Fipra Azerbaijan'     => 'Paul Buffet',
             'Fipra Brazil'         => 'Paul Buffet',
             'Fipra Bulgaria'       => 'Rory Chisholm',
             'Fipra Canada'         => 'David Lawsky',
             'Fipra China'          => 'Mark Fielding',
             'Fipra Croatia'        => 'Natko Vlahovic',
-            'Fipra Cyprus'         => 'Laura Batchelor',
+            'Fipra Cyprus (Correspondent)'         => 'Laura Batchelor',
             'Fipra Czech Republic' => 'Rory Chisholm',
             'Fipra Denmark'        => 'Jan Ahlskog',
             'Fipra Estonia'        => 'Jan Ahlskog',
             'Fipra Finland'        => 'Jan Ahlskog',
             'Fipra France'         => 'Laura Batchelor',
             'Fipra Germany'        => 'Peter-Carlo Lehrell',
-            'Fipra Greece'         => 'Hilary Hudson',
+            'Fipra Greece (Correspondent)'         => 'Hilary Hudson',
             'Fipra Hungary'        => 'Rory Chisholm',
             'Fipra India'          => 'Mark Fielding',
-//            'Fipra International'  => '',
             'Fipra Ireland'        => 'Laura Batchelor',
             'Fipra Italy'          => 'Laura Batchelor',
             'Fipra Japan'          => 'Mark Fielding',
@@ -48,7 +46,7 @@ class UnitRepsTableSeeder extends DatabaseSeeder
             'Fipra Turkey'         => 'Mark Fielding',
             'Fipra Ukraine'        => 'Dirk Hudig',
             'Fipra United Kingdom' => 'Rory Chisholm',
-            'Fipra Uruguay'        => 'Laura Batchelor'
+            'Fipra Uruguay (Correspondent)'        => 'Laura Batchelor'
         ];
 
         foreach ($unit_reps as $unit => $rep) {
