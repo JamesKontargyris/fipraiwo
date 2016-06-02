@@ -44,7 +44,6 @@ class UnitRepsTableSeeder extends DatabaseSeeder
             'Fipra Sweden'         => 'Jan Ahlskog',
             'Fipra Switzerland'    => 'Mark Fielding',
             'Fipra Turkey'         => 'Mark Fielding',
-            'Fipra Ukraine'        => 'Dirk Hudig',
             'Fipra United Kingdom' => 'Rory Chisholm',
             'Fipra Uruguay (Correspondent)'        => 'Laura Batchelor'
         ];

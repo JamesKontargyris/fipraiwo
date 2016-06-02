@@ -32,7 +32,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra Japan'          => 'Philip Howard',
             'Fipra Latvia'         => 'Armands Gutmanis',
             'Fipra Lithuania'      => 'Arūnas Pemkus',
-            'Fipra Netherlands'    => 'Miriam Offermans',
+            'Fipra Netherlands'    => 'Peter van Keulen',
             'Fipra Norway'         => 'Per Høiby',
             'Fipra Poland'         => 'Marek Matraszek',
             'Fipra Portugal'       => 'Ana Vila Nova',
@@ -45,7 +45,6 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra Sweden'         => 'Göran Thorstenson',
             'Fipra Switzerland'    => 'Dominique Reber',
             'Fipra Turkey'         => 'Ayse Aricioglu',
-            'Fipra Ukraine'        => 'James Wilson',
             'Fipra United Kingdom' => 'Rory Chisholm',
             'Fipra Uruguay (Correspondent)'        => 'Jose Luis Echevarria'
         ];
@@ -76,7 +75,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra Norway'         => 'high',
             'Fipra Poland'         => 'standard',
             'Fipra Portugal'       => 'standard',
-            'Fipra Singapore'      => 'standard',
+            'Fipra Singapore'      => 'high',
             'Fipra Slovakia'       => 'standard',
             'Fipra Slovenia'       => 'standard',
             'Fipra South Africa (Correspondent)'         => 'standard',
@@ -85,7 +84,6 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra Sweden'         => 'high',
             'Fipra Switzerland'    => 'high',
             'Fipra Turkey'         => 'standard',
-            'Fipra Ukraine'        => 'standard',
             'Fipra United Kingdom' => 'standard',
             'Fipra Uruguay (Correspondent)'        => 'standard'
         ];
@@ -126,12 +124,12 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Göran Thorstenson'             => 'goran.thorstenson@fipra.com',
             'Dominique Reber'               => 'dominique.reber@fipra.com',
             'Ayse Aricioglu'                => 'ayse.aricioglu@fipra.com',
-            'James Wilson'                  => 'james.wilson@fipra.com',
             'Rory Chisholm'                 => 'rory.chisholm@fipra.com',
             'Abdul Waheed Patel'            => 'abdulwaheed.patel@fipra.com',
             'Sayer Aliyev'                  => 'sayer.aliyev@fipra.com',
             'Richard Andrew'                => 'richard.andrew@fipra.com',
-            'Jose Luis Echevarria'          => 'joseluis.echevarria@fipra.com'
+            'Jose Luis Echevarria'          => 'joseluis.echevarria@fipra.com',
+            'Peter van Keulen' => 'peter.vankeulen@fipra.com'
         ];
 
         foreach ($unit_lead_contacts as $unit => $contact) {

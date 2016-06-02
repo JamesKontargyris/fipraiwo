@@ -1,12 +1,13 @@
 (function() {
 
-    // Make sure the "work will be done" section is displayed
+    // Make sure the fees section is fully displayed
     // when the page reloads after a failed validation and the
     // dropdown is set
     if($('select#rate-type').val() != '')
     {
         show_fees_field($('select#rate-type').val());
         update_fees_form();
+        update_grand_total();
     }
 
     // When a day total is entered/changed, update the grand total
@@ -58,7 +59,7 @@
             days = $('.fee-days input').val(),
             day_rate = $('.day_rate').val();
 
-        $('.grand-total').text('Grand Total: €' + (days * day_rate).formatMoney(0));
+        $('.grand-total').text('Total: €' + (days * day_rate).formatMoney(0));
         $('.day_rate_total').val((days * day_rate).formatMoney(0));
         return grand_total;
     }

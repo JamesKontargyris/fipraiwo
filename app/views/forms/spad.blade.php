@@ -107,15 +107,16 @@
                     </div>
 
                     <div class="formfield fee-days">
-                        {{ Form::label('days', 'No. of days:', ['class' => 'required']) }}
+                        {{ Form::label('days', 'No. of days @ &euro;2000:', ['class' => 'required']) }}
                         @if(editing())
                             {{ Form::text('days', isset($workorder->workorder->days) ? $workorder->workorder->days : '', ['style' => 'width:30%']) }}
                         @else
                             {{ Form::text('days', Input::old('days'), ['style' => 'width:30%']) }}
                         @endif
+                        <div>@include('partials.days-help-message')</div>
                         {{ display_form_error('days', $errors) }}
 
-                        <div style="padding:6px 0; font-size:16px; font-weight:bold;" class="grand-total">Total: €0</div>
+                        <div style="padding:18px 0 6px 0; font-size:16px; font-weight:bold;" class="grand-total">Total: €0</div>
                         {{ Form::hidden('day_rate_in_euros', 2000, ['class' => 'day_rate']) }}
                         {{ Form::hidden('total_in_euros', Input::old('total_in_euros'), ['class' => 'day_rate_total']) }}
                     </div>
