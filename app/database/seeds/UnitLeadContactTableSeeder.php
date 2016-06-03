@@ -45,7 +45,6 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra Sweden'         => 'Göran Thorstenson',
             'Fipra Switzerland'    => 'Dominique Reber',
             'Fipra Turkey'         => 'Ayse Aricioglu',
-            'Fipra United Kingdom' => 'Rory Chisholm',
             'Fipra Uruguay (Correspondent)'        => 'Jose Luis Echevarria'
         ];
 
@@ -84,7 +83,6 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra Sweden'         => 'high',
             'Fipra Switzerland'    => 'high',
             'Fipra Turkey'         => 'standard',
-            'Fipra United Kingdom' => 'standard',
             'Fipra Uruguay (Correspondent)'        => 'standard'
         ];
 
