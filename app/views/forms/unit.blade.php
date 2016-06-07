@@ -250,6 +250,10 @@
                         	<span class="inline bold"><br/>&euro;</span> {{ Form::text("total_project_fee", (editing()) ? isset($workorder->workorder->total_project_fee) ? $workorder->workorder->total_project_fee : null : Input::old('total_project_fee'), ['class' => 'inline-field']) }}
 						</div>
 
+                        {{ Form::label('amount_payable', 'Amount payable (after IUD):', ['class' => 'required']) }}
+                        <span class="inline bold"><br/>&euro;</span> {{ Form::text('amount_payable', (editing()) ? isset($workorder->workorder->amount_payable) ? $workorder->workorder->amount_payable : '' : Input::old('amount_payable'), ['class' => 'inline-field']) }}
+                        {{ display_form_error('amount_payable', $errors) }}
+
                     </div>
                     {{ display_form_error('the_work_will_be_done', $errors) }}
 
