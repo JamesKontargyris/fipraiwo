@@ -9,7 +9,7 @@ class RepEmailsTableSeeder extends DatabaseSeeder
         DB::table('rep_emails')->delete();
 
         $email = [
-            'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
+            'Peter-Carlo Lehrell' => 'lehrell@fipra.com',
             'David Lawsky'        => 'david.lawsky@fipra.com',
             'Nathalie Hesketh'    => 'nathalie.hesketh@fipra.com',
             'Sebastian Vos'       => 'sebastian.vos@fipra.com',
@@ -18,7 +18,6 @@ class RepEmailsTableSeeder extends DatabaseSeeder
             'Ukko Metsola'        => 'ukko.metsola@fipra.com',
             'Rory Chisholm'       => 'rory.chisholm@fipra.com',
             'Dirk Hudig'          => 'dirk.hudig@fipra.com',
-            'Ann Kelly'           => 'ann.kelly@fipra.com',
             'Phil Evans'          => 'phil.evans@fipra.com',
             'Paul Buffet'         => 'paul.buffet@fipra.com',
             'Mariella Palazzolo'  => 'mariella.palazzolo@fipra.com',

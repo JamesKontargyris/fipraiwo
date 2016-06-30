@@ -10,7 +10,6 @@ class AccountDirectorTableSeeder extends DatabaseSeeder
         DB::table('account_directors')->delete();
 
         $account_directors = [
-            'Ann Kelly' => 'ann.kelly@fipra.com',
             'David Lawsky' => 'david.lawsky@fipra.com',
             'Dirk Hudig' => 'dirk.hudig@fipra.com',
             'Jan Ahlskog' => 'jan.ahlskog@fipra.com',
