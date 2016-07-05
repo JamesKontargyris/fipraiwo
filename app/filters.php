@@ -44,6 +44,14 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('access_check', function()
+{
+	if( ! Session::has('loggedin'))
+	{
+		return Redirect::to('login');
+	}
+});
+
 
 /*
 |--------------------------------------------------------------------------

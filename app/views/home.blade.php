@@ -2,6 +2,7 @@
 
 @section('nav_links')
     <li><a class="highlight" href="/admin">SuperUser Login</a></li>
+    <li><a href="/logout">Logout</a></li>
 @stop
 
 @section('content')

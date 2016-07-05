@@ -161,6 +161,7 @@ a.button {
 input[type=text],
 input[type=email],
 input[type=file],
+input[type=password],
 textarea {
   width: 100%;
   padding: 5px 10px;
@@ -171,12 +172,14 @@ textarea {
     input[type=text],
     input[type=email],
     input[type=file],
+    input[type=password],
     textarea {
       font-size: 14px;
       font-size: 0.875rem; } }
   input[type=text].inline,
   input[type=email].inline,
   input[type=file].inline,
+  input[type=password].inline,
   textarea.inline {
     width: auto; }
 
