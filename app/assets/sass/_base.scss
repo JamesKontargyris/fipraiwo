@@ -110,6 +110,7 @@ a.button {
 input[type=text],
 input[type=email],
 input[type=file],
+input[type=password],
 textarea {
 	width:100%;
 	padding:$v-rhythm / 4 10px;
@@ -128,8 +129,8 @@ input[disabled=disabled] {
   border:1px solid $red;
 }
 input[type=checkbox] {
-	width:30px;
-	height:30px;
+	width:20px;
+	height:20px;
 	vertical-align: middle;
 }
 input[type=submit] {

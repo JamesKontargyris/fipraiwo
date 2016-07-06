@@ -331,6 +331,15 @@ ul.square {
   width:80% !important;
 }
 
+.fee-days, .fee-flatrate {
+  display:none;
+}
+
+//Classes used in the Unit fees table to display the correct rates
+.rate-table-high-rate, .rate-table-standard-rate {
+  display:none;
+}
+
 //Buttons that are JS-dependent. Hide until JS displays them.
 .js-block {
   display:none;

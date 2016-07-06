@@ -11,47 +11,79 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
         DB::table('unit_lead_contacts')->delete();
 
         $unit_lead_contacts = [
-            'Fipra Africa'         => 'Abdul Waheed Patel',
             'Fipra Australia'      => 'John Richardson',
-            'Fipra Azerbaijan'     => 'Sayer Aliyev',
             'Fipra Brazil'         => 'José Gabriel Assis de Almeida',
             'Fipra Bulgaria'       => 'Rositsa Velkova',
             'Fipra Canada'         => 'Andre Albinati',
             'Fipra China'          => 'Haiying Yuan',
             'Fipra Croatia'        => 'Natko Vlahovic',
-            'Fipra Cyprus'         => 'Andreas Hadjikyriacos',
+            'Fipra Cyprus (Correspondent)'         => 'Andreas Hadjikyriacos',
             'Fipra Czech Republic' => 'Jana Marco',
             'Fipra Denmark'        => 'Lars Abel',
             'Fipra Estonia'        => 'Andreas Kaju',
             'Fipra Finland'        => 'Ilari Marzano',
             'Fipra France'         => 'Jean Francois Guichard',
             'Fipra Germany'        => 'Angelika Josten-Janssen',
-            'Fipra Greece'         => 'Anthony Gortzis',
+            'Fipra Greece (Correspondent)'         => 'Anthony Gortzis',
             'Fipra Hungary'        => 'Tamás Sárdi',
             'Fipra India'          => 'Manash Neog',
-//            'Fipra International'  => '',
             'Fipra Ireland'        => 'Ann Kelly',
             'Fipra Italy'          => 'Mariella Palazzolo',
             'Fipra Japan'          => 'Philip Howard',
-            'Fipra Singapore'      => 'Richard Andrew',
-            'Fipra South Korea'    => 'Yun-Hee Lee',
             'Fipra Latvia'         => 'Armands Gutmanis',
             'Fipra Lithuania'      => 'Arūnas Pemkus',
-            'Fipra Malta'          => 'Ukko Metsola',
-            'Fipra Netherlands'    => 'Miriam Offermans',
+            'Fipra Netherlands'    => 'Peter van Keulen',
             'Fipra Norway'         => 'Per Høiby',
             'Fipra Poland'         => 'Marek Matraszek',
             'Fipra Portugal'       => 'Ana Vila Nova',
-            'Fipra Russia'         => 'Alex Andreev',
+            'Fipra Singapore'      => 'Richard Andrew',
             'Fipra Slovakia'       => 'Patrik Zoltvany',
             'Fipra Slovenia'       => 'Mihael Cigler',
+            'Fipra South Africa (Correspondent)'         => 'Abdul Waheed Patel',
+            'Fipra South Korea'    => 'Yun-Hee Lee',
             'Fipra Spain'          => 'Sebastian Mariz',
             'Fipra Sweden'         => 'Göran Thorstenson',
             'Fipra Switzerland'    => 'Dominique Reber',
             'Fipra Turkey'         => 'Ayse Aricioglu',
-            'Fipra Ukraine'        => 'James Wilson',
-            'Fipra United Kingdom' => 'Rory Chisholm',
-            'Fipra Uruguay'        => 'Jose Luis Echevarria'
+            'Fipra Uruguay (Correspondent)'        => 'Jose Luis Echevarria'
+        ];
+
+        $unit_rate_bands = [
+            'Fipra Australia'      => 'high',
+            'Fipra Brazil'         => 'standard',
+            'Fipra Bulgaria'       => 'standard',
+            'Fipra Canada'         => 'high',
+            'Fipra China'          => 'standard',
+            'Fipra Croatia'        => 'standard',
+            'Fipra Cyprus (Correspondent)'         => 'standard',
+            'Fipra Czech Republic' => 'standard',
+            'Fipra Denmark'        => 'high',
+            'Fipra Estonia'        => 'standard',
+            'Fipra Finland'        => 'high',
+            'Fipra France'         => 'high',
+            'Fipra Germany'        => 'high',
+            'Fipra Greece (Correspondent)'         => 'standard',
+            'Fipra Hungary'        => 'standard',
+            'Fipra India'          => 'standard',
+            'Fipra Ireland'        => 'high',
+            'Fipra Italy'          => 'high',
+            'Fipra Japan'          => 'high',
+            'Fipra Latvia'         => 'standard',
+            'Fipra Lithuania'      => 'standard',
+            'Fipra Netherlands'    => 'high',
+            'Fipra Norway'         => 'high',
+            'Fipra Poland'         => 'standard',
+            'Fipra Portugal'       => 'standard',
+            'Fipra Singapore'      => 'high',
+            'Fipra Slovakia'       => 'standard',
+            'Fipra Slovenia'       => 'standard',
+            'Fipra South Africa (Correspondent)'         => 'standard',
+            'Fipra South Korea'    => 'high',
+            'Fipra Spain'          => 'standard',
+            'Fipra Sweden'         => 'high',
+            'Fipra Switzerland'    => 'high',
+            'Fipra Turkey'         => 'standard',
+            'Fipra Uruguay (Correspondent)'        => 'standard'
         ];
 
         $lead_contact_emails = [
@@ -90,12 +122,12 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Göran Thorstenson'             => 'goran.thorstenson@fipra.com',
             'Dominique Reber'               => 'dominique.reber@fipra.com',
             'Ayse Aricioglu'                => 'ayse.aricioglu@fipra.com',
-            'James Wilson'                  => 'james.wilson@fipra.com',
             'Rory Chisholm'                 => 'rory.chisholm@fipra.com',
             'Abdul Waheed Patel'            => 'abdulwaheed.patel@fipra.com',
             'Sayer Aliyev'                  => 'sayer.aliyev@fipra.com',
             'Richard Andrew'                => 'richard.andrew@fipra.com',
-            'Jose Luis Echevarria'          => 'joseluis.echevarria@fipra.com'
+            'Jose Luis Echevarria'          => 'joseluis.echevarria@fipra.com',
+            'Peter van Keulen' => 'peter.vankeulen@fipra.com'
         ];
 
         foreach ($unit_lead_contacts as $unit => $contact) {
@@ -104,6 +136,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
                     'unit_name'         => $unit,
                     'lead_contact_name' => $contact,
                     'email'             => $lead_contact_emails[$contact],
+                    'rate_band'             => $unit_rate_bands[$unit],
                 ]
             );
         }
