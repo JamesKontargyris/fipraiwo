@@ -42,7 +42,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder
             'Fipra South Africa (Correspondent)'         => 'Abdul Waheed Patel',
             'Fipra South Korea'    => 'Yun-Hee Lee',
             'Fipra Spain'          => 'Sebastian Mariz',
-            'Fipra Sweden'         => 'Göran Thorstenson',
+            'Fipra Sweden'         => 'Anders Ostin',
             'Fipra Switzerland'    => 'Dominique Reber',
             'Fipra Turkey'         => 'Ayse Aricioglu',
             'Fipra Uruguay (Correspondent)'        => 'Jose Luis Echevarria'

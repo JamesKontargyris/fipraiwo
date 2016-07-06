@@ -10,12 +10,12 @@ class UnitRepsTableSeeder extends DatabaseSeeder
         DB::table('unit_reps')->delete();
 
         $unit_reps = [
-            'Fipra Australia'      => 'Paul Buffet',
+            'Fipra Australia'      => 'Hilary Hudson',
             'Fipra Brazil'         => 'Paul Buffet',
             'Fipra Bulgaria'       => 'Rory Chisholm',
             'Fipra Canada'         => 'David Lawsky',
             'Fipra China'          => 'Mark Fielding',
-            'Fipra Croatia'        => 'Natko Vlahovic',
+            'Fipra Croatia'        => 'Dirk Hudig',
             'Fipra Cyprus (Correspondent)'         => 'Laura Batchelor',
             'Fipra Czech Republic' => 'Rory Chisholm',
             'Fipra Denmark'        => 'Jan Ahlskog',

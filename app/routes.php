@@ -51,11 +51,7 @@ Route::group(['before' => 'access_check'], function()
     Route::get('about/edt', 'PagesController@about_edt');
     Route::get('about/fiplex', 'PagesController@about_fiplex');
 
-    Route::post('queue/push', function()
-    {
-        Log::info('marshal!');
-        return Queue::marshal();
-    });
+
 
     Route::get('/', ['as' => 'home', function()
     {
@@ -67,14 +63,21 @@ Route::group(['before' => 'access_check'], function()
         return View::make('complete')->with('page_title', 'Work Order Submitted');
     }]);
 
-//Account Director autocomplete
-    Route::get('ac/account_directors', 'AutocompleteController@account_directors');
-//Unit reps autocomplete
-    Route::get('ac/unit_reps', 'AutocompleteController@unit_reps');
-//Spad reps autocomplete
-    Route::get('ac/spad_reps', 'AutocompleteController@spad_reps');
-//Unit lead contacts/reps autocomplete
-    Route::get('ac/unit_lead_contacts_and_reps', 'AutocompleteController@unit_lead_contacts_and_reps');
-//Unit lead contacts/reps dropdown autofill
-    Route::get('ac/unit_dropdown', 'AutocompleteController@unit_dropdown');
 });
+
+Route::post('queue/push', function()
+{
+    Log::info('marshal!');
+    return Queue::marshal();
+});
+
+//Account Director autocomplete
+Route::get('ac/account_directors', 'AutocompleteController@account_directors');
+//Unit reps autocomplete
+Route::get('ac/unit_reps', 'AutocompleteController@unit_reps');
+//Spad reps autocomplete
+Route::get('ac/spad_reps', 'AutocompleteController@spad_reps');
+//Unit lead contacts/reps autocomplete
+Route::get('ac/unit_lead_contacts_and_reps', 'AutocompleteController@unit_lead_contacts_and_reps');
+//Unit lead contacts/reps dropdown autofill
+Route::get('ac/unit_dropdown', 'AutocompleteController@unit_dropdown');
