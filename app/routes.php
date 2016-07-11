@@ -46,8 +46,6 @@ Route::group(['before' => 'access_check'], function()
     Route::controller('admin', 'AdminController');
 //Route::when('admin/*', 'auth_superuser');
 
-    Route::controller('confirm', 'ConfirmController');
-
     Route::get('about/edt', 'PagesController@about_edt');
     Route::get('about/fiplex', 'PagesController@about_fiplex');
 
@@ -70,6 +68,8 @@ Route::post('queue/push', function()
     Log::info('marshal!');
     return Queue::marshal();
 });
+
+Route::controller('confirm', 'ConfirmController');
 
 //Account Director autocomplete
 Route::get('ac/account_directors', 'AutocompleteController@account_directors');
