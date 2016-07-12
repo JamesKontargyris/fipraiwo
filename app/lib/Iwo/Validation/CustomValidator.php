@@ -25,4 +25,11 @@ class CustomValidator extends \Illuminate\Validation\Validator
             return date("Y-m-d h:i:s", strtotime($value)) > $today;
         }
     }
+
+	public function validateFipraEmailAddress($attribute, $email, $parameters)
+	{
+		$email_domain = substr(strrchr($email, "@"), 1);
+
+		return $email_domain == 'fipra.com';
+	}
 }

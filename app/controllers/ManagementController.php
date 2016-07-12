@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Redirect;
 use Iwo\Exceptions\ManagementLoginException;
+use Iwo\Validation\ManageLoginValidator;
 
 class ManagementController extends BaseController
 {
@@ -14,12 +15,14 @@ class ManagementController extends BaseController
 	protected $upload;
 	protected $no_perms_message = 'Sorry, you do not have the necessary permissions to do that.';
 
-	public function __construct()
+	public function __construct(ManageLoginValidator $validator)
 	{
 		parent::__construct();
 
 		if ( Session::get( 'iwo_id' ) )
 		{
+			$this->validator = $validator;
+
 			$this->workorder = Workorder::find( Session::get( 'iwo_id' ) );
 			//Get logs ordered latest to oldest
 			$this->workorder->logs             = Workorder::find( Session::get( 'iwo_id' ) )->logs()->orderBy( 'created_at', 'DESC' )->get();
@@ -46,7 +49,7 @@ class ManagementController extends BaseController
 	}
 
 	/**
-	 * Displays login screen if not already logged in.
+	 * Displays login screen if an IWO id doesn't exist in the session.
 	 *
 	 * @return \Illuminate\View\View
 	 */
@@ -56,45 +59,12 @@ class ManagementController extends BaseController
 		{
 			return Redirect::to( 'manage/view' );
 		}
-
-		return View::make( 'manage.login' )->with( 'page_title', $this->page_title );
-	}
-
-	/**
-	 * Checks for correct login details and logs in if user found.
-	 *
-	 * @throws ManagementLoginException
-	 */
-	public function postIndex()
-	{
-		$email = Input::get( 'email' );
-		//Find the core reference, stripping off any letters from the end
-		$user_iwo_ref = get_original_ref( Input::get( 'iwo_ref' ) );
-		//Get IWO id
-		$iwo_id = Iwo_ref::where( 'iwo_ref', 'LIKE', $user_iwo_ref . '%' )->pluck( 'iwo_id' );
-		//Get the current IWO reference code
-		$iwo_ref = Iwo_ref::where( 'iwo_id', '=', $iwo_id )->pluck( 'iwo_ref' );
-		//Is this a super user, with access to all IWOs?
-		if ( in_array( strtolower( $email ), Config::get( 'iwo_vars.super_users' ) ) )
+		elseif (Auth::check())
 		{
-			//Super users have an iwo_id of 0 in the DB. Log the super user in.
-			$user = User::where( 'email', '=', $email )->where( 'iwo_id', '=', 0 )->first();
-			User::login_user( $user->id, $iwo_id, $iwo_ref );
-
-			return Redirect::to( 'manage/view' );
-		} //Check to see if user exists
-		elseif ( $user = User::where( 'email', '=', $email )->where( 'iwo_id', '=', $iwo_id )->first() )
-		{
-			//If user found, log the user in, add some useful session variables
-			//and redirect to view IWO
-			User::login_user( $user->id, $iwo_id, $iwo_ref );
-
-			return Redirect::to( 'manage/view' );
-		} else
-		{
-			//    If no user found, throw an exception and redirect back with errors
-			throw new ManagementLoginException( 'Login failed', 'Incorrect login details entered. Please try again.' );
+			return Redirect::to ('/');
 		}
+
+		return View::make( 'login' );
 	}
 
 	/**
@@ -104,11 +74,6 @@ class ManagementController extends BaseController
 	 */
 	public function getView()
 	{
-		if ( ! $this->check_permission( 'read' ) )
-		{
-			return Redirect::to( 'manage' )->withErrors( $this->no_perms_message );
-		}
-
 		return View::make( 'manage.view_iwo' )->with( [
 			'page_title' => $this->page_title,
 			'workorder'  => $this->workorder,
@@ -123,7 +88,10 @@ class ManagementController extends BaseController
 	 */
 	public function getNote()
 	{
-		$this->check_permission( 'comment' );
+		if ( ! $this->check_permission( 'comment' ) )
+		{
+			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
+		}
 
 		return View::make( 'manage.add_note' )->with( [
 			'page_title' => $this->page_title,

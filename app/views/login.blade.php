@@ -2,23 +2,85 @@
 
 @section('content')
 
-    @if(Session::has('msg'))
+    <h3>Please login to continue.</h3>
+
+    @if($errors->all())
         <div class="errors">
-            <i class="fa fa-warning fa-lg"></i> <strong>{{ Session::get('msg') }}</strong>
+            <i class="fa fa-warning fa-lg"></i> <strong>Please address the following errors:</strong>
+
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li><strong>{{ $error }}</strong></li>
+                @endforeach
+            </ul>
         </div>
     @endif
 
-    {{ Form::open(['files' => false, 'url' => 'login']) }}
+    <div class="login-form-container" style="padding:10px 20px; background-color:#efefef; margin-bottom:20px;">
+        <h2>Submit a new IWO</h2>
 
-    <section class="col-6">
-        <div class="formfield">
-            {{ Form::label('access_code', 'Access code:', ['class' => 'required']) }}
-            {{ Form::password('access_code') }}
-            {{ display_form_error('access_code', $errors) }}
-        </div>
+        {{ Form::open(['files' => false, 'url' => 'login']) }}
 
-        {{ display_submit_button('Login') }}
-    </section>
+        <section class="col-6" style="margin-bottom:0;">
+            <div class="formfield">
+                {{ Form::label('email', 'Email Address:', ['class' => 'required']) }}
+                {{ Form::text('email') }}
+                {{ display_form_error('email', $errors) }}
+            </div>
+        </section>
 
-    {{ Form::close() }}
+        <section class="col-6 last" style="margin-bottom:0;">
+            <div class="formfield">
+                {{ Form::label('password', 'Password:', ['class' => 'required']) }}
+                {{ Form::password('password') }}
+                {{ display_form_error('password', $errors) }}
+            </div>
+        </section>
+
+        <section class="col-12" style="margin-bottom:0;">
+            {{ display_submit_button('Login') }}
+        </section>
+
+        <div style="clear: both"></div>
+
+        {{ Form::close() }}
+    </div>
+
+    <div class="login-form-container" style="padding:10px 20px; background-color:#efefef;">
+        <h2>Manage an existing IWO</h2>
+
+        {{ Form::open(['files' => false, 'url' => 'login/manage']) }}
+
+        <section class="col-4" style="margin-bottom:0;">
+            <div class="formfield">
+                {{ Form::label('manage_email', 'Email Address:', ['class' => 'required']) }}
+                {{ Form::text('manage_email') }}
+                {{ display_form_error('manage_email', $errors) }}
+            </div>
+        </section>
+
+        <section class="col-4" style="margin-bottom:0;">
+            <div class="formfield">
+                {{ Form::label('manage_password', 'Password:', ['class' => 'required']) }}
+                {{ Form::password('manage_password') }}
+                {{ display_form_error('manage_password', $errors) }}
+            </div>
+        </section>
+
+        <section class="col-4 last" style="margin-bottom:0;">
+            <div class="formfield">
+                {{ Form::label('iwo_ref', 'IWO Reference:', ['class' => 'required']) }}
+                {{ Form::text('iwo_ref') }}
+                {{ display_form_error('iwo_ref', $errors) }}
+            </div>
+        </section>
+
+        <section class="col-12">
+            {{ display_submit_button('Login') }}
+        </section>
+
+        <div style="clear: both"></div>
+
+        {{ Form::close() }}
+    </div>
 @stop

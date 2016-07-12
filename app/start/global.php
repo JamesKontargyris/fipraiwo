@@ -68,6 +68,13 @@ App::error(function(Iwo\Exceptions\ManagementLoginException $exception, $code)
     return Redirect::back()->withErrors($exception->getErrors());
 });
 
+App::error(function(Iwo\Exceptions\LoginFailedException $exception)
+{
+	Log::error($exception);
+
+	return Redirect::back()->withInput()->withErrors('Incorrect login details entered. Please try again.');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

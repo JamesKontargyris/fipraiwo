@@ -35,7 +35,11 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('manage');
+//	if (Auth::guest()) return Redirect::to('manage');
+	if( ! Auth::check())
+	{
+		return Redirect::to('login');
+	}
 });
 
 
@@ -49,6 +53,15 @@ Route::filter('access_check', function()
 	if( ! Session::has('loggedin'))
 	{
 		return Redirect::to('login');
+	}
+});
+
+//Is the current user managing an IWO? Redirect to management section if so
+Route::filter('is_managing', function()
+{
+	if( Session::has('iwo_id'))
+	{
+		return Redirect::to('manage/view');
 	}
 });
 

@@ -1,42 +1,25 @@
 <?php
 
-//Temporary login access code check
-
-Route::get('/login', function()
+Route::get('/adduser', function()
 {
-    return View::make('login')->with('page_title', 'Please Login: Online Internal Work Order');
-});
+//    $me = User::where('email','=','james.kontargyris@fipra.com')->where('password', '<>', '')->first();
+//    $me->roles()->attach(5);
 
-Route::post('/login', function()
-{
-    if( Input::get('access_code') != 'fipra2016fipra')
-    {
-        Session::flash('msg', 'Incorrect access code. Please try again.');
-        
-        return Redirect::to('login');
-    }
-    else {
-        Session::put('loggedin', 'yes');
-        return Redirect::to('/');
-    }
 });
 
 Route::get('/logout', function()
 {
-    Session::forget('loggedin');
-    Session::flash('msg', 'You have been logged out.');
+    Auth::logout();
     return Redirect::to('login');
 });
 
 
-Route::group(['before' => 'access_check'], function()
-{
-    Route::controller('edt', 'EDTWorkOrderController');
-    Route::controller('unit', 'UnitWorkOrderController');
-    Route::controller('spad', 'SpadWorkOrderController');
-    Route::controller('fiplex', 'FiplexWorkOrderController');
-    Route::controller('fiptalk', 'FiptalkWorkOrderController');
+//Login / logout
+//Route::post('manage/login', 'ManagementController@login');
+Route::controller('login', 'LoginController');
 
+Route::group(['before' => 'auth'], function()
+{
     Route::when('*/save', 'input_exists');
     Route::when('manage/update', 'input_exists');
 
@@ -46,25 +29,33 @@ Route::group(['before' => 'access_check'], function()
     Route::controller('admin', 'AdminController');
 //Route::when('admin/*', 'auth_superuser');
 
-    Route::controller('confirm', 'ConfirmController');
-
     Route::get('about/edt', 'PagesController@about_edt');
     Route::get('about/fiplex', 'PagesController@about_fiplex');
 
+});
 
-
-    Route::get('/', ['as' => 'home', function()
-    {
-        return View::make('home')->with('page_title', 'Online Internal Work Order');
-    }]);
+Route::group(['before' => ['auth', 'is_managing']], function ()
+{
+    Route::controller('edt', 'EDTWorkOrderController');
+    Route::controller('unit', 'UnitWorkOrderController');
+    Route::controller('spad', 'SpadWorkOrderController');
+    Route::controller('fiplex', 'FiplexWorkOrderController');
+    Route::controller('fiptalk', 'FiptalkWorkOrderController');
 
     Route::get('complete', ['as' => 'complete', function()
     {
         return View::make('complete')->with('page_title', 'Work Order Submitted');
     }]);
-
+    Route::get('/', ['as' => 'home', function()
+    {
+        return View::make('home')->with('page_title', 'Online Internal Work Order');
+    }]);
 });
 
+//Confirmation route must be outside the access_check filter
+Route::controller('confirm', 'ConfirmController');
+
+//Mail queue route
 Route::post('queue/push', function()
 {
     Log::info('marshal!');

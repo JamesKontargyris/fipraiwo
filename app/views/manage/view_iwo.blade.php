@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('nav_links')
-<li><a class="highlight" href="/"><i class="fa fa-caret-left"></i> Back to IWO Menu</a></li>
+<li><a class="highlight" href="/manage/logout">Logout</a></li>
 @stop
 
 @section('content')

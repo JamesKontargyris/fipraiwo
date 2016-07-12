@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Fipra :: {{ $page_title }}</title>
+        <title>Fipra :: {{ isset($page_title) ? $page_title : 'Online Internal Work Order (IWO) System' }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noindex">
@@ -43,7 +43,7 @@
                     <img src="{{ asset('img/fipra_logo.gif') }}" alt="Fipra - Professional Public Affairs in More Than 50 Countries">
                 </div>
                 <div id="page-title">
-                    <h1>{{ $page_title }}</h1>
+                    <h1>{{ isset($page_title) ? $page_title : 'Online Internal Work Order (IWO) System' }}</h1>
                 </div>
             </header>
             

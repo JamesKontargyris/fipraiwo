@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('nav_links')
-    <li><a class="highlight" href="/admin">SuperUser Login</a></li>
-    <li><a href="/logout">Logout</a></li>
+    {{--<li><a class="highlight" href="/admin">SuperUser Login</a></li>--}}
+    <li><a class="highlight" href="/logout">Logout</a></li>
 @stop
 
 @section('content')
@@ -15,22 +15,22 @@
 		</div>
 
 	@if( ! Session::get('iwo_id'))
-		<div class="col-4 last" align="right">
-			<a href="manage" class="secondary block-but"><i class="fa fa-edit"></i> Manage / edit / confirm an existing Internal Work Order</a>
-		</div>
+		{{--<div class="col-4 last" align="right">--}}
+			{{--<a href="manage" class="secondary block-but"><i class="fa fa-edit"></i> Manage / edit / confirm an existing Internal Work Order</a>--}}
+		{{--</div>--}}
     @endif
 
     @include('manage.partials.messages')
 
 	<div class="buttons col-12">
         @if(Session::get('iwo_id'))
-            <div class="message-box">
-				<p class="message"><i class="fa fa-warning"></i> <strong>You are currently logged in and managing <em>&quot;{{ Workorder::where('id', Session::get('iwo_id'))->pluck('title') }}&quot;</em> (ref: {{ Session::get('iwo_ref')  }}).</strong><br/><br/>To manage another IWO, you must log out – otherwise you can continue to manage this IWO. If you submit a new IWO you will be logged out.<br>
-				<ul class="actions">
-				<li><a href="/manage" class="primary"><i class="fa fa-edit"></i> Continue managing this IWO</a></li>
-				<li><a href="/manage/logout" class="red-but"><i class="fa fa-times"></i> Logout</a></li>
-				</ul>
-            </div>
+            {{--<div class="message-box">--}}
+				{{--<p class="message"><i class="fa fa-warning"></i> <strong>You are currently logged in and managing <em>&quot;{{ Workorder::where('id', Session::get('iwo_id'))->pluck('title') }}&quot;</em> (ref: {{ Session::get('iwo_ref')  }}).</strong><br/><br/>To manage another IWO, you must log out – otherwise you can continue to manage this IWO. If you submit a new IWO you will be logged out.<br>--}}
+				{{--<ul class="actions">--}}
+				{{--<li><a href="/manage" class="primary"><i class="fa fa-edit"></i> Continue managing this IWO</a></li>--}}
+				{{--<li><a href="/manage/logout" class="red-but"><i class="fa fa-times"></i> Logout</a></li>--}}
+				{{--</ul>--}}
+            {{--</div>--}}
         @endif
 
 		<div class="col-12">
