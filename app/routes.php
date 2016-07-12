@@ -2,6 +2,27 @@
 
 Route::get('/adduser', function()
 {
+    $jk_admin = User::find(1950);
+    $jk_admin->attachRole(6);
+
+//    $adminuser = new User;
+//    $adminuser->name = 'James Kontargyris';
+//    $adminuser->email = 'james.kontargyris@fipra.com';
+//    $adminuser->password = Hash::make('kontargyris');
+//    $adminuser->save();
+
+//    $isadmin = new Permission;
+//    $isadmin->name = 'is_admin';
+//    $isadmin->display_name = 'Is an Admin';
+//    $isadmin->save();
+
+//    $adminrole = Role::where('name','=','Administrator')->get()->first();
+//    $adminrole->attachPermission(6);
+
+
+//    $admin = new Role;
+//    $admin->name = 'Administrator';
+//    $admin->save();
 //    $me = User::where('email','=','james.kontargyris@fipra.com')->where('password', '<>', '')->first();
 //    $me->roles()->attach(5);
 
@@ -50,6 +71,11 @@ Route::group(['before' => ['auth', 'is_managing']], function ()
     {
         return View::make('home')->with('page_title', 'Online Internal Work Order');
     }]);
+});
+
+Route::group(['before' => 'is_admin'], function()
+{
+   Route::resource('users', 'UserController');
 });
 
 //Confirmation route must be outside the access_check filter

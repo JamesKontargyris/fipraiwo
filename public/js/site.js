@@ -41,6 +41,14 @@
         }
     });
 
+    //When the delete-row button is clicked, show a confirmation dialogue box
+    //Continue with the deletion if the OK button is pressed. Otherwise, do nothing.
+    $('.delete-row').on("click", function()
+    {
+        if(confirm("Are you sure you want to delete?")) { return true; }
+        return false;
+    });
+
     // Make sure the agreed fee element details field is displayed
     // when the page reloads after a failed validation and the
     // agreed fee element dropdown is set to "Yes"

@@ -4,17 +4,7 @@
 
     <h3>Please login to continue.</h3>
 
-    @if($errors->all())
-        <div class="errors">
-            <i class="fa fa-warning fa-lg"></i> <strong>Please address the following errors:</strong>
-
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li><strong>{{ $error }}</strong></li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('partials.errors')
 
     <div class="login-form-container" style="padding:10px 20px; background-color:#efefef; margin-bottom:20px;">
         <h2>Submit a new IWO</h2>

@@ -20,7 +20,7 @@ abstract class FormValidator
 
 	protected function getValidationRules()
 	{
-		if( ! \Request::is('login') && ! \Request::is('login/*'))
+		if( ! \Request::is('login') && ! \Request::is('login/*') && ! \Request::is('users/*') && ! \Request::is('users'))
 		{
 			//Get global rules
 			$global_rules = new GlobalValidator;
@@ -39,7 +39,7 @@ abstract class FormValidator
 
 	protected function getValidationMessages()
 	{
-		if( ! \Request::is('login') && ! \Request::is('login/*'))
+		if( ! \Request::is('login') && ! \Request::is('login/*') && ! \Request::is('users/*') && ! \Request::is('users'))
 		{
 			//Get global rules
 			$global_messages = new GlobalValidator;

@@ -65,6 +65,15 @@ Route::filter('is_managing', function()
 	}
 });
 
+//Is the current user an Administrator? Redirect to login page if not
+Route::filter('is_admin', function()
+{
+	if( ! Auth::check() || ! Auth::user()->can('is_admin'))
+	{
+		return Redirect::to('/');
+	}
+});
+
 
 /*
 |--------------------------------------------------------------------------

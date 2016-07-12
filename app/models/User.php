@@ -28,6 +28,37 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return true;
     }
 
+	public static function addUser($input)
+	{
+		$new_user = new User;
+		$new_user->email = $input['email'];
+		$new_user->name = $input['name'];
+		$new_user->password = Hash::make($input['password']);
+		if($new_user->save())
+		{
+			$new_user->attachRole($input['role_id']);
+			return true;
+		}
+
+		return false;
+	}
+
+	public static function editUser($id, $input)
+	{
+		if($updated_user = User::find($id))
+		{
+			$updated_user->email = $input['email'];
+			$updated_user->name = $input['name'];
+			if($input['password']) $updated_user->password = Hash::make($input['password']);
+		}
+		if($updated_user->save())
+		{
+			return true;
+		}
+
+		return false;
+	}
+
     /**
 	 * The database table used by the model.
 	 *

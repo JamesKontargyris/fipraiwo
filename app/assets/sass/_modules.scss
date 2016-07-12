@@ -323,6 +323,113 @@ ul.square {
   }
 }
 
+.index-table {
+  width: 100%;
+  @include font-size(12);
+  tr > td {
+    border-left: 1px solid darken(white, 10%);
+    vertical-align: middle;
+    &.content-center {
+      text-align: center;
+    }
+    &.content-right {
+      text-align: right;
+    }
+    &:last-child {
+      border-right: 1px solid darken(white, 10%);
+    }
+    &.hide-s {
+      display: none;
+      @include breakpoint($m) {
+        display: table-cell;
+      }
+    }
+    &.hide-m {
+      display: none;
+      @include breakpoint($l) {
+        display: table-cell;
+      }
+    }
+    &.show-s {
+      display: none;
+      @include breakpoint($m-max) {
+        display: table-cell;
+      }
+    }
+    &.show-m {
+      display: none;
+      @include breakpoint($l-max) {
+        display: table-cell;
+      }
+    }
+  }
+  thead {
+    tr {
+      & > td {
+        background-color: $grey;
+        @include dark-grad($grey, top, 10%);
+        color: white;
+        border-collapse: separate;
+        text-transform: uppercase;
+        @include font-size(12);
+        font-weight: $font-bold;
+        padding: ($v-rhythm / 4) 15px;
+        &.sub-header {
+          background-color: $light-grey;
+          @include dark-grad($light-grey, top, 10%);
+          color: $grey;
+        }
+      }
+    }
+  }
+  tbody {
+    tr {
+      border-bottom: 1px solid darken(white, 10%);
+      & > td {
+        padding: 5px 15px;
+        &.actions,
+        &.archive-count,
+        &.client-links {
+          padding: 5px;
+          width: 1%;
+          white-space: nowrap;
+        }
+        &.actions {
+          .full-width {
+            width: 100%;
+            text-align: left;
+          }
+        }
+        &.archive-count,
+        &.client-links {
+          padding-right: 10px;
+          border-left: 0;
+          color: $grey;
+        }
+        .event-log-icon {
+          padding-right: 10px;
+        }
+      }
+      //      &:nth-child(even) {
+      //        background-color:darken(white, 5%);
+      //      }
+      //      &:last-child {
+      //      }
+      &.dormant {
+        background-color: darken(white, 5%);
+        .status-dormant {
+          border-right: 1px solid darken(white, 5%);
+        }
+
+      }
+    }
+  }
+  button {
+    line-height: 1;
+    font-size: 12px;
+  }
+}
+
 .block-but {
   line-height:1.2; display:block;
 }

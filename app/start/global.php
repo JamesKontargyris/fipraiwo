@@ -10,6 +10,9 @@
 |
 */
 
+use Iwo\Exceptions\CannotEditException;
+use Iwo\Exceptions\UserNotFoundException;
+
 ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
@@ -73,6 +76,18 @@ App::error(function(Iwo\Exceptions\LoginFailedException $exception)
 	Log::error($exception);
 
 	return Redirect::back()->withInput()->withErrors('Incorrect login details entered. Please try again.');
+});
+
+App::error(function(UserNotFoundException $exception)
+{
+    Log::error($exception);
+    return Redirect::route( 'users.index' )->withErrors($exception->getErrors());
+});
+
+App::error(function(CannotEditException $exception)
+{
+    Log::error($exception);
+    return Redirect::route( 'users.index' )->withErrors($exception->getErrors());
 });
 
 /*
