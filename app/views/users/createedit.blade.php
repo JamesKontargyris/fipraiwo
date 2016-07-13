@@ -39,6 +39,10 @@
                 {{ Form::password('password_confirmation', ['class' => 'required']) }}
                 {{ display_form_error('password_confirmation', $errors) }}
             </div>
+            @if(isset($user))
+                <p style="font-style:italic">If entering a new password, the user will be prompted to enter a memorable secret password when they next login.</p>
+            @endif
+
             @if( ! isset($user))
                 <div class="formfield">
                     {{ Form::label('role_id', 'User role:') }}

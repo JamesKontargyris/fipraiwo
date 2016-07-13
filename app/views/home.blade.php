@@ -5,17 +5,17 @@
 	@if(Auth::user()->hasRole('Administrator'))
 		<li><a class="highlight" href="/users">User Management</a></li>
 	@endif
+	<li><a class="highlight" href="/password/change">Change Your Password</a></li>
 	<li><a class="highlight" href="/logout">Logout</a></li>
 @stop
 
 @section('content')
-	@if( ! Session::get('iwo_id'))
-		<div class="intro col-8">
-	@else
-		<div class="intro col-12">
-	@endif
-			Before payments can be made between members of the Fipra Network, Internal Work Orders (IWOs) are required.
-		</div>
+	<div class="intro col-12">
+		<p>Before payments can be made between members of the Fipra Network, Internal Work Orders (IWOs) are required.</p>
+
+		@include('partials.errors')
+		@include('partials.messages')
+	</div>
 
 	@if( ! Session::get('iwo_id'))
 		{{--<div class="col-4 last" align="right">--}}
@@ -23,7 +23,6 @@
 		{{--</div>--}}
     @endif
 
-    @include('manage.partials.messages')
 
 	<div class="buttons col-12">
         @if(Session::get('iwo_id'))

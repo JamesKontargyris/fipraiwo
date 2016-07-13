@@ -34,7 +34,6 @@ Route::get('/logout', function()
     return Redirect::to('login');
 });
 
-Route::controller('password', 'PasswordController');
 
 //Login / logout
 //Route::post('manage/login', 'ManagementController@login');
@@ -42,6 +41,9 @@ Route::controller('login', 'LoginController');
 
 Route::group(['before' => 'auth'], function()
 {
+    Route::get('password/change', 'PasswordController@getChange');
+    Route::post('password/change', 'PasswordController@postChange');
+
     Route::when('*/save', 'input_exists');
     Route::when('manage/update', 'input_exists');
 
@@ -78,6 +80,8 @@ Route::group(['before' => 'is_admin'], function()
 {
    Route::resource('users', 'UserController');
 });
+
+Route::controller('password', 'PasswordController');
 
 //Confirmation route must be outside the access_check filter
 Route::controller('confirm', 'ConfirmController');

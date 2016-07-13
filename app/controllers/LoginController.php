@@ -31,6 +31,15 @@ class LoginController extends BaseController
         if($user && Hash::check(Input::get('password'), $user->password))
         {
             Auth::login($user);
+//            Temp password used for changing the password
+            Session::put('temp_pass', $user->password);
+
+//            Has the user changed their password to something memorable?
+            if( ! $user->changed_password )
+            {
+                return Redirect::to('/password/change');
+            }
+
             return Redirect::intended('/');
         }
         else

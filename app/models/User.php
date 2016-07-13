@@ -49,7 +49,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		{
 			$updated_user->email = $input['email'];
 			$updated_user->name = $input['name'];
-			if($input['password']) $updated_user->password = Hash::make($input['password']);
+			if($input['password'])
+            {
+                $updated_user->password = Hash::make($input['password']);
+                $updated_user->changed_password = 0;
+            }
 		}
 		if($updated_user->save())
 		{
