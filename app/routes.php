@@ -34,6 +34,7 @@ Route::get('/logout', function()
     return Redirect::to('login');
 });
 
+Route::controller('password', 'PasswordController');
 
 //Login / logout
 //Route::post('manage/login', 'ManagementController@login');

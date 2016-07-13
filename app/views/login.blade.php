@@ -3,13 +3,14 @@
 @section('content')
 
     <h3>Please login to continue.</h3>
+    <h6 style="margin-bottom:20px;"><a href="/password/reset">Forgotten your password?</a></h6>
 
     @include('partials.errors')
 
     <div class="login-form-container" style="padding:10px 20px; background-color:#efefef; margin-bottom:20px;">
         <h2>Submit a new IWO</h2>
 
-        {{ Form::open(['files' => false, 'url' => 'login']) }}
+        {{ Form::open(['files' => false, 'url' => '/login']) }}
 
         <section class="col-6" style="margin-bottom:0;">
             <div class="formfield">
