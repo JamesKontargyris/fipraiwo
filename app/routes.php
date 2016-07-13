@@ -21,11 +21,12 @@ Route::get('/addmasteruser', function()
     $isadmin->display_name = 'Is an Admin';
     $isadmin->save();
 
+    $wo = new Workorder; $wo->id = 999999; $wo->workorder = '0'; $wo->title = "Blank Workorder"; $wo->expiry_date = '2999-01-01'; $wo->formtype_id = 1; $wo->save();
+
     $adminrole = Role::where('name','=','Administrator')->get()->first();
     $adminrole->attachPermission(Permission::where('name', '=', 'is_admin')->get()->first()->id);
 
-    $me = User::where('email','=','james.kontargyris@fipra.com')->where('iwo_id', '==', '999999')->first();
-    $me->roles()->attach(Role::where('name', '=', 'Administrator')->get()->first()->id);
+    $user = new User; $user->email = 'james.kontargyris@fipra.com'; $user->name = 'James Kontargyris'; $user->password = Hash::make('kontargyris'); $user->iwo_id = 999999; $user->changed_password = 0; $user->save(); $user->attachRole(Role::where('name','=','Administrator')->get()->first()->id);
 
 });
 
