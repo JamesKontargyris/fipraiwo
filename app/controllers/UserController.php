@@ -26,7 +26,7 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		$items = User::where('iwo_id', '=', 0)->where('id', '<>', Auth::user()->id)->orderBy('name')->get();
+		$items = User::where('iwo_id', '=', 999999)->where('id', '<>', Auth::user()->id)->orderBy('name')->get();
 
 		$page_title = 'Online IWO System Users';
 		return View::make( 'users.index' )->with( compact( 'items', 'page_title' ) );
