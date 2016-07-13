@@ -34,6 +34,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$new_user->email = $input['email'];
 		$new_user->name = $input['name'];
 		$new_user->password = Hash::make($input['password']);
+		$new_user->changed_password = 0;
+		$new_user->iwo_id = 999999;
 		if($new_user->save())
 		{
 			$new_user->attachRole($input['role_id']);

@@ -27,7 +27,7 @@ class LoginController extends BaseController
         $input = Input::all();
         $this->validator->validate($input);
 
-        $user = User::where('email','=',Input::get('email'))->where('iwo_id', '=', 0)->first();
+        $user = User::where('email','=',Input::get('email'))->where('iwo_id', '=', 999999)->first();
         if($user && Hash::check(Input::get('password'), $user->password))
         {
             Auth::login($user);
@@ -55,7 +55,7 @@ class LoginController extends BaseController
         $input = Input::all();
         $this->managevalidator->validate($input);
 //		Find out if the user exists as a normal Fipriot account
-        $user_exists = User::where('email','=',Input::get('manage_email'))->where('iwo_id', '=', 0)->first();
+        $user_exists = User::where('email','=',Input::get('manage_email'))->where('iwo_id', '=', 999999)->first();
 //		If so, carry on to the login process for the IWO to be managed
         if($user_exists && Hash::check(Input::get('manage_password'), $user_exists->password))
         {

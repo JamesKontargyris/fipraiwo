@@ -110,7 +110,7 @@ class PasswordController extends \BaseController {
 
 	protected function userExists($email)
     {
-        return User::where('email', '=', $email)->where('iwo_id', '=', 0)->first();
+        return User::where('email', '=', $email)->where('iwo_id', '=', 999999)->first();
     }
 
     /**
