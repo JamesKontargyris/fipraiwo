@@ -5,9 +5,10 @@
     <h2>Reset your password</h2>
 
     @include('partials.errors')
+    @include('partials.messages')
 
     <div>
-        {{ Form::open(['files' => false, 'url' => '/password/reset']) }}
+        {{ Form::open(['files' => false, 'url' => '/password/reset', 'method' => 'POST']) }}
 
         <section class="col-6" style="margin-bottom:0;">
             <div class="formfield">

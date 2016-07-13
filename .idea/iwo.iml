@@ -10,12 +10,13 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
-          <root url="phar://$MODULE_DIR$/vendor/iron-io/iron_mq/iron_mq.phar" />
+          <root url="phar://$MODULE_DIR$/vendor/iron-io/iron_mq/iron_mq.phar/" />
         </CLASSES>
         <SOURCES>
-          <root url="phar://$MODULE_DIR$/vendor/iron-io/iron_mq/iron_mq.phar" />
+          <root url="phar://$MODULE_DIR$/vendor/iron-io/iron_mq/iron_mq.phar/" />
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="fipraiwo node_modules" level="project" />
   </component>
 </module>
