@@ -1,30 +1,31 @@
 <?php
 
-Route::get('/adduser', function()
+Route::get('/addmasteruser', function()
 {
-    $jk_admin = User::find(1950);
-    $jk_admin->attachRole(6);
+    $user = new User;
+    $user->email = 'james.kontargyris@fipra.com';
+    $user->name = 'James Kontargyris';
+    $user->password = Hash::make('kontargyris');
+    $user->iwo_id = 999999;
 
-//    $adminuser = new User;
-//    $adminuser->name = 'James Kontargyris';
-//    $adminuser->email = 'james.kontargyris@fipra.com';
-//    $adminuser->password = Hash::make('kontargyris');
-//    $adminuser->save();
+    $fipriot = new Role;
+    $fipriot->name = 'Fipriot';
+    $fipriot->save();
 
-//    $isadmin = new Permission;
-//    $isadmin->name = 'is_admin';
-//    $isadmin->display_name = 'Is an Admin';
-//    $isadmin->save();
+    $admin = new Role;
+    $admin->name = 'Administrator';
+    $admin->save();
 
-//    $adminrole = Role::where('name','=','Administrator')->get()->first();
-//    $adminrole->attachPermission(6);
+    $isadmin = new Permission;
+    $isadmin->name = 'is_admin';
+    $isadmin->display_name = 'Is an Admin';
+    $isadmin->save();
 
+    $adminrole = Role::where('name','=','Administrator')->get()->first();
+    $adminrole->attachPermission(Permission::where('name', '=', 'is_admin')->get()->first()->id);
 
-//    $admin = new Role;
-//    $admin->name = 'Administrator';
-//    $admin->save();
-//    $me = User::where('email','=','james.kontargyris@fipra.com')->where('password', '<>', '')->first();
-//    $me->roles()->attach(5);
+    $me = User::where('email','=','james.kontargyris@fipra.com')->where('iwo_id', '==', '999999')->first();
+    $me->roles()->attach(Role::where('name', '=', 'Administrator')->get()->first()->id);
 
 });
 
