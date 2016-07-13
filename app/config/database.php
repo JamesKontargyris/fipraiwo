@@ -61,6 +61,7 @@ return array(
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
+            'strict' => true,
             'options'   => array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET time_zone = \'Europe/Brussels\''
             ),
