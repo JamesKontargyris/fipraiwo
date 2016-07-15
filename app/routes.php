@@ -24,7 +24,7 @@ Route::post('/login', function()
 Route::get('/logout', function()
 {
     Session::forget('loggedin');
-    Session::flash('msg', 'You have been logged out.');
+    Session::put('msg', 'You have been logged out.');
     return Redirect::to('login');
 });
 
@@ -70,6 +70,9 @@ Route::post('queue/push', function()
 });
 
 Route::controller('confirm', 'ConfirmController');
+
+Route::get('error', 'PagesController@error');
+Route::get('success', 'PagesController@success');
 
 //Account Director autocomplete
 Route::get('ac/account_directors', 'AutocompleteController@account_directors');
