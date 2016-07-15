@@ -33,7 +33,7 @@ Route::get('/addmasteruser', function()
 Route::get('/logout', function()
 {
     Auth::logout();
-    return Redirect::to('login');
+    return Redirect::to('login')->with('message', 'You have been logged out.');
 });
 
 
@@ -87,6 +87,10 @@ Route::controller('password', 'PasswordController');
 
 //Confirmation route must be outside the access_check filter
 Route::controller('confirm', 'ConfirmController');
+
+//Error and success message views
+Route::get('error', 'PagesController@error');
+Route::get('success', 'PagesController@success');
 
 //Mail queue route
 Route::post('queue/push', function()

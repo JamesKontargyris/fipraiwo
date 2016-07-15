@@ -10,7 +10,7 @@ class ConfirmController extends BaseController
         //Ensure a reference, email address and confirmation code are passed in
         if (!$this->check_input())
         {
-            return Redirect::to('/')->withErrors($this->message);
+            return Redirect::to('error')->withErrors('Error: some or all details required to confirm this IWO are not available.');
         }
 
         //Get the input values and place in variables
@@ -20,7 +20,7 @@ class ConfirmController extends BaseController
 
         if ($this->check_confirmed($iwo_id) == 1)
         {
-            return Redirect::to('/')->withErrors('Error: IWO already confirmed.');
+            return Redirect::to('error')->withErrors('Error: IWO already confirmed.');
         }
 
         //Find a workorder for the id passed in
@@ -36,7 +36,7 @@ class ConfirmController extends BaseController
 	    //Is the confirmation code correct for the workorder found by the reference?
 	    if ( ! $workorder || ! $confirmation_code)
 	    {
-		    return Redirect::to('/')->withErrors($this->message);
+		    return Redirect::to('error')->withErrors($this->message);
 	    }
 
 	    foreach($users as $user)
@@ -54,7 +54,7 @@ class ConfirmController extends BaseController
 		    }
 	    }
 
-	    return Redirect::to('/')->withErrors($this->message);
+	    return Redirect::to('error')->withErrors('Error: you do not have permission to confirm this IWO.');
     }
 
     private function check_input()

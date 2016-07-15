@@ -354,7 +354,7 @@ class ManagementController extends BaseController
 	{
 		if ( ! $this->check_permission( 'confirm' ) )
 		{
-			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
+			return Redirect::to( 'error' )->withErrors( $this->no_perms_message );
 		}
 
 		$new_workorder             = Workorder::find( Session::get( 'iwo_id' ) );

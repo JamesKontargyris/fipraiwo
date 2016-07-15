@@ -13,4 +13,14 @@ class PagesController extends BaseController {
         return View::make('pages.about_fiplex')->with('page_title', 'What is Fiplex?');
     }
 
+    public function error()
+    {
+        return View::make('pages.error')->with('page_title', 'Error');
+    }
+
+    public function success()
+    {
+        return View::make('pages.success')->with('page_title', 'Success');
+    }
+
 } 
