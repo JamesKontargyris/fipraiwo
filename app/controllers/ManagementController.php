@@ -409,7 +409,7 @@ class ManagementController extends BaseController
 
 		//Send an email to lead and sub units plus copy contacts now the work order is confirmed
 		$data['recipient'] = $this->get_all_emails( $this->workorder->id, $this->workorder->formtype_id );
-//		Queue::push( '\Iwo\Workers\SendEmail@iwo_confirmed', $data );
+		Queue::push( '\Iwo\Workers\SendEmail@iwo_confirmed', $data );
 
 		Logger::add_log( 'Work order confirmed.', 'success' );
 
