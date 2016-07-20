@@ -1,1 +1,1 @@
-<span class="small-print">Please enter a whole or decimal number that represents full, half and quarter days, e.g. 1 for one day; 2.5 for two-and-a-half days; 0.25 for a quarter day.</span>
+<span class="small-print">A "day" is understood as being 8 hours. Please enter a whole or decimal number that represents full, half and quarter days, e.g. 1 for one day; 2.5 for two-and-a-half days; 0.25 for a quarter day.</span>
