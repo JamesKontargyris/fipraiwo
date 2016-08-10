@@ -13,10 +13,6 @@
         <td valign="top" width="400">For Special Advisers the Lead Unit is always Fipra International.</td>
     </tr>
     <tr>
-        <td valign="top" width="200"><strong>Rate and Work Cap</strong></td>
-        <td valign="top" width="400">All amounts quoted are gross, i.e. before the inter unit discount (IUD). Thus if the amount shown is 100 and the inter-unit discount is 20% then only 80 can be billed to Fipra International.</td>
-    </tr>
-    <tr>
         <td valign="top" width="200"><strong>Replicon Code</strong></td>
         <td valign="top" width="400">Replicon codes are Fipra International's internal timesheet and billing codes. It is repeated here only for information for Fipra International internal staff.</td>
     </tr>

@@ -13,10 +13,6 @@
         <td valign="top" width="400">Where a client requires advice in more than one territory the Fipra Lead Unit is the one responsible for a particular client relationship including taking instructions and any financial arrangements with and billing to that client directly. All other Units are subcontracting Units. It is the Lead Unit, and not the subcontracting Unit, that bears ultimate responsibility to the client for quality control and shall always pay the subcontracting Unit irrespective of whether the client has paid them. For Special Advisers the Lead Unit is always Fipra International.</td>
     </tr>
     <tr>
-        <td valign="top" width="200"><strong>Fees</strong></td>
-        <td valign="top" width="400">All fees, except success/finders fee where explicitly agreed, will be invoiced with the 20% Fipra Inter-Unit discount, unless otherwise stated.</td>
-    </tr>
-    <tr>
         <td valign="top" width="200"><strong>Replicon Code</strong></td>
         <td valign="top" width="400">Replicon codes are Fipra International's internal timesheet and billing codes. It is repeated here only for information for Fipra International internal staff.</td>
     </tr>
