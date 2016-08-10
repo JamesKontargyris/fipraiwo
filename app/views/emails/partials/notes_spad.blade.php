@@ -14,7 +14,7 @@
     </tr>
     <tr>
         <td valign="top" width="200"><strong>Rate and Work Cap</strong></td>
-        <td valign="top" width="400">All amounts quoted are gross, i.e. before the inter unit discount (IUD). Thus if the amount shown is 100 and the inter-unit discount is 20% then only 80 can be billed to Fipra International.</td>
+        <td valign="top" width="400">As of July 2016 the 20% inter-Unit discount (IUD) will no longer apply and all fees agreed within an IWO, including success/finders fees, will be paid to the receiving Unit without the application of the IUD. </td>
     </tr>
     <tr>
         <td valign="top" width="200"><strong>Replicon Code</strong></td>
@@ -30,6 +30,6 @@
     </tr>
     <tr>
         <td valign="top" width="200"><strong>Green Sheet</strong></td>
-        <td valign="top" width="400">Green Sheet is the term for the time-sheet template that Fipra uses and can be obtained by clicking above. Where they are requested, these timesheets need to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked and are irrespective of the type of fee structure chosen above. Where they are requested, payment is conditional on greesheets being produced on time and should they be late, this needs to be advised beforehand. If Green Sheets are submitted too late to make the billing cycle it may not be possible to pay the subcontracting Unit or Special Adviser.</td>
+        <td valign="top" width="400">Green Sheet is the term for the time-sheet template that Fipra uses and can be obtained by clicking above. Where they are requested, these timesheets need to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked and are irrespective of the type of fee structure chosen above. Where they are requested, payment is conditional on greensheets being produced on time and should they be late, this needs to be advised beforehand. If Green Sheets are submitted too late to make the billing cycle it may not be possible to pay the subcontracting Unit or Special Adviser.</td>
     </tr>
 </table>
