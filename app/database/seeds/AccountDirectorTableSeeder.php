@@ -12,7 +12,6 @@ class AccountDirectorTableSeeder extends DatabaseSeeder
         $account_directors = [
             'David Lawsky' => 'david.lawsky@fipra.com',
             'Dirk Hudig' => 'dirk.hudig@fipra.com',
-            'Jan Ahlskog' => 'jan.ahlskog@fipra.com',
             'Laura Batchelor' => 'laura.batchelor@fipra.com',
             'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
             'Paul Buffet' => 'paul.buffet@fipra.com',
