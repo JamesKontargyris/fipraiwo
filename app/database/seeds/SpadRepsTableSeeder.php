@@ -57,7 +57,7 @@ class SpadRepsTableSeeder extends DatabaseSeeder
             'Rob Walton'            => 'Laura Batchelor',
             'Mikhail Yurlov'        => 'Rory Chisholm',
             'Gianluca Comin'        => 'Dirk Hudig',
-            'Krzysztof Lisek'       => 'Hilary Hudson',
+            'Krzysztof Lisek'       => 'Willem Vriesendorp',
             'Wolfgang Schneider'       => 'Dirk Hudig',
             'Nathalie Hesketh'       => 'Hilary Hudson',
             'Martin Cauchi Inglott' => 'Hilary Hudson',

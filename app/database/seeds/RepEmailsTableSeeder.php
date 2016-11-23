@@ -17,7 +17,8 @@ class RepEmailsTableSeeder extends DatabaseSeeder
             'Dirk Hudig'          => 'dirk.hudig@fipra.com',
             'Hilary Hudson' => 'hilary.hudson@fipra.com',
             'David Lawsky'        => 'david.lawsky@fipra.com',
-            'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
+            'Peter-Carlo Lehrell' => 'lehrell@fipra.com',
+            'Willem Vriesendorp' => 'willem.vriesendorp@fipra.com',
         ];
 
         foreach ($email as $name => $address) {
