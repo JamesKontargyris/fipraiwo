@@ -89,7 +89,7 @@
                             <span class="inline bold"><br/>&euro;</span> {{ Form::text('rate_is', (editing()) ? isset($workorder->workorder->rate_is) ? $workorder->workorder->rate_is : '' : Input::old('rate_is'), ['class' => 'inline-field']) }}
                             {{ display_form_error('rate_is', $errors) }}<br/><br/>
 
-                            {{ Form::label('amount_payable', 'Amount payable (after IUD):', ['class' => 'required']) }}
+                            {{ Form::label('amount_payable', 'Amount payable:', ['class' => 'required']) }}
                             <span class="inline bold"><br/>&euro;</span> {{ Form::text('amount_payable', (editing()) ? isset($workorder->workorder->amount_payable) ? $workorder->workorder->amount_payable : '' : Input::old('amount_payable'), ['class' => 'inline-field']) }}
                             {{ display_form_error('amount_payable', $errors) }}
 
@@ -150,7 +150,7 @@
                     {{ display_form_error('work_capped_at_maximum_level', $errors) }}
                 </div>
                 <div class="formfield hide" id="work-capped-at-maximum-level-reveal">
-					{{ Form::label('work_cap', 'Work Cap (before IUD):') }}
+					{{ Form::label('work_cap', 'Work Cap:') }}
 					{{ Form::text('work_cap', (editing()) ? isset($workorder->workorder->work_cap) ? $workorder->workorder->work_cap : '' : Input::old('work_cap'), ['class' => 'inline-field']) }}
 					{{ Form::select('work_cap_currency', ['EUR' => 'EUR €', 'USD' => 'USD $', 'GBP' => 'GBP £'], (editing()) ? isset($workorder->workorder->work_cap_currency) ? $workorder->workorder->work_cap_currency : '' : Input::old('work_cap_currency'), ['style' => 'float:left'])}}
 					{{ Form::select('work_cap_period', ['Per month' => 'per month', 'Per day' => 'per day', 'for the duration of the IWO' => 'For the duration of the IWO'], (editing()) ? isset($workorder->workorder->work_cap_period) ? $workorder->workorder->work_cap_period : '' : Input::old('work_cap_period'), ['class' => 'work-cap-period']) }}
