@@ -10,15 +10,17 @@ class AccountDirectorTableSeeder extends DatabaseSeeder
         DB::table('account_directors')->delete();
 
         $account_directors = [
-            'David Lawsky' => 'david.lawsky@fipra.com',
+	        'Daniel Furby' => 'daniel.furby@fipra.com',
+	        'David Lawsky' => 'david.lawsky@fipra.com',
             'Dirk Hudig' => 'dirk.hudig@fipra.com',
-            'Laura Batchelor' => 'laura.batchelor@fipra.com',
-            'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
-            'Paul Buffet' => 'paul.buffet@fipra.com',
-            'Rory Chisholm' => 'rory.chisholm@fipra.com',
-            'Paul Buffet' => 'paul.buffet@fipra.com',
-            'Hilary Hudson' => 'hilary.hudson@fipra.com',
-            'Willem Vriesendorp' => 'willem.vriesendorp@fipra.com',
+	        'Hilary Hudson' => 'hilary.hudson@fipra.com',
+	        'Dayanthi Adeyemo' => 'dayanthi.adeyemo@fipra.com',
+	        'John Lion' => 'john.lion@fipra.com',
+	        'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
+	        'Laura Batchelor' => 'laura.batchelor@fipra.com',
+	        'Willem Vriesendorp' => 'willem.vriesendorp@fipra.com',
+	        'Rory Chisholm' => 'rory.chisholm@fipra.com',
+            'Neil Causey' => 'neil.causey@fipra.com',
         ];
 
         foreach ($account_directors as $name => $email) {
