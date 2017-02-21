@@ -45,7 +45,8 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Fipra Switzerland'                  => 'Dominique Reber',
 			'Fipra Turkey'                       => 'Ayse Aricioglu',
 			'Fipra Uruguay (Correspondent)'      => 'Jose Luis Echevarria',
-			'Fipra Georgia (Correspondent)'      => 'Lasha Gogiberidze'
+			'Fipra Georgia (Correspondent)'      => 'Lasha Gogiberidze',
+			'Fipra Austria (Correspondent)'      => 'Markus Schindler'
 		];
 
 		$unit_rate_bands = [
@@ -65,7 +66,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Fipra Greece (Correspondent)'       => 'standard',
 			'Fipra Hungary'                      => 'standard',
 			'Fipra India'                        => 'standard',
-			'Fipra International'                        => 'high',
+			'Fipra International'                => 'high',
 			'Fipra Ireland'                      => 'high',
 			'Fipra Italy'                        => 'high',
 			'Fipra Japan'                        => 'high',
@@ -85,7 +86,8 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Fipra Switzerland'                  => 'high',
 			'Fipra Turkey'                       => 'standard',
 			'Fipra Uruguay (Correspondent)'      => 'standard',
-			'Fipra Georgia (Correspondent)'      => 'standard'
+			'Fipra Georgia (Correspondent)'      => 'standard',
+			'Fipra Austria (Correspondent)'      => 'standard'
 		];
 
 		$lead_contact_emails = [
@@ -132,7 +134,8 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Peter van Keulen'              => 'peter.vankeulen@fipra.com',
 			'Anders Rostin'                 => 'anders.rostin@fipra.com',
 			'Lasha Gogiberidze'             => 'lasha.gogiberidze@fipra.com',
-			'Mark Fielding'             => 'mark.fielding@fipra.com',
+			'Mark Fielding'                 => 'mark.fielding@fipra.com',
+			'Markus Schindler'              => 'markus.schindler@fipra.com'
 		];
 
 		foreach ( $unit_lead_contacts as $unit => $contact ) {
@@ -140,7 +143,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 				[
 					'unit_name'         => $unit,
 					'lead_contact_name' => $contact,
-					'email'             => isset($lead_contact_emails[ $contact ]) ? $lead_contact_emails[ $contact ] : '',
+					'email'             => isset( $lead_contact_emails[ $contact ] ) ? $lead_contact_emails[ $contact ] : '',
 					'rate_band'         => $unit_rate_bands[ $unit ],
 				]
 			);
