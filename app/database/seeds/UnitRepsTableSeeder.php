@@ -9,6 +9,7 @@ class UnitRepsTableSeeder extends DatabaseSeeder {
 
 		$unit_reps = [
 			'Fipra Australia'                    => 'Hilary Hudson',
+			'Fipra Azerbaijan'                   => 'Hilary Hudson',
 			'Fipra Brazil'                       => 'Peter-Carlo Lehrell',
 			'Fipra Bulgaria'                     => 'Rory Chisholm',
 			'Fipra Canada'                       => 'David Lawsky',
@@ -45,7 +46,8 @@ class UnitRepsTableSeeder extends DatabaseSeeder {
 			'Fipra United Kingdom'               => 'Rory Chisholm',
 			'Fipra Uruguay (Correspondent)'      => 'Laura Batchelor',
 			'Fipra Georgia (Correspondent)'      => 'Mark Fielding',
-			'Fipra Austria (Correspondent)'      => 'Mark Fielding'
+			'Fipra Austria (Correspondent)'      => 'Mark Fielding',
+			'Fipra Ukraine'                      => 'Peter-Carlo Lehrell',
 		];
 
 		foreach ( $unit_reps as $unit => $rep ) {
