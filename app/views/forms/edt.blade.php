@@ -7,6 +7,7 @@
 
 @section('content')
 	<div class="intro">
+		<p>Submitting and agreeing an IWO, constitutes a binding contractual agreement. As such IWOs should only be submitted by, or on instruction of, Account Director level Fipriots.</p>
 		<p>If you have any general queries or would like to contact the EDT before submitting a work order request, please e-mail <a href="mailto:edt@fipra.com">edt@fipra.com</a>.</p>
 	</div>
 

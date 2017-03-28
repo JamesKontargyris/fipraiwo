@@ -7,6 +7,7 @@
 
 @section('content')
 	<div class="intro">
+		<p>Submitting and agreeing an IWO, constitutes a binding contractual agreement. As such IWOs should only be submitted by, or on instruction of, Account Director level Fipriots.</p>
 		<p>If you have any general queries or would like to contact Fiplex before submitting a work order request, please e-mail <a href="mailto:fiplex@fipra.com">fiplex@fipra.com</a>. Please note: only Fipra International and Units can commission Fiplex.</p>
 	</div>
 

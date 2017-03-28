@@ -11,6 +11,7 @@
 @section('content')
 
 	<div class="intro">
+        <p>Submitting and agreeing an IWO, constitutes a binding contractual agreement. As such IWOs should only be submitted by, or on instruction of, Account Director level Fipriots.</p>
         <p>This form confirms financial instructions given by Unit who are Members of the Fipra Network to other Units or Correspondents. Please fill one form out each time a Unit is subcontracted. Please do not use the form below for Special Advisers or any other membership category.</p>
         <p class="italic small-print">Please see full explanatory notes at the end of the page.</p>
         @if(editing())

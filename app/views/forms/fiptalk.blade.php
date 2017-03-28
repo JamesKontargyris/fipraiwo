@@ -6,7 +6,7 @@
 
 @section('content')
 	<div class="intro">
-		<p></p>
+		<p>Submitting and agreeing an IWO, constitutes a binding contractual agreement. As such IWOs should only be submitted by, or on instruction of, Account Director level Fipriots.</p>
 	</div>
 
 	@include('forms.partials.messages')

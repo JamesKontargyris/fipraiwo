@@ -6,6 +6,7 @@
 
 @section('content')
 	<div class="intro">
+        <p>Submitting and agreeing an IWO, constitutes a binding contractual agreement. As such IWOs should only be submitted by, or on instruction of, Account Director level Fipriots.</p>
 		<p>This form confirms instructions between Fipra International and its Special Advisers, who are full members of the Fipra Network. Please fill one out each time you engage a Special Adviser.</p>
 		@if(editing())
 			<p class="red">Fields in red cannot be edited.</p>
