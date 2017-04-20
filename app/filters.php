@@ -46,6 +46,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('access_check', function()
 {
+	Session::put('loggedin', 'yes');
 	if( ! Session::has('loggedin'))
 	{
 		return Redirect::to('login');

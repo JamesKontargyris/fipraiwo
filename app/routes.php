@@ -4,6 +4,7 @@
 
 Route::get('/login', function()
 {
+	return Redirect::to('/');
     return View::make('login')->with('page_title', 'Please Login: Online Internal Work Order');
 });
 
