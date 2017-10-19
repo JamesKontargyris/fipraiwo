@@ -64,6 +64,9 @@ class SpadRepsTableSeeder extends DatabaseSeeder {
 			'Phil Evans'            => 'Rory Chisholm',
 			'Martin Territt'            => 'Peter-Carlo Lehrell',
 			'Georg Serentschy'            => 'Hilary Hudson',
+			'Karen Strandgaard'            => 'Robert Madelin',
+			'Simone Ceruti'            => 'Robert Madelin',
+			'Avril Doyle'            => 'Laura Batchelor',
 		];
 
 		foreach ( $spad_reps as $spad => $rep ) {
