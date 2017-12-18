@@ -31,7 +31,6 @@ class SpadEmailsTableSeeder extends DatabaseSeeder {
 			'Russ Keene'            => 'russ.keene@fipra.com',
 			'Stephen Labaton'       => 'stephen.labaton@fipra.com',
 			'John Maré'             => 'john.maré@fipra.com',
-			'David McDonald Joyce'  => 'david.mcdonaldjoyce@fipra.com',
 			'Alp Mehmet'            => 'alp.mehmet@fipra.com',
 			'Bernard Merkel'        => 'bernard.merkel@fipra.com',
 			'Vladimir Metelsky'     => 'vladimir.metelsky@fipra.com',
@@ -70,11 +69,12 @@ class SpadEmailsTableSeeder extends DatabaseSeeder {
 			'Peter Chase'           => 'peter.chase@fipra.com',
 			'Karl Milner'           => 'karl.milner@fipra.com',
 			'Phil Evans'            => 'phil.evans@fipra.com',
-			'Martin Territt'            => 'martin.territt@fipra.com',
-			'Georg Serentschy'            => 'georg.serentschy@fipra.com',
-			'Karen Strandgaard'            => 'karen.strandgaard@fipra.com',
-			'Simone Ceruti'            => 'simone.ceruti@fipra.com',
-			'Avril Doyle'            => 'avril.doyle@fipra.com',
+			'Georg Serentschy'      => 'georg.serentschy@fipra.com',
+			'Karen Strandgaard'     => 'karen.strandgaard@fipra.com',
+			'Simone Ceruti'         => 'simone.ceruti@fipra.com',
+			'Avril Doyle'           => 'avril.doyle@fipra.com',
+			'Leena Kuusniemi'       => 'leena.kuusniemi@fipra.com',
+			'Michele Bellavite'     => 'michele.bellavite@fipra.com',
 		];
 
 		foreach ( $email as $name => $address ) {
