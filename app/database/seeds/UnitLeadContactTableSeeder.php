@@ -44,6 +44,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Fipra Sweden'                       => 'Anders Rostin',
 			'Fipra Switzerland'                  => 'Dominique Reber',
 			'Fipra Turkey'                       => 'Ayse Aricioglu',
+			'Fipra Ukraine'                      => 'Ivan Poltavets',
 			'Fipra Uruguay (Correspondent)'      => 'Jose Luis Echevarria',
 			'Fipra Georgia (Correspondent)'      => 'Lasha Gogiberidze',
 			'Fipra Austria (Correspondent)'      => 'Markus Schindler'
@@ -85,6 +86,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Fipra Sweden'                       => 'high',
 			'Fipra Switzerland'                  => 'high',
 			'Fipra Turkey'                       => 'standard',
+			'Fipra Ukraine'                      => 'standard',
 			'Fipra Uruguay (Correspondent)'      => 'standard',
 			'Fipra Georgia (Correspondent)'      => 'standard',
 			'Fipra Austria (Correspondent)'      => 'standard'
@@ -135,7 +137,8 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Anders Rostin'                 => 'anders.rostin@fipra.com',
 			'Lasha Gogiberidze'             => 'lasha.gogiberidze@fipra.com',
 			'Mark Fielding'                 => 'mark.fielding@fipra.com',
-			'Markus Schindler'              => 'markus.schindler@fipra.com'
+			'Markus Schindler'              => 'markus.schindler@fipra.com',
+			'Ivan Poltavets'                => 'ivan.poltavets@fipra.com'
 		];
 
 		foreach ( $unit_lead_contacts as $unit => $contact ) {
