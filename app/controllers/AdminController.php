@@ -47,7 +47,7 @@ class AdminController extends BaseController {
 	{
 		if($this->check_admin_user())
 		{
-			$workorders = Workorder::where('workorder', 'LIKE', '%"lead_unit_account_director";s:19:"Peter-Carlo Lehrell"%')->get();
+			$workorders = Workorder::where('workorder', 'LIKE', '%"lead_unit_account_director";s:19:"Peter-Carlo Lehrell"%')->orWhere('workorder', 'LIKE', '%"sub_contracted_unit_correspondent_affiliate_account_director";s:19:"Peter-Carlo Lehrell"%')->get();
 			return View::make('admin.pcl')->with(['workorders' => $workorders, 'page_title' => $this->page_title]);
 		}
 		else
