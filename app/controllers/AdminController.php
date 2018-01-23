@@ -43,6 +43,20 @@ class AdminController extends BaseController {
         }
     }
 
+	public function getPcl() // Display IWOs involving Peter-Carlo Lehrell
+	{
+		if($this->check_admin_user())
+		{
+			$workorders = Workorder::where('workorder', 'LIKE', '%"lead_unit_account_director";s:19:"Peter-Carlo Lehrell"%')->get();
+			return View::make('admin.pcl')->with(['workorders' => $workorders, 'page_title' => $this->page_title]);
+		}
+		else
+		{
+			Redirect::to('admin');
+		}
+
+	}
+
     public function getView()
     {
         if($this->check_admin_user())
