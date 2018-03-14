@@ -93,7 +93,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Fipra Georgia (Correspondent)'      => 'standard',
 			'Fipra Austria (Correspondent)'      => 'standard',
 			'Fipra UK'                           => 'high',
-			'Fipra morocco'                      => 'standard',
+			'Fipra Morocco'                      => 'standard',
 		];
 
 		$lead_contact_emails = [
