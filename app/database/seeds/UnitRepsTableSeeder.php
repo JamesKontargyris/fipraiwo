@@ -21,7 +21,7 @@ class UnitRepsTableSeeder extends DatabaseSeeder {
 			'Fipra Estonia'                      => 'Kaisu Karvala',
 			'Fipra Finland'                      => 'Kaisu Karvala',
 			'Fipra France'                       => 'Laura Batchelor',
-			'Fipra Germany'                      => 'Willem Vriesendorp',
+			'Fipra Germany'                      => 'Laura Batchelor',
 			'Fipra Greece (Correspondent)'       => 'Hilary Hudson',
 			'Fipra Hungary'                      => 'Rory Chisholm',
 			'Fipra India'                        => 'Mark Fielding',
