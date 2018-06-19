@@ -8,3 +8,4 @@ Thumbs.db
 _ide_helper.php
 .sass-cache
 .idea
+/node_modules
