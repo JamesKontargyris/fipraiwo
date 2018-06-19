@@ -792,7 +792,7 @@ ul.square {
 .fee-days, .fee-flatrate {
   display: none; }
 
-.rate-table-high-rate, .rate-table-standard-rate {
+.rate-table-high-rate, .rate-table-low-rate {
   display: none; }
 
 .js-block {

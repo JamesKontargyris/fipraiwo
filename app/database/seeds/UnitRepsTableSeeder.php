@@ -13,7 +13,7 @@ class UnitRepsTableSeeder extends DatabaseSeeder {
 			'Fipra Brazil'                  => 'David Lawsky',
 			'Fipra Bulgaria'                => 'Rory Chisholm',
 			'Fipra Canada'                  => 'David Lawsky',
-			'Fipra China'                   => 'Mark Fielding',
+			'Fipra China'                   => 'Rory Chisholm',
 			'Fipra Croatia'                 => 'Rory Chisholm',
 			'Fipra Cyprus (New Unit)'       => 'Laura Batchelor',
 			'Fipra Czech Republic'          => 'Rory Chisholm',
