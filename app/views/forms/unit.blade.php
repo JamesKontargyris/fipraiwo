@@ -1,4 +1,4 @@
-fipra@extends('layouts.master')
+@extends('layouts.master')
 
 @section('nav_links')
     @if(editing())
