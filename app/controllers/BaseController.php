@@ -219,7 +219,7 @@ class BaseController extends Controller {
         {
 	        //Explode all email addresses to array and remove duplicates (trim addresses too)
             $addresses = str_replace(';', ',', Input::old('also_send_work_order_to'));
-            $addresses = array_map('trim', array_unique(explode(",", $addresses)));
+            $addresses = array_filter(array_map('trim', array_unique(explode(",", $addresses))));
 
 	        //Add addresses to $data array and send email(s)
 	        $data['recipient'] = $addresses;
