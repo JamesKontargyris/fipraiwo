@@ -52,7 +52,7 @@ class ManagementController extends BaseController
 	 */
 	public function getIndex()
 	{
-		if ( Session::get( 'iwo_id' ) )
+		if ( Session::get( 'iwo_id' ))
 		{
 			return Redirect::to( 'manage/view' );
 		}
@@ -104,11 +104,6 @@ class ManagementController extends BaseController
 	 */
 	public function getView()
 	{
-		if ( ! $this->check_permission( 'read' ) )
-		{
-			return Redirect::to( 'manage' )->withErrors( $this->no_perms_message );
-		}
-
 		return View::make( 'manage.view_iwo' )->with( [
 			'page_title' => $this->page_title,
 			'workorder'  => $this->workorder,
