@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\MessageBag;
 use Iwo\Mailer\Mailer;
 use Iwo\FileUpload\FileUpload;
+use Iwo\Validation\FormValidationException;
 use Iwo\Workers\Generate;
 use Iwo\Workers\SendEmail;
 
@@ -41,8 +43,27 @@ class BaseController extends Controller {
 		// specific to this form
 		$this->validator->validate(Input::all());
 		// If fails, throws a FormValidationException and redirects back to the form
+		// If passes, move on to dealing with any copy contact email addresses
+		if(Input::has('also_send_work_order_to'))
+		{
+			//Explode all email addresses to array and remove duplicates (trim addresses too)
+			$addresses = str_replace(';', ',', Input::get('also_send_work_order_to'));
+			$addresses = array_filter(array_map('trim', array_unique(explode(",", $addresses))));
+
+			foreach($addresses as $email)
+			{
+				if( ! $this->valid_email($email))
+				{
+					// Validation fails - go back to the form with errors and original input
+					$errors = new MessageBag;
+					$errors->add('also_send_work_order_to',$email . ' is not a valid email address.');
+					throw new FormValidationException('Validation failed', $errors);
+				}
+			}
+		}
+
 		// If passes, move on to dealing with any files uploaded
-		
+
 		// Resolve the FileUpload class out of the IoC container
 		$this->upload = App::make('FileUpload');
 		// upload_files method returns an array of the original file names and
@@ -286,5 +307,14 @@ class BaseController extends Controller {
 	protected function get_all_emails($iwo_id = 0, $formtype = 0)
 	{
 		return array_merge($this->get_user_emails($iwo_id), $this->get_copy_emails($formtype));
+	}
+
+	public function valid_email($email)
+	{
+		if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			return true;
+		}
+
+		return false;
 	}
 }

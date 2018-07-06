@@ -7,7 +7,7 @@
 
 			{{--Hidden field for removing AD-specific copy contacts when the AD is changed--}}
 			{{ Form::hidden('account_directors_contacts', '', ['id' => 'account_directors_contacts', 'disabled' => 'disabled']) }}
-
+			{{ display_form_error('also_send_work_order_to', $errors) }}
 		</div>
 	</section>
 @endif
