@@ -298,7 +298,7 @@
                 $('.rate-table-standard-rate').hide();
                 $('.fipra-rates').slideDown();
             }
-            if(rate_band == 'standard') {
+            if(rate_band == 'low') {
                 $('.rate-table-high-rate').hide();
                 $('.rate-table-standard-rate').show();
                 $('.fipra-rates').slideDown();
