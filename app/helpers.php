@@ -192,7 +192,7 @@ function email_addresses_to_array($recipients = array())
 
 function date_time_now()
 {
-    return date("Y-m-d h:i:s");
+    return date("Y-m-d H:i:s");
 }
 
 function editing()
