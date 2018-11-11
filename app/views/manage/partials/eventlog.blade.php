@@ -10,7 +10,7 @@
 			@elseif(isset($log->user->name) && $log->user->name != '')
 				By {{ $log->user->name }}<br/>
 			@endif
-            {{ date("d M Y", strtotime($log->created_at)) }} at {{ date("g.i", strtotime($log->created_at)) }}
+            {{ date("d M Y", strtotime($log->created_at)) }} at {{ date("g.ia", strtotime($log->created_at)) }}
         </div>
 
     </li>
