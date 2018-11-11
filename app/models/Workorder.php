@@ -40,6 +40,11 @@ class Workorder extends Eloquent
         return $this->hasMany('User', 'iwo_id');
     }
 
+	public function ratings()
+	{
+		return $this->hasMany('Rating', 'iwo_id')->orderBy('created_at', 'DESC');
+	}
+
 	public function copy_emails()
 	{
 		return $this->hasMany('Copy_email', 'iwo_id');

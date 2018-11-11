@@ -5,7 +5,26 @@
 @stop
 
 @section('content')
-<h2>{{ $workorder->title }}<br/><small>Ref: {{ $workorder->iwo_ref }}</small></h2>
+<h2>
+    {{ $workorder->title }}
+    <br/><small>Ref: {{ $workorder->iwo_ref }}</small>
+    @if($rating)
+        <br><span class="rating-stars">
+            <?php
+			$ratingFullStars = intval($rating); // number of whole stars to show
+			$halfStar = ($rating - $ratingFullStars) ? 1 : 0;
+			$i = 1;
+			while($i <= $ratingFullStars) {
+				echo '<i class="fa fa-star"></i>';
+				$i++;
+			}
+			if($halfStar) {
+				echo '<i class="fa fa-star-half"></i>';
+			}
+			?>
+        </span> <small>{{ $no_of_ratings }} @if($no_of_ratings == 1) rating @else ratings @endif</small>
+    @endif
+</h2>
 
 @include('manage.partials.messages')
 
@@ -53,6 +72,10 @@
 </div>
 
 <div class="col-4 last">
+    <section class="outline-box">
+        @include('manage.partials.ratings')
+    </section>
+
     <section class="outline-box">
         @include('manage.partials.notes')
     </section>

@@ -4,8 +4,7 @@
 use Illuminate\Support\Facades\Redirect;
 use Iwo\Exceptions\ManagementLoginException;
 
-class ManagementController extends BaseController
-{
+class ManagementController extends BaseController {
 	protected $page_title;
 	protected $workorder;
 	protected $user;
@@ -14,12 +13,10 @@ class ManagementController extends BaseController
 	protected $upload;
 	protected $no_perms_message = 'Sorry, you do not have the necessary permissions to do that.';
 
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 
-		if ( Session::get( 'iwo_id' ) )
-		{
+		if ( Session::get( 'iwo_id' ) ) {
 			$this->workorder = Workorder::find( Session::get( 'iwo_id' ) );
 			//Get logs ordered latest to oldest
 			$this->workorder->logs             = Workorder::find( Session::get( 'iwo_id' ) )->logs()->orderBy( 'created_at', 'DESC' )->get();
@@ -30,7 +27,7 @@ class ManagementController extends BaseController
 			//Get the iwo key (edt, unit, etc.)
 			$this->workorder->iwo_key = Formtype::where( 'id', '=', $this->workorder->formtype_id )->pluck( 'key' );
 
-			View::share('loggedin_user', Auth::user());
+			View::share( 'loggedin_user', Auth::user() );
 			//Email variables
 			$data = [
 				'iwo_title' => $this->workorder->title,
@@ -50,10 +47,8 @@ class ManagementController extends BaseController
 	 *
 	 * @return \Illuminate\View\View
 	 */
-	public function getIndex()
-	{
-		if ( Session::get( 'iwo_id' ))
-		{
+	public function getIndex() {
+		if ( Session::get( 'iwo_id' ) ) {
 			return Redirect::to( 'manage/view' );
 		}
 
@@ -65,8 +60,7 @@ class ManagementController extends BaseController
 	 *
 	 * @throws ManagementLoginException
 	 */
-	public function postIndex()
-	{
+	public function postIndex() {
 		$email = Input::get( 'email' );
 		//Find the core reference, stripping off any letters from the end
 		$user_iwo_ref = get_original_ref( Input::get( 'iwo_ref' ) );
@@ -75,23 +69,20 @@ class ManagementController extends BaseController
 		//Get the current IWO reference code
 		$iwo_ref = Iwo_ref::where( 'iwo_id', '=', $iwo_id )->pluck( 'iwo_ref' );
 		//Is this a super user, with access to all IWOs?
-		if ( in_array( strtolower( $email ), Config::get( 'iwo_vars.super_users' ) ) )
-		{
+		if ( in_array( strtolower( $email ), Config::get( 'iwo_vars.super_users' ) ) ) {
 			//Super users have an iwo_id of 0 in the DB. Log the super user in.
 			$user = User::where( 'email', '=', $email )->where( 'iwo_id', '=', 0 )->first();
 			User::login_user( $user->id, $iwo_id, $iwo_ref );
 
 			return Redirect::to( 'manage/view' );
 		} //Check to see if user exists
-		elseif ( $user = User::where( 'email', '=', $email )->where( 'iwo_id', '=', $iwo_id )->first() )
-		{
+		elseif ( $user = User::where( 'email', '=', $email )->where( 'iwo_id', '=', $iwo_id )->first() ) {
 			//If user found, log the user in, add some useful session variables
 			//and redirect to view IWO
 			User::login_user( $user->id, $iwo_id, $iwo_ref );
 
 			return Redirect::to( 'manage/view' );
-		} else
-		{
+		} else {
 			//    If no user found, throw an exception and redirect back with errors
 			throw new ManagementLoginException( 'Login failed', 'Incorrect login details entered. Please try again.' );
 		}
@@ -102,12 +93,16 @@ class ManagementController extends BaseController
 	 *
 	 * @return \Illuminate\View\View
 	 */
-	public function getView()
-	{
+	public function getView() {
+		$rating        = Rating::get_iwo_rating( $this->workorder->id );
+		$no_of_ratings = Rating::where( 'iwo_id', '=', $this->workorder->id )->count();
+
 		return View::make( 'manage.view_iwo' )->with( [
-			'page_title' => $this->page_title,
-			'workorder'  => $this->workorder,
-			'user'       => $this->user
+			'page_title'    => $this->page_title,
+			'workorder'     => $this->workorder,
+			'user'          => $this->user,
+			'rating'        => $rating,
+			'no_of_ratings' => $no_of_ratings
 		] );
 	}
 
@@ -116,8 +111,7 @@ class ManagementController extends BaseController
 	 *
 	 * @return \Illuminate\View\View
 	 */
-	public function getNote()
-	{
+	public function getNote() {
 		$this->check_permission( 'comment' );
 
 		return View::make( 'manage.add_note' )->with( [
@@ -132,17 +126,14 @@ class ManagementController extends BaseController
 	 *
 	 * @return mixed
 	 */
-	public function postNote()
-	{
-		if ( ! $this->check_permission( 'comment' ) )
-		{
+	public function postNote() {
+		if ( ! $this->check_permission( 'comment' ) ) {
 			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
 		}
 
 		$note = trim( htmlspecialchars( Input::get( 'note' ) ) );
 
-		if ( $note != "" )
-		{
+		if ( $note != "" ) {
 			Note::add_note( $note );
 			Logger::add_log( 'New note added.' );
 
@@ -157,8 +148,7 @@ class ManagementController extends BaseController
 			Queue::push( '\Iwo\Workers\SendEmail@iwo_note_added', $data );
 
 			return Redirect::to( 'manage/view' )->with( 'message', 'Note added.' );
-		} else
-		{
+		} else {
 			return Redirect::to( 'manage/view' )->with( 'message', 'Blank note not added.' );
 		}
 
@@ -169,10 +159,8 @@ class ManagementController extends BaseController
 	 *
 	 * @return \Illuminate\View\View
 	 */
-	public function getEdit()
-	{
-		if ( ! $this->check_permission( 'edit' ) )
-		{
+	public function getEdit() {
+		if ( ! $this->check_permission( 'edit' ) ) {
 			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
 		}
 
@@ -188,10 +176,8 @@ class ManagementController extends BaseController
 	 *
 	 * @return \Illuminate\View\View
 	 */
-	public function postConfirmupdates()
-	{
-		if ( ! $this->check_permission( 'edit' ) )
-		{
+	public function postConfirmupdates() {
+		if ( ! $this->check_permission( 'edit' ) ) {
 			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
 		}
 
@@ -238,22 +224,18 @@ class ManagementController extends BaseController
 	 *
 	 * @return mixed
 	 */
-	public function getUpdate()
-	{
-		if ( ! $this->check_permission( 'edit' ) )
-		{
+	public function getUpdate() {
+		if ( ! $this->check_permission( 'edit' ) ) {
 			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
 		}
 
 		//If a token exists, input has been passed through and it is safe to process the update
-		if ( Input::old( '_token' ) )
-		{
+		if ( Input::old( '_token' ) ) {
 			//Find the workorder to be updated in the DB
 			$updated_workorder = $this->get_input_for_db();
 			//If the workorder is exactly the same as the entry in the DB, redirect to the view page
 			//with a message, as no updates have been made
-			if ( $updated_workorder == $this->workorder->workorder )
-			{
+			if ( $updated_workorder == $this->workorder->workorder ) {
 				return Redirect::to( 'manage/view' )->with( 'message', 'No updates made.' );
 			}
 			//Otherwise, carry on wih the update
@@ -263,8 +245,7 @@ class ManagementController extends BaseController
 			$new_workorder->updated_at  = date_time_now();
 			$new_workorder->expiry_date = Input::old( 'internal_work_order_expiry_date' ) ? date( "Y-m-d", strtotime( Input::old( 'internal_work_order_expiry_date' ) ) ) : '2999-01-01';
 
-			if ( $new_workorder->confirmed == 1 )
-			{
+			if ( $new_workorder->confirmed == 1 ) {
 				$new_workorder->confirmed = 0;
 				//Add an event log entry for this update
 				Logger::add_log( 'Work order unconfirmed.' );
@@ -312,32 +293,26 @@ class ManagementController extends BaseController
 
 			//Update users if they have been edited and
 			//send an email to all users linked to this IWO with customised content to their role
-			foreach ( $users as $user )
-			{
-				if ( $user->hasRole( 'Lead' ) )
-				{
-					if($user->email != Input::old('lead_email_address'))
-					{
-						$user->name = Input::old('lead_unit_account_director');
-						$user->email = Input::old('lead_email_address');
+			foreach ( $users as $user ) {
+				if ( $user->hasRole( 'Lead' ) ) {
+					if ( $user->email != Input::old( 'lead_email_address' ) ) {
+						$user->name  = Input::old( 'lead_unit_account_director' );
+						$user->email = Input::old( 'lead_email_address' );
 						$user->save();
 					}
 					$data['recipient'] = $user->email;
 					//Send Lead Unit an email
 					Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_lead', $data );
-				} elseif ( $user->hasRole( 'Sub' ) )
-				{
-					if($user->email != Input::old('sub_email_address'))
-					{
-						$user->name = Input::old('sub_contracted_unit_correspondent_affiliate_account_director');
-						$user->email = Input::old('sub_email_address');
+				} elseif ( $user->hasRole( 'Sub' ) ) {
+					if ( $user->email != Input::old( 'sub_email_address' ) ) {
+						$user->name  = Input::old( 'sub_contracted_unit_correspondent_affiliate_account_director' );
+						$user->email = Input::old( 'sub_email_address' );
 						$user->save();
 					}
 					$data['recipient'] = $user->email;
 					//Send Sub Unit an email
 					Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_sub', $data );
-				} else
-				{
+				} else {
 					//recipient must be in an array, due to the way the iwo_updated_copy method works
 					$data['recipient'] = [ $user->email ];
 					//Send user-entered copy contact an email
@@ -350,8 +325,7 @@ class ManagementController extends BaseController
 			Queue::push( '\Iwo\Workers\SendEmail@iwo_updated_copy', $data );
 
 			return Redirect::to( 'manage/updatecomplete' );
-		} else
-		{
+		} else {
 			//If token doesn't exist, no input received. Redirect to the view page with an error message
 			return Redirect::to( 'manage/view' )->with( 'message', 'Error: you cannot access that page.' );
 		}
@@ -362,10 +336,8 @@ class ManagementController extends BaseController
 	 *
 	 * @return \Illuminate\View\View
 	 */
-	public function getUpdatecomplete()
-	{
-		if ( ! $this->check_permission( 'edit' ) )
-		{
+	public function getUpdatecomplete() {
+		if ( ! $this->check_permission( 'edit' ) ) {
 			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
 		}
 
@@ -377,10 +349,8 @@ class ManagementController extends BaseController
 	 *
 	 * @return mixed
 	 */
-	public function getConfirm()
-	{
-		if ( ! $this->check_permission( 'confirm' ) )
-		{
+	public function getConfirm() {
+		if ( ! $this->check_permission( 'confirm' ) ) {
 			return Redirect::to( 'error' )->withErrors( $this->no_perms_message );
 		}
 
@@ -416,12 +386,10 @@ class ManagementController extends BaseController
 	 *
 	 * @return mixed
 	 */
-	public function getUnconfirm()
-	{
+	public function getUnconfirm() {
 		//Return false temporarily until this feature is available
 		return false;
-		if ( ! $this->check_permission( 'confirm' ) )
-		{
+		if ( ! $this->check_permission( 'confirm' ) ) {
 			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
 		}
 
@@ -446,10 +414,8 @@ class ManagementController extends BaseController
 	 *
 	 * @return mixed
 	 */
-	public function getCancel()
-	{
-		if ( ! $this->check_permission( 'cancel' ) )
-		{
+	public function getCancel() {
+		if ( ! $this->check_permission( 'cancel' ) ) {
 			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
 		}
 
@@ -474,10 +440,8 @@ class ManagementController extends BaseController
 	 *
 	 * @return \Illuminate\View\View
 	 */
-	public function getResend()
-	{
-		if ( ! $this->check_permission( 'edit' ) )
-		{
+	public function getResend() {
+		if ( ! $this->check_permission( 'edit' ) ) {
 			return Redirect::to( 'manage/view' )->withErrors( $this->no_perms_message );
 		}
 		//Get all users for the current IWO.
@@ -492,11 +456,9 @@ class ManagementController extends BaseController
 	 *
 	 * @return mixed
 	 */
-	public function postResend()
-	{
+	public function postResend() {
 		//Array of user ids passed in?
-		if ( Input::has( 'users' ) )
-		{
+		if ( Input::has( 'users' ) ) {
 			/**
 			 * FORMAT FORM DATA FOR EMAILS
 			 */
@@ -521,27 +483,23 @@ class ManagementController extends BaseController
 				'resend'            => true
 			];
 
-			$collected_emails = [ ];
-			foreach ( Input::get( 'users' ) as $user_id )
-			{
+			$collected_emails = [];
+			foreach ( Input::get( 'users' ) as $user_id ) {
 				$user               = User::find( $user_id );
 				$collected_emails[] = $user->email;
 				$data['recipient']  = $user->email;
 
-				if ( $user->hasRole( 'Lead' ))
-				{
+				if ( $user->hasRole( 'Lead' ) ) {
 					//Send Lead Unit an email
 					Queue::push( '\Iwo\Workers\SendEmail@iwo_created_lead', $data );
 				}
 
-				if ( $user->hasRole( 'Sub' ))
-				{
+				if ( $user->hasRole( 'Sub' ) ) {
 					//Send Sub Unit an email
 					Queue::push( '\Iwo\Workers\SendEmail@iwo_created_sub', $data );
 				}
 
-				if ( $user->hasRole( 'Viewer' ) && ! in_array($user->email, $collected_emails) )
-				{
+				if ( $user->hasRole( 'Viewer' ) && ! in_array( $user->email, $collected_emails ) ) {
 					//recipient must be in an array, due to the way the iwo_created_copy method works
 					$data['recipient'] = [ $user->email ];
 					//Send user-entered copy contact an email
@@ -553,8 +511,7 @@ class ManagementController extends BaseController
 			Logger::add_log( $message );
 
 			return Redirect::to( 'manage/view' )->with( 'message', $message );
-		} else
-		{
+		} else {
 			return Redirect::to( 'manage/view' )->withErrors( 'No users selected.' );
 		}
 
@@ -565,8 +522,7 @@ class ManagementController extends BaseController
 	 *
 	 * @return mixed
 	 */
-	public function getLogout()
-	{
+	public function getLogout() {
 		Auth::logout();
 		Session::flush();
 
@@ -580,13 +536,10 @@ class ManagementController extends BaseController
 	 *
 	 * @return bool
 	 */
-	private function check_permission( $permission )
-	{
-		if ( ! $this->user->can( $permission ) )
-		{
+	private function check_permission( $permission ) {
+		if ( ! $this->user->can( $permission ) ) {
 			return false;
-		} else
-		{
+		} else {
 			return true;
 		}
 	}
@@ -596,27 +549,23 @@ class ManagementController extends BaseController
 	 *
 	 * @return array
 	 */
-	private function get_associated_users( $return_users = false )
-	{
+	private function get_associated_users( $return_users = false ) {
 		$users = User::where( 'iwo_id', '=', Session::get( 'iwo_id' ) )->orderBy( 'id' )->get();
 
-		if ( $return_users )
-		{
+		if ( $return_users ) {
 			return $users;
 		}
 
-		$data = [ ];
+		$data = [];
 		$i    = 0;
-		foreach ( $users as $user )
-		{
+		foreach ( $users as $user ) {
 			$data[ $i ]['id'] = $user->id;
 			//If the user name equals the user's email address, this is a copy recipient entered by the user
 			//when the IWO was submitted (other recipients are named)
 			$data[ $i ]['name']  = ( $user->name == $user->email ) ? 'User-entered copy recipient' : $user->name;
 			$data[ $i ]['email'] = $user->email;
 			$data[ $i ]['roles'] = '';
-			foreach ( $user->roles as $role )
-			{
+			foreach ( $user->roles as $role ) {
 				$data[ $i ]['roles'] .= $role->name . ', ';
 			}
 			$data[ $i ]['roles'] = substr( $data[ $i ]['roles'], 0, - 2 );
@@ -633,20 +582,17 @@ class ManagementController extends BaseController
 	 *
 	 * @return string
 	 */
-	private function format_email_list( $emails = [ ] )
-	{
+	private function format_email_list( $emails = [] ) {
 		//If only one email address was passed through, no further manipulation is needed
 		//so just return the email address.
-		if ( count( $emails ) == 1 )
-		{
+		if ( count( $emails ) == 1 ) {
 			return '<strong>' . $emails[0] . '</strong>';
 		}
 
 		//Otherwise, loop through $emails array and add to $formatted_emails with a comma
 		//Except for the final email, so this can be added after ' and '.
 		$formatted_emails = '';
-		for ( $i = 0; $i < ( count( $emails ) - 1 ); $i ++ )
-		{
+		for ( $i = 0; $i < ( count( $emails ) - 1 ); $i ++ ) {
 			$formatted_emails .= '<strong>' . $emails[ $i ] . '</strong>, ';
 		}
 
