@@ -251,6 +251,17 @@
         }
     });
 
+    // Load rating stars
+    $('.starrr').starrr({
+        change: function(e, value){
+            $('input[name=rating]').val(value);
+            $('.rating-stars-reveal').slideDown();
+            $('.rating-submit').prop("disabled", false).val('Add ' + value + ' out of 5 Rating');
+        }
+    });
+    // hide until needed
+    $('.rating-stars-reveal').hide();
+
 
 	// When a file is selected for upload, compare its size
 	// to the max upload size and display an alert if the file

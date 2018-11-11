@@ -47,6 +47,8 @@ Route::group(['before' => 'access_check'], function()
     Route::controller('manage', 'ManagementController');
     Route::when('manage/*', 'auth');
 
+	Route::controller('rate', 'RatingController');
+
     Route::controller('admin', 'AdminController');
 //Route::when('admin/*', 'auth_superuser');
 

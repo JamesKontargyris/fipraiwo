@@ -344,3 +344,27 @@ ul.square {
 .js-block {
   display:none;
 }
+
+// Rating stars
+.rating-stars {
+  margin-bottom:2rem;
+
+  .fa-star-o,
+  .fa-star,
+  .fa-star-half{
+    color:gold;
+  }
+}
+
+.rating-stars--big {
+  @include font-size(50);
+}
+
+.sidebar-rating-star-filled {
+  @include font-size(24);
+  color:gold;
+}
+.sidebar-rating-star-outline {
+  @include font-size(24);
+  color: #d5d5d5;
+}

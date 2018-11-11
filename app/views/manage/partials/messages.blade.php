@@ -26,4 +26,12 @@
         </ul>
     </div>
 @endif
+<!--If single error message sent through...-->
+@if(Session::get('error'))
+    <div class="error">
+        <ul>
+            <li><i class="fa fa-warning fa-lg"></i> {{ Session::get('error') }}</li>
+        </ul>
+    </div>
+@endif
 

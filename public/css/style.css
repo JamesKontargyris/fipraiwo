@@ -798,6 +798,27 @@ ul.square {
 .js-block {
   display: none; }
 
+.rating-stars {
+  margin-bottom: 2rem; }
+  .rating-stars .fa-star-o,
+  .rating-stars .fa-star,
+  .rating-stars .fa-star-half {
+    color: gold; }
+
+.rating-stars--big {
+  font-size: 50px;
+  font-size: 3.125rem; }
+
+.sidebar-rating-star-filled {
+  font-size: 24px;
+  font-size: 1.5rem;
+  color: gold; }
+
+.sidebar-rating-star-outline {
+  font-size: 24px;
+  font-size: 1.5rem;
+  color: #d5d5d5; }
+
 .user-details {
   font-size: 12px;
   font-size: 0.75rem;
