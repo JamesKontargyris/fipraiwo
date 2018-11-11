@@ -10,7 +10,7 @@
         	@elseif(isset($note->user->name) && $note->user->name != '')
             	{{ $note->user->name }}<br/>
             @endif
-            {{ date("d M Y", strtotime($note->created_at)) }} at {{ date("g.ia", strtotime($note->created_at)) }}</div>
+            {{ date("d M Y", strtotime($note->created_at)) }} at {{ $note->created_at->timezone('Europe/Brussels')->format("g.ia") }}</div>
 
     </li>
     @endforeach

@@ -16,7 +16,7 @@
         @endif
         <div class="small-print">
             {{ $rating->user->name }}<br/>
-            {{ date("d M Y", strtotime($rating->created_at)) }} at {{ date("g.ia", strtotime($rating->created_at)) }}</div>
+            {{ date("d M Y", strtotime($rating->created_at)) }} at {{ $rating->created_at->timezone('Europe/Brussels')->format("g.ia") }}</div>
 
     </li>
     @endforeach

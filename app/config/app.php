@@ -38,7 +38,7 @@ return array(
 	|
 	*/
 
-	'timezone'  => 'Europe/Brussels',
+	'timezone'  => 'UTC',
 	/*
 	|--------------------------------------------------------------------------
 	| Application Locale Configuration
