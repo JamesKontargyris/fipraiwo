@@ -1,6 +1,7 @@
 <?php namespace Iwo\Workers;
 
 use Iwo\Mailer\Mailer;
+use User;
 
 
 class SendEmail {
@@ -126,7 +127,26 @@ class SendEmail {
 
         foreach($data['recipient'] as $recipient)
         {
-            $this->send($recipient, $data['subject'], "emails.manage.auto_confirm", $data, $data['file_names']);
+	        // get the User model from the current recipient's email address and the iwo_id
+	        $users = User::where('email', '=', $recipient)->where('iwo_id', '=', $data['iwo_id'])->get();
+
+	        foreach($users as $user)
+	        {
+		        // There will only be one user (hopefully), but we need to do this to retain the user as a Model
+		        // Add the user's ID to the dataset
+		        $data['user_id'] = $user->id;
+		        $data['email'] = $user->email;
+		        $data['include_rating_link'] = false;
+
+		        // If this user is a Lead or Sub user on this IWO, include the link to rate the IWO
+		        if($user->hasRole('Lead') || $user->hasRole('Sub'))
+		        {
+			        $data['include_rating_link'] = true;
+		        }
+
+		        $this->send($recipient, $data['subject'], "emails.manage.auto_confirm", $data, $data['file_names']);
+	        }
+
         }
 
         $job->delete();
@@ -152,7 +172,26 @@ class SendEmail {
 
         foreach($data['recipient'] as $recipient)
         {
-            $this->send($recipient, $data['subject'], "emails.manage.cancel", $data);
+	        // get the User model from the current recipient's email address and the iwo_id
+	        $users = User::where('email', '=', $recipient)->where('iwo_id', '=', $data['iwo_id'])->get();
+
+	        foreach($users as $user)
+	        {
+		        // There will only be one user (hopefully), but we need to do this to retain the user as a Model
+		        // Add the user's ID to the dataset
+		        $data['user_id'] = $user->id;
+		        $data['email'] = $user->email;
+		        $data['include_rating_link'] = false;
+
+		        // If this user is a Lead or Sub user on this IWO, include the link to rate the IWO
+		        if($user->hasRole('Lead') || $user->hasRole('Sub'))
+		        {
+			        $data['include_rating_link'] = true;
+		        }
+
+		        $this->send($recipient, $data['subject'], "emails.manage.cancel", $data);
+	        }
+
         }
 
         $job->delete();
@@ -165,11 +204,55 @@ class SendEmail {
 
         foreach($data['recipient'] as $recipient)
         {
-            $this->send($recipient, $data['subject'], "emails.manage.confirm", $data);
+        	// get the User model from the current recipient's email address and the iwo_id
+	        $users = User::where('email', '=', $recipient)->where('iwo_id', '=', $data['iwo_id'])->get();
+
+	        foreach($users as $user)
+	        {
+	        	// There will only be one user (hopefully), but we need to do this to retain the user as a Model
+		        // Add the user's ID to the dataset
+		        $data['user_id'] = $user->id;
+		        $data['email'] = $user->email;
+		        $data['include_rating_link'] = false;
+
+		        // If this user is a Lead or Sub user on this IWO, include the link to rate the IWO
+		        if($user->hasRole('Lead') || $user->hasRole('Sub'))
+		        {
+			        $data['include_rating_link'] = true;
+		        }
+
+		        $this->send($recipient, $data['subject'], "emails.manage.confirm", $data);
+	        }
+
         }
 
         $job->delete();
     }
+
+	//Send an email when an IWO is confirmed
+	public function rating_added($job, $data)
+	{
+		$data['subject'] = "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") - rating added";
+
+		foreach($data['recipient'] as $recipient)
+		{
+			// get the User model from the current recipient's email address and the iwo_id
+			$users = User::where('email', '=', $recipient)->where('iwo_id', '=', $data['iwo_id'])->get();
+
+			foreach($users as $user)
+			{
+				// There will only be one user (hopefully), but we need to do this to retain the user as a Model
+				// Add the user's ID to the dataset
+				$data['user_id'] = $user->id;
+				$data['email'] = $user->email;
+
+				$this->send($recipient, $data['subject'], "emails.manage.rating_added", $data);
+			}
+
+		}
+
+		$job->delete();
+	}
 
     //Send an email when an IWO is un-confirmed
     public function iwo_unconfirmed($job, $data)

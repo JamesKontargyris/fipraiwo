@@ -15,7 +15,7 @@ class Logger extends Eloquent
         return $this->belongsTo('Workorder');
     }
 
-    public static function add_log($message, $type = 'standard', $iwo_id, $user_id)
+    public static function add_log($message, $type = 'standard', $iwo_id = 0, $user_id = 0)
     {
         $log = new Logger;
         $log->iwo_id = $iwo_id ? $iwo_id : Session::get('iwo_id');

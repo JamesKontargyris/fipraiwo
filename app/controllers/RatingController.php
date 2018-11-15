@@ -14,7 +14,8 @@ class RatingController extends BaseController {
 		parent::__construct();
 
 		if ( Input::get('iwo_id') ) {
-			$this->workorder          = Workorder::find( Input::get('iwo_id') );
+			$this->workorder = Workorder::find( Input::get('iwo_id') );
+			$this->workorder->pretty_workorder = pretty_input( unserialize( $this->workorder->workorder ) );
 		}
 
 		$this->user = Auth::user();
@@ -87,6 +88,14 @@ class RatingController extends BaseController {
 	 */
 	public function postIndex() {
 
+		// Does a rating already exist for this user / IWO combination?
+		if(Rating::where('iwo_id', '=', Input::get('iwo_id'))->where('user_id', '=', Input::get('user_id'))->count() > 0)
+		{
+			// This user has already left a rating
+			Session::flash('error', 'You have already rated this IWO.');
+			return Auth::check() ? Redirect::to('/manage/view') : Redirect::to('/');
+		}
+
 		if(intval(Input::get('rating')) > 0)
 		{
 			$starRating = intval(Input::get('rating'));
@@ -95,6 +104,29 @@ class RatingController extends BaseController {
 			Rating::add_rating($starRating, $comment, Input::get('iwo_id'), Input::get('user_id'));
 
 			Logger::add_log( 'New rating of ' . $starRating . ' out of 5 added.', 'standard', Input::get('iwo_id'), Input::get('user_id') );
+
+			/**
+			 * FORMAT DATA FOR EMAILS
+			 */
+			$data = [
+				'form_data' => $this->workorder->pretty_workorder,
+				// IWO id
+				'iwo_id' => $this->workorder->id,
+				//IWO reference
+				'iwo_ref'   => Session::get( 'iwo_ref' ),
+				//    Workorder title
+				'iwo_title' => $this->workorder->title,
+				// Name of user that submitted the rating
+				'user_name' => $user->name,
+				// Score given
+				'score' => $starRating,
+				// Any comments given
+				'comment' => $comment
+			];
+
+			//Send an email to lead and sub units plus copy contacts now the work order is confirmed
+			$data['recipient'] = $this->get_all_emails( $this->workorder->id, $this->workorder->formtype_id );
+			Queue::push( '\Iwo\Workers\SendEmail@rating_added', $data );
 
 			return Auth::check() ? Redirect::to( '/manage/view' )->with( 'message', 'Rating added.' ) : Redirect::to( '/' )->with( 'message', 'Rating added.' );
 		}

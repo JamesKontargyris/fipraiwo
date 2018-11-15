@@ -103,6 +103,7 @@ class ManagementController extends BaseController {
 			'user'          => $this->user,
 			'rating'        => $rating,
 			'no_of_ratings' => $no_of_ratings
+
 		] );
 	}
 
@@ -369,7 +370,9 @@ class ManagementController extends BaseController {
 			//    Workorder title
 			'iwo_title' => $this->workorder->title,
 			//    Workorder id
-			'iwo_id'    => $this->workorder->id
+			'iwo_id'    => $this->workorder->id,
+			// Workorder confirmation code
+			'confirmation' => Confirmation_code::where('iwo_id', '=', $this->workorder->id)->pluck('code')
 		];
 
 		//Send an email to lead and sub units plus copy contacts now the work order is confirmed
@@ -426,6 +429,10 @@ class ManagementController extends BaseController {
 
 		$data['iwo_ref']   = $this->workorder->iwo_ref;
 		$data['iwo_title'] = $this->workorder->title;
+		//    Workorder id
+		$data['iwo_id']    = $this->workorder->id;
+		// Workorder confirmation code
+		$data['confirmation'] = Confirmation_code::where('iwo_id', '=', $this->workorder->id)->pluck('code');
 		//Send an email to lead and sub units plus copy contacts now the work order is confirmed
 		$data['recipient'] = $this->get_all_emails( $new_workorder->id, $new_workorder->formtype_id );
 		Queue::push( '\Iwo\Workers\SendEmail@iwo_cancelled', $data );
