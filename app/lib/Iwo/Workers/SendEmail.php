@@ -254,6 +254,15 @@ class SendEmail {
 		$job->delete();
 	}
 
+	//Send an email when an IWO confirmed or cancelled seven days ago hasn't been rated
+	public function rating_reminder($job, $data)
+	{
+		$data['subject'] = "IWO: " . $data['iwo_title'] .  " (" . $data['iwo_ref'] . ") - please submit your rating";
+		$this->send($data['recipient'], $data['subject'], "emails.rating_reminder", $data);
+
+		$job->delete();
+	}
+
     //Send an email when an IWO is un-confirmed
     public function iwo_unconfirmed($job, $data)
     {

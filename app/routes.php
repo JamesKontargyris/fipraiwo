@@ -4,7 +4,6 @@
 Route::get('pcl', 'AdminController@getPcl');
 
 //Temporary login access code check
-
 Route::get('/login', function()
 {
 	return Redirect::to('/');

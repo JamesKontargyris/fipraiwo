@@ -12,5 +12,6 @@
 */
 Artisan::add(new CleanUploadDirectory);
 Artisan::add(new WorkorderExpiryNotification);
+Artisan::add(new RatingRequestNotification);
 Artisan::add(new RemoteCommand);
 

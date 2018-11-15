@@ -69,7 +69,7 @@ class RatingController extends BaseController {
 			return Auth::check() ? Redirect::to('/manage/view') : Redirect::to('/');
 		}
 
-		if( Input::get('confirmation') != Confirmation_code::where('iwo_id', '=', Input::get('iwo_id'))->first()->pluck('code'))
+		if( Input::get('confirmation') != Confirmation_code::where('iwo_id', '=', Input::get('iwo_id'))->pluck('code'))
 		{
 			// Confirmation code is not correct
 			Session::flash('error', 'Sorry, you do not have permission to access that page.');

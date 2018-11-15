@@ -9,5 +9,13 @@
         h2 {
             font-size:20px;
         }
+
+        h3 {
+            font-size:18px;
+        }
+
+        h4 {
+            font-size:16px;
+        }
     </style>
 </head>
