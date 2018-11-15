@@ -11,7 +11,7 @@ class RatingRequestNotification extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'rating:request';
+	protected $name = 'rating:reminder';
 
 	/**
 	 * The console command description.
