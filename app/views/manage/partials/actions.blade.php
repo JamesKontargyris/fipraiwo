@@ -4,7 +4,7 @@
 @elseif($workorder->confirmed || $workorder->cancelled)
     @if(($user->hasRole('Lead') || $user->hasRole('Sub')))
         <?php
-        $confirmation = Confirmation_code::where('iwo_id', '=', Session::get('iwo_id'))->first()->pluck('code');
+        $confirmation = Confirmation_code::where('iwo_id', '=', Session::get('iwo_id'))->pluck('code');
         $iwo_ref = Iwo_ref::where('iwo_id', '=', Session::get('iwo_id'))->pluck('iwo_ref');
         $iwo_id = Session::get('iwo_id');
         $user_id = $user->id;
