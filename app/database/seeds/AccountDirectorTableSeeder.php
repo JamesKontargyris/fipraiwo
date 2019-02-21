@@ -19,7 +19,6 @@ class AccountDirectorTableSeeder extends DatabaseSeeder {
 			'Willem Vriesendorp'  => 'willem.vriesendorp@fipra.com',
 			'Rory Chisholm'       => 'rory.chisholm@fipra.com',
 			'Neil Causey'         => 'neil.causey@fipra.com',
-			'Kaisu Karvala'       => 'kaisu.karvala@fipra.com',
 			'Rachel Finnegan'     => 'rachel.finnegan@fipra.com',
 			'Olga Bakardzhieva'   => 'olga.bakardzhieva@fipra.com',
 			'Robert Madelin'      => 'robert.madelin@fipra.com',
