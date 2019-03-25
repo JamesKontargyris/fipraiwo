@@ -29,11 +29,11 @@
     //Ensure only today's date or dates in the future are selectable
     //Once a start date is selected, onSelect ensures expiry dates are the same day or in the future
     var dateToday = new Date();
-    var dates = $("#internal_work_order_start_date, #internal_work_order_expiry_date").datepicker({
+    var dates = $("#internal_work_order_start_date_datepicker, #internal_work_order_expiry_date_datepicker").datepicker({
         dateFormat: "dd-mm-yy",
         numberOfMonths: 1,
         onSelect: function(selectedDate) {
-            var option = this.id == "internal_work_order_start_date" ? "minDate" : "maxDate",
+            var option = this.id == "internal_work_order_start_date_datepicker" ? "minDate" : "maxDate",
                 instance = $(this).data("datepicker"),
                 date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
             dates.not(this).datepicker("option", option, date);
