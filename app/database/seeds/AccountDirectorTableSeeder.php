@@ -14,7 +14,6 @@ class AccountDirectorTableSeeder extends DatabaseSeeder {
 			'Hilary Hudson'       => 'hilary.hudson@fipra.com',
 			'Dayanthi Adeyemo'    => 'dayanthi.adeyemo@fipra.com',
 			'John Lion'           => 'john.lion@fipra.com',
-			'Peter-Carlo Lehrell' => 'mark.fielding@fipra.com',
 			'Laura Batchelor'     => 'laura.batchelor@fipra.com',
 			'Willem Vriesendorp'  => 'willem.vriesendorp@fipra.com',
 			'Rory Chisholm'       => 'rory.chisholm@fipra.com',
