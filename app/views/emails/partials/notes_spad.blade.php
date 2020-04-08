@@ -14,7 +14,7 @@
     </tr>
     <tr>
         <td valign="top" width="200"><strong>Rate and Work Cap</strong></td>
-        <td valign="top" width="400">As of July 2016 the 20% inter-Unit discount (IUD) will no longer apply and all fees agreed within an IWO, including success/finders fees, will be paid to the receiving Unit without the application of the IUD. </td>
+        <td valign="top" width="400">As of July 2016 the 20% inter-Unit discount (IUD) will no longer apply, unless otherwise specified and agreed; all fees agreed within an IWO, including success/finders fees, will otherwise be paid to the receiving Unit without the application of the IUD.</td>
     </tr>
     <tr>
         <td valign="top" width="200"><strong>Replicon Code</strong></td>
