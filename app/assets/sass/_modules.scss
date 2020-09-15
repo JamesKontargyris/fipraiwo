@@ -41,7 +41,7 @@
       @include primary-but();
 
       &.highlight {
-        @include dark-grad($red, top, 10%);
+        @include dark-grad($red, bottom, 10%);
       }
 
       border-radius: 5px;
