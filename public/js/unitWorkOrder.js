@@ -155,12 +155,12 @@
         {
             var high_rates = [], low_rates = [];
 
-            high_rates['account_director'] = 2250;
-            high_rates['account_manager'] = 1500;
-            high_rates['account_executive'] = 750;
-            low_rates['account_director'] = 1500;
-            low_rates['account_manager'] = 1000;
-            low_rates['account_executive'] = 500;
+            high_rates['account_director'] = 2400;
+            high_rates['account_manager'] = 1600;
+            high_rates['account_executive'] = 1200;
+            low_rates['account_director'] = 1600;
+            low_rates['account_manager'] = 1200;
+            low_rates['account_executive'] = 1000;
 
             return rate_band == 'high' ? high_rates[seniority_level] : low_rates[seniority_level];
         }

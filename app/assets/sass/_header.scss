@@ -28,10 +28,10 @@ nav {
 				display:block;
 				@include font-size(12);
 				padding:($v-rhythm / 2);
-				@include background(linear-gradient(left, rgb(230, 230, 230), rgb(250, 250, 250)));
+				background:linear-gradient(left, rgb(230, 230, 230), rgb(250, 250, 250));
 				color:$black;
 				&:hover {
-					@include background(linear-gradient(right, rgb(230, 230, 230), rgb(250, 250, 250)));
+					background:linear-gradient(right, rgb(230, 230, 230), rgb(250, 250, 250));
 				}
 				&.highlight {
 					background:$blue;

@@ -7,19 +7,19 @@
         </tr>
         </thead>
         <tr>
-            <td>Account Directors</td>
-            <td class="rate-table-high-rate">€2,250</td>
-            <td class="rate-table-standard-rate">€1,500</td>
+            <td>Heads of Network Members / Directors / Partners</td>
+            <td class="rate-table-high-rate">€2,400</td>
+            <td class="rate-table-standard-rate">€1,600</td>
         </tr>
         <tr>
-            <td>Account Managers</td>
-            <td class="rate-table-high-rate">€1,500</td>
+            <td>Account Directors / Account Managers</td>
+            <td class="rate-table-high-rate">€1,600</td>
+            <td class="rate-table-standard-rate">€1,200</td>
+        </tr>
+        <tr>
+            <td>Account Executives / other junior employees</td>
+            <td class="rate-table-high-rate">€1,200</td>
             <td class="rate-table-standard-rate">€1,000</td>
-        </tr>
-        <tr>
-            <td>Account Executives</td>
-            <td class="rate-table-high-rate">€750</td>
-            <td class="rate-table-standard-rate">€500</td>
         </tr>
     </table>
 </div>

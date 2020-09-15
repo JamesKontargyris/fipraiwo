@@ -1,293 +1,345 @@
 // _modules.scss: modular pieces of code used throughout your project. Use modules to avoid repeating code.
 
 .primary {
-	@include primary-but();
+  @include primary-but();
 }
+
 .secondary {
-	@include secondary-but();
+  @include secondary-but();
 }
+
 .red-but {
   @include primary-but();
-  background-color:$red;
-  @include text-shadow(darken($red, 10%) 0 -1px);
+  background-color: $red;
+  text-shadow: darken($red, 10%) 0 -1px;
   border-top: 1px solid lighten($red, 10%);
   border-bottom: 2px solid rgba(darken($red, 40%), 0.6);
   @include dark-grad($red, top, 10%);
 }
 
 .message-box {
-  background-color:lighten(lightgreen, 20%);
-  border:1px solid lightgreen;
-  padding:$v-rhythm / 2 10px;
-  margin-bottom:$v-rhythm;
-  @include border-radius(5px);
+  background-color: lighten(lightgreen, 20%);
+  border: 1px solid lightgreen;
+  padding: $v-rhythm / 2 10px;
+  margin-bottom: $v-rhythm;
+  border-radius: 5px;
 }
 
 .intro {
-    margin-bottom: $v-rhythm;
+  margin-bottom: $v-rhythm;
   @include font-size(16);
   @include breakpoint($l) {
     @include font-size(18);
   }
 }
+
 .work-order-menu {
   li {
-    margin-bottom:$v-rhythm;
+    margin-bottom: $v-rhythm;
+
     a {
       @include primary-but();
+
       &.highlight {
         @include dark-grad($red, top, 10%);
       }
-      @include border-radius (5px);
-      @include container(12);
-      display:block;
-      border-bottom:2px solid darken($blue, 30%);
-      padding:($v-rhythm / 2) 10px;
-      min-height:100px;
+
+      border-radius: 5px;
+      //@include container(12);
+      display: block;
+      border-bottom: 2px solid darken($blue, 30%);
+      padding: ($v-rhythm / 2) 10px;
+      min-height: 100px;
       @include breakpoint($l) {
-        min-height:210px;
+        min-height: 210px;
       }
+
       i {
-        display:block;
-        margin-top:20px;
+        display: block;
+        margin-top: 20px;
         @include breakpoint($l-max) {
           display: none;
         }
         @include breakpoint($l) {
-          padding:($v-rhythm / 2) 0;
+          padding: ($v-rhythm / 2) 0;
         }
         @include breakpoint($s-max) {
-          display:none;
+          display: none;
         }
       }
+
       p {
-          @include breakpoint($m-l) {
-//              @include span(8 of 12 at 5);
-              text-align:center;
-            }
-          @include font-size(22);
-          font-weight:$font-bold;
-          line-height: 1.4;
-          margin-top:$v-rhythm / 2;
-          margin-bottom:0;
+        @include breakpoint($m-l) {
+          //              @include span(8 of 12 at 5);
+          text-align: center;
         }
-        }
-//      @include breakpoint($l) {
-//        @include gallery(3 of 12);
-//      }
-//    @include breakpoint($m-l) {
-//        @include gallery(6 of 12);
-//      }
-      span {
-        display: block;
-        padding:10px;
-        background-color:$light-grey;
-        @include border-radius(0 0 5px 5px);
-      }
-      .info {
-        cursor:pointer;
-        background-color:$light-grey;
-        @include border-radius(0 0 5px 5px);
-        display:block;
-        width:50px;
-        margin:0 auto;
-        text-align:center;
-        padding:($v-rhythm / 2) 0;
-        &:hover {
-          opacity:0.7;
-        }
+        @include font-size(22);
+        font-weight: $font-bold;
+        line-height: 1.4;
+        margin-top: $v-rhythm / 2;
+        margin-bottom: 0;
       }
     }
+
+    //      @include breakpoint($l) {
+    //        @include gallery(3 of 12);
+    //      }
+    //    @include breakpoint($m-l) {
+    //        @include gallery(6 of 12);
+    //      }
+    span {
+      display: block;
+      padding: 10px;
+      background-color: $light-grey;
+      border-radius: 0 0 5px 5px;
+    }
+
+    .info {
+      cursor: pointer;
+      background-color: $light-grey;
+      border-radius: 0 0 5px 5px;
+      display: block;
+      width: 50px;
+      margin: 0 auto;
+      text-align: center;
+      padding: ($v-rhythm / 2) 0;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
 }
+
 .errors,
 .error {
-    @include clearfix();
-	background-color:lighten($red, 50%);
-	border:1px solid lighten($red, 45%);
-	margin-bottom:$v-rhythm;
-	padding:($v-rhythm / 2) 10px;
-	ul li {
-		padding:($v-rhythm / 4) 0;
-	}
+  @include clearfix();
+  background-color: lighten($red, 50%);
+  border: 1px solid lighten($red, 45%);
+  margin-bottom: $v-rhythm;
+  padding: ($v-rhythm / 2) 10px;
+
+  ul li {
+    padding: ($v-rhythm / 4) 0;
+  }
 }
+
 .messages,
 .message {
   @include clearfix();
-  background-color:lighten(lightgreen, 10%);
-  border:1px solid lightgreen;
-  margin-bottom:$v-rhythm;
-  padding:($v-rhythm / 2) 10px;
+  background-color: lighten(lightgreen, 10%);
+  border: 1px solid lightgreen;
+  margin-bottom: $v-rhythm;
+  padding: ($v-rhythm / 2) 10px;
+
   ul li {
-    padding:($v-rhythm / 4) 0;
+    padding: ($v-rhythm / 4) 0;
   }
 }
+
 .formfield {
-	margin-bottom:$v-rhythm;
-	&.highlight {
-		padding:($v-rhythm / 2) 10px;
-		background-color:lighten($blue, 70%);
-		border:1px solid lighten($blue, 60%);
-	}
-	&.hide {
-		display:none;
-	}
+  margin-bottom: $v-rhythm;
+
+  &.highlight {
+    padding: ($v-rhythm / 2) 10px;
+    background-color: lighten($blue, 70%);
+    border: 1px solid lighten($blue, 60%);
+  }
+
+  &.hide {
+    display: none;
+  }
 }
+
 .formgroup {
   @include clearfix();
-	position:relative;
-	padding:$v-rhythm / 2 0;
-	background-color:lighten($periwinkle, 10%);
-	margin-bottom:$v-rhythm;
-    &.highlight {
-      background-color:$blue;
-      label {
-        color:white;
-      }
-    }
-	.file-upload-close {
-		position:absolute;
-		top:50%;
-		margin-top:-10px;
-		right:10px;
-		a {
-			color:darken($periwinkle, 10%);
-			&:hover {
-				color:darken($periwinkle, 20%);
-			}
-		}
-	}
-	.title {
-		margin-top:-($v-rhythm / 2);
-		padding:($v-rhythm / 2) 20px;
-		background-color:$periwinkle;
-		@include font-size(18);
-		font-weight:$font-bold;
-		color:darken($periwinkle, 30%);
-		margin-bottom:$v-rhythm;
+  position: relative;
+  padding: $v-rhythm / 2 0;
+  background-color: lighten($periwinkle, 10%);
+  margin-bottom: $v-rhythm;
 
-      small {
-        font-size:70%;
-      }
-	}
-	.formfield {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-}
-ul.button-menu {
-	@include horizontal-list();
-	li a {
-		display:inline-block;
-		@include secondary-but();
-	}
-}
-.help {
-    display: none;
-    width:16px;
-    height:16px;
-    background:url('../img/help_icon.png') top left no-repeat;
-    &:hover {
-    	background:url('../img/help_icon.png') top right no-repeat;
+  &.highlight {
+    background-color: $blue;
+
+    label {
+      color: white;
     }
+  }
+
+  .file-upload-close {
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    right: 10px;
+
+    a {
+      color: darken($periwinkle, 10%);
+
+      &:hover {
+        color: darken($periwinkle, 20%);
+      }
+    }
+  }
+
+  .title {
+    margin-top: -($v-rhythm / 2);
+    padding: ($v-rhythm / 2) 20px;
+    background-color: $periwinkle;
+    @include font-size(18);
+    font-weight: $font-bold;
+    color: darken($periwinkle, 30%);
+    margin-bottom: $v-rhythm;
+
+    small {
+      font-size: 70%;
+    }
+  }
+
+  .formfield {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
+
+ul.button-menu {
+  @include horizontal-list;
+
+  li a {
+    display: inline-block;
+    @include secondary-but();
+  }
+}
+
+.help {
+  display: none;
+  width: 16px;
+  height: 16px;
+  background: url('../img/help_icon.png') top left no-repeat;
+
+  &:hover {
+    background: url('../img/help_icon.png') top right no-repeat;
+  }
+}
+
 .help-box {
-    background:$light-grey;
-    border:#dedede 1px solid;
-    padding:5px 10px;
-    display: block;
-    margin-bottom: $v-rhythm / 2;
+  background: $light-grey;
+  border: #dedede 1px solid;
+  padding: 5px 10px;
+  display: block;
+  margin-bottom: $v-rhythm / 2;
 }
+
 .sub-box {
-  display:none;
-  background:white;
-  padding:10px 20px;
-  border:1px solid $periwinkle;
+  display: none;
+  background: white;
+  padding: 10px 20px;
+  border: 1px solid $periwinkle;
 }
+
 .buttons,
 .loading {
-	@include clearfix();
-	margin-bottom:$v-rhythm;
+  @include clearfix();
+  margin-bottom: $v-rhythm;
 }
+
 .loading {
-	display:none;
+  display: none;
 }
+
 .small-print {
-	@include font-size(12);
-	color:$grey;
-    font-style: italic;
+  @include font-size(12);
+  color: $grey;
+  font-style: italic;
 }
+
 .italic {
   font-style: italic;
 }
+
 .bold {
   font-style: bold;
 }
+
 .grey-box {
-	@include clearfix();
-    @include background(linear-gradient(left, $light-grey, white));
-    border-top:2px solid rgb(0, 37, 127);
-    border-bottom:2px solid rgb(0, 37, 127);
-    padding:($v-rhythm / 2) 20px;
+  @include clearfix();
+  background:linear-gradient(to left, $light-grey, white);
+  border-top: 2px solid rgb(0, 37, 127);
+  border-bottom: 2px solid rgb(0, 37, 127);
+  padding: ($v-rhythm / 2) 20px;
 }
+
 ul.display-details {
-	li {
-		@include clearfix();
-		margin-bottom:$v-rhythm / 2;
-		strong {
-			display:block;
-			padding:($v-rhythm / 4) 10px;
-			background-color:lighten($blue, 70%);
-		}
-		span {
-			display:block;
-			border:1px solid lighten($blue, 70%);
-			padding:($v-rhythm / 4) 10px;
-		}
-		@include breakpoint($l) {
-			width:70%;
-		}
-	}
-}
-.fees-people {
-  display:none;
-  @include font-size(12);
-  .fees-person-clone {
-    display:none;
+  li {
+    @include clearfix();
+    margin-bottom: $v-rhythm / 2;
+
+    strong {
+      display: block;
+      padding: ($v-rhythm / 4) 10px;
+      background-color: lighten($blue, 70%);
+    }
+
+    span {
+      display: block;
+      border: 1px solid lighten($blue, 70%);
+      padding: ($v-rhythm / 4) 10px;
+    }
+
+    @include breakpoint($l) {
+      width: 70%;
+    }
   }
+}
+
+.fees-people {
+  display: none;
+  @include font-size(12);
+
+  .fees-person-clone {
+    display: none;
+  }
+
   .table-option {
-    float:right;
+    float: right;
     font-weight: $font-bold;
   }
+
   .fees-select {
     display: none;
   }
+
   .total-project-fee {
-    margin-top:$v-rhythm;
+    margin-top: $v-rhythm;
   }
 }
 
 ul.square {
-  list-style:square;
-  margin-bottom:$v-rhythm;
+  list-style: square;
+  margin-bottom: $v-rhythm;
   padding-left: 20px;
 }
+
 .datepicker {
-  background:url(images/iconCalendar.gif) no-repeat 10px center;
-  padding-left:40px !important;
-  padding:$v-rhythm / 4 10px;
+  background: url(images/iconCalendar.gif) no-repeat 10px center;
+  padding-left: 40px !important;
+  padding: $v-rhythm / 4 10px;
 }
+
 .workorder-table {
   thead {
-    background-color:$blue;
-    color:white;
+    background-color: $blue;
+    color: white;
   }
+
   tr {
-    border-bottom:1px solid $periwinkle;
+    border-bottom: 1px solid $periwinkle;
+
     &:last-child {
-      border-bottom:0;
+      border-bottom: 0;
     }
+
     td {
-      padding:($v-rhythm / 2) 10px;
+      padding: ($v-rhythm / 2) 10px;
 
       .action-buttons {
         text-align: right;
@@ -304,18 +356,21 @@ ul.square {
 }
 
 .rate-table {
-  border:1px solid white;
+  border: 1px solid white;
+
   thead {
     td {
-      border-top:1px solid white;
-      border-bottom:1px solid white;
+      border-top: 1px solid white;
+      border-bottom: 1px solid white;
     }
   }
+
   tr {
     td {
-      border-bottom:1px solid white;
-      padding:5px;
+      border-bottom: 1px solid white;
+      padding: 5px;
       text-align: right;
+
       &:first-child {
         text-align: left;
       }
@@ -324,35 +379,36 @@ ul.square {
 }
 
 .block-but {
-  line-height:1.2; display:block;
+  line-height: 1.2;
+  display: block;
 }
 
 .inline-field {
-  width:80% !important;
+  width: 80% !important;
 }
 
 .fee-days, .fee-flatrate {
-  display:none;
+  display: none;
 }
 
 //Classes used in the Unit fees table to display the correct rates
 .rate-table-high-rate, .rate-table-low-rate {
-  display:none;
+  display: none;
 }
 
 //Buttons that are JS-dependent. Hide until JS displays them.
 .js-block {
-  display:none;
+  display: none;
 }
 
 // Rating stars
 .rating-stars {
-  margin-bottom:2rem;
+  margin-bottom: 2rem;
 
   .fa-star-o,
   .fa-star,
-  .fa-star-half{
-    color:gold;
+  .fa-star-half {
+    color: gold;
   }
 }
 
@@ -362,8 +418,9 @@ ul.square {
 
 .sidebar-rating-star-filled {
   @include font-size(24);
-  color:gold;
+  color: gold;
 }
+
 .sidebar-rating-star-outline {
   @include font-size(24);
   color: #d5d5d5;

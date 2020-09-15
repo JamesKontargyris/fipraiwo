@@ -218,21 +218,22 @@
                                     @foreach(Input::old('team') as $id => $values)
                                         <table width="100%" class="fees-person" style="background-color:#efefef; margin-bottom:10px;">
                                             <tr>
-                                                <td style="padding:6px 10px;">{{ Form::label('', 'Name', ['class' => 'required']) }}</td>
-                                                <td style="padding:6px 10px;" class="person-field">{{ Form::text("team[$id][person]", $values['person'], ['class' => 'autofill inline-field']) }}</td>
+                                                <td style="padding:6px 10px;" class="person-field">
+                                                    {{ Form::label('', 'Name', ['class' => 'required']) }}<br>
+                                                    {{ Form::text("team[$id][person]", $values['person'], ['class' => 'autofill inline-field']) }}</td>
                                                 <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                             </tr>
                                             <tr>
-                                                <td style="padding:6px 10px;">{{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}</td>
                                                 <td style="padding:6px 10px;">
+                                                    {{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}<br>
                                                     <div class="level-select">
-                                                        {{ Form::select("team[$id][level]", ['account_director' => 'Account Director', 'account_manager' => 'Account Manager', 'account_executive' => 'Account Executive'], isset($values['level']) ? $values['level'] : null, ['class' => 'inline']) }}
+                                                        {{ Form::select("team[$id][level]", ['account_director' => 'Heads of Network Members / Directors / Partners', 'account_manager' => 'Account Directors / Account Managers', 'account_executive' => 'Account Executives / other junior employees'], isset($values['level']) ? $values['level'] : null, ['class' => 'inline']) }}
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr class="rate-type-days">
-                                                <td style="padding:6px 10px;">{{ Form::label('', 'No. of Days', ['class' => 'required']) }}</td>
                                                 <td style="padding:6px 10px;">
+                                                    {{ Form::label('', 'No. of Days', ['class' => 'required']) }}<br>
                                                     <div class="days-text-input" style="width:50%">
                                                         {{ Form::text("team[$id][days]", $values['days'], ['class' => 'inline-field', 'width' => '10']) }}
                                                         <br>{{ Form::checkbox("team[$id][per-month]", isset($values['per-month']) ? $values['per-month'] : '') }} Per month
@@ -338,21 +339,22 @@
                                         @foreach($workorder->workorder->team as $id => $values)
                                             <table width="100%" class="fees-person" style="background-color:#efefef; margin-bottom:10px;">
                                                 <tr>
-                                                    <td style="padding:6px 10px;">{{ Form::label('', 'Name', ['class' => 'required']) }}</td>
-                                                    <td style="padding:6px 10px;" class="person-field">{{ Form::text("team[$id][person]", isset($values['person']) ? $values['person'] : '', ['class' => 'autofill inline-field']) }}</td>
+                                                    <td style="padding:6px 10px;" class="person-field">
+                                                        {{ Form::label('', 'Name', ['class' => 'required']) }}<br>
+                                                        {{ Form::text("team[$id][person]", isset($values['person']) ? $values['person'] : '', ['class' => 'autofill inline-field']) }}</td>
                                                     <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="padding:6px 10px;">{{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}</td>
                                                     <td style="padding:6px 10px;">
+                                                        {{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}<br>
                                                         <div class="level-select">
-                                                            {{ Form::select("team[$id][level]", ['account_director' => 'Account Director', 'account_manager' => 'Account Manager', 'account_executive' => 'Account Executive'], isset($values['level']) ? $values['level'] : null, ['class' => 'inline']) }}
+                                                            {{ Form::select("team[$id][level]", ['account_director' => 'Heads of Network Members/Directors/Partners', 'account_manager' => 'Account Directors/Account Managers', 'account_executive' => 'Account Executives/other junior employees'], isset($values['level']) ? $values['level'] : null, ['class' => 'inline']) }}
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr class="rate-type-days">
-                                                    <td style="padding:6px 10px;">{{ Form::label('', 'No. of Days', ['class' => 'required']) }}</td>
                                                     <td style="padding:6px 10px;">
+                                                        {{ Form::label('', 'No. of Days', ['class' => 'required']) }}<br>
                                                         <div class="days-text-input" style="width:50%">
                                                             {{ Form::text("team[$id][days]", isset($values['days']) ? $values['days'] : '', ['class' => 'inline-field', 'width' => '10']) }}
                                                             <br>{{ Form::checkbox("team[$id][per-month]", isset($values['per-month']) ? $values['per-month'] : '') }} Per month
@@ -409,21 +411,22 @@
 
                                     <table width="100%" class="fees-person" style="background-color:#efefef; margin-bottom:10px;">
                                         <tr>
-                                            <td style="padding:6px 10px;">{{ Form::label('', 'Name', ['class' => 'required']) }}</td>
-                                            <td style="padding:6px 10px;" class="person-field">{{ Form::text('team[1][person]', null, ['class' => 'autofill inline-field']) }}</td>
+                                            <td style="padding:6px 10px;" class="person-field">
+                                                {{ Form::label('', 'Name', ['class' => 'required']) }}<br>
+                                                {{ Form::text('team[1][person]', null, ['class' => 'autofill inline-field']) }}</td>
                                             <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                         </tr>
                                         <tr>
-                                            <td style="padding:6px 10px;">{{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}</td>
                                             <td style="padding:6px 10px;">
+                                                {{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}<br>
                                                 <div class="level-select">
-                                                    {{ Form::select('team[1][level]', ['account_director' => 'Account Director', 'account_manager' => 'Account Manager', 'account_executive' => 'Account Executive'], ['class' => 'inline']) }}
+                                                    {{ Form::select('team[1][level]', ['account_director' => 'Heads of Network Members/Directors/Partners', 'account_manager' => 'Account Directors/Account Managers', 'account_executive' => 'Account Executives/other junior employees'], ['class' => 'inline']) }}
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr class="rate-type-days">
-                                            <td style="padding:6px 10px;">{{ Form::label('', 'No. of Days', ['class' => 'required']) }}</td>
                                             <td style="padding:6px 10px;">
+                                                {{ Form::label('', 'No. of Days', ['class' => 'required']) }}<br>
                                                 <div class="days-text-input" style="width:50%">
                                                     {{ Form::text('team[1][days]', null, ['class' => 'inline-field', 'width' => '10']) }}
                                                     <br>{{ Form::checkbox('team[1][per-month]', null, null, ['class' => 'checkbox-per-month']) }} Per month

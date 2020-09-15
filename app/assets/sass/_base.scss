@@ -1,7 +1,7 @@
 //	_base.scss: styles that will affect all pages (heading tags, small tags, etc.)
 
 * {
-	@include box-sizing(border-box);
+	box-sizing:border-box;
 }
 
 html, body {
@@ -13,7 +13,7 @@ html {
 }
 body {
 	font-family: $font-family;
-	@include background(linear-gradient(top, #f0f0f0, #888 66%));
+	background: linear-gradient(top, #f0f0f0, #888 66%);
 	color:$black;
 	line-height:1.4;
 }
@@ -56,7 +56,7 @@ h4 {
   font-weight:$font-bold;
   padding:$v-rhythm 0 ($v-rhythm / 2);
   border-bottom:1px solid $periwinkle;
-  margin-bottom:$v-rhythm;
+  margin:0 0 $v-rhythm;
 }
 h5 {
   @include font-size(14);
@@ -78,6 +78,7 @@ h1, h2, h3, h4, h5 {
 }
 p {
 	padding-bottom:$v-rhythm;
+	margin:0;
 }
 strong {
 	font-weight:$font-bold;
@@ -141,7 +142,7 @@ input[type=submit] {
 }
 select {
 	display:block;
-	padding:$v-rhythm / 4 10px;
+	padding:$v-rhythm / 4 5px;
 	@include font-size(14);
 	@include breakpoint($l) {
 		@include font-size(14);
@@ -152,6 +153,11 @@ select {
 }
 strong {
 	font-weight:$font-bold;
+}
+ul {
+	list-style: none;
+	padding:0;
+	margin:0;
 }
 
 #content {

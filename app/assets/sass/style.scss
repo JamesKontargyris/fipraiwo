@@ -8,10 +8,8 @@ Version: 0.0.1
 */
 
 // Tools
-@import "compass";
-@import "compass/reset";
-@import "susy";
-@import "breakpoint";
+@import "vendor/breakpoint/breakpoint";
+@import "vendor/bourbon/bourbon";
 
 @import "variables";
 @import "mixins";

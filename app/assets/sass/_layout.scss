@@ -2,37 +2,39 @@
 
 // Susy setup
 // @include layout(12 (6.4% 2%) static float after);
-$susy: (
-	columns: 12,
-	gutters: 0.5,
-	math:fluid,
-);
+//$susy: (
+//	columns: 12,
+//	gutters: 0.5,
+//	math:fluid,
+//);
 .container,
 .content-container {
-	@include container();
-	max-width:1000px;
-	padding:0 20px;
+  @include clearfix;
+  margin: 0 auto;
+  max-width: 1000px;
 }
+
 .content-container {
-	@include clearfix();
-	background-color:white;
-    @include background(url('../img/stars_bk.gif') top right no-repeat #ffffff);
-	min-height:100%;
+  padding: 0 20px;
+}
+
+.content-container {
+  @include clearfix();
+  background: url('../img/stars_bk.gif') top right no-repeat #ffffff;
+  min-height: 100%;
 }
 
 @include breakpoint($l) {
   @for $i from 1 through 12 {
     .col-#{$i} {
-      float:left;
-      width: span($i);
-      margin-right:gutter();
-      margin-bottom:$v-rhythm;
-      &:last-child {
-        margin-right:0;
-      }
+      float: left;
+      width: ((100 * ($i/12)) * 1%) - 2%;
+      margin-left: 1%;
+      margin-right: 1%;
+      margin-bottom: $v-rhythm;
     }
   }
   .last {
-    margin-right:0;
+    margin-right: 0;
   }
 }

@@ -4,7 +4,7 @@
   margin-bottom:$v-rhythm;
   padding:($v-rhythm / 2) 10px;
   border:1px solid $light-grey;
-  @include border-radius();
+  border-radius:5px;
   .red-highlight {
     background-color:lighten($red, 50%);
     border:1px solid lighten($red, 45%);

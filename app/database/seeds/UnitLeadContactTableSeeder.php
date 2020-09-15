@@ -58,11 +58,12 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 		];
 
 		$unit_rate_bands = [
+			'Fipra Argentina'               => 'low',
 			'Fipra Australia'               => 'high',
 			'Fipra Brazil'                  => 'low',
 			'Fipra Bulgaria'                => 'low',
 			'Fipra Canada'                  => 'high',
-			'Fipra China'                   => 'low',
+			'Fipra China'                   => 'high',
 			'Fipra Croatia'                 => 'low',
 			'Fipra Cyprus (New Unit)'       => 'low',
 			'Fipra Czech Republic'          => 'low',
@@ -79,6 +80,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Fipra Italy'                   => 'high',
 			'Fipra Japan'                   => 'high',
 			'Fipra Latvia'                  => 'low',
+			'Fipra Libya'                  => 'low',
 			'Fipra Lithuania'               => 'low',
 			'Fipra Netherlands'             => 'high',
 			'Fipra Norway'                  => 'high',
@@ -100,7 +102,6 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Fipra Austria (New Unit)'      => 'high',
 			'Fipra UK'                      => 'high',
 			'Fipra Morocco'                 => 'low',
-			'Fipra Argentina'               => 'low',
 			'Fipra Romania'                 => 'low',
 			'Fipra Russia'                  => 'low',
 			'Fipra Malta'                   => 'low',
