@@ -56,7 +56,7 @@
     function update_grand_total()
     {
         var grand_total = 0,
-            days = $('.fee-days input').val(),
+            days = $('.fee-days .no_of_days').val(),
             day_rate = $('.day_rate').val();
 
         $('.grand-total').text('Total: €' + (days * day_rate).formatMoney(0));

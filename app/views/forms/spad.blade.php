@@ -108,17 +108,26 @@
                     </div>
 
                     <div class="formfield fee-days">
-                        {{ Form::label('days', 'No. of days @ &euro;2000:', ['class' => 'required']) }}
+                        {{ Form::label('day_rate_in_euros', 'Day rate in Euros:', ['class' => 'required']) }}
                         @if(editing())
-                            {{ Form::text('days', isset($workorder->workorder->days) ? $workorder->workorder->days : '', ['style' => 'width:30%']) }}
+                            {{ Form::text('day_rate_in_euros', isset($workorder->workorder->day_rate_in_euros) ? $workorder->workorder->day_rate_in_euros : '', ['style' => 'width:30%', 'class' => 'day_rate']) }}
                         @else
-                            {{ Form::text('days', Input::old('days'), ['style' => 'width:30%']) }}
+                            {{ Form::text('day_rate_in_euros', Input::old('day_rate_in_euros'), ['style' => 'width:30%', 'class' => 'day_rate']) }}
+                        @endif
+                        <br><span class="small-print">Standard Special Advisor day rate is €2,000. Country Representative day rate is €2,400.</span>
+                        {{ display_form_error('day_rate_in_euros', $errors) }}<br><br>
+
+                        {{ Form::label('days', 'No. of days:', ['class' => 'required']) }}
+                        @if(editing())
+                            {{ Form::text('days', isset($workorder->workorder->days) ? $workorder->workorder->days : '', ['style' => 'width:30%', 'class' => 'no_of_days']) }}
+                        @else
+                            {{ Form::text('days', Input::old('days'), ['style' => 'width:30%', 'class' => 'no_of_days']) }}
                         @endif
                         <div>@include('partials.days-help-message')</div>
                         {{ display_form_error('days', $errors) }}
 
                         <div style="padding:18px 0 6px 0; font-size:16px; font-weight:bold;" class="grand-total">Total: €0</div>
-                        {{ Form::hidden('day_rate_in_euros', 2000, ['class' => 'day_rate']) }}
+{{--                        {{ Form::hidden('day_rate_in_euros', 2000, ['class' => 'day_rate']) }}--}}
                         {{ Form::hidden('total_in_euros', Input::old('total_in_euros'), ['class' => 'day_rate_total']) }}
                     </div>
 
