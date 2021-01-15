@@ -48,7 +48,6 @@ class UnitRepsTableSeeder extends DatabaseSeeder {
 			'Fipra Georgia (New Unit)'      => 'Kaisu Karvala',
 			'Fipra Austria (New Unit)'      => 'Laura Batchelor',
 			'Fipra Ukraine'                 => 'Kaisu Karvala',
-			'Fipra UK'                      => 'Rory Chisholm',
 			'Fipra Morocco'                 => 'Rory Chisholm',
 			'Fipra Argentina'               => 'David Lawsky',
 			'Fipra Romania'                 => 'Rory Chisholm',

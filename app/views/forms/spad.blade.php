@@ -114,7 +114,7 @@
                         @else
                             {{ Form::text('day_rate_in_euros', Input::old('day_rate_in_euros'), ['style' => 'width:30%', 'class' => 'day_rate']) }}
                         @endif
-                        <br><span class="small-print">Standard Special Advisor day rate is €2,000. Country Representative day rate is €2,400.</span>
+                        <br><span class="small-print">Day rates for SPADs can vary, please make sure to check the applicable rate before submitting an order.</span>
                         {{ display_form_error('day_rate_in_euros', $errors) }}<br><br>
 
                         {{ Form::label('days', 'No. of days:', ['class' => 'required']) }}
