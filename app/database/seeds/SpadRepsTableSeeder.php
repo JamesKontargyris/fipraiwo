@@ -52,7 +52,6 @@ class SpadRepsTableSeeder extends DatabaseSeeder {
 			'Mikhail Yurlov'          => 'Laura Batchelor',
 			'Gianluca Comin'          => 'Dirk Hudig',
 			'Krzysztof Lisek'         => 'Laura Batchelor',
-			'Wolfgang Schneider'      => 'Hilary Hudson',
 			'Nathalie Hesketh'        => 'Hilary Hudson',
 			'Martin Cauchi Inglott'   => 'Hilary Hudson',
 			'Matthew Snoding'         => 'Hilary Hudson',

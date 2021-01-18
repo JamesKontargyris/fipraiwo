@@ -19,7 +19,6 @@ class SpadEmailsTableSeeder extends DatabaseSeeder {
 			'Juan Prat y Coll'              => 'juan.pratcoll@fipra.com',
 			'Anton Van der Lande'           => 'anton.vanderlande@fipra.com',
 			'Krzysztof Lisek'               => 'krzysztof.lisek@fipra.com',
-			'Wolfgang Schneider'            => 'wolfgang.schneider@fipra.com',
 			'Nathalie Hesketh'              => 'nathalie.hesketh@fipra.com',
 			'Martin Cauchi Inglott'         => 'martin.cauchiinglott@fipra.com',
 			'Matthew Snoding'               => 'matthew.snoding@fipra.com',
