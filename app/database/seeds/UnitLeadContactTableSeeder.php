@@ -31,6 +31,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'FIPRA Ireland (Unit)'                                     => 'Lucinda Creighton',
 			'FIPRA Italy (Unit)'                                       => 'Mariella Palazzolo',
 			'FIPRA Japan (Unit)'                                       => 'Philip Howard',
+			'FIPRA Kazakhstan (Unit)'                                  => 'Evgeny Roshkov',
 			'FIPRA Kyrgyzstan (Unit)'                                  => 'Evgeny Roshkov',
 			'FIPRA Latvia (Unit)'                                      => 'Armands Gutmanis',
 			'FIPRA Lithuania (Unit)'                                   => 'Arūnas Pemkus',
@@ -55,6 +56,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'FIPRA Turkmenistan (Unit)'                                => 'Evgeny Roshkov',
 			'FIPRA United Kingdom (Unit)'                              => 'Michael Craven',
 			'FIPRA Ukraine (Unit)'                                     => 'Ivan Poltavets',
+			'FIPRA USA (Unit)'                                         => 'Rhod Shaw',
 			'FIPRA Uzbekistan (Unit)'                                  => 'Evgeny Roshkov',
 			'FIPRA Azerbaijan (Country Representative - Leila Alieva)' => 'Leila Alieva',
 			'FIPRA Azerbaijan (Country Representative - Sadya Aliyev)' => 'Sadyar Aliyev',
@@ -96,6 +98,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'FIPRA Ireland (Unit)'                                     => 'high',
 			'FIPRA Italy (Unit)'                                       => 'high',
 			'FIPRA Japan (Unit)'                                       => 'high',
+			'FIPRA Kazakhstan (Unit)'                                  => 'low',
 			'FIPRA Kyrgyzstan (Unit)'                                  => 'low',
 			'FIPRA Latvia (Unit)'                                      => 'low',
 			'FIPRA Lithuania (Unit)'                                   => 'low',
@@ -120,6 +123,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'FIPRA Turkmenistan (Unit)'                                => 'low',
 			'FIPRA United Kingdom (Unit)'                              => 'high',
 			'FIPRA Ukraine (Unit)'                                     => 'low',
+			'FIPRA USA (Unit)'                                         => 'high',
 			'FIPRA Uzbekistan (Unit)'                                  => 'low',
 			'FIPRA Azerbaijan (Country Representative - Leila Alieva)' => 'low',
 			'FIPRA Azerbaijan (Country Representative - Sadya Aliyev)' => 'low',
@@ -214,6 +218,8 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Russ Keene'                    => 'russ.keene@fipra.com',
 			'Marten Wennberg'               => 'marten.wennberg@fipra.com',
 			'Leila Alieva'                  => 'leila.alieva@fipra.com',
+			'Juan Mauricio Mora'            => 'jmmora@fipra.com',
+			'Rhod Shaw'                     => 'rhod.shaw@fipra.com',
 		];
 
 		foreach ( $unit_lead_contacts as $unit => $contact ) {
