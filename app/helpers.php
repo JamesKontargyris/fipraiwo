@@ -244,7 +244,7 @@ function get_fipra_reps()
 
 function get_all_units_for_dropdown()
 {
-    $units = Unit_lead_contact::orderBy('unit_name')->get()->toArray();
+    $units = Unit_lead_contact::get()->toArray();
     $options = ['' => 'Please select...'];
 
     foreach($units as $unit)
