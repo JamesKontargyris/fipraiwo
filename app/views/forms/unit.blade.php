@@ -32,10 +32,10 @@
 		<section class="col-6">
 
             <div class="formgroup">
-                <div class="title">Lead Unit</div>
+                <div class="title">Lead Unit / Representative</div>
 
                 <div class="formfield">
-                    {{ Form::label('lead_unit', 'Lead Unit:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+                    {{ Form::label('lead_unit', 'Lead Unit / Country Representative:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
                     <div class="help-box">The Unit responsible for managing a particular client relationship or instruction, including with regard to financial arrangements with that client, where that client requires advice in more than one territory. It is the Lead Unit, and not the subcontracting Unit, that bears ultimate responsibility to the client for quality control.</div>
 
                     @if(editing())
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="formfield">
-                    {{ Form::label('lead_unit_account_director', 'Account Director responsible at the Lead Unit:', ['class' => 'required']) }}
+                    {{ Form::label('lead_unit_account_director', 'Account Director responsible at the Lead Unit / Country Representative:', ['class' => 'required']) }}
 
                     @if(editing())
                         {{ Form::text('lead_unit_account_director', isset($workorder->workorder->lead_unit_account_director) ? $workorder->workorder->lead_unit_account_director : '', ( ! $loggedin_user->hasRole('SuperUser') ? ['readonly' => 'readonly'] : [])) }}
@@ -84,7 +84,7 @@
             </div>
 
             <div class="formgroup">
-                <div class="title">Sub-contracted Unit</div>
+                <div class="title">Sub-contracted Unit / Representative</div>
 
                 {{--<div class="formfield">--}}
                     {{--{{ Form::label('sub_contracted_unit_correspondent_affiliate', 'Sub-contracted Unit:', ['class' => 'required']) }}--}}
@@ -99,7 +99,7 @@
                 {{--</div>--}}
 
                 <div class="formfield">
-                    {{ Form::label('sub_contracted_unit_correspondent_affiliate', 'Sub-contracted Unit:', ['class' => 'required']) }}
+                    {{ Form::label('sub_contracted_unit_correspondent_affiliate', 'Sub-contracted Unit / Country Representative:', ['class' => 'required']) }}
 
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate : '', ['readonly' => 'readonly']) }}
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="formfield">
-                    {{ Form::label('sub_contracted_unit_correspondent_affiliate_account_director', 'Account Director responsible at the Sub-contracted Unit:', ['class' => 'required']) }}
+                    {{ Form::label('sub_contracted_unit_correspondent_affiliate_account_director', 'Account Director responsible at the Sub-contracted Unit / Country Representative:', ['class' => 'required']) }}
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director : '', ($loggedin_user->hasRole('Lead') || $loggedin_user->hasRole('SuperUser')) ? [] : ['readonly' => 'readonly']) }}
                     @else
@@ -224,7 +224,7 @@
                                                 <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                             </tr>
                                             <tr>
-                                                <td style="padding:6px 10px;">
+                                                <td style="padding:6px 10px;" colspan="2">
                                                     {{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}<br>
                                                     <div class="level-select">
                                                         {{ Form::select("team[$id][level]", ['account_director' => 'Heads of Network Members / Directors / Partners', 'account_manager' => 'Account Directors / Account Managers', 'account_executive' => 'Account Executives / other junior employees'], isset($values['level']) ? $values['level'] : null, ['class' => 'inline']) }}
@@ -345,7 +345,7 @@
                                                     <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="padding:6px 10px;">
+                                                    <td style="padding:6px 10px;" colspan="2">
                                                         {{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}<br>
                                                         <div class="level-select">
                                                             {{ Form::select("team[$id][level]", ['account_director' => 'Heads of Network Members/Directors/Partners', 'account_manager' => 'Account Directors/Account Managers', 'account_executive' => 'Account Executives/other junior employees'], isset($values['level']) ? $values['level'] : null, ['class' => 'inline']) }}
@@ -417,7 +417,7 @@
                                             <td><a class="secondary remove-row" href="#"><i class="fa fa-lg fa-times"></i></a></td>
                                         </tr>
                                         <tr>
-                                            <td style="padding:6px 10px;">
+                                            <td style="padding:6px 10px;" colspan="2">
                                                 {{ Form::label('', 'Level of Seniority', ['class' => 'required']) }}<br>
                                                 <div class="level-select">
                                                     {{ Form::select('team[1][level]', ['account_director' => 'Heads of Network Members/Directors/Partners', 'account_manager' => 'Account Directors/Account Managers', 'account_executive' => 'Account Executives/other junior employees'], ['class' => 'inline']) }}
@@ -438,7 +438,7 @@
                                         </tr>
                                         <tr class="rate-type-flat-rate">
                                             <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
-                                            <td style="padding:6px 10px;">
+                                            <td style="padding:6px 10px;" width="200">
                                                 <div class="flat-rate-text-input">
                                                     &euro; {{ Form::text('team[1][flatrate]', null, ['class' => 'inline-field', 'width' => '10']) }}
                                                 </div>
