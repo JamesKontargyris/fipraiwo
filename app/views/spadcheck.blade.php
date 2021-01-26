@@ -5,9 +5,9 @@
 @stop
 
 @section('content')
-	<h3>Instructing Special Advisers</h3>
+	<h3>Instructing Special Advisors</h3>
 
-	<p>Special Advisers may only be instructed by staff at Fipra International who are either their Fipra Representative or the Account Director  at Fipra International for the relevant work to be undertaken.</p>
-	<p>If you <strong>are</strong> a full member of Fipra International, please <a href="/spad" class="secondary">continue to the Special Adviser IWO form</a></p>
-	<p>If you <strong>are not</strong> a full member of Fipra International, please contact the Network team on <a href="mailto:networkteamg@fipra.com"><strong>networkteam@fipra.com</strong></a> stating which Special Adviser you wish to use.</p>
+	<p>Special Advisors may only be instructed by staff at FIPRA International who are either their FIPRA Representative or the Account Director at FIPRA International for the relevant work to be undertaken.</p>
+	<p>If you <strong>are</strong> a full member of FIPRA International, please <a href="/spad" class="secondary">continue to the Special Advisor IWO form</a></p>
+	<p>If you <strong>are not</strong> a full member of FIPRA International, please contact the Network team on <a href="mailto:networkteamg@fipra.com"><strong>networkteam@fipra.com</strong></a> stating which Special Advisor you wish to use.</p>
 @stop

@@ -9,11 +9,11 @@ class SpadWorkOrderController extends BaseController
 	// Keyword for this Work Order form
 	protected $iwo_key = 'spad';
 	// Form type label
-	protected $iwo_key_label = "Special Adviser";
+	protected $iwo_key_label = "Special Advisor";
 	// Fields in the form that should be hidden from the confirmation screen
 	public static $hidden_from_user = ['_token'];
 	// The subject line for emails
-	protected $email_subject = 'Special Adviser Internal Work Order Submission';
+	protected $email_subject = 'Special Advisor Internal Work Order Submission';
     //Array of form field names to use as user names in the DB
     protected $user_names = [
         'lead' => 'account_director',
@@ -30,6 +30,6 @@ class SpadWorkOrderController extends BaseController
 
     public function getCheck()
     {
-        return View::make('spadcheck')->with('page_title', 'Special Adviser Internal Work Order');
+        return View::make('spadcheck')->with('page_title', 'Special Advisor Internal Work Order');
     }
 }

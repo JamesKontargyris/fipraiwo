@@ -11,7 +11,7 @@
 	@else
 		<div class="intro col-12">
 	@endif
-			Before payments can be made between members of the Fipra Network, Internal Work Orders (IWOs) are required.
+			Before payments can be made between Members of the FIPRA Network, Internal Work Orders (IWOs) are required.
 		</div>
 
 	@if( ! Session::get('iwo_id'))
@@ -37,12 +37,12 @@
 			<h2>Submit a new Internal Work Order</h2>
 			<ul class="work-order-menu">
 				<li class="col-6">
-					<a href="unit" class="highlight"><i class="fa fa-group fa-4x"></i><p>Fipra Units<br>(including Fipra Correspondents)</p></a><span class="hidejs">Units are all companies who hold a Fipra Licence. Correspondents should also use this IWO.</span>
+					<a href="unit" class="highlight"><i class="fa fa-group fa-4x"></i><p>FIPRA Network Members<br>(including Country Representatives)</p></a><span class="hidejs">Network Members are companies who hold a FIPRA Licence. Correspondents should also use this IWO.</span>
 					<i class="fa fa-info fa-lg info showjs"></i>
 				</li>
 				<li class="col-6 last">
-					<a href="spad/check" class="highlight"><i class="fa fa-sitemap fa-4x"></i><p>Fipra Special Advisers</p></a>
-					<span class="hidejs">Full members of the Fipra Network who are independent individuals as opposed to companies/Units.</span>
+					<a href="spad/check" class="highlight"><i class="fa fa-sitemap fa-4x"></i><p>FIPRA Special Advisors</p></a>
+					<span class="hidejs">Full members of the FIPRA Network who are independent individuals as opposed to Network Members.</span>
 					<i class="fa fa-info fa-lg info showjs"></i>
 				</li>
 			</ul>
@@ -51,12 +51,12 @@
 			<ul class="work-order-menu">
 				<li class="col-4">
 					<a href="edt"><i class="fa fa-picture-o fa-4x"></i><p>EDT</p></a>
-					<span class="hidejs">The Editorial, Design and Translation Team (EDT) provides professional editorial, graphic design and translation services to the Fipra Network.</span>
+					<span class="hidejs">The Editorial, Design and Translation Team (EDT) provides professional editorial, graphic design and translation services to the FIPRA Network.</span>
 					<i class="fa fa-info fa-lg info showjs"></i>
 				</li>
 				<li class="col-4">
 					<a href="fiplex"><i class="fa fa-shield fa-4x"></i><p>Fiplex</p></a>
-					<span class="hidejs">Fiplex is Fipra's "in-house" team of trained lawyers who offer a professional legal service to the Fipra Network on an on-demand basis.</span>
+					<span class="hidejs">Fiplex is FIPRA's "in-house" team of trained lawyers who offer a professional legal service to the FIPRA Network on an on-demand basis.</span>
 					<i class="fa fa-info fa-lg info showjs"></i>
 				</li>
 				<li class="col-4 last">

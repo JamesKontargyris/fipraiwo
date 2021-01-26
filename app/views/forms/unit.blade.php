@@ -12,7 +12,7 @@
 
 	<div class="intro">
         <p>Submitting and agreeing an IWO, constitutes a binding contractual agreement. As such IWOs should only be submitted by, or on instruction of, Account Director level Fipriots.</p>
-        <p>This form confirms financial instructions given by Unit who are Members of the Fipra Network to other Units or Correspondents. Please fill one form out each time a Unit is subcontracted. Please do not use the form below for Special Advisers or any other membership category.</p>
+        <p>This form confirms financial instructions given by Members of the FIPRA Network to other Members. Please fill one form out each time a Member is subcontracted. Please do not use the form below for Special Advisors or any other membership category.</p>
         <p class="italic small-print">Please see full explanatory notes at the end of the page.</p>
         @if(editing())
         	<p class="red">Fields in red cannot be edited.</p>
@@ -35,8 +35,8 @@
                 <div class="title">Lead Unit / Representative</div>
 
                 <div class="formfield">
-                    {{ Form::label('lead_unit', 'Lead Unit / Country Representative:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
-                    <div class="help-box">The Unit responsible for managing a particular client relationship or instruction, including with regard to financial arrangements with that client, where that client requires advice in more than one territory. It is the Lead Unit, and not the subcontracting Unit, that bears ultimate responsibility to the client for quality control.</div>
+                    {{ Form::label('lead_unit', 'Lead Member / Country Representative:', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+                    <div class="help-box">The Member responsible for managing a particular client relationship or instruction, including with regard to financial arrangements with that client, where that client requires advice in more than one territory. It is the Lead Member, and not the subcontracting Member, that bears ultimate responsibility to the client for quality control.</div>
 
                     @if(editing())
                         {{ Form::text('lead_unit', isset($workorder->workorder->lead_unit) ? $workorder->workorder->lead_unit : '', ['readonly' => 'readonly']) }}
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="formfield">
-                    {{ Form::label('lead_unit_account_director', 'Account Director responsible at the Lead Unit / Country Representative:', ['class' => 'required']) }}
+                    {{ Form::label('lead_unit_account_director', 'Account Director responsible at the Lead Member / Country Representative:', ['class' => 'required']) }}
 
                     @if(editing())
                         {{ Form::text('lead_unit_account_director', isset($workorder->workorder->lead_unit_account_director) ? $workorder->workorder->lead_unit_account_director : '', ( ! $loggedin_user->hasRole('SuperUser') ? ['readonly' => 'readonly'] : [])) }}
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="formfield">
-					{{ Form::label('lead_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
+					{{ Form::label('lead_fipra_representative', 'FIPRA Representative:', ['class' => 'required']) }}
 					@if(editing())
 						{{ Form::text('lead_fipra_representative', isset($workorder->workorder->lead_fipra_representative) ? $workorder->workorder->lead_fipra_representative : '', ['readonly' => 'readonly']) }}
 					@else
@@ -84,7 +84,7 @@
             </div>
 
             <div class="formgroup">
-                <div class="title">Sub-contracted Unit / Representative</div>
+                <div class="title">Sub-contracted Member / Representative</div>
 
                 {{--<div class="formfield">--}}
                     {{--{{ Form::label('sub_contracted_unit_correspondent_affiliate', 'Sub-contracted Unit:', ['class' => 'required']) }}--}}
@@ -99,7 +99,7 @@
                 {{--</div>--}}
 
                 <div class="formfield">
-                    {{ Form::label('sub_contracted_unit_correspondent_affiliate', 'Sub-contracted Unit / Country Representative:', ['class' => 'required']) }}
+                    {{ Form::label('sub_contracted_unit_correspondent_affiliate', 'Sub-contracted Member / Country Representative:', ['class' => 'required']) }}
 
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate : '', ['readonly' => 'readonly']) }}
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="formfield">
-                    {{ Form::label('sub_contracted_unit_correspondent_affiliate_account_director', 'Account Director responsible at the Sub-contracted Unit / Country Representative:', ['class' => 'required']) }}
+                    {{ Form::label('sub_contracted_unit_correspondent_affiliate_account_director', 'Account Director responsible at the Sub-contracted Member / Country Representative:', ['class' => 'required']) }}
                     @if(editing())
                         {{ Form::text('sub_contracted_unit_correspondent_affiliate_account_director', isset($workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director) ? $workorder->workorder->sub_contracted_unit_correspondent_affiliate_account_director : '', ($loggedin_user->hasRole('Lead') || $loggedin_user->hasRole('SuperUser')) ? [] : ['readonly' => 'readonly']) }}
                     @else
@@ -132,7 +132,7 @@
                 </div>
 
                 <div class="formfield">
-                    {{ Form::label('sub_fipra_representative', 'Fipra Representative:', ['class' => 'required']) }}
+                    {{ Form::label('sub_fipra_representative', 'FIPRA Representative:', ['class' => 'required']) }}
                     @if(editing())
 						{{ Form::text('sub_fipra_representative', isset($workorder->workorder->sub_fipra_representative) ? $workorder->workorder->sub_fipra_representative : '', ['readonly' => 'readonly']) }}
 					@else
@@ -151,7 +151,7 @@
                             <div class="formfield">
                                 {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
 
-                                {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+                                {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard FIPRA hourly rates' => 'at the standard FIPRA hourly rates', 'at a different FIPRA hourly rate' => 'at a different FIPRA hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
 
                                 @include('partials.old_fipraratestable')
 
@@ -168,7 +168,7 @@
                                             <tr class="fees-person">
                                                 <td class="person-field">{{ Form::text("team[$id][person]", $values['person'], ['style' => 'width:90%']) }}</td>
                                                 <td class="rate-field">
-                                                    @if(Input::old('the_work_will_be_done') == 'at the standard Fipra hourly rates')
+                                                    @if(Input::old('the_work_will_be_done') == 'at the standard FIPRA hourly rates')
                                                         <div class="fees-select">
                                                             {{ Form::select("team[$id][rate]", ['425' => '€425', '325' => '€325', '225' => '€225', '125' => '€125', 'N/A' => 'N/A'], isset($values['rate']) ? $values['rate'] : null, ['class' => 'inline']) }}
                                                         </div>
@@ -283,7 +283,7 @@
                                 <div class="formfield">
                                     {{ Form::label('the_work_will_be_done', 'The work will be done', ['class' => 'required']) }}
 
-                                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard Fipra hourly rates' => 'at the standard Fipra hourly rates', 'at a different Fipra hourly rate' => 'at a different Fipra hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
+                                    {{ Form::select('the_work_will_be_done', ['' => 'Select one of the following...', 'at the standard FIPRA hourly rates' => 'at the standard FIPRA hourly rates', 'at a different FIPRA hourly rate' => 'at a different FIPRA hourly rate', 'at a daily rate' => 'at a daily rate', 'at a flat or project rate' => 'at a flat or project rate'], (editing()) ? isset($workorder->workorder->the_work_will_be_done) ? $workorder->workorder->the_work_will_be_done : '' : Input::old('the_work_will_be_done'), ['class' => 'inline', 'id' => 'the-work-will-be-done']) }}
 
                                     @include('partials.old_fipraratestable')
 
@@ -510,8 +510,8 @@
                 {{ display_form_error('project_name', $errors) }}
             </div>
             <div class="formfield">
-                {{ Form::label('replicon_code', 'Replicon code (only applicable to Fipra International):') }} <a href="#" class="help">&nbsp;</a>
-                <div class="help-box">Replicon codes are Fipra's internal timesheet codes.</div>
+                {{ Form::label('replicon_code', 'Replicon code (only applicable to FIPRA International):') }} <a href="#" class="help">&nbsp;</a>
+                <div class="help-box">Replicon codes are FIPRA's internal timesheet codes.</div>
                 {{ Form::text('replicon_code', (editing()) ? isset($workorder->workorder->replicon_code) ? $workorder->workorder->replicon_code : '' : Input::old('replicon_code')) }}
                 {{ display_form_error('replicon_code', $errors) }}
             </div>
@@ -549,7 +549,7 @@
                 <p class="small-print">An email will be sent to you 10 days before this work order expires.</p>
             </div>
 			<div class="formfield">
-				{{ Form::label('green_sheet_required', 'Is a Fipra Green Sheet required at the end of each month?', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
+				{{ Form::label('green_sheet_required', 'Is a FIPRA Green Sheet required at the end of each month?', ['class' => 'required']) }} <a href="#" class="help">&nbsp;</a>
 				<div class="help-box">Green Sheets are to be submitted within three working days of the end of the month in which the work has been performed. Green Sheets give details of the hours worked and are irrespective of the type of fee structure chosen above.</div>
 				{{ Form::select('green_sheet_required', ['No' => 'No', 'Yes' => 'Yes'], (editing()) ? isset($workorder->workorder->green_sheet_required) ? $workorder->workorder->green_sheet_required : '' : Input::old('green_sheet_required'), ['class' => 'green-sheet-required']) }}
 				{{ display_form_error('green_sheet_required', $errors) }}
@@ -584,22 +584,22 @@
                     <p>Some fees have an agreed monthly maximum you may bill or “cap.” This is not the same as a fixed fee for the month. Generally invoices are expected to come in below the cap and any work above the cap cannot be invoiced without an IWO that raises the cap.</p>
 
                     <h4>High Value and Low Value work</h4>
-                    <p>Fipra Units, as opposed to Special Advisers, are expected to have high and lower paid staff and apply the correct staffing for the appropriate level of work. No client will pay a top rate, usually reserved for strategic advice, for clerical work such as writing minutes. It is  therefore important that staff are correctly allocated and time/billing rates reflect this in line with the internal work order. Where no lower paid staff are available a lower rate must be charged for the higher grade staff doing less valuable work.</p>
+                    <p>FIPRA Units, as opposed to Special Advisors, are expected to have high and lower paid staff and apply the correct staffing for the appropriate level of work. No client will pay a top rate, usually reserved for strategic advice, for clerical work such as writing minutes. It is  therefore important that staff are correctly allocated and time/billing rates reflect this in line with the internal work order. Where no lower paid staff are available a lower rate must be charged for the higher grade staff doing less valuable work.</p>
 
                     <h4>The internal billing cycle is long, but you can help make it shorter</h4>
-                    <p>As a matter of policy, Fipra generally requests payment from clients on 30-day terms. In practice clients often ignore this deadline or impose their own later payment terms. However, further delays can be avoided by Members sending in provisional bills, timesheets and invoices promptly or as early as possible, as a bill covering several Units cannot be ready until the slowest Member has sent theirs in to the Lead Unit for approval and processing.</p>
+                    <p>As a matter of policy, FIPRA generally requests payment from clients on 30-day terms. In practice clients often ignore this deadline or impose their own later payment terms. However, further delays can be avoided by Members sending in provisional bills, timesheets and invoices promptly or as early as possible, as a bill covering several Units cannot be ready until the slowest Member has sent theirs in to the Lead Unit for approval and processing.</p>
 
                     <h4>When should a Lead Unit pay out to subcontracting Members?</h4>
-                    <p>All payments approved in the IWO system and by the Account Director concerned and therefore due to subcontracting Members of the Fipra Network are paid out by the Lead Unit  no later than within 10 working days of relevant payments having been received by the Lead Unit from the final client. A Unit providing work is under no obligation to automatically inform each subcontracting Unit every time a bill is paid. However in the event that a Member makes enquiries about payment of a bill, the Lead Unit’s Account Director has an obligation to inform the other Member of when clients made payments or, if known, when they are expected to do so.</p>
+                    <p>All payments approved in the IWO system and by the Account Director concerned and therefore due to subcontracting Members of the FIPRA Network are paid out by the Lead Unit  no later than within 10 working days of relevant payments having been received by the Lead Unit from the final client. A Unit providing work is under no obligation to automatically inform each subcontracting Unit every time a bill is paid. However in the event that a Member makes enquiries about payment of a bill, the Lead Unit’s Account Director has an obligation to inform the other Member of when clients made payments or, if known, when they are expected to do so.</p>
 
                     <h4>Non-payment or reduced-payments by clients</h4>
-                    <p>Where there is an IWO,  the Lead Unit is responsible for paying each Member of the Fipra Network in respect of services provided to a client that have been agreed and approved. Once the relevant Account Director has accepted the timesheets of a subcontracting Unit, and relevant amounts billed by the Lead Unit, the Lead Unit will bear the risk of reduced payment, default or non-payment by the end client concerned. It will thus ensure that the subcontracting Member is paid in full, if necessary at the Lead Unit's own expense. This is in order to protect subcontracting Units from large-scale defaults and from the wrongdoing of another Unit that may cause a client not to pay. It also introduces a degree of financial discipline into the work passed between Units. That a client has refused to pay at all cannot be an excuse for internal non-payment.</p>
+                    <p>Where there is an IWO,  the Lead Unit is responsible for paying each Member of the FIPRA Network in respect of services provided to a client that have been agreed and approved. Once the relevant Account Director has accepted the timesheets of a subcontracting Unit, and relevant amounts billed by the Lead Unit, the Lead Unit will bear the risk of reduced payment, default or non-payment by the end client concerned. It will thus ensure that the subcontracting Member is paid in full, if necessary at the Lead Unit's own expense. This is in order to protect subcontracting Units from large-scale defaults and from the wrongdoing of another Unit that may cause a client not to pay. It also introduces a degree of financial discipline into the work passed between Units. That a client has refused to pay at all cannot be an excuse for internal non-payment.</p>
 
                     <p>However, in the rare event that a client does not pay invoices, or pays less than the amount invoiced, the Lead Unit may of course seek to negotiate a reduction with the fellow Member collegially, though the subcontracting Member will not be required to enter into such negotiation.</p>
 
                     <h4>Internal Work Orders</h4>
 
-                    <p>Once agreed, copies of all completed online Internal Work Orders are sent promptly to Fipra’s finance department to enable the monitoring of Inter-Unit activities and to facilitate the Membership Review. Internal Work Orders are treated as confidential and are not disclosed to any person outside the Fipra finance department and the Fipra Representative for the Unit concerned. The Internal Work Orders serve to calculate the general turnover or the services performed between the Units of the Fipra Network. No Inter-Unit payment of any sort or for any work can take place without an Internal Work Order.</p>
+                    <p>Once agreed, copies of all completed online Internal Work Orders are sent promptly to FIPRA’s finance department to enable the monitoring of Inter-Unit activities and to facilitate the Membership Review. Internal Work Orders are treated as confidential and are not disclosed to any person outside the FIPRA finance department and the FIPRA Representative for the Unit concerned. The Internal Work Orders serve to calculate the general turnover or the services performed between the Units of the FIPRA Network. No Inter-Unit payment of any sort or for any work can take place without an Internal Work Order.</p>
                 </div>
             </div>
 
