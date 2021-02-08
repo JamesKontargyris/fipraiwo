@@ -583,8 +583,8 @@
                     <h4>Caps</h4>
                     <p>Some fees have an agreed monthly maximum you may bill or “cap.” This is not the same as a fixed fee for the month. Generally invoices are expected to come in below the cap and any work above the cap cannot be invoiced without an IWO that raises the cap.</p>
 
-                    <h4>High Value and Low Value work</h4>
-                    <p>FIPRA Network Members, as opposed to Special Advisors, are expected to have high and lower paid staff and apply the correct staffing for the appropriate level of work. No client will pay a top rate, usually reserved for strategic advice, for clerical work such as writing minutes. It is  therefore important that staff are correctly allocated and time/billing rates reflect this in line with the internal work order. Where no lower paid staff are available a lower rate must be charged for the higher grade staff doing less valuable work.</p>
+                    <h4>High Value and Standard Value work</h4>
+                    <p>FIPRA Network Members, as opposed to Special Advisors, are expected to pay staff high and/or standard rates and apply the correct staffing for the appropriate level of work. No client will pay a top rate, usually reserved for strategic advice, for clerical work such as writing minutes. It is therefore important that staff are correctly allocated and time/billing rates reflect this in line with the internal work order. Where no standard paid staff are available a lower rate must be charged for the higher grade staff doing less valuable work.</p>
 
                     <h4>The internal billing cycle is long, but you can help make it shorter</h4>
                     <p>As a matter of policy, FIPRA generally requests payment from clients on 30-day terms. In practice clients often ignore this deadline or impose their own later payment terms. However, further delays can be avoided by Members sending in provisional bills, timesheets and invoices promptly or as early as possible, as a bill covering several Members cannot be ready until the slowest Member has sent theirs in to the Lead Member for approval and processing.</p>
