@@ -17,7 +17,7 @@
     <ul class="display-details">
 		@foreach($input as $field => $value)
 			<li>
-				<strong>{{ $field }}:</strong> <span>{{ $value }}</span>
+				<strong>{{ $field }}:</strong> <span>{{ $value == 'low' ? 'Standard' : $value }}</span>
 			</li>
 		@endforeach
 		@if(Session::get('file_names'))
