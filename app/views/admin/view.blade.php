@@ -13,7 +13,7 @@
         @foreach($workorder->workorder as $label => $value)
         <tr>
             <td width="45%"><strong>{{ $label }}:</strong></td>
-            <td width="55%">{{ $value }}</td>
+            <td width="55%">{{ $value == 'low' ? 'Standard' : $value }}</td>
         </tr>
         @endforeach
     </table>
