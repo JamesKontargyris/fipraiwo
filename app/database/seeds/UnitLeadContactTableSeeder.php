@@ -26,7 +26,8 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'FIPRA Greece (Full Member)'                                 => 'Costas Yiannopoulos',
 			'FIPRA Hungary (Full Member)'                                => 'Tamás Sárdi',
 			'FIPRA India (Full Member)'                                  => 'Manash Neog',
-			'FIPRA International (Full Member)'                          => '',
+			'FIPRA International UK (Full Member)'                       => 'Rory Chisholm',
+			'FIPRA International BE (Full Member)'                       => 'Laura Batchelor',
 			'FIPRA Ireland (Full Member)'                                => 'Lucinda Creighton',
 			'FIPRA Italy (Full Member)'                                  => 'Mariella Palazzolo',
 			'FIPRA Japan (Full Member)'                                  => 'Philip Howard',
@@ -95,7 +96,8 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'FIPRA Greece (Full Member)'                                 => 'low',
 			'FIPRA Hungary (Full Member)'                                => 'low',
 			'FIPRA India (Full Member)'                                  => 'low',
-			'FIPRA International (Full Member)'                          => 'high',
+			'FIPRA International UK (Full Member)'                       => 'high',
+			'FIPRA International BE (Full Member)'                       => 'high',
 			'FIPRA Ireland (Full Member)'                                => 'high',
 			'FIPRA Italy (Full Member)'                                  => 'high',
 			'FIPRA Japan (Full Member)'                                  => 'high',
@@ -193,7 +195,6 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Mark Fielding'                 => 'mark.fielding@fipra.com',
 			'Markus Schindler'              => 'markus.schindler@fipra.com',
 			'Ivan Poltavets'                => 'ivan.poltavets@fipra.com',
-			'Rory Chisholm'                 => 'rory.chisholm@fipra.com',
 			'Michael Craven'                => 'michael.craven@fipra.com',
 			'Adrian Fielding'               => 'adrian.fielding@fipra.com',
 			'Miguel Ángel Martínez'         => 'miguel.angelmartinez@fipra.com',
@@ -227,6 +228,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Raman Chada'                   => 'raman.chada@fipra.com',
 			'John Mare'                     => 'john.mare@fipra.com',
 			'Jenni Newman'                  => 'jenni.newman@fipra.com',
+			'Laura Batchelor'               => 'laura.batchelor@fipra.com',
 		];
 
 		foreach ( $unit_lead_contacts as $unit => $contact ) {
