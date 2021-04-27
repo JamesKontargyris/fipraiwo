@@ -12,6 +12,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'FIPRA Argentina (Full Member)'                              => 'Miguel Ángel Martínez',
 			'FIPRA Australia (Full Member)'                              => 'John Richardson',
 			'FIPRA Austria (Full Member)'                                => 'Peter Koppl',
+			'FIPRA Belgium (Full Member)'                                => 'Peter Tulkens',
 			'FIPRA Brazil (Full Member)'                                 => 'José Gabriel Assis de Almeida',
 			'FIPRA Bulgaria (Full Member)'                               => 'Rositsa Velkova',
 			'FIPRA Canada (Full Member)'                                 => 'Andre Albinati',
@@ -82,6 +83,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'FIPRA Argentina (Full Member)'                              => 'low',
 			'FIPRA Australia (Full Member)'                              => 'high',
 			'FIPRA Austria (Full Member)'                                => 'high',
+			'FIPRA Belgium (Full Member)'                                => 'high',
 			'FIPRA Brazil (Full Member)'                                 => 'low',
 			'FIPRA Bulgaria (Full Member)'                               => 'low',
 			'FIPRA Canada (Full Member)'                                 => 'high',
@@ -230,6 +232,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Jenni Newman'                  => 'jenni.newman@fipra.com',
 			'Laura Batchelor'               => 'laura.batchelor@fipra.com',
 			'Peter Koppl'                   => 'peter.koppl@fipra.com',
+			'Peter Tulkens'                 => 'peter.tulkens@fipra.com',
 		];
 
 		foreach ( $unit_lead_contacts as $unit => $contact ) {
