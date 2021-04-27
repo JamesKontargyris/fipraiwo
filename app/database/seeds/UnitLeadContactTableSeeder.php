@@ -11,7 +11,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 		$unit_lead_contacts = [
 			'FIPRA Argentina (Full Member)'                              => 'Miguel Ángel Martínez',
 			'FIPRA Australia (Full Member)'                              => 'John Richardson',
-			'FIPRA Austria (Full Member)'                                => '',
+			'FIPRA Austria (Full Member)'                                => 'Peter Koppl',
 			'FIPRA Brazil (Full Member)'                                 => 'José Gabriel Assis de Almeida',
 			'FIPRA Bulgaria (Full Member)'                               => 'Rositsa Velkova',
 			'FIPRA Canada (Full Member)'                                 => 'Andre Albinati',
@@ -229,6 +229,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'John Mare'                     => 'john.mare@fipra.com',
 			'Jenni Newman'                  => 'jenni.newman@fipra.com',
 			'Laura Batchelor'               => 'laura.batchelor@fipra.com',
+			'Peter Koppl'                   => 'peter.koppl@fipra.com',
 		];
 
 		foreach ( $unit_lead_contacts as $unit => $contact ) {
