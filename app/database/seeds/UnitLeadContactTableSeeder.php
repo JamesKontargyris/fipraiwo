@@ -235,6 +235,10 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 			'Peter Tulkens'                 => 'peter.tulkens@fipra.com',
 		];
 
+		$unit_additional_info = [
+			'FIPRA International BE (Full Member)' => 'Billing details:\\nFipra International SRL\\nRue de la Loi 227\\nBrussels 1040\\nBelgium\\nVAT No: BE 0733.774.811'
+		];
+
 		foreach ( $unit_lead_contacts as $unit => $contact ) {
 			Unit_lead_contact::create(
 				[
@@ -242,6 +246,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 					'lead_contact_name' => $contact,
 					'email'             => isset( $lead_contact_emails[ $contact ] ) ? $lead_contact_emails[ $contact ] : '',
 					'rate_band'         => $unit_rate_bands[ $unit ],
+					'additional_info'   => isset( $unit_additional_info[ $unit ] ) ? $unit_additional_info[ $unit ] : '',
 				]
 			);
 		}

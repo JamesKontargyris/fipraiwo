@@ -52,11 +52,12 @@ class SpadEmailsTableSeeder extends DatabaseSeeder {
 			'Dirk Hudig'                    => 'dirk.hudig@fipra.com',
 		];
 
+
 		foreach ( $email as $name => $address ) {
 			Spad_email::create(
 				[
-					'spad_name'  => $name,
-					'spad_email' => $address,
+					'spad_name'       => $name,
+					'spad_email'      => $address,
 				]
 			);
 		}

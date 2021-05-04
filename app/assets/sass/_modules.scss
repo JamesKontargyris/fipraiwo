@@ -151,6 +151,19 @@
   }
 }
 
+.formfield--unit-additional-info {
+
+  textarea {
+    background: #efefef;
+    resize: none;
+
+    &:active,
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
 .formgroup {
   @include clearfix();
   position: relative;
@@ -262,7 +275,7 @@ ul.button-menu {
 
 .grey-box {
   @include clearfix();
-  background:linear-gradient(to left, $light-grey, white);
+  background: linear-gradient(to left, $light-grey, white);
   border-top: 2px solid rgb(0, 37, 127);
   border-bottom: 2px solid rgb(0, 37, 127);
   padding: ($v-rhythm / 2) 20px;

@@ -64,6 +64,7 @@ return array(
             'options'   => array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET time_zone = \'Europe/Brussels\''
             ),
+			'strict' => true,
 		),
 
 		'pgsql' => array(

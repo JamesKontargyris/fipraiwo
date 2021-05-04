@@ -105,6 +105,7 @@ class AutocompleteController extends BaseController
 				$found_unit['name'] = $contact['lead_contact_name'];
 				$found_unit['email'] = $contact['email'];
 				$found_unit['rate_band'] = $contact['rate_band'];
+				$found_unit['additional_info'] = $contact['additional_info'];
 				$found_unit['rep'] = Unit_rep::where('fipra_unit', '=', $contact['unit_name'])->pluck('rep');
 				$found_unit['label'] = $contact['unit_name'];
 				$matches[] = $found_unit;
@@ -126,6 +127,7 @@ class AutocompleteController extends BaseController
             $found_unit['name'] = $unit_info['lead_contact_name'];
             $found_unit['email'] = $unit_info['email'];
             $found_unit['rate_band'] = $unit_info['rate_band'];
+            $found_unit['additional_info'] = $unit_info['additional_info'];
             $found_unit['rep'] = Unit_rep::where('fipra_unit', '=', $unit_info['unit_name'])->pluck('rep');
             $found_unit['label'] = $unit_info['unit_name'];
 

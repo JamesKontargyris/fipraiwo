@@ -3,6 +3,10 @@
 // Temporary Peter-Carlo Lehrell IWOs listing page
 Route::get('pcl', 'AdminController@getPcl');
 
+Route::get('phptest', function() {
+	echo phpinfo();
+});
+
 //Temporary login access code check
 Route::get('/login', function()
 {
