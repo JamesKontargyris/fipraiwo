@@ -7,6 +7,7 @@ class SpadWorkOrderValidator extends FormValidator {
 		'account_director'                => 'required',
 		'special_adviser_instructed'      => 'required',
 		'lead_email_address'              => 'required|email',
+		'billing_entity'                  => 'required',
 		'the_work_will_be_done'           => 'sometimes|required',
 		'days'                            => 'sometimes|required|numeric',
 		'day_rate_in_euros'               => 'sometimes|required|numeric',
