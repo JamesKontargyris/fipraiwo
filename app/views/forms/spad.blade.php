@@ -72,11 +72,15 @@
                 @if(editing())
                     {{ Form::text('billing_entity', isset($workorder->workorder->billing_entity) ? $workorder->workorder->billing_entity : '', ['style' => 'width:100%', 'readonly' => 'readonly']) }}
                 @else
-                    {{ Form::select('billing_entity', ['' => 'Please select...', 'FIPRA International BE' => 'FIPRA International BE', 'FIPRA International UK' => 'FIPRA International UK'], Input::old('billing_entity'), ['style' => 'width:100%']) }}
+                    {{ Form::select('billing_entity', ['' => 'Please select...', 'FIPRA International BE (full member)' => 'FIPRA International BE', 'FIPRA International UK (full member)' => 'FIPRA International UK'], Input::old('billing_entity'), ['style' => 'width:100%', 'class' => 'billing_entity', 'data-additional-info-field' => 'billing_unit_additional_info']) }}
                 @endif
                 {{ display_form_error('billing_entity', $errors) }}
             </div>
 
+            <div class="formfield formfield--unit-additional-info">
+                {{ Form::label('billing_unit_additional_info', 'Additional info:') }}
+                {{ Form::textarea('billing_unit_additional_info', isset($workorder->workorder->billing_unit_additional_info) ? $workorder->workorder->billing_unit_additional_info : 'None', ['rows' => 6, 'readonly' => 'readonly']) }}
+            </div>
 
             <div class="formfield">
                 {{ Form::label('sub_fipra_representative', 'FIPRA Representative:', ['class' => 'required']) }}

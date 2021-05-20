@@ -236,7 +236,7 @@ class UnitLeadContactTableSeeder extends DatabaseSeeder {
 		];
 
 		$unit_additional_info = [
-			'FIPRA International BE (Full Member)' => 'Billing details:\\nFipra International SRL\\nRue de la Loi 227\\nBrussels 1040\\nBelgium\\nVAT No: BE 0733.774.811'
+			'FIPRA International BE (Full Member)' => 'Billing details:\\nFipra International SRL,\\nRue de la Loi 227,\\nBrussels 1040,\\nBelgium,\\nVAT No: BE 0733.774.811'
 		];
 
 		foreach ( $unit_lead_contacts as $unit => $contact ) {

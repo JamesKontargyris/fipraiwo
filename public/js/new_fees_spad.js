@@ -53,6 +53,31 @@
         return true;
     }
 
+    // Autofill relevant fields when billing entity is selected
+    $('.billing_entity').on('change', function () {
+        var unit = $(this).val(),
+            field = $(this);
+        $.ajax({
+            method: "GET",
+            url: "/ac/unit_dropdown",
+            data: {selected: unit},
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(xhr.responseText);
+                console.log(thrownError);
+            }
+        })
+            .done(function (data) {
+                data = JSON.parse(data);
+                if (data.additional_info) {
+                    var newline = String.fromCharCode(13, 10);
+                    $('textarea[name=' + field.data('additional-info-field') + ']').val(data.additional_info.replaceAll('\\n', newline));
+                } else {
+                    $('textarea[name=' + field.data('additional-info-field') + ']').val('None');
+                }
+            });
+    });
+
     function update_grand_total()
     {
         var grand_total = 0,
