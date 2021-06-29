@@ -267,6 +267,14 @@
                                     <td colspan="3"
                                         style="padding:6px 10px;">@include('partials.days-help-message')</td>
                                 </tr>
+                                <tr class="rate-type-monthly-rate">
+                                    <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
+                                    <td style="padding:6px 10px;">
+                                        <div class="monthly-rate-text-input">
+                                            &euro; {{ Form::text("team[$id][monthlyrate]", $values['monthlyrate'], ['class' => 'inline-field', 'width' => '10']) }}
+                                        </div>
+                                    </td>
+                                </tr>
                                 <tr class="rate-type-flat-rate">
                                     <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
                                     <td style="padding:6px 10px;">
@@ -394,6 +402,14 @@
                                         <td colspan="3"
                                             style="padding:6px 10px;">@include('partials.days-help-message')</td>
                                     </tr>
+                                    <tr class="rate-type-monthly-rate">
+                                        <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
+                                        <td style="padding:6px 10px;">
+                                            <div class="monthly-rate-text-input">
+                                                &euro; {{ Form::text("team[$id][monthlyrate]", $values['monthlyrate'], ['class' => 'inline-field', 'width' => '10']) }}
+                                            </div>
+                                        </td>
+                                    </tr>
                                     <tr class="rate-type-flat-rate">
                                         <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
                                         <td style="padding:6px 10px;">
@@ -467,6 +483,14 @@
                             <tr class="rate-type-days">
                                 <td colspan="3" style="padding:6px 10px;">@include('partials.days-help-message')</td>
                             </tr>
+                            <tr class="rate-type-monthly-rate">
+                                <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
+                                <td style="padding:6px 10px;">
+                                    <div class="monthly-rate-text-input">
+                                        &euro; {{ Form::text("team[1][monthlyrate]", null, ['class' => 'inline-field', 'width' => '10']) }}
+                                    </div>
+                                </td>
+                            </tr>
                             <tr class="rate-type-flat-rate">
                                 <td style="padding:6px 10px;">{{ Form::label('', 'Rate', ['class' => 'required']) }}</td>
                                 <td style="padding:6px 10px;" width="200">
@@ -491,11 +515,6 @@
 
                         {{ form::hidden('person_count', '1', ['class' => 'person-count']) }}
                         <a class="secondary add-new-person">Add new person</a>
-
-                        <div class="total-project-fee">
-                            {{ Form::label('', 'Total project fee:') }}
-                            <span class="inline bold"><br/>&euro;</span> {{ Form::text("total_project_fee", (editing()) ? isset($workorder->workorder->total_project_fee) ? $workorder->workorder->total_project_fee : null : Input::old('total_project_fee'), ['class' => 'inline-field']) }}
-                        </div>
 
                     </div>
 

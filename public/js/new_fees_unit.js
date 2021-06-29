@@ -64,6 +64,7 @@
         tr_clone.find('.days-text-input input[type=text]').attr('name', 'team[' + person_count + '][days]');
         tr_clone.find('.days-text-input input[type=checkbox]').attr('name', 'team[' + person_count + '][per-month]');
         tr_clone.find('.rate-type-flat-rate input').attr('name', 'team[' + person_count + '][flatrate]');
+        tr_clone.find('.rate-type-monthly-rate input').attr('name', 'team[' + person_count + '][monthlyrate]');
         tr_clone.find('.hidden-total').attr('name', 'team[' + person_count + '][persontotal]');
         tr_clone.find('.hidden-rate-type').attr('name', 'team[' + person_count + '][ratetype]').val($('.fees-person').first().find('.hidden-rate-type').val());
 //        Display the remove-row button
@@ -130,6 +131,7 @@
     function show_fees_people_form(selection) {
         var rate_labels = new Array();
         rate_labels['Fipra day rate'] = 'Day Rate';
+        rate_labels['Monthly rate'] = 'Monthly Rate';
         rate_labels['at a flat or project rate'] = 'Flat/Project Rate';
 
         if (selection != '') {
@@ -155,7 +157,7 @@
             $('.fees-select').hide();
         }
 
-        if (selection == 'at a flat or project rate') {
+        if (selection == 'at a flat or project rate' || selection == 'Monthly rate') {
             $('.total-project-fee').show();
             $('.total-project-fee input').attr('disabled', false);
         } else {
@@ -250,12 +252,20 @@
         if (rate_type.val() == 'Fipra day rate') {
             update_fees_table();
             $('.rate-type-days').show();
+            $('.rate-type-monthly-rate').hide();
             $('.rate-type-flat-rate').hide();
             $('.person-total-row').show();
             $('.hidden-rate-type').val('dayrate');
+        } else if(rate_type.val() == 'Monthly rate') {
+            $('.rate-type-days').hide();
+            $('.rate-type-monthly-rate').show();
+            $('.rate-type-flat-rate').hide();
+            $('.person-total-row').hide();
+            $('.hidden-rate-type').val('monthlyrate');
         } else {
             update_fees_table();
             $('.rate-type-days').hide();
+            $('.rate-type-monthly-rate').hide();
             $('.rate-type-flat-rate').show();
             $('.person-total-row').hide();
             $('.hidden-rate-type').val('flatrate');

@@ -27,6 +27,7 @@
     {
         var rate_labels = new Array();
         rate_labels['Fipra day rate'] = 'Day Rate';
+        rate_labels['Monthly rate'] = 'Monthly Rate';
         rate_labels['at a flat or project rate'] = 'Flat/Project Rate';
 
         //display the correct field
@@ -36,6 +37,17 @@
             $('.fee-flatrate').hide();
             $('.fee-days input').attr('disabled', false);
             $('.fee-days').show();
+            $('.fee-monthlyrate input').attr('disabled', true);
+            $('.fee-monthlyrate').hide();
+        }
+        else if(selection == 'Monthly rate')
+        {
+            $('.fee-flatrate input').attr('disabled', true);
+            $('.fee-flatrate').hide();
+            $('.fee-days input').attr('disabled', true);
+            $('.fee-days').hide();
+            $('.fee-monthlyrate input').attr('disabled', false);
+            $('.fee-monthlyrate').show();
         }
         else
         {
@@ -43,11 +55,13 @@
             $('.fee-flatrate').show();
             $('.fee-days input').attr('disabled', true);
             $('.fee-days').hide();
+            $('.fee-monthlyrate input').attr('disabled', true);
+            $('.fee-monthlyrate').hide();
         }
 
         if(selection == '')
         {
-            $('.fee-days, .fee-flatrate').hide();
+            $('.fee-days, .fee-monthlyrate, .fee-flatrate').hide();
         }
 
         return true;
@@ -98,14 +112,25 @@
         if(rate_type.val() == 'Fipra day rate') {
             rate_type.next('.help-box').slideDown();
             $('.rate-type-days').show();
+            $('.rate-type-monthly-rate').hide();
             $('.rate-type-flat-rate').hide();
             $('.person-total-row').show();
             $('.hidden-rate-type').val('dayrate');
+        }
+        else if(rate_type.val() == 'Monthly rate')
+        {
+            rate_type.next('.help-box').slideUp();
+            $('.rate-type-days').hide();
+            $('.rate-type-monthly-rate').show();
+            $('.rate-type-flat-rate').hide();
+            $('.person-total-row').hide();
+            $('.hidden-rate-type').val('monthlyrate');
         }
         else
         {
             rate_type.next('.help-box').slideUp();
             $('.rate-type-days').hide();
+            $('.rate-type-monthly-rate').hide();
             $('.rate-type-flat-rate').show();
             $('.person-total-row').hide();
             $('.hidden-rate-type').val('flatrate');

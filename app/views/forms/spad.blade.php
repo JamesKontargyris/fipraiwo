@@ -149,6 +149,17 @@
                     {{ Form::hidden('total_in_euros', Input::old('total_in_euros'), ['class' => 'day_rate_total']) }}
                 </div>
 
+                <div class="formfield fee-monthlyrate">
+                    {{ Form::label('monthly_rate_in_euros', 'Rate:', ['class' => 'required']) }}
+                    @if(editing())
+                    &euro;
+                    {{ Form::text('monthly_rate_in_euros', isset($workorder->workorder->monthly_rate_in_euros) ? $workorder->workorder->monthly_rate_in_euros : '', ['style' => 'width:30%']) }}
+                    @else
+                    &euro; {{ Form::text('monthly_rate_in_euros', Input::old('monthly_rate_in_euros'), ['style' => 'width:30%']) }}
+                    @endif
+                    {{ display_form_error('monthly_rate_in_euros', $errors, ['class' => 'monthly_rate']) }}
+                </div>
+
                 <div class="formfield fee-flatrate">
                     {{ Form::label('flat_rate_in_euros', 'Rate:', ['class' => 'required']) }}
                     @if(editing())
@@ -157,7 +168,7 @@
                     @else
                     &euro; {{ Form::text('flat_rate_in_euros', Input::old('flat_rate_in_euros'), ['style' => 'width:30%']) }}
                     @endif
-                    {{ display_form_error('flat_rate_in_euros', $errors, ['class' => 'day_rate']) }}
+                    {{ display_form_error('flat_rate_in_euros', $errors, ['class' => 'flat_rate']) }}
                 </div>
 
             @endif

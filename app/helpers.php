@@ -121,6 +121,9 @@ function pretty_team($team = [], $rate_type = 'Fipra day rate')
                     $total_text = isset($member['per-month']) ? 'Total per month: ' : 'Total: ';
                     $pretty_team .= "<td style='padding-right:20px'>" . $member['days'] . " " . $days_plural . $per_month . "</td>";
                     $pretty_team .= "<td>" . $total_text . $member['persontotal'] . "</td>";
+                } elseif(isset($member['ratetype']) && $member['ratetype'] == 'monthlyrate')
+                {
+                    $pretty_team .= "<td>&euro;" . remove_currency_symbol($member['monthlyrate']) . " (monthly rate)</td>";
                 }
                 else
                 {
